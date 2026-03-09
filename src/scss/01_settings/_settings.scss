@@ -1,0 +1,12 @@
+$images_path: '/assets/images' !default;
+
+$icons_path: '/assets/icons' !default;
+
+$font_path: '/assets/fonts' !default;
+
+$icon-font-family: 'scib-icons' !default;
+
+@forward 'responsive';
+@forward 'z-index';
+@forward 'colors';
+@forward 'global';

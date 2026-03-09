@@ -1,0 +1,27 @@
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+/**
+   *@description: this file stylizes the generic component link
+**/
+
+.wc-link {
+	@extend %ellipsis;
+	display: inline-block;
+	max-width: tools.rem(210);
+	position: relative;
+	font-size: tools.rem(14);
+	line-height: tools.rem(20);
+	color: tools.color(primary, base);
+	&--arrow {
+		&::after {
+			content: '#{settings.$images_path}/arrow_black.svg';
+			width: tools.rem(20);
+			height: tools.rem(20);
+			vertical-align: middle;
+			transform: rotate(180deg);
+			color: black;
+		}
+	}
+}

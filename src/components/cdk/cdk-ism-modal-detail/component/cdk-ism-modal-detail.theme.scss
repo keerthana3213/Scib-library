@@ -1,0 +1,5 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_cdk-ism-modal-detail-bg-color: var(--cdk-ism-modal-detail-bg-color, white);
+	--_cdk-ism-modal-detail-btn-visibility: var(--_cdk-ism-modal-detail-btn-visibility, visible);
+}

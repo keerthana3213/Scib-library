@@ -1,0 +1,14 @@
+/**
+ * Public custom properties for step-info component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--step-info-max-width: 800px;
+	--step-info-min-width: 500px;
+	--molecules-step-info-text-color: var(--theme-colors-black, #000000);
+	--molecules-step-info-step-color: var(--theme-colors-white, #ffffff);
+	--molecules-step-info-text-info-color: var(--theme-colors-grey-middle-dark, #444444);
+	--molecules-step-info-icon-color: var(--theme-colors-santander-base, #ec0000);
+}

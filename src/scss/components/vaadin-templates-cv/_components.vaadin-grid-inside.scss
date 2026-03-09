@@ -1,0 +1,46 @@
+/**
+   *@description: this file stylizes the vaadin-grid component.
+   **Due to its structure, we can not use sass structure, but its functions,
+   **because in the compilation are compiled and generate stable css.
+**/
+
+[part='row']:only-child [part~='header-cell'],
+[part='row']:only-child [part~='header-cell'] {
+	padding-top: 0 !important;
+}
+
+[part='row']:only-child [part~='header-cell'],
+:host(:not([theme~='no-row-borders'])) [part='row'][first] [part~='cell']:not([part~='details-cell']),
+[part~='cell'] {
+	min-height: 45px;
+
+	&:first-child {
+		flex-grow: 10 !important;
+	}
+
+	&:nth-child(2) {
+		flex-grow: 2 !important;
+	}
+
+	&:nth-child(3) {
+		flex-grow: 3 !important;
+	}
+
+	&:last-child {
+		width: 95px !important;
+		padding: 0 !important;
+	}
+}
+
+[part='row']:nth-child(even) [part~='cell'] {
+	background: #fef5f5;
+}
+
+.wc-btn {
+	background: red;
+	color: white;
+}
+
+#scroller {
+	position: absolute;
+}

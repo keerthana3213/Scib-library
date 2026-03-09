@@ -1,0 +1,152 @@
+@use '@material/chips/styles';
+@use '@material/chips';
+
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+:host {
+	--mdc-ripple-hover-opacity: 0;
+	--mdc-ripple-focus-opacity: 0;
+
+	--_atoms-chips-max-width: var(--atoms-chips-max-width, #{tools.rem(350px)});
+	--_atoms-chips-label-color: var(--atoms-chips-label-color);
+	--_atoms-chips-value-color: var(--atoms-chips-value-color);
+	--_atoms-chips-hover-value-color: var(--atoms-chips-hover-value-color);
+	--_atoms-chips-hover-bg-color: var(--atoms-chips-hover-bg-color);
+	--_atoms-chips-icon-color: var(--atoms-chips-icon-color);
+	--_atoms-chips-icon-hover-color: var(--atoms-chips-icon-hover-color);
+	--_atoms-chips-bg-color: var(--atoms-chips-bg-color);
+	--_atoms-chips-hover-label-color: var(--atoms-chips-hover-label-color);
+}
+
+/** 
+ * Component
+ */
+
+:host {
+	@include tools.shadowIcons();
+	display: block;
+
+	.mdc-evolution-chip-set {
+		&__chips {
+			align-items: center;
+		}
+
+		&__clear-all-button {
+			padding-left: tools.rem(10px);
+		}
+
+		.icon {
+			--icon-content: var(--theme-scib-icon-close);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			font-size: tools.rem(20px);
+		}
+	}
+	.mdc-evolution-chip {
+		@include chips.container-color(var(--_atoms-chips-bg-color));
+		border: none;
+		height: tools.rem(32px);
+		min-width: tools.rem(48px);
+		max-width: var(--_atoms-chips-max-width);
+		overflow: hidden;
+		white-space: nowrap;
+		border-radius: 32px;
+		padding: 0 12px;
+		box-shadow: var(--elevation-raised);
+
+		&__action {
+			display: flex;
+			color: var(--_atoms-chips-label-color);
+
+			&--primary {
+				padding: 0;
+			}
+		}
+
+		.mdc-evolution-chip {
+			&__text-label {
+				max-width: tools.rem(13px);
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				font: var(--body-medium-strong);
+				font-family: var(--typescale-body-medium-strong-font);
+				font-size: var(--typescale-body-medium-strong-size);
+				line-height: var(--typescale-body-medium-strong-line-height);
+				font-weight: var(--typescale-body-medium-strong-weight);
+				font-style: var(--typescale-body-medium-strong-style);
+				text-align: center;
+				color: var(--_atoms-chips-label-color);
+				padding-right: 4px;
+			}
+
+			&__text-value {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				font-family: var(--typescale-body-medium-default-font);
+				font-size: var(--typescale-body-medium-default-size);
+				line-height: var(--typescale-body-medium-default-line-height);
+				font-weight: var(--typescale-body-medium-default-height);
+				font-style: var(--typescale-body-medium-default-style);
+				color: var(--_atoms-chips-value-color);
+			}
+		}
+
+		&:hover {
+			background-color: var(--_atoms-chips-hover-bg-color);
+			.mdc-evolution-chip {
+				&__text-label {
+					color: var(--_atoms-chips-hover-label-color);
+				}
+
+				&__text-value {
+					color: var(--_atoms-chips-hover-value-color);
+				}
+
+				&__action {
+					color: var(--_atoms-chips-icon-hover-color);
+				}
+
+				.u-icon {
+					color: var(--_atoms-chips-icon-hover-color);
+				}
+			}
+		}
+
+		&:focus {
+			box-shadow: var(--elevation-raised-focus);
+		}
+
+		&--disabled {
+			border: solid 1px var(--color-border-disabled);
+			background-color: var(--color-surface-disabled);
+			.mdc-evolution-chip {
+				.interactive {
+					background-color: var(--color-surface-state-disabled);
+				}
+				&__text-label,
+				&__text-separator,
+				&__text-value {
+					color: var(--color-text-disabled);
+				}
+
+				&__action {
+					color: var(--color-icon-disabled);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,22 @@
+/**
+ * Public custom properties for accordion component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+@use '../../../../scss/02_tools/tools';
+
+:root {
+	--ui-v2-date-picker-background-white: var(--theme-colors-white);
+	--ui-v2-date-picker-mouseover-blue: var(--theme-colors-blue-base);
+	--ui-v2-date-picker-range-blue: var(--theme-colors-blue-locked);
+	--ui-v2-date-picker-border: tools.rem(1) solid tools.color(secondary, medium-dark);
+
+	--ui-v2-date-picker-input-border-bottom-blue: var(--theme-colors-primary);
+	--ui-v2-date-picker-input-bgcolor-blue: var(--theme-colors-sky-light);
+
+	--ui-v2-date-picker-icon: var(--theme-scib-icon-calendar);
+
+	--ui-v2-date-picker-cell-container-days-height: 34px;
+	--ui-v2-date-picker-cell-span-days-height: 32px;
+}

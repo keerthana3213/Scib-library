@@ -1,0 +1,12 @@
+/**
+ * Public custom properties for input-telephone component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-input-telephone-bg-color: var(--theme-colors-white, magenta);
+	--atoms-input-telephone-color-primary: var(--theme-colors-primary, #257fa4);
+	--atoms-input-telephone-icon-color: var(--theme-colors-primary);
+	--atoms-input-telephone-icon-cursor: default;
+}

@@ -1,0 +1,78 @@
+@use 'settings';
+@use 'tools';
+
+:host {
+	--_icon-tabs-group-height: #{tools.rem(32px)};
+	--_icon-tabs-group-padding: #{tools.rem(2px)};
+	--_icon-tabs-group-gap: #{tools.rem(2px)};
+	--_icon-tabs-group-background: var(--icon-tabs-group-background, #f5f9fb);
+	--_icon-tabs-group-border-radius: #{tools.rem(4px)};
+	--_icon-tabs-tab-width: #{tools.rem(40px)};
+	--_icon-tabs-tab-height: #{tools.rem(28px)};
+	--_icon-tabs-tab-padding-horizontal: #{tools.rem(8px)};
+	--_icon-tabs-tab-padding-vertical: #{tools.rem(4px)};
+	--_icon-tabs-tab-icon-inactive: var(--icon-tabs-tab-icon-inactive, #222222);
+	--_icon-tabs-tab-background-inactive: var(--icon-tabs-tab-background-inactive, transparent);
+	--_icon-tabs-tab-background-active: var(--icon-tabs-tab-background-active, #ffffff);
+	--_icon-tabs-tab-icon-active: var(--icon-tabs-tab-icon-active, #137e84);
+	--_icon-tabs-tab-border-radius: #{tools.rem(4px)};
+}
+
+:host {
+	background: transparent;
+	display: block;
+	@include tools.shadowIcons();
+
+	.tab-group {
+		background-color: var(--_icon-tabs-group-background);
+		height: var(--_icon-tabs-group-height);
+		padding-top: var(--_icon-tabs-group-padding);
+		padding-bottom: var(--_icon-tabs-group-padding);
+		padding-left: var(--_icon-tabs-group-padding);
+		padding-right: var(--_icon-tabs-group-padding);
+		display: inline-flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: var(--_icon-tabs-group-gap);
+		border-radius: var(--_icon-tabs-group-border-radius);
+	}
+
+	.tab {
+		width: var(--_icon-tabs-tab-width);
+		border: 0;
+		border-radius: var(--_icon-tabs-tab-border-radius);
+		padding-top: var(--_icon-tabs-tab-padding-vertical);
+		padding-bottom: var(--_icon-tabs-tab-padding-vertical);
+		padding-right: var(--_icon-tabs-tab-padding-horizontal);
+		padding-left: var(--_icon-tabs-tab-padding-horizontal);
+		background-color: var(--_icon-tabs-tab-background-inactive);
+		cursor: pointer;
+
+		.icon-container {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-end;
+			pointer-events: none;
+
+			@include tools.only-mobile {
+				align-items: center;
+			}
+		}
+
+		.icon {
+			position: relative;
+		}
+
+		&--active {
+			background-color: var(--_icon-tabs-tab-background-active);
+			box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.12);
+			cursor: auto;
+
+			.icon-container {
+				color: var(--_icon-tabs-tab-icon-active);
+			}
+		}
+	}
+}

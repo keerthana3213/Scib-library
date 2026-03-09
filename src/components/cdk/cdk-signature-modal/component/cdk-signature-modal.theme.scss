@@ -1,0 +1,27 @@
+@use 'tools';
+
+:host {
+	--_signature-primary: #{tools.color(primary, base)};
+
+	--_signature-primary-text: black;
+	--_signature-secondary-text: #{tools.color(secondary, dark)};
+	--_signature-tertiary-text: #{tools.color(secondary, ultra-dark)};
+	--_signature-warning-text: #{tools.color(seventh, medium-light)};
+
+	--_signature-btn-primary: #{tools.color(primary, base)};
+	--_signature-btn-primary-text: white;
+	--_signature-btn-secondary: white;
+	--_signature-btn-secondary-text: #{tools.color(primary, base)};
+	--_signature-btn-hover: #{tools.color(primary, medium)};
+	--_signature-btn-hover-text: white;
+
+	--_signature-decorator-primary: #{tools.color(tertiary, light)};
+	--_signature-decorator-secondary: #{tools.color(tertiary, ultra-light)};
+
+	--_signature-border-primary: #{tools.color(tertiary, sky)};
+	--_signature-border-secondary: #{tools.color(secondary, medium)};
+
+	--_signature-docusign-header: #{tools.color(secondary, ultra-dark)};
+	--_signature-docusign-text: white;
+	--_signature-docusign-background: white;
+}

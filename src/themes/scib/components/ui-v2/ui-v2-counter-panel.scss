@@ -1,0 +1,17 @@
+/**
+ * Public custom properties for counter-panel component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--ui-v2-counter-panel-label-font-size: 12px;
+	--ui-v2-counter-panel-label-line-height: 19px;
+	--ui-v2-counter-panel-label-color: var(--theme-colors-black);
+	--ui-v2-counter-panel-card-font-size: 16px;
+	--ui-v2-counter-panel-card-line-height: 29px;
+	--ui-v2-counter-panel-card-color: var(--theme-colors-grey-dark);
+	--ui-v2-counter-panel-border-color: var(--theme-colors-sky-medium);
+	--ui-v2-counter-panel-spacer-margin-right: 6px;
+	--ui-v2-counter-panel-spacer-margin-left: 15px;
+}

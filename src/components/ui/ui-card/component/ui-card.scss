@@ -1,0 +1,60 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-card.theme.scss';
+
+.ui-card-container {
+	display: block;
+	border-radius: tools.rem(8);
+	border: tools.rem(1) solid tools.color(secondary, medium);
+	background: white;
+	position: relative;
+	color: inherit;
+
+	&:hover,
+	&:focus,
+	&:active {
+		transform: translateY(-4px);
+		transition: all 0.2s ease;
+		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.16);
+	}
+
+	.ui-card-article {
+		padding: tools.rem(20 15);
+	}
+
+	.ui-card-article__ism-card {
+		padding: tools.rem(8 15 20 8);
+	}
+
+	&__disabled {
+		&:hover,
+		&:focus,
+		&:active {
+			transform: translateY(0);
+			transition: none;
+			box-shadow: none;
+		}
+	}
+
+	&--arrow {
+		position: relative;
+
+		&::after {
+			content: var(--theme-scib-icon-chrevron-right);
+			font-family: 'scib-icons';
+			position: absolute;
+			top: tools.rem(28);
+			right: tools.rem(23);
+			color: red;
+			font-size: tools.rem(16);
+		}
+	}
+
+	&__ism-card-arrow {
+		&::after {
+			position: absolute;
+			top: tools.rem(16);
+		}
+	}
+}

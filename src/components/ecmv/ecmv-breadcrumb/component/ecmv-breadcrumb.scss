@@ -1,0 +1,65 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ecmv-breadcrumb.theme.scss';
+
+.ecmv-breadcrum {
+	margin-bottom: tools.rem(24);
+
+	&__list {
+		list-style: none;
+	}
+
+	&__item {
+		display: inline-block;
+
+		&::before {
+			content: '/';
+			position: relative;
+			margin: tools.rem(0 10);
+			color: tools.color(secondary, medium-dark);
+		}
+
+		&:first-child {
+			&::before {
+				content: none;
+			}
+		}
+	}
+
+	&__link,
+	&__txt {
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(24);
+		line-height: tools.rem(32);
+
+		&--small {
+			font-size: tools.rem(16);
+			line-height: tools.rem(23);
+		}
+
+		&--secondary {
+			color: tools.color(secondary, dark);
+		}
+
+		&--tertiary {
+			color: tools.color(secondary, thirty);
+		}
+	}
+
+	&__link {
+		color: tools.color(primary, base);
+
+		&--secondary {
+			color: black;
+		}
+
+		&--tertiary {
+			color: tools.color(secondary, super-dark);
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}

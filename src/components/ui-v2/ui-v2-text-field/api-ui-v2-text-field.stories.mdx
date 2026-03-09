@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Design System v-2/Atoms/Text Field/Api" parameters={{ status: 'stable' }}/>
+
+# API
+
+---
+
+### Formatters
+
+We are using the following external libraries to apply automatic formats with a simple configuration:
+
+| Input type | External library |
+| ------ | ------ |
+| number | [AutoNumeric.js](http://autonumeric.org/configurator) |
+
+
+Example with decimals
+
+````
+{
+    alwaysAllowDecimalCharacter: true,
+	decimalCharacterAlternative: ',',
+	decimalPlacesRawValue: 2,
+	decimalPlacesShownOnBlur: 2,
+	decimalPlacesShownOnFocus: 2,
+}
+````

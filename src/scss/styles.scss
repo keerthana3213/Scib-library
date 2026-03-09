@@ -1,0 +1,31 @@
+$images_path: '/assets/images' !default;
+
+$icons_path: '/assets/icons' !default;
+
+$font_path: '/assets/fonts' !default;
+
+$icon-font-family: 'scib-icons' !default;
+
+/* Settings */
+@use '01_settings/settings' with (
+	$images_path: $images_path,
+	$icons_path: $icons_path,
+	$font_path: $font_path,
+	$icon-font-family: $icon-font-family
+);
+
+/* Tools */
+@use '02_tools/tools';
+
+/* Elements */
+@use '03_elements/reset';
+@use '03_elements/fonts';
+@use '03_elements/objects';
+@use '03_elements/scib-icons.scss';
+
+/* Utilities */
+@use '99_utilities/utilities';
+
+// Temp
+@forward '../themes/scib/theme';
+@import '~blueprint-css/dist/blueprint.css';

@@ -1,0 +1,59 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-modal-client-detail.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+
+.cdk-modal-client-detail {
+	background: white;
+
+	&__glcs-title {
+		display: flex;
+		font-family: settings.$font-bold-txt;
+		color: black;
+		font-size: tools.rem(18);
+		line-height: tools.rem(26);
+		align-items: center;
+		margin-bottom: tools.rem(8);
+	}
+
+	&__glcs-primary {
+		font-family: settings.$font-regular-txt;
+		color: tools.color(secondary, ultra-dark);
+		font-size: tools.rem(13);
+		line-height: tools.rem(19);
+		margin-left: tools.rem(8);
+	}
+
+	&__glcs-name {
+		font-family: settings.$font-regular-txt;
+		color: tools.color(secondary, ultra-dark);
+		font-size: tools.rem(16);
+		line-height: tools.rem(23);
+		text-transform: capitalize;
+	}
+
+	&__glcs-column {
+		margin-top: tools.rem(16);
+
+		&--last {
+			margin-bottom: tools.rem(16);
+		}
+	}
+}
+
+scib-ui-button {
+	float: right;
+	height: tools.rem(24);
+}
+
+scib-ui-column {
+	margin: tools.rem(20 0 0);
+
+	&.no-margin {
+		margin: tools.rem(0);
+	}
+}

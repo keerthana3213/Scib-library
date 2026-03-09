@@ -1,0 +1,125 @@
+@use 'settings';
+@use 'tools';
+@use 'objects';
+@use 'scib-icons';
+
+@forward 'cdk-signature-table-cell-status.theme.scss';
+
+:host {
+	.cdk-signature-table {
+		&__status {
+			display: block;
+			height: 100%;
+			width: tools.rem(4);
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			&--canceled {
+				background: tools.color(secondary, ultra-dark);
+			}
+			&--pending {
+				background: tools.color(tertiary, dark);
+			}
+			&--completed {
+				background: tools.color(quaternary, base);
+			}
+			&--declined {
+				background: tools.color(quintenary, base);
+			}
+			&--draft {
+				background: tools.color(secondary, medium-dark);
+			}
+		}
+
+		&__circle-container {
+			margin-left: tools.rem(8);
+			margin-right: tools.rem(16);
+		}
+
+		&__circle {
+			position: relative;
+			width: tools.rem(32);
+			height: tools.rem(32);
+			top: tools.rem(-7);
+
+			div.sc-scib-ui-circle-progress-bar.ui-circle {
+				width: tools.rem(32);
+				height: tools.rem(32);
+				margin: 0;
+			}
+
+			span.ui-circle__number.sc-scib-ui-circle-progress-bar {
+				font-family: settings.$font-bold-txt;
+				font-size: tools.rem(11);
+				color: black;
+			}
+
+			.ui-circle__percentage {
+				display: none;
+			}
+
+			&--completed {
+				.ui-circle__percentage--full {
+					color: black;
+				}
+				.ui-circle__number {
+					display: none;
+				}
+			}
+
+			&--canceled {
+				.ui-circle__percentage--full {
+					display: none;
+				}
+				.ui-circle__number {
+					display: none;
+				}
+				&:before {
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					display: block;
+					width: tools.rem(8);
+					height: tools.rem(2);
+					background: tools.color(secondary, ultra-dark);
+				}
+			}
+		}
+
+		&__progress {
+			display: flex;
+			align-items: stretch;
+			height: 100%;
+		}
+
+		&__progress-txt {
+			font-family: settings.$font-bold-txt;
+			font-size: tools.rem(14);
+			color: tools.color(secondary, super-dark);
+		}
+	}
+
+	.u-icon {
+		display: flex;
+		line-height: 1;
+		font-weight: 400;
+		font-style: normal;
+		text-rendering: auto;
+		font-variant: normal;
+		align-items: center;
+		width: tools.rem(24);
+		height: tools.rem(24);
+		justify-content: center;
+		font-size: tools.rem(24);
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+		font-family: 'scib-icons' !important;
+	}
+
+	.awarness-color {
+		color: #ec0000 !important;
+	}
+}

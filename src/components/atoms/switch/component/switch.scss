@@ -1,0 +1,212 @@
+@use '@material/theme/color-palette';
+@use '@material/theme/shadow-dom';
+@use '@material/switch/styles';
+@use '@material/switch';
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host([variant='icon']) {
+	--_atoms-switch-show-icon: block;
+	--_atoms-switch-icon-color: var(--color-icon-soft);
+}
+
+:host([variant='icon'][checked]),
+:host([variant='icon'][checked='true']) {
+	--_atoms-switch-icon-content: var(--atoms-switch-icon-checked);
+	--_atoms-switch-icon-color: var(--color-action-alternative-selected);
+
+	.mdc-switch {
+		&:hover {
+			--_atoms-switch-icon-color: var(--color-action-alternative-hover);
+		}
+	}
+}
+
+:host([variant='icon']:not([checked])),
+:host([variant='icon'][checked='false']) {
+	--_atoms-switch-icon-content: var(--atoms-switch-icon-unchecked);
+	--_atoms-switch-icon-color: var(--color-icon-soft);
+
+	.mdc-switch {
+		&:hover {
+			--_atoms-switch-icon-color: var(--color-icon-default);
+		}
+	}
+}
+
+:host([direction='right']) {
+	--_atoms-switch-label-direction: row-reverse;
+	--_atoms-switch-label-justify-content: flex-end;
+}
+
+:host {
+	@include switch.theme(
+		(
+			handle-height: 24px,
+			handle-width: 24px,
+			state-layer-size: 48px,
+			track-width: 48px,
+			track-height: 26px,
+			unselected-icon-size: 18px,
+			selected-icon-size: 18px,
+			selected-hover-state-layer-color: transparent,
+			selected-focus-state-layer-color: transparent,
+			unselected-focus-state-layer-color: transparent,
+			unselected-hover-state-layer-color: transparent
+		)
+	);
+
+	--mdc-switch-selected-track-color: var(--color-action-alternative-selected);
+	--mdc-switch-selected-focus-track-color: var(--color-action-alternative-selected);
+	--mdc-switch-selected-hover-track-color: var(--color-action-alternative-hover);
+	--mdc-switch-selected-pressed-track-color: var(--color-action-alternative-selected);
+
+	--mdc-switch-selected-handle-color: var(--color-surface-flat);
+	--mdc-switch-selected-focus-handle-color: var(--color-surface-flat);
+	--mdc-switch-selected-hover-handle-color: var(--color-surface-flat);
+	--mdc-switch-selected-pressed-handle-color: var(--color-surface-flat);
+
+	--mdc-switch-unselected-focus-handle-color: var(--color-surface-flat);
+	--mdc-switch-unselected-handle-color: var(--color-surface-flat);
+	--mdc-switch-unselected-hover-handle-color: var(--color-surface-flat);
+	--mdc-switch-unselected-pressed-handle-color: var(--color-surface-flat);
+
+	--mdc-switch-unselected-track-color: var(--color-background-strong);
+	--mdc-switch-unselected-focus-track-color: var(--color-background-strong);
+	--mdc-switch-unselected-hover-track-color: var(--color-background-inverted);
+	--mdc-switch-unselected-pressed-track-color: var(--color-background-strong);
+
+	--mdc-switch-disabled-selected-handle-color: var(--color-surface-flat);
+	--mdc-switch-disabled-unselected-handle-color: var(--color-surface-flat);
+	--mdc-switch-disabled-selected-track-color: var(--color-surface-disabled);
+	--mdc-switch-disabled-unselected-track-color: var(--color-surface-disabled);
+	--mdc-switch-disabled-handle-opacity: 1;
+	--mdc-switch-disabled-track-opacity: 1;
+}
+
+:host {
+	@include tools.shadowIcons();
+	display: flex;
+	align-items: center;
+	gap: tools.rem(13px);
+	cursor: pointer;
+	flex-direction: var(--_atoms-switch-label-direction, row);
+	justify-content: var(--_atoms-switch-label-justify-content, flex-start);
+
+	.mdc-switch {
+		.mdc-switch {
+			&__track {
+				border-radius: tools.rem(33px);
+				justify-content: center;
+				align-items: center;
+				display: flex;
+			}
+
+			&__handle-track {
+				border-radius: tools.rem(33px);
+				transform: translateX(1px);
+				justify-content: center;
+				align-items: center;
+				display: flex;
+				height: 24px;
+				width: 24px;
+
+				.mdc-switch__handle {
+					position: relative;
+					transform: none;
+					top: 1px;
+					border-radius: 50%;
+
+					.mdc-switch__ripple {
+						--mdc-switch-selected-pressed-state-layer-color: var(--color-action-alternative-selected);
+					}
+
+					.icon {
+						--icon-content: var(--_atoms-switch-icon-content);
+						display: var(--_atoms-switch-show-icon, none);
+						color: var(--_atoms-switch-icon-color);
+						font-size: 16px;
+						position: absolute;
+						left: 0px;
+						top: 0px;
+						transform: translate(25%, 25%);
+					}
+				}
+			}
+		}
+
+		&__label {
+			color: var(--color-text-default);
+			font-size: var(--typescale-body-medium-default-size);
+			font-family: var(--typescale-body-medium-default-font);
+			line-height: var(--typescale-body-medium-default-line-height);
+			font-weight: var(--typescale-body-medium-default-weight);
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			cursor: pointer;
+		}
+
+		&--selected {
+			.mdc-switch {
+				&__handle-track {
+					transform: translateX(calc(100% - 1px));
+				}
+			}
+		}
+
+		&:enabled {
+			&:hover {
+				.mdc-switch {
+					&__track {
+						&::before {
+							background: var(--mdc-switch-unselected-hover-track-color) !important;
+						}
+						&::after {
+							background: var(--mdc-switch-selected-hover-track-color) !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+:host([read-only]:not([read-only='false'])) {
+	--mdc-switch-disabled-selected-track-color: var(--color-surface-read-only);
+	--mdc-switch-disabled-unselected-track-color: var(--color-surface-read-only);
+	--_atoms-switch-icon-color: var(--color-icon-soft);
+	cursor: default;
+	.mdc-switch {
+		&:hover {
+			--_atoms-switch-icon-color: var(--color-icon-soft);
+		}
+		&__label {
+			cursor: default;
+		}
+	}
+}
+
+:host([disabled]:not([disabled='false'])) {
+	--_atoms-switch-icon-color: var(--color-icon-disabled);
+	cursor: default;
+	.mdc-switch {
+		&:hover {
+			--_atoms-switch-icon-color: var(--color-icon-disabled);
+		}
+		&__label {
+			color: var(--color-text-disabled);
+			cursor: default;
+		}
+	}
+}

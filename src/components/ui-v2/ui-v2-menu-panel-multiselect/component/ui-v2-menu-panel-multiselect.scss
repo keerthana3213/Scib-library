@@ -1,0 +1,304 @@
+@use '@material/menu-surface/mdc-menu-surface';
+@use '@material/list/mdc-list';
+@use '@material/menu/mdc-menu';
+
+@use 'settings';
+@use 'tools';
+
+@mixin ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_ui-v2-menu-panel-font-family: #{settings.$font-regular-txt};
+	--_ui-v2-menu-panel-font-size: #{tools.rem(16px)};
+	--_ui-v2-menu-panel-line-height: #{tools.rem(23px)};
+	--_ui-v2-menu-panel-color-text: var(--theme-colors-black);
+	--_ui-v2-menu-panel-border-radius: #{tools.rem(4px)};
+	--_ui-v2-menu-panel-background-hover: var(--color-surface-state-hover);
+	--_ui-v2-menu-panel-background: var(--theme-colors-white);
+	--_ui-v2-menu-panel-border: #{tools.rem(1px)} solid var(--theme-colors-sky-medium);
+	--_ui-v2-menu-panel-icon-color: var(--theme-colors-santander-base);
+}
+
+/** 
+ * Component
+ */
+:host {
+	--ui-v2-dialog-header-info-direction: row;
+	--ui-v2-dialog-border-color: transparent;
+	--ui-v2-scroll-container-gradiant-height: 0;
+	--ui-v2-dialog-min-height: 20rem;
+	--ui-v2-dialog-content-margin: tools.rem(12px 0 0 0);
+	--ui-v2-dialog-actions-min-height: 0;
+	--ui-v2-dialog-position: absolute;
+	--ui-v2-dialog-bottom: 0;
+	color: var(--theme-colors-black);
+	@include tools.shadowIcons();
+	display: block;
+
+	.container {
+		display: flex;
+		min-width: tools.rem(160px);
+		width: tools.rem(320.68px);
+		max-width: tools.rem(240px);
+		position: relative;
+		padding: 0;
+
+		&__closed {
+			display: none;
+		}
+
+		&__right {
+			justify-content: flex-end;
+		}
+
+		.mdc-menu.mdc-menu-surface {
+			min-width: tools.rem(160px);
+			width: tools.rem(320.68px);
+			max-width: tools.rem(240px);
+			padding: tools.rem(4px);
+			box-sizing: border-box;
+			border-radius: var(--size-border-radius-02);
+			background-color: var(--color-surface-floating);
+			box-shadow: var(--elevation-floating);
+			left: initial !important;
+			right: var(--ui-v2-menu-panel-right, unset);
+			transition: transform 0s !important;
+			opacity: 1 !important;
+			display: inline-block !important;
+
+			&__right {
+				left: 0 !important;
+
+				&__submenu {
+					left: initial !important;
+					margin-left: -0.9rem;
+				}
+			}
+
+			&__left {
+				margin-left: tools.rem(320px) !important;
+			}
+
+			&__close-submenu {
+				display: none !important;
+			}
+
+			&__sub-card {
+				position: relative;
+			}
+
+			.subtitle {
+				padding: 4px 8px 2px 8px;
+				span {
+					font-weight: var(--typescale-body-medium-strong-weight);
+					font-size: var(--typescale-body-medium-strong-size);
+					font-family: var(--typescale-body-medium-strong-font);
+					color: var(--color-text-default);
+					width: 90%;
+					@include ellipsis;
+				}
+			}
+
+			.scroll-container {
+				--_ui-v2-scroll-container-padding-top: 0;
+				--_ui-v2-scroll-container-padding-left: 0;
+				--_ui-v2-scroll-container-padding-bottom: 0;
+				--_ui-v2-scroll-container-padding-right: 0;
+			}
+
+			.mdc-list {
+				padding: 0;
+
+				.mdc-list-item {
+					padding: 4px 8px 4px 8px;
+					gap: 4px;
+					border-radius: var(--size-border-radius-02);
+					align-items: flex-start;
+
+					&__text {
+						font-family: var(--typescale-body-medium-default-font);
+						font-size: var(--typescale-body-medium-default-size);
+						font-weight: var(--typescale-body-medium-default-weight);
+						line-height: var(--_ui-v2-menu-panel-line-height);
+						color: var(--color-text-default);
+						width: 90%;
+						@include ellipsis;
+					}
+
+					&__item-container {
+						width: tools.rem(20px);
+						height: tools.rem(20px);
+						margin-right: tools.rem(10px);
+
+						.check-icon-container {
+							min-width: tools.rem(24px);
+						}
+					}
+
+					&__icon {
+						color: var(--color-icon-soft);
+						width: tools.rem(24px);
+						height: tools.rem(24px);
+
+						&__selector {
+							color: var(--color-icon-default);
+						}
+					}
+
+					&__separator_top {
+						padding: 4px 8px 4px 8px;
+						border-top: 1px solid var(--color-border-alternative);
+						border-radius: 0;
+					}
+
+					&__separator_bottom {
+						padding: 4px 8px 4px 8px;
+						border-bottom: 1px solid var(--color-border-alternative);
+						border-radius: 0;
+					}
+
+					&__separator_between {
+						padding: 4px 8px 4px 8px;
+						border-top: 1px solid var(--color-border-alternative);
+						border-bottom: 1px solid var(--color-border-alternative);
+						border-radius: 0;
+					}
+
+					&__groupLabel {
+						padding: 4px 8px 2px 8px;
+						span {
+							font-weight: var(--typescale-body-medium-strong-weight);
+							font-size: var(--typescale-body-medium-strong-size);
+							font-family: var(--typescale-body-medium-strong-font);
+							color: var(--color-text-default);
+							width: 90%;
+							@include ellipsis;
+						}
+					}
+
+					&__hover {
+						&:hover {
+							background: var(--color-surface-state-hover);
+						}
+
+						&:active {
+							background: var(--color-surface-state-pressed);
+						}
+
+						&__selected {
+							background-color: color-mix(in srgb, var(--color-background-brand) 8%, var(--color-background-default));
+						}
+					}
+
+					&__click {
+						&:hover {
+							background: var(--color-surface-state-hover);
+						}
+
+						&:active {
+							background: var(--color-surface-state-pressed);
+						}
+
+						&__selected {
+							.check {
+								color: var(--color-action-alternative-default);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		@media only screen and (max-width: 1500px) {
+			.scroll-changes-activated {
+				max-height: tools.rem(120px);
+				margin-bottom: 0;
+
+				&__parent-element {
+					padding-bottom: tools.rem(10px);
+				}
+			}
+		}
+		@media only screen and (max-width: 767px) {
+			.responsive {
+				--ui-v2-dialog-icon-close-color: var(--theme-colors-grey-middle-dark);
+
+				&__header-top-separator {
+					height: 0.01rem !important;
+					background: lightgray !important;
+				}
+
+				&__header-icon {
+					--icon-content: var(--theme-scib-icon-filter) !important;
+					margin: tools.rem(1px 4px 0 -25px);
+
+					.icon {
+						&::before {
+							color: var(--theme-colors-turquoise-dark);
+							font-size: tools.rem(28px);
+						}
+					}
+				}
+
+				&__content {
+					min-width: -webkit-fill-available !important;
+					box-shadow: 0 0 !important;
+					border-bottom: 0 !important;
+					border-right: 0 !important;
+					border-left: 0 !important;
+					margin-left: 0 !important;
+					height: auto;
+
+					ul {
+						height: 15rem;
+
+						li {
+							padding: tools.rem(16px 8px) !important;
+						}
+					}
+				}
+
+				&__submenu {
+					ul {
+						padding: 0 !important;
+						height: fit-content;
+					}
+
+					&__header {
+						display: flex;
+						align-items: center;
+						margin: tools.rem(14px 12px 12px 8px);
+
+						&__title {
+							font-weight: bold;
+							margin-right: tools.rem(8px);
+							min-width: fit-content;
+						}
+
+						&__separator {
+							border: 0;
+							width: 100%;
+							margin: 0;
+							height: tools.rem(1px);
+							background: var(--theme-colors-turquoise-dark);
+						}
+					}
+				}
+			}
+		}
+	}
+}

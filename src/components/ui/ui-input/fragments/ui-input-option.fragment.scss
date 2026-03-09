@@ -1,0 +1,77 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero ui-input.scss, justo
+ * después de la importación del tema -> @forward 'ui-input.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'tools';
+@use 'settings';
+@use 'objects';
+
+.c-option {
+	padding: 0.5rem 1rem;
+	display: flex;
+	align-items: center;
+
+	& > *:not(:last-child) {
+		margin-right: 0.5rem;
+	}
+}
+
+.c-option-text-wrapper {
+	max-width: calc(100% - 24px);
+
+	// @include tools.desktop {
+	//   display: flex;
+	//   align-items: center;
+	// }
+}
+
+.c-option-avatar {
+	width: 1.5rem;
+	height: 1.5rem;
+	min-width: 1.5rem;
+	@include tools.desktop {
+		width: 2rem;
+		height: 2rem;
+		min-width: 2rem;
+	}
+}
+
+.c-option-text {
+	font-size: 0.875rem;
+	line-height: 1.45;
+	width: 100%;
+
+	&.--main {
+		margin-bottom: 2px;
+		@extend %ellipsis;
+		display: flex;
+		flex-direction: column;
+		@include tools.desktop {
+			margin-bottom: 0;
+			flex-direction: row;
+		}
+	}
+
+	> .--primary {
+		@extend %ellipsis;
+		@include tools.desktop {
+			max-width: 190px;
+			min-width: 150px;
+		}
+	}
+
+	&.--secondary {
+		font-size: 0.75rem;
+		margin-bottom: 10px;
+		@extend %ellipsis;
+		color: tools.color(secondary, dark);
+		@include tools.desktop {
+			font-size: 0.875rem;
+			margin-left: 10px;
+		}
+	}
+}

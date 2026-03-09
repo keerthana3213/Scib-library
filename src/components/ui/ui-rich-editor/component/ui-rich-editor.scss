@@ -1,0 +1,101 @@
+@use 'utilities';
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-rich-editor.theme.scss';
+@forward 'quill/dist/quill.snow.css';
+@forward 'ui-quill.override';
+
+/** Este componente no se puede encapsular a causa de la librería "quill".
+ * Para evitar colisión de estilos, se debe inyectar manualmente el "block" de BEM
+ */
+.c-ui-rich-editor {
+	height: 100%;
+	min-height: initial;
+	display: flex;
+	flex-direction: column-reverse;
+	position: relative;
+	& > * {
+		width: 100%;
+	}
+
+	&__label {
+		@include utilities.accessibility;
+	}
+
+	&__input {
+		@include utilities.accessibility;
+	}
+
+	&__attached {
+		padding-bottom: 62px;
+	}
+
+	&--small-screen {
+		.ql-editor {
+			min-height: 0;
+			height: 100%;
+		}
+
+		.ql-container.ql-snow {
+			min-height: 0;
+			height: 100%;
+		}
+	}
+
+	@include tools.desktop {
+		.ql-container.ql-snow {
+			min-height: tools.rem(95);
+		}
+	}
+}
+
+[id^='toolbar'] {
+	border: 1px solid #dcdcdc !important;
+	border-radius: 0 0 8px 8px !important;
+	background-color: #f2f2f2 !important;
+	z-index: 100 !important;
+	height: tools.rem(56) !important;
+	@include tools.desktop {
+		height: tools.rem(64) !important;
+	}
+}
+
+.span {
+	display: flex !important;
+	align-items: center !important;
+	margin-right: 0 !important;
+
+	&:first-of-type {
+		width: tools.rem(77);
+	}
+}
+
+.buttons_square {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+
+.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+	top: initial !important;
+	bottom: 100% !important;
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+	border: 1px solid #dcdcdc;
+	border-radius: 8px 8px 0 0;
+}
+
+.c-button.--secondary.sc-scib-ui-button {
+	border: 1px solid;
+}
+
+.ql-toolbar.ql-snow .ql-formats {
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+}
+
+scib-ui-button button {
+	display: flex !important;
+}

@@ -1,0 +1,9 @@
+import { {{pascalCase type}}{{pascalCase name}} } from '../component/{{dashCase name}}';
+import { newSpecPage } from '@stencil/core/testing';
+import { h } from '@stencil/core';
+
+describe('{{type}}-{{dashCase name}}', () => {
+	it('builds', () => {
+		expect(new {{pascalCase type}}{{pascalCase name}}()).toBeTruthy();
+	});
+});

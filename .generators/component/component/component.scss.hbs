@@ -1,0 +1,37 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public props to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+  /** Common props for all variants */
+	--_{{type}}-{{dashCase name}}-bg-color: var(--{{type}}-{{dashCase name}}-bg-color, magenta);
+}
+
+:host([variant='white']) {
+  /** Specific propr for white variant */
+	--_{{type}}-{{dashCase name}}-bg-color: var(--{{type}}-{{dashCase name}}-bg-color, white);
+}
+
+:host([variant='blue']) {
+  /** Specific propr for blue variant */
+	--_{{type}}-{{dashCase name}}-bg-color: var(--{{type}}-{{dashCase name}}-bg-color, blue);
+}
+
+/** 
+ * Component styles
+ */
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_{{type}}-{{dashCase name}}-bg-color);
+	@include tools.shadowIcons();
+}

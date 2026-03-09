@@ -1,0 +1,142 @@
+@use 'settings';
+@use 'tools';
+
+/** Este componente no se puede encapsular a causa de la librería "quill".
+ * Para evitar colisión de estilos, todos los selectores deben estar prefijados con "ql-"
+ */
+
+$toolbar-height: 42px;
+// $toolbar-height-desktop: 42px;
+
+.ql-container {
+	// padding-bottom: $toolbar-height;
+	overflow-y: auto;
+	font-family: settings.$font-regular-txt;
+	font-size: 1rem;
+}
+
+.ql-editor {
+	// transition: box-shadow .3s linear;
+	// &:focus {
+	//   box-shadow: inset 0px 0px 0px 2px tools.color(tertiary, focus);
+	// }
+	min-height: tools.rem(55);
+	padding: tools.rem(12);
+
+	p {
+		margin-bottom: 0.5rem;
+	}
+
+	&.ql-blank::before {
+		font-family: settings.$font-regular-txt;
+		font-style: none;
+	}
+
+	@include tools.desktop {
+		min-height: tools.rem(76);
+		padding: tools.rem(16);
+	}
+}
+
+.ql-container.ql-snow {
+	border: none;
+	min-height: tools.rem(55);
+
+	@include tools.desktop {
+		min-height: tools.rem(76);
+	}
+}
+
+.ql-toolbar.ql-snow {
+	border: none;
+	border-top: 2px solid tools.color(secondary, medium);
+	display: flex;
+	height: $toolbar-height;
+	position: absolute;
+	z-index: 0;
+	left: 0;
+	right: 0;
+	margin-top: 0.25rem;
+	bottom: 0;
+	width: 100%;
+	background: white;
+
+	&[hidden] {
+		display: flex !important;
+	}
+}
+
+.ql-toolbar.ql-snow .ql-formats {
+	margin: 0;
+	padding-right: 0.75rem;
+	padding-left: 0.75rem;
+	border-left: 2px solid tools.color(secondary, medium);
+
+	& > button {
+		transition: box-shadow 0.15s linear;
+		outline: none;
+
+		&:focus:not(:active) {
+			box-shadow: 0px 0px 0px 2px tools.color(tertiary, focus);
+		}
+	}
+
+	&:first-of-type {
+		border-left-color: transparent;
+		padding-left: 0;
+	}
+
+	&:last-of-type {
+		border-left-color: transparent;
+		margin-left: auto;
+	}
+
+	// Tercer bloque
+	&:nth-child(3) {
+		display: none;
+		@include tools.tablet {
+			display: block;
+		}
+	}
+
+	// Cuarto
+	&:nth-child(4) {
+		display: none;
+		@include tools.tablet {
+			display: block;
+		}
+	}
+}
+
+.ql-snow {
+	.ql-toolbar button,
+	.ql-snow .ql-toolbar button {
+		transition: background-color 0.15s linear;
+		border-radius: 4px;
+
+		&:hover {
+			color: tools.color(tertiary, ultra-dark);
+			background-color: tools.color(secondary, light);
+		}
+	}
+
+	.ql-tooltip {
+		border-radius: 4px;
+		border-color: tools.color(secondary, light);
+		box-shadow: 0px 12px 16px 0px rgba(0, 0, 0, 0.12);
+		padding: 0.75rem 1rem;
+		font-family: settings.$font-regular-txt;
+
+		&::before {
+			display: none;
+		}
+
+		input[type='text'] {
+			border: none;
+			border-bottom: 1px solid #dcdcdc;
+			padding-left: 0;
+			padding-right: 0;
+			font-size: 1rem;
+		}
+	}
+}

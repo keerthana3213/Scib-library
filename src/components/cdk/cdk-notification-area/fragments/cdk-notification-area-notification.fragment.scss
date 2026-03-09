@@ -1,0 +1,126 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-notification-area.scss, justo
+ * después de la importación del tema -> @forward 'cdk-notification-area.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'settings';
+@use 'tools';
+
+@mixin ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@keyframes notification-area__not-fadein-container {
+	0% {
+		height: tools.rem(0);
+		transform: scaleY(0);
+	}
+	100% {
+		height: 100%;
+		transform: scaleY(1);
+	}
+}
+
+@keyframes notification-area__not-fadein-content {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.c-areahub-not {
+	font-family: settings.$font-regular-txt;
+	cursor: pointer;
+	width: 100%;
+	//   min-height: tools.rem(100);
+	margin-bottom: 0.5rem;
+	text-align: unset;
+	overflow: hidden;
+	background: white;
+	border-radius: 8px;
+	transform-origin: top center;
+	animation: notification-area__not-fadein-container 0.35s ease-in-out forwards;
+	border: tools.rem(1) solid tools.color(tertiary, light);
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.08);
+	-webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.08);
+	-moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.08);
+
+	&:hover {
+		// background-color: tools.color(tertiary, ultra-light);
+		box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+		-webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+		-moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+
+		.c-areahub-not-icon,
+		.c-areahub-not-type {
+			color: tools.color(primary, base);
+		}
+	}
+}
+
+.c-areahub-not-content {
+	height: 100%;
+	margin-bottom: tools.rem(8);
+	width: 100%;
+	padding: tools.rem(8 16);
+	box-sizing: border-box;
+	transform-origin: top center;
+	animation: notification-area__not-fadein-content 0.65s ease-in-out forwards;
+}
+
+.c-areahub-not-header {
+	display: flex;
+	align-items: center;
+	margin-bottom: tools.rem(12);
+	color: lighten($color: tools.color(secondary, ultra-dark), $amount: 10);
+	font-size: tools.rem(14);
+}
+
+.c-areahub-not-icon {
+	margin-right: 0.35rem;
+	font-size: 1.25rem;
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+.c-areahub-not-type {
+	text-transform: uppercase;
+}
+
+.c-areahub-not-date {
+	margin-left: auto;
+}
+
+.c-areahub-not-subject {
+	@include ellipsis();
+	font-family: settings.$font-bold-txt;
+	margin-bottom: tools.rem(4);
+}
+
+.c-areahub-not-preview {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	font-size: tools.rem(15);
+}
+
+.c-areahub-not-count {
+	font-family: settings.$font-bold-txt;
+	font-size: tools.rem(15);
+	text-align: right;
+	color: tools.color(primary, medium);
+	position: relative;
+	bottom: tools.rem(-5);
+}

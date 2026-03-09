@@ -1,0 +1,12 @@
+@use 'tools';
+
+:root {
+	--_ui-filter-form-mobile-width: var(--ui-filter-form-mobile-width, tools.rem(265));
+	--_ui-filter-form-width: var(--ui-filter-form-width, tools.rem(390));
+	--_ui-filter-form-padding: var(--ui-filter-form-padding, tools.rem(60 25 30));
+}
+
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_ui-filter-bg-color: var(--ui-filter-bg-color, white);
+}

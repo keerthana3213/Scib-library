@@ -1,0 +1,10 @@
+import { FunctionalComponent, h } from '@stencil/core';
+
+export const {{pascalCase type}}{{fragmentName type parent name}}: FunctionalComponent<{
+  /** Ejemplo de prop declarada */
+  example: string;
+}> = (props) => {
+  return (
+    <div>Hello world! {props.example} </div>
+  );
+}

@@ -1,0 +1,37 @@
+/**
+   *@description: this file stylizes the vaadin-details component with link styles.
+   **Due to its structure, we can not use sass structure, but its functions,
+   **because in the compilation are compiled and generate stable css.
+**/
+
+[part='summary'] {
+	padding-top: 0;
+}
+
+[part='toggle'] {
+	display: none;
+}
+
+[part='summary-content'] {
+	order: 1;
+	margin-right: 10px;
+	padding: 0;
+	font-size: 12px;
+	line-height: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: black;
+}
+
+:host(:not([disabled])) [part='summary']:hover [part='toggle'] {
+	color: #ec0000;
+	cursor: pointer;
+}
+
+:host([opened]) [part='toggle'] {
+	transform: rotate(-90deg);
+}
+
+[part='content'] {
+	padding: 20px 0 0;
+}

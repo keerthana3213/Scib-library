@@ -1,0 +1,18 @@
+/**
+ * Public custom properties for accordion component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-accordion-bg-color: var(--theme-colors-white, magenta);
+	--atoms-accordion-padding: 16px 0px;
+	--atoms-accordion-margin-content: 24px;
+	--atoms-accordion-padding-top: 8px;
+	--atoms-accordion-hover-background-color: var(--color-surface-state-hover);
+	--atoms-accordion-box-shadow: var(--elevation-flat-focus-inner);
+	--atoms-accordion-hover-cursor: pointer;
+	--atoms-accordion-border-bottom-width: 0px;
+	--atoms-accordion-border-bottom-color: var(--color-border-alternative);
+	--atoms-accordion-border-top-width: 1px;
+}

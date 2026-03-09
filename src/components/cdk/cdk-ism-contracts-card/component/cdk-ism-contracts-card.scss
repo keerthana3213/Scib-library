@@ -1,0 +1,115 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-ism-contracts-card.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_cdk-ism-contracts-card-bg-color);
+}
+
+.cdk-ism-contracts-card {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	border-radius: tools.rem(8);
+	border: tools.rem(1) solid tools.color(tertiary, light);
+	background: white;
+	padding: tools.rem(20 16 16 16);
+	margin-bottom: tools.rem(8);
+
+	&__header {
+		display: flex;
+		flex-direction: row;
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(12);
+		line-height: tools.rem(18);
+		letter-spacing: tools.rem(0.4);
+		margin-bottom: tools.rem(16);
+		align-items: center;
+		@include tools.only-mobile {
+			flex-direction: column;
+			align-items: initial;
+		}
+		&--title {
+			display: flex;
+			flex-direction: row;
+			h2 {
+				font-family: settings.$font-bold-headline;
+				font-size: tools.rem(18);
+				line-height: tools.rem(26);
+				letter-spacing: tools.rem(0);
+			}
+		}
+
+		h3 {
+			margin-left: auto;
+			@include tools.only-mobile {
+				margin-left: 0;
+				margin-top: tools.rem(12);
+			}
+		}
+	}
+
+	&__content {
+		color: tools.color(secondary, ultra-dark);
+
+		&--title {
+			font-size: tools.rem(16);
+			line-height: tools.rem(23);
+			letter-spacing: tools.rem(0);
+			text-align: justify;
+		}
+
+		&--description {
+			font-size: tools.rem(14);
+			line-height: tools.rem(20);
+			letter-spacing: tools.rem(0);
+			padding-left: tools.rem(16);
+
+			@include tools.only-mobile {
+				padding-left: tools.rem(0);
+			}
+		}
+	}
+
+	&__leyend {
+		width: 100%;
+		border-top: tools.rem(1px) solid tools.color(tertiary, light);
+		padding-top: tools.rem(16);
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+		font-size: tools.rem(12);
+		line-height: tools.rem(18);
+		letter-spacing: tools.rem(0.4);
+		.cdk-ism-contracts-card {
+			&__frequency {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+
+			&__measure {
+				margin-left: auto;
+				&--values {
+					padding: tools.rem(0 8);
+					margin-left: tools.rem(8);
+					color: white;
+					border: transparent;
+					border-radius: tools.rem(4);
+					font-size: tools.rem(14);
+					line-height: tools.rem(20);
+				}
+			}
+		}
+	}
+	.u-icon {
+		align-self: center;
+		margin-right: tools.rem(4);
+	}
+	.u-icon:before,
+	.u-icon:after {
+		color: tools.color(primary, base);
+	}
+}

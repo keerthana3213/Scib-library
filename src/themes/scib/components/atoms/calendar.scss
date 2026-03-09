@@ -1,0 +1,17 @@
+/**
+ * Public custom properties for calendar component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-calendar-elevation: var(--theme-elevation-4);
+	--atoms-calendar-border-color: #c3dee7;
+	--atoms-calendar-header-background-color: #deedf2;
+	--atoms-calendar-header-font-color: #618d9f;
+	--atoms-calendar-day-background-color: var(--theme-colors-white);
+	--atoms-calendar-empty-day-background-color: #f4f9fb;
+	--atoms-calendar-weekend-day-background-color: #f4f9fb;
+	--atoms-calendar-day-font-color: var(--theme-colors-turquoise-dark);
+	--atoms-calendar-days-cursor: inherit;
+}

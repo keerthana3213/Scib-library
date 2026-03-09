@@ -1,0 +1,311 @@
+@use 'utilities';
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+@forward 'cdk-messages.theme.scss';
+@forward '../fragments/cdk-messages-conversations-header.fragment';
+@forward '../fragments/cdk-messages-conversations-filters.fragment';
+@forward '../fragments/cdk-messages-conversations-item.fragment';
+@forward '../../cdk-sidebar-communications/fragments/cdk-sidebar-communications-profile-bar.fragment.scss';
+:host {
+	display: block;
+	height: 100%;
+	width: 100%;
+	font-family: settings.$font-regular-txt;
+}
+
+.c-conversations {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	& > * {
+		width: 100%;
+	}
+}
+
+.c-conversations-list {
+	height: 100%;
+	overflow-y: auto;
+	// will-change: scroll;
+	// scroll-behavior: smooth;
+	-webkit-overflow-scrolling: touch;
+	contain: layout;
+	transform: translateZ(0px);
+	@include tools.only-mobile {
+		margin-top: tools.rem(137);
+		&.--all-inbox {
+			margin-top: tools.rem(112);
+		}
+		transition: margin-top 0.5s;
+		&.--collapsed {
+			margin-top: 0;
+		}
+	}
+
+	&__skeleton-container {
+		width: 100%;
+		margin-top: tools.rem(16);
+
+		&:last-of-type {
+			margin-bottom: tools.rem(16);
+		}
+	}
+
+	&__skeleton {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		overflow: hidden;
+		@include utilities.animationSkeleton();
+	}
+}
+
+.c-conversation-list-footer {
+	border-top: 1px solid tools.color(secondary, medium);
+}
+
+.c-panel-detail {
+	height: 100%;
+	display: none;
+
+	&.--active {
+		display: block;
+	}
+}
+
+.c-panel-empty,
+.c-panel-detail-empty {
+	font-family: settings.$font-light-txt;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	padding: 1rem;
+	box-sizing: border-box;
+	color: tools.color(secondary, dark);
+	line-height: 1.45;
+}
+.c-panel-detail-empty-main-right.sc-scib-cdk-messages,
+.c-panel-detail-empty-main-right {
+	background: tools.color(tertiary, ultraLight);
+	font-family: settings.$font-light-txt;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	padding: 1rem;
+	box-sizing: border-box;
+	color: tools.color(secondary, dark);
+	line-height: 1.45;
+	@include tools.only-mobile {
+		display: none;
+	}
+
+	@include tools.tablet {
+		display: none;
+	}
+	@include tools.desktop {
+		display: flex;
+	}
+}
+
+.c-message-empty {
+	background-color: #f2f2f2;
+}
+
+.c-empty-conversations-list {
+	@include tools.only-mobile {
+		display: block;
+		margin: auto;
+	}
+
+	@include tools.tablet {
+		display: block;
+		margin: auto;
+	}
+	@include tools.desktop {
+		display: none;
+	}
+}
+.hide-in-desktop.sc-scib-cdk-messages {
+	@include tools.desktop {
+		display: none;
+	}
+}
+.c-empty-conversations-list-desktop {
+	@include tools.only-mobile {
+		transform: none;
+		box-shadow: none;
+	}
+
+	@include tools.tablet {
+		transform: none;
+		box-shadow: none;
+	}
+
+	@include tools.desktop {
+		display: block;
+	}
+
+	margin: auto;
+}
+.c-empty-image-conversations-list {
+	display: block;
+	margin: auto;
+	@include tools.only-mobile {
+		width: auto;
+		min-width: tools.rem(170);
+		max-width: tools.rem(200);
+	}
+
+	@include tools.tablet {
+		width: auto;
+		min-width: tools.rem(170);
+		max-width: tools.rem(286);
+	}
+}
+
+.c-empty-sub-text-conversations-list {
+	height: tools.rem(26);
+	width: auto;
+	color: #000000;
+	font-family: 'Santander Text';
+	font-size: tools.rem(18);
+	letter-spacing: 0;
+	line-height: tools.rem(26);
+	text-align: center;
+}
+.c-empty-text-conversations-list {
+	font-family: 'Santander Headline';
+	@include tools.only-mobile {
+		height: auto;
+		width: auto;
+		margin: auto;
+		margin-top: tools.rem(22);
+		color: #000000;
+		font-family: 'Santander Headline';
+		font-size: tools.rem(16);
+		font-weight: bold;
+		letter-spacing: 0;
+		line-height: tools.rem(23);
+		text-align: center;
+	}
+	@include tools.tablet {
+		height: auto;
+		width: auto;
+		margin: auto;
+		margin-top: tools.rem(22);
+		color: #000000;
+		font-family: 'Santander Headline';
+		font-size: tools.rem(16);
+		font-weight: bold;
+		letter-spacing: 0;
+		line-height: tools.rem(23);
+		text-align: center;
+	}
+	@include tools.desktop {
+		width: auto;
+		display: block;
+		color: #000000;
+		font-family: 'Santander Headline';
+		font-size: tools.rem(24);
+		font-weight: bold;
+		letter-spacing: 0;
+		line-height: tools.rem(34);
+		text-align: center;
+		margin-top: tools.rem(22);
+	}
+}
+
+.c-panel-detail-empty-title {
+	font-size: 1.25rem;
+	margin-bottom: 0.25rem;
+}
+
+.c-panel-detail-empty-subtitle {
+	font-size: 1.15rem;
+}
+
+vaadin-accordion-panel {
+	position: relative;
+	.sc-scib-cdk-messages {
+		&__app {
+			@extend %ellipsis;
+			max-width: tools.rem(285);
+		}
+
+		&--unread {
+			box-sizing: border-box;
+			&:after {
+				content: attr(data-unread);
+				position: absolute;
+				top: tools.rem(7);
+				right: tools.rem(30);
+				min-width: tools.rem(16);
+				height: tools.rem(16);
+				padding: tools.rem(2);
+				font-size: tools.rem(12);
+				line-height: tools.rem(12);
+				text-align: center;
+				color: tools.color(secondary, ultra-dark);
+				border-radius: 50%;
+				background: tools.color(tertiary, sky);
+				@include tools.desktop {
+					top: tools.rem(3);
+				}
+			}
+		}
+	}
+
+	vaadin-vertical-layout {
+		display: inherit;
+	}
+}
+
+.c-profile-wrapper {
+	display: flex !important;
+	width: 100%;
+}
+
+.c-messages-skeleton {
+	margin-top: tools.rem(16);
+	margin-right: tools.rem(45);
+
+	&--sender {
+		margin-right: 0;
+		margin-left: tools.rem(12);
+	}
+}
+
+.c-messages-chat-list {
+	box-sizing: border-box;
+	padding: tools.rem(0 16 8);
+	@include tools.desktop {
+		padding: tools.rem(0 24 16 24);
+	}
+}
+
+.c-header-info-card-skeleton {
+	height: tools.rem(56);
+	background: #fff;
+	@include utilities.animationSkeleton();
+	margin: tools.rem(16 16 0 0);
+}
+
+.skeleton-wrapper {
+	margin-top: tools.rem(0);
+	&.--mobile {
+		margin-top: tools.rem(137);
+		&.--all-inbox {
+			margin-top: tools.rem(112);
+		}
+	}
+}
+
+.no-clickable {
+	pointer-events: none;
+}

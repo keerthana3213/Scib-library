@@ -1,0 +1,86 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host([variant='white']) {
+	--_molecules-autocomplete-text-field-bg-color: var(--molecules-autocomplete-text-field-bg-color, white);
+}
+
+:host([variant='blue']) {
+	--_molecules-autocomplete-text-field-bg-color: var(--molecules-autocomplete-text-field-bg-color, blue);
+}
+
+/** 
+ * Component
+ */
+
+:host {
+	--_molecules-autocomplete-text-field-bg-color: var(--molecules-autocomplete-text-field-bg-color, magenta);
+	--_molecules-autocomplete-text-field-list-height: var(--molecules-autocomplete-text-field-list-height, 255px);
+	--_molecules-autocomplete-text-field-z-index: var(--molecules-autocomplete-text-field-z-index, 5);
+	font-family: settings.$font-regular-txt;
+	@include tools.shadowIcons();
+
+	.autocomplete-text-field {
+		display: block;
+		position: relative;
+		height: 100%;
+		max-height: var(--_molecules-autocomplete-text-field-list-height);
+
+		&__list {
+			z-index: var(--_molecules-autocomplete-text-field-z-index);
+			background-color: var(--color-surface-flat, transparent);
+			position: absolute;
+			width: 100%;
+			top: 48px;
+
+			&--loading,
+			&--parent {
+				width: 100%;
+			}
+
+			&--loading {
+				width: calc(100% - 16px);
+				height: auto;
+				padding: 8px;
+			}
+
+			&--parent {
+				max-height: var(--_molecules-autocomplete-text-field-list-height);
+				background-color: var(--color-surface-flat, transparent);
+				box-shadow: var(--theme-elevation-3);
+				overflow: hidden;
+				padding: 4px 0;
+				height: 100%;
+				margin: 0;
+				--ui-v2-scroll-container-gradiant-height: 0;
+				--ui-v2-scroll-container-padding-right: 4px;
+				--ui-v2-scroll-container-padding-left: 4px;
+				--ui-v2-scroll-container-padding-bottom: 0;
+				--ui-v2-scroll-container-padding-top: 0;
+
+				&.vertical-scroll {
+					--ui-v2-scroll-container-padding-right: 13px;
+				}
+
+				scib-ui-v2-scroll-container {
+					::slotted([slot='content-list']) {
+						display: block;
+						width: 100%;
+						height: 100%;
+						max-height: var(--_molecules-autocomplete-text-field-list-height);
+					}
+				}
+			}
+		}
+	}
+}

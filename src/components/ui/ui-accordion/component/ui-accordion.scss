@@ -1,0 +1,86 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-accordion.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_ui-accordion-bg-color);
+	.ui-accordion {
+		&--disabled {
+			slot {
+				display: none;
+			}
+		}
+
+		h3 {
+			font-family: settings.$font-bold-txt;
+			font-size: tools.rem(18);
+		}
+
+		span {
+			font-size: tools.rem(14);
+		}
+
+		&:after {
+			content: '';
+			height: tools.rem(1);
+			width: 100%;
+			margin: tools.rem(8 0 8 0);
+			background: tools.color(secondary, medium);
+			display: block;
+		}
+
+		&__header {
+			display: flex;
+			align-items: center;
+
+			&--new {
+				margin-left: tools.rem(8);
+				font-size: tools.rem(14);
+				color: tools.color(quaternary, base);
+			}
+
+			&--quantity {
+				margin-left: tools.rem(8);
+				color: tools.color(primary, base);
+			}
+
+			&--icontext {
+				color: tools.color(secondary, dark);
+			}
+
+			&--large {
+				font-family: settings.$font-regular-headline !important;
+				font-size: tools.rem(28) !important;
+			}
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: column;
+
+			scib-ui-button:last-child {
+				align-self: flex-end;
+			}
+
+			scib-ui-column {
+				min-height: tools.rem(90);
+			}
+
+			&--hidden {
+				display: none;
+			}
+		}
+
+		&__btn {
+			&:not([disabled]) {
+				color: tools.color(primary, base);
+			}
+
+			&--open {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}

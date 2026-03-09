@@ -1,0 +1,203 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-sidebar-communications.theme.scss';
+@forward '../fragments/cdk-sidebar-communications-tab.fragment';
+@forward '../fragments/cdk-sidebar-communications-profile-bar.fragment';
+
+$cdk-sidecomm__bar-width: 4.5rem;
+$cdk-sidecomm__profile-height: 2.5rem;
+$cdk-sidecomm__easing: cubic-bezier(0.65, 0.05, 0.05, 1);
+
+:host {
+	font-family: settings.$font-regular-txt;
+	z-index: 999;
+	height: 100%;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	display: block;
+
+	&.--fixed {
+		position: fixed;
+	}
+
+	&.--open {
+		.c-panel-container {
+			transform: translateX(0);
+			@include tools.desktop {
+				box-shadow: 0px 0px 14px 0px transparentize($color: black, $amount: 0.85);
+			}
+		}
+
+		.c-profile-wrapper {
+			transform: translateX(0);
+		}
+
+		.c-bar {
+			transform: translateX(0);
+			box-shadow: 0px 0px 12px 0px transparentize($color: black, $amount: 0.85);
+			@include tools.desktop {
+				box-shadow: none;
+			}
+		}
+
+		.c-panel-overlay {
+			opacity: 1;
+		}
+	}
+
+	&.--close {
+		pointer-events: none;
+
+		.c-panel-overlay {
+			box-shadow: none;
+		}
+	}
+
+	&[hide-bar-on-mobile] {
+		@include tools.only-mobile {
+			.c-bar {
+				transform: translateY(100%);
+			}
+			.c-panel-container {
+				padding: 0rem;
+			}
+		}
+	}
+}
+
+.c-close-area {
+	background: black;
+	height: 6.5rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.c-close-button {
+	background: transparent;
+	border: none;
+	height: 6.5rem;
+	width: 6.5rem;
+}
+
+.c-panel {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	@include tools.desktop {
+		// max-width: tools.rem(1340);
+		padding-right: tools.rem(100);
+	}
+}
+
+.c-bar {
+	display: flex;
+	background: white;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	will-change: transform;
+	transition: transform 0.5s $cdk-sidecomm__easing;
+	transform: translateY(100%);
+
+	& > * {
+		width: 100%;
+	}
+
+	@include tools.desktop {
+		right: unset;
+		box-shadow: unset;
+		width: $cdk-sidecomm__bar-width;
+		border-top: none;
+		border-right: 1px solid tools.color(secondary, medium);
+		flex-direction: column;
+		left: 0;
+		top: 0;
+		transform: translateX(-100%);
+
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 2.5rem;
+			background: black;
+			box-shadow: 0px -1px 0px 1px black;
+		}
+	}
+}
+
+.c-panel-overlay {
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	background: transparentize($color: black, $amount: 0.8);
+	right: 0;
+	transition: opacity 0.5s linear;
+	opacity: 0;
+	display: none;
+	@include tools.desktop {
+		display: block;
+	}
+}
+
+.c-panel-container {
+	width: 100%;
+	height: 100%;
+	background: white;
+	box-sizing: border-box;
+	padding-bottom: 0;
+	transform: translateY(100%);
+	will-change: transform;
+	transition: transform 0.5s $cdk-sidecomm__easing padding-bottom 0.5s $cdk-sidecomm__easing;
+	@include tools.desktop {
+		padding-bottom: 0;
+		transform: translateX(-100%);
+	}
+}
+
+.c-panel-content {
+	display: none;
+	opacity: 0;
+	transition: opacity 1s linear;
+	height: 100%;
+	// height: calc(100% - #{$cdk-sidecomm__profile-height});
+
+	&.--active {
+		display: block;
+		opacity: 1;
+	}
+}
+
+.c-profile-wrapper {
+	display: none;
+	@include tools.desktop {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		will-change: transform;
+		transition: transform 0.5s $cdk-sidecomm__easing;
+		transform: translateX(-100%);
+	}
+}
+
+.c-profile-close {
+	top: 0;
+	width: tools.rem(100);
+	height: tools.rem(56);
+}

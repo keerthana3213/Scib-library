@@ -1,0 +1,65 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-textarea.theme.scss';
+
+:host {
+	display: block;
+	font-family: settings.$font-regular-txt;
+	width: 100%;
+	margin-bottom: tools.rem(24);
+
+	.c-textarea {
+		resize: none;
+		box-sizing: border-box;
+		display: block;
+		width: 100%;
+		height: tools.rem(100);
+		padding: tools.rem(14 12);
+		border-radius: tools.rem(4);
+		border: tools.rem(1) solid tools.color(secondary, medium-dark);
+		transition: box-shadow 0.15s linear;
+		color: tools.color(secondary, ultra-dark);
+		cursor: text;
+
+		&:hover {
+			border-color: black;
+			cursor: text;
+		}
+
+		&:focus {
+			outline: none;
+			border-color: tools.color(tertiary, focus) !important;
+		}
+
+		&::placeholder {
+			color: tools.color(secondary, dark);
+		}
+
+		&__label {
+			display: block;
+			margin-bottom: tools.rem(5);
+			font-size: tools.rem(12);
+			line-height: tools.rem(18);
+			text-transform: uppercase;
+			color: black;
+		}
+
+		&--disabled {
+			&:hover {
+				border-color: tools.color(secondary, medium-dark);
+				cursor: not-allowed;
+			}
+		}
+
+		&__counter {
+			display: block;
+			font-size: tools.rem(12);
+			line-height: tools.rem(20);
+			color: tools.color(secondary, dark);
+			position: relative;
+			top: tools.rem(5);
+			text-align: right;
+		}
+	}
+}

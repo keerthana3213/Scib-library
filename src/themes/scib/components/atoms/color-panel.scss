@@ -1,0 +1,17 @@
+/**
+ * Public custom properties for color-panel component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--ui-v2-color-panel-label-font-size: 13px;
+	--ui-v2-color-panel-label-line-height: 19px;
+	--ui-v2-color-panel-label-color: var(--theme-colors-black);
+	--ui-v2-color-panel-description-font-size: 14px;
+	--ui-v2-color-panel-description-line-height: 23px;
+	--ui-v2-color-panel-description-color: var(--theme-colors-black);
+	--ui-v2-color-panel-border-color: var(--theme-colors-sky-medium);
+	--ui-v2-color-panel-min-width: 400px;
+	--ui-v2-color-panel-width: none;
+}

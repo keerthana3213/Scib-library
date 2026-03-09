@@ -1,0 +1,13 @@
+/**
+ * Public custom properties for document-preview component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--molecules-document-preview-bg-color: var(--theme-colors-white, magenta);
+	--molecules-document-preview-border-top: 1px solid var(--theme-colors-grey-medium);
+	--molecules-document-preview-wrap-list: wrap;
+	--molecules-document-preview-height-list: 100%;
+	--molecules-document-preview-max-width: 100%;
+}

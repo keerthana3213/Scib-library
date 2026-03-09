@@ -1,0 +1,82 @@
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+/** 
+ * Component
+ */
+:host {
+	width: 100%;
+	--_ui-v2-scroll-container-padding-top: var(--ui-v2-scroll-container-padding-top, 20px);
+	--_ui-v2-scroll-container-padding-right: var(--ui-v2-scroll-container-padding-right, 20px);
+	--_ui-v2-scroll-container-padding-bottom: var(--ui-v2-scroll-container-padding-bottom, 20px);
+	--_ui-v2-scroll-container-padding-left: var(--ui-v2-scroll-container-padding-left, 20px);
+	--_ui-v2-scroll-container-gradiant-right-gap: var(--ui-v2-scroll-container-gradiant-right-gap, 9px);
+	--_ui-scroll-container-viewport-z-index: var(--ui-scroll-container-viewport-z-index, auto);
+	--_ui-scroll-container-z-index-hover: var(--ui-scroll-container-z-index-hover, auto);
+	--_ui-scroll-container-vertical-z-index: var(--ui-scroll-container-vertical-z-index, auto);
+	--_ui-scroll-container-horizontal-z-index: var(--ui-scroll-container-horizontal-z-index, auto);
+
+	.scroll-container {
+		position: relative;
+		display: flow-root;
+		overflow: hidden;
+		height: 100%;
+		width: 100%;
+
+		scrollable-component {
+			width: 100%;
+			height: 100%;
+			--scrollbar-width: 13px;
+			--vertical-scrollbar-padding: 2px 4px;
+			--horizontal-scrollbar-padding: 4px 2px;
+			--viewport-z-index: var(--_ui-scroll-container-viewport-z-index, auto);
+			--scrollbar-z-index-hover: var(--_ui-scroll-container-z-index-hover, auto);
+			--vertical-scrollbar-vertical-z-index: var(--_ui-scroll-container-vertical-z-index, auto);
+			--horizontal-scrollbar-z-index: var(--_ui-scroll-container-horizontal-z-index, auto);
+
+			.content {
+				padding-top: var(--_ui-v2-scroll-container-padding-top);
+				padding-right: var(--_ui-v2-scroll-container-padding-right);
+				padding-bottom: var(--_ui-v2-scroll-container-padding-bottom);
+				padding-left: var(--_ui-v2-scroll-container-padding-left);
+			}
+		}
+
+		&__gradiant {
+			background: linear-gradient(
+				0deg,
+				rgba(var(--ui-v2-scroll-container-gradiant-rgb-color), 1) 0%,
+				rgba(var(--ui-v2-scroll-container-gradiant-rgb-color), 0) 100%
+			);
+			height: var(--ui-v2-scroll-container-gradiant-height);
+			width: calc(100% - var(--_ui-v2-scroll-container-gradiant-right-gap));
+			position: absolute;
+			z-index: -1;
+			opacity: 0;
+			left: 0;
+
+			&--top {
+				transform: rotate(180deg);
+				top: 0;
+			}
+
+			&--bottom {
+				bottom: 0;
+			}
+
+			&--show {
+				opacity: 1;
+				z-index: 1;
+			}
+		}
+	}
+}

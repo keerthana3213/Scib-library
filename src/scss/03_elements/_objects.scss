@@ -1,0 +1,105 @@
+@use '../02_tools/tools';
+
+/**
+   *@description: extend to define font-base to textual elements
+**/
+
+%font-base {
+	font-size: tools.rem(16);
+	line-height: tools.rem(20);
+}
+
+/**
+   *@description: extend for the ellipse text-effect
+**/
+
+%ellipsis {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+%customscrollbar {
+	scrollbar-color: tools.color(tertiary, focus) tools.color(tertiary, light);
+	scrollbar-width: thin;
+	&::-webkit-scrollbar {
+		width: tools.rem(8);
+		border-radius: tools.rem(12);
+	}
+	&::-webkit-scrollbar-track {
+		background-color: tools.color(tertiary, light);
+		border-radius: tools.rem(12);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: tools.color(tertiary, focus);
+		border-radius: tools.rem(12);
+	}
+}
+/**
+ *@description: extend for reset default space from elements
+**/
+
+%resetfontspace {
+	font-size: 0;
+	word-spacing: 0;
+	letter-spacing: 0;
+}
+
+%breakword {
+	word-break: normal;
+	overflow-wrap: break-word;
+}
+
+/**
+   *@description: extend for the ellipse two line text-effect
+**/
+
+%twolineellipsis {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: normal;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	display: -moz-box;
+	-moz-line-clamp: 2;
+	-moz-box-orient: vertical;
+	display: -o-box;
+	-o-line-clamp: 2;
+	-o-box-orient: vertical;
+}
+
+/**
+   *@description: this file contains the base properties of the button extend.
+**/
+
+%button {
+	min-width: tools.rem(110);
+	max-width: 100%;
+	padding: tools.rem(10 15);
+	cursor: pointer;
+	border: tools.rem(1) solid transparent;
+	border-radius: tools.rem(20);
+	font-size: tools.rem(12);
+	line-height: tools.rem(18);
+	font-weight: bold;
+	vertical-align: middle;
+	@extend %ellipsis;
+}
+
+%ico-button {
+	width: tools.rem(20);
+	height: tools.rem(20);
+	vertical-align: sub;
+	border: 0;
+	font-size: 0;
+	background: white;
+}
+
+@include tools.media-query('xs') {
+	%button {
+		min-width: tools.rem(120);
+		padding: tools.rem(12 20);
+	}
+}

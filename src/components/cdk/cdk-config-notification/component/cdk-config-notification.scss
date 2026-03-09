@@ -1,0 +1,238 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-config-notification.theme.scss';
+
+$colorText: #444444;
+$colorName: #000000;
+$colorDescription: #767676;
+$bordesBot: 1px solid #e5f1f5;
+$backGroundColor: #ffffff;
+$altocajas: tools.rem(58);
+$border: 1px solid;
+
+.cdk-config-notifications {
+	width: 99.8%;
+	font-family: settings.$font-regular-txt;
+
+	&__blockTitle {
+		display: grid;
+		grid-template-columns: auto 60px;
+	}
+
+	&__blockCheckAll {
+		display: grid;
+		grid-template-columns: 76px auto;
+	}
+
+	&__rows {
+		width: calc(98% - 90px);
+		height: $altocajas;
+		background-color: $backGroundColor;
+		font-weight: bold;
+		display: flex;
+		margin-left: tools.rem(45);
+		margin-bottom: tools.rem(20);
+		margin-top: tools.rem(15);
+	}
+
+	&__title {
+		font-size: tools.rem(20);
+		margin-bottom: tools.rem(30);
+		display: inline-block;
+	}
+
+	&__sub {
+		display: inline-block;
+		margin-bottom: tools.rem(7);
+	}
+
+	&__subTitle {
+		font-size: tools.rem(18);
+		display: inline-block;
+	}
+
+	&__subText {
+		color: $colorDescription;
+		font-size: tools.rem(16);
+		display: block;
+		margin-top: tools.rem(6);
+	}
+
+	&__checkBoxAll {
+		display: inline-block;
+		margin-left: tools.rem(15);
+		margin-bottom: tools.rem(15);
+		vertical-align: bottom;
+	}
+
+	&__buttonRight {
+		display: inline-block;
+		float: right;
+	}
+
+	&__platform {
+		margin-top: tools.rem(30);
+	}
+
+	&__border {
+		border-bottom: $bordesBot;
+	}
+
+	.c-button {
+		padding-left: 0px !important;
+
+		.sc-scib-ui-button {
+			font-weight: bold;
+			font-size: tools.rem(14);
+			margin-left: 0px !important;
+			margin-right: 10px;
+			padding-left: 0px !important;
+		}
+
+		.u-icon {
+			font-size: tools.rem(18);
+		}
+
+		.c-icon {
+			margin-left: tools.rem(10) !important;
+		}
+	}
+
+	&__col1 {
+		width: tools.rem(130);
+		// height: $altocajas;
+		margin-top: tools.rem(5);
+		padding-left: tools.rem(12);
+		padding-top: tools.rem(12);
+		color: $colorText;
+
+		//border: $border;
+	}
+
+	&__col2 {
+		width: tools.rem(40);
+		padding-left: tools.rem(12);
+		padding-top: tools.rem(12);
+		color: $colorText;
+		margin-top: tools.rem(5);
+
+		//border: $border;
+	}
+
+	&__col3 {
+		width: tools.rem(60);
+		height: $altocajas;
+		border-bottom: $bordesBot;
+		margin-right: tools.rem(-5);
+		margin-left: tools.rem(20);
+		// border: $border;
+	}
+
+	&__col4 {
+		width: 100%;
+		height: $altocajas;
+		padding-left: tools.rem(30);
+		border-bottom: $bordesBot;
+		// border: $border;
+	}
+
+	&__description {
+		color: $colorDescription;
+		font-size: tools.rem(14);
+
+		font-weight: normal;
+	}
+
+	&__name {
+		margin-top: tools.rem(10);
+		color: $colorName;
+		padding-bottom: tools.rem(5);
+	}
+}
+
+//-----------------------------------------------------//
+
+@media only screen and (max-width: 767px) {
+	.cdk-config-notifications {
+		&__subTitle {
+			font-size: tools.rem(16);
+		}
+
+		&__subText {
+			font-size: tools.rem(14);
+		}
+
+		&__description {
+			font-size: tools.rem(14);
+			font-weight: normal;
+		}
+
+		&__name {
+			font-size: tools.rem(14);
+		}
+
+		&__sub {
+			line-height: tools.rem(20);
+			margin-bottom: tools.rem(27);
+		}
+
+		&__rows {
+			width: calc(98% - 20px);
+			height: tools.rem(65);
+			padding-left: tools.rem(4);
+			font-weight: bold;
+			display: flex;
+			// flex-wrap: wrap;
+			flex-direction: row;
+			margin: tools.rem(0 11);
+			size: tools.rem(14);
+		}
+
+		&__checkBoxAll {
+			margin-right: tools.rem(10);
+			margin-bottom: tools.rem(30);
+		}
+
+		&__col2 {
+			width: 2.5rem;
+			color: $colorText;
+			margin-top: 0.3125rem;
+			/* margin-left: 0.375rem; */
+			-ms-flex-order: 4;
+			order: 1;
+			padding: 0.75rem tools.rem(10) 0.75rem 0;
+		}
+
+		&__col3 {
+			min-width: tools.rem(60);
+			height: tools.rem(58);
+			order: 2;
+			border-bottom: none;
+			margin-left: 0;
+			border-bottom: $bordesBot;
+		}
+
+		&__col4 {
+			width: 100%;
+			border-bottom: none;
+			order: 3;
+			padding-left: tools.rem(10.8);
+			border-bottom: $bordesBot;
+		}
+
+		.c-button {
+			padding-left: auto;
+			.sc-scib-ui-button-s {
+				display: none;
+			}
+			.sc-scib-ui-button {
+				margin-right: 0px;
+			}
+		}
+	}
+}
+
+.img-width {
+	width: 80px;
+}

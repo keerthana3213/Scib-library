@@ -1,0 +1,16 @@
+@forward 'ui-row.theme.scss';
+
+.ui-row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: calc(100% + 16px);
+	max-width: none !important;
+	margin-right: -8px;
+	margin-left: -8px;
+	align-items: var(--_ui-row-align-items);
+
+	&--bottom {
+		align-items: flex-end;
+	}
+}

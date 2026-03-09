@@ -1,0 +1,46 @@
+@use 'tools';
+
+@forward 'ecmv-folder-navigator.theme.scss';
+
+.ecmv-folder {
+	&__section {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		height: tools.rem(95);
+		padding: tools.rem(0 5);
+		border-bottom: tools.rem(1) solid tools.color(secondary, medium);
+		cursor: pointer;
+
+		.icon-folder::before,
+		.icon-filepage::before {
+			color: tools.color(secondary, dark);
+		}
+
+		.icon-chrevron-right::before {
+			font-size: tools.rem(16);
+			color: tools.color(primary, base);
+		}
+	}
+	&__icon {
+		font-size: tools.rem(16);
+		color: tools.color(secondary, dark);
+	}
+
+	&__name {
+		box-sizing: border-box;
+		display: inline-block;
+		width: 100%;
+		margin: tools.rem(0 8);
+		font-size: tools.rem(18);
+		line-height: tools.rem(26);
+		position: relative;
+		word-break: normal;
+		max-height: tools.rem(80);
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	}
+}

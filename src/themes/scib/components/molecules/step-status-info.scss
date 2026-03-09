@@ -1,0 +1,11 @@
+/**
+ * Public custom properties for step-status-info component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--molecules-step-status-info-bg-color: var(--theme-colors-white, magenta);
+	--step-status-info-cards-width: 800px;
+	--step-status-info-min-width: 500px;
+}

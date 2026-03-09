@@ -1,0 +1,5 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_ui-row-bg-color: var(--ui-row-bg-color, white);
+	--_ui-row-align-items: var(--ui-row-align-items, center);
+}

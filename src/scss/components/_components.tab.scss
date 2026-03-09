@@ -1,0 +1,199 @@
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+/**
+   *@description: this file stylizes the generic component tab
+**/
+
+.wc-tab {
+	margin-bottom: tools.rem(25);
+
+	&__item {
+		position: relative;
+		border: 0;
+		font-size: tools.rem(12);
+		line-height: tools.rem(18);
+		font-weight: bold;
+		text-transform: uppercase;
+		cursor: pointer;
+		color: black;
+	}
+
+	&__btn {
+		border-radius: tools.rem(20);
+		border: tools.rem(1) solid;
+	}
+
+	&__counter {
+		display: inline-block;
+		width: auto;
+		min-width: tools.rem(20);
+		height: tools.rem(30);
+		margin: 0 0 0 tools.rem(15);
+		padding: 0 tools.rem(5);
+		border-radius: tools.rem(4);
+		border: tools.rem(2) solid tools.color(secondary, medium);
+		font-size: tools.rem(16);
+		line-height: tools.rem(30);
+		font-weight: normal;
+		text-align: center;
+		background: white;
+	}
+
+	&--brd {
+		@extend %resetfontspace;
+		width: 100%;
+		margin-bottom: tools.rem(12);
+		border-bottom: tools.rem(2) solid tools.color(secondary, medium);
+		.wc-tab__item {
+			display: inline-block;
+			width: auto;
+			padding: tools.rem(12) tools.rem(20);
+			border: 0;
+			font-weight: normal;
+			background: white;
+			&--active {
+				border-bottom: tools.rem(4) solid tools.color(primary, base);
+				font-weight: bold;
+				color: black;
+			}
+		}
+	}
+
+	&--folder {
+		display: inline-block;
+		width: 70%;
+		position: relative;
+		top: tools.rem(1);
+		margin-bottom: 0;
+		.wc-tab__item {
+			position: relative;
+			width: calc((100% / 2) - 100px);
+			margin: 0 tools.rem(73);
+			padding: tools.rem(14) tools.rem(15);
+			border: 0;
+			border-top: tools.rem(1) solid tools.color(secondary, medium);
+			text-align: center;
+			background: #e6e6e6;
+			&::after,
+			&::before {
+				content: '';
+				width: tools.rem(105);
+				height: tools.rem(63);
+				position: absolute;
+				top: tools.rem(-1);
+			}
+
+			&::before {
+				background: url('#{settings.$images_path}/picture/p-tab-noactive-left.svg') no-repeat;
+				left: tools.rem(-70);
+			}
+			&::after {
+				background: url('#{settings.$images_path}/picture/p-tab-noactive-right.svg') no-repeat;
+				right: tools.rem(-100);
+			}
+
+			&:last-child {
+				position: absolute;
+				left: 46%;
+				z-index: tools.z-index(base);
+			}
+
+			&--active {
+				background: white;
+				color: tools.color(primary, base);
+				z-index: tools.z-index(calendar);
+				.wc-tab__counter {
+					color: black;
+				}
+				&::before,
+				&::after {
+					top: tools.rem(-1);
+				}
+
+				&::before {
+					background: url('#{settings.$images_path}/picture/p-tab-active-left.svg') no-repeat;
+				}
+
+				&::after {
+					background: url('#{settings.$images_path}/picture/p-tab-active-right.svg') no-repeat;
+				}
+			}
+		}
+	}
+
+	&--two {
+		width: calc(100% / 2);
+	}
+
+	&--progress {
+		.wc-tab__item {
+			width: calc(100% / 3);
+			margin-top: tools.rem(10);
+			padding: tools.rem(20);
+			border: 0;
+			border-bottom: tools.rem(4) solid transparent;
+			border-left: tools.rem(2) solid tools.color(secondary, medium);
+			background: tools.color(secondary, light);
+			cursor: pointer;
+			&:first-child {
+				border-left: 0;
+			}
+
+			&--active {
+				color: tools.color(primary, base);
+				.wc-progressbar__progress {
+					background-color: tools.color(primary, base);
+				}
+			}
+
+			&--complete {
+				color: tools.color(quaternary, base);
+				.wc-progressbar__progress {
+					background-color: tools.color(quaternary, base);
+				}
+			}
+		}
+	}
+}
+
+@include tools.media-query('sm') {
+	.wc-tab {
+		&--folder {
+			width: calc(100% - 45px);
+			margin-left: tools.rem(25);
+			.wc-tab__item {
+				padding: tools.rem(14) tools.rem(5);
+				&:last-child {
+					left: 43%;
+				}
+			}
+		}
+	}
+}
+
+@include tools.media-query('xs') {
+	.wc-tab {
+		&--progress,
+		&--folder {
+			margin: tools.rem(10) 0;
+			.wc-tab__item {
+				display: block;
+				width: 100%;
+				margin: 0;
+				overflow: hidden;
+				&:last-child {
+					position: relative;
+					left: 0;
+				}
+			}
+		}
+
+		&--folder {
+			width: 100%;
+			top: tools.rem(25);
+			margin-bottom: tools.rem(10);
+		}
+	}
+}

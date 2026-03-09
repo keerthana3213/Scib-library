@@ -1,0 +1,40 @@
+name: Deployment workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      deployment-environment:
+        description: 'Environment to deploy the component.'
+        required: false
+        type: string
+        default: 'DEV'
+      deployment-version:
+        description: 'Component version to deploy.'
+        required: true
+        type: string
+      onlyTests:
+        description: 'Do you want to run only tests?'
+        required: false
+        type: string
+        default: 'false'
+  workflow_call:
+    inputs:
+      deployment-environment:
+        description: 'Environment to deploy the component.'
+        required: false
+        type: string
+        default: 'DEV'
+      deployment-version:
+        description: 'Component version to deploy.'
+        required: true
+        type: string
+
+jobs:
+    call-release-workflow:
+        name: Deployment workflow
+        uses: santander-group-scib-gln/cib-oasis-commons-workflows/.github/workflows/ucd-deploy.yml@v2
+        with:
+          deployment-environment: ${{ inputs.deployment-environment }}
+          deployment-version: ${{ inputs.deployment-version }}
+          technology: 'SCIB React SPA'
+        secrets: inherit

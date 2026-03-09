@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>marcador_on-24</title>
+    <g id="marcador_on-24" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M12,16.2932788 L5.83545816,21.8707665 C5.51399718,22.1616145 5,21.9335086 5,21.5 L5,3.404 C5,2.63663254 5.59140196,2 6.34,2 L17.66,2 C18.408598,2 19,2.63663254 19,3.404 L19,21.5 C19,21.9335086 18.4860028,22.1616145 18.1645418,21.8707665 L12,16.2932788 Z" id="icon-color" fill="#EC0000"></path>
+    </g>
+</svg>

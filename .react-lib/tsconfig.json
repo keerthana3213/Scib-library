@@ -1,0 +1,29 @@
+{
+	"compilerOptions": {
+		"outDir": "../react",
+		"target": "es2022",
+		"useDefineForClassFields": true,
+		"lib": ["dom", "es2022", "dom.iterable"],
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"skipLibCheck": true,
+		"jsx": "react",
+		"allowUnreachableCode": false,
+		"declaration": true,
+		"emitDeclarationOnly": false,
+		"experimentalDecorators": true,
+		"skipDefaultLibCheck": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"importHelpers": true,
+		"allowSyntheticDefaultImports": true,
+		"paths": {
+			"@scib/ui-kit": ["../dist/types"],
+			"@scib/ui-kit/*": ["../*"]
+		}
+	},
+	"include": ["src"],
+	"exclude": ["node_modules"]
+}

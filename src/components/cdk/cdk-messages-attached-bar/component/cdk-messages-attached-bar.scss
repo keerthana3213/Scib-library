@@ -1,0 +1,251 @@
+@use 'utilities';
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-messages-attached-bar.theme.scss';
+
+@keyframes c-attachedbar-item-spinner__animation {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(135%);
+	}
+}
+
+:host {
+	font-family: settings.$font-regular-txt;
+	position: relative;
+
+	&[expanded] {
+		.c-attachedbar-chevron {
+			transform: rotate(90deg);
+		}
+	}
+}
+
+.c-attachedbar-container {
+	&--border-style {
+		border-top: 1px solid tools.color(secondary, medium);
+	}
+}
+
+// Header
+
+.c-attachedbar-header {
+	@include utilities.force-reset(button);
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	outline: none;
+	padding: 1rem 0;
+	font-size: 0.875rem;
+	font-family: settings.$font-bold-txt;
+	cursor: pointer;
+	// &:focus:not(.--active):not(:active) {
+	//   box-shadow: inset 0px 0px 0px 2px tools.color(tertiary, focus);
+	// }
+	&--hidden {
+		display: none;
+	}
+}
+
+.c-attachedbar-chevron {
+	width: 0.65rem;
+	height: 0.65rem;
+	font-size: 0.65rem;
+	margin-right: 0.5rem;
+	transition: transform 0.3s ease-in-out;
+	transform: rotate(-90deg);
+	color: tools.color(secondary, ultra-dark);
+}
+
+.documents-title {
+	color: tools.color(secondary, dark);
+	font-size: tools.rem(14);
+	line-height: tools.rem(20);
+}
+
+// Body
+
+.c-attachedbar-body {
+	overflow-y: hidden;
+	transition: height 0.15s ease-in-out;
+	margin: 0 -1rem 0.25rem -1rem;
+	padding: 0 0.5rem;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	@include tools.desktop {
+		padding: 0;
+		margin: 0 0 0.25rem -0.5rem;
+	}
+	&--no-margin {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+.c-attachedbar-content {
+	padding: 0.5rem 0;
+	box-sizing: border-box;
+	max-height: tools.rem(150);
+	overflow-y: auto;
+}
+
+.c-attachedbar-list {
+	display: flex;
+	// flex-direction: row-reverse;
+	&::after {
+		display: block;
+		content: 'XX';
+		width: 2rem;
+		visibility: hidden;
+		height: 100%;
+	}
+	@include tools.desktop {
+		&::after {
+			display: none;
+		}
+		flex-wrap: wrap;
+		flex-direction: row;
+	}
+	@include tools.only-mobile {
+		flex-wrap: wrap;
+		overflow: hidden;
+		overflow-y: auto;
+	}
+}
+.c-attachedbar-list-flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.c-attachedbar-buttons-wrapper {
+	display: flex;
+}
+// Item
+
+.c-attachedbar-item {
+	display: flex;
+	background: white;
+	box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+	flex: 0 0 14rem;
+	margin: 0 0.5rem 0.5rem 0.5rem;
+	border-radius: 3px;
+	position: relative;
+	& > a {
+		cursor: pointer;
+	}
+	& > span {
+		cursor: default;
+	}
+
+	&.--loading {
+		.c-attachedbar-item-spinner {
+			display: block;
+			background: tools.color(primary, base);
+			&::before {
+				background: white;
+				content: '';
+				height: 2px;
+				display: block;
+				width: 75%;
+				animation: c-attachedbar-item-spinner__animation 1s linear infinite;
+			}
+		}
+	}
+}
+
+.c-attachedbar-item-icon {
+	margin-right: 0.5rem;
+}
+
+.c-attachedbar-item-download {
+	color: tools.color(secondary, ultra-dark);
+	width: 100%;
+	position: relative;
+	padding: 8px 10px;
+	display: flex;
+	align-items: center;
+}
+
+.c-attachedbar-item-action {
+	@include utilities.force-reset(button);
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 0.5rem;
+	cursor: pointer;
+	& > span {
+		font-size: 0.65rem;
+		width: 0.65rem;
+		height: 0.65rem;
+	}
+}
+
+.c-attachedbar-item-title {
+	max-width: 145px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	font-size: 0.75rem;
+	line-height: 1.4;
+}
+
+.c-attachedbar-item-subtitle {
+	max-width: 145px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	line-height: 1.4;
+	font-size: 0.75rem;
+	color: tools.color(secondary, dark);
+	&.--error {
+		color: tools.color(primary, base);
+	}
+}
+
+.c-attachedbar-item-spinner {
+	display: none;
+	height: 2px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	overflow: hidden;
+}
+
+.c-attachedbar-item-extension {
+	position: absolute;
+	background: white;
+	font-family: settings.$font-bold-txt;
+	font-size: 8px;
+	color: tools.color(secondary, ultra-dark);
+	border: 1px solid tools.color(secondary, ultra-dark);
+	border-radius: 3px;
+	width: 20px;
+	text-align: center;
+	line-height: 1;
+	text-transform: uppercase;
+	top: 0.6rem;
+	left: 0;
+	transform: translateX(5%);
+}
+
+.c-attachedbar-item-icon-container {
+	position: relative;
+}
+
+.hidden {
+	display: none;
+}
+
+.c-attachedbar-button-download {
+	background: none;
+	border: none;
+	height: 100%;
+	margin-right: tools.rem(3);
+	color: tools.color(primary, base);
+	cursor: pointer;
+}

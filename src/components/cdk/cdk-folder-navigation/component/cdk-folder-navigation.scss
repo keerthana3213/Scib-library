@@ -1,0 +1,116 @@
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+@forward 'cdk-folder-navigation.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_cdk-folder-navigation-bg-color);
+}
+
+.cdk-folder-navigation {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: space-between;
+	width: 100%;
+	overflow: hidden;
+	cursor: default;
+	.ecmv-breadcrum {
+		nav.ecmv-breadcrum {
+			margin: tools.rem(24 0 12);
+		}
+	}
+
+	&--container {
+		overflow-x: hidden;
+		overflow-y: auto;
+		display: flex;
+		border: tools.color(secondary, thirty) solid tools.rem(1);
+		border-radius: tools.rem(8);
+		min-height: tools.rem(150);
+		max-height: tools.rem(150);
+		padding: tools.rem(24);
+		align-items: flex-start;
+		&__assigned {
+			justify-content: center;
+			flex-direction: column;
+			border: none;
+			background-color: tools.color(tertiary, light);
+			box-shadow: inset tools.rem(0 2 10) tools.color(tertiary, sky);
+			min-height: fit-content;
+			max-height: fit-content;
+			h3 {
+				width: 100%;
+			}
+			.breadcrumb {
+				color: tools.color(secondary, dark);
+			}
+		}
+		&__loading {
+			overflow: hidden;
+			align-items: center;
+			scib-ui-loading {
+				margin: auto;
+			}
+		}
+
+		/* width */
+		&::-webkit-scrollbar {
+			width: 0.5rem;
+			height: 99%;
+		}
+
+		/* Track */
+		&::-webkit-scrollbar-track {
+			background: tools.color(tertiary, light);
+			border-radius: 999px;
+		}
+
+		/* Handle */
+		&::-webkit-scrollbar-thumb {
+			background: tools.color(tertiary, focus);
+			border-radius: 999px;
+		}
+
+		// /* Handle on hover */
+		&::-webkit-scrollbar-thumb:hover {
+			background: tools.color(tertiary, base);
+		}
+	}
+
+	&--item {
+		width: 100%;
+		.folder {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+			&--wrapper {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				text-align: left;
+				padding-bottom: tools.rem(16);
+				margin-bottom: tools.rem(16);
+				border-bottom: tools.color(secondary, thirty) solid tools.rem(2);
+				cursor: pointer;
+				&__icon {
+					display: flex;
+					align-items: center;
+					overflow: hidden;
+					.u-icon {
+						margin-right: tools.rem(16);
+						color: tools.color(secondary, dark);
+					}
+					.icon-text {
+						@extend %ellipsis;
+					}
+				}
+				.icon-chrevron-right {
+					font-size: tools.rem(16);
+				}
+			}
+		}
+	}
+}

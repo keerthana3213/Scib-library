@@ -1,0 +1,23 @@
+@use 'sass-rem' as remTools;
+@use 'sass:math';
+@use 'sass:list';
+@use 'sass:meta';
+
+@forward 'responsive';
+@forward 'z-index';
+@forward 'colors';
+@forward 'fonts';
+
+@function rem($values) {
+	$result: ();
+	$length: list.length($values);
+	@for $i from 1 through $length {
+		$value: list.nth($values, $i);
+		@if meta.type-of($value) == 'number' and math.is-unitless($value) {
+			$result: append($result, $value * 1px);
+		} @else {
+			$result: append($result, $value);
+		}
+	}
+	@return remTools.convert($result);
+}

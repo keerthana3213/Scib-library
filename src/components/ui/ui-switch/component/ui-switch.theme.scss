@@ -1,0 +1,5 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_ui-switch-bg-color: var(--ui-switch-bg-color, white);
+	--_ui-switch-disabled-bg-color: var(--ui-switch-disabled-bg-color, --theme-colors-grey-medium-dark);
+}

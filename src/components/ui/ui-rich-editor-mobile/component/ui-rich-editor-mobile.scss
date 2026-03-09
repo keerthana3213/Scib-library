@@ -1,0 +1,93 @@
+@use 'utilities';
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-rich-editor-mobile.theme.scss';
+@forward 'quill/dist/quill.snow.css';
+@forward 'ui-quill.override';
+
+/** Este componente no se puede encapsular a causa de la librería "quill".
+ * Para evitar colisión de estilos, se debe inyectar manualmente el "block" de BEM
+ */
+.c-ui-rich-editor {
+	// height: 100%;
+	position: relative;
+	& > * {
+		width: 100%;
+	}
+
+	&__label {
+		@include utilities.accessibility;
+	}
+
+	&__input {
+		@include utilities.accessibility;
+	}
+}
+
+scib-ui-button button {
+	display: flex !important;
+}
+
+.container-mobile {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	box-sizing: border-box;
+	border: 1px solid #dcdcdc;
+	background-color: #f2f2f2;
+	bottom: 0;
+	width: 100%;
+	&.--absolute {
+		position: absolute;
+	}
+
+	.bar {
+		margin: tools.rem(8);
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: flex-end;
+
+		.add-button,
+		.send-button {
+			button {
+				padding: tools.rem(3);
+				margin-bottom: tools.rem(4);
+				min-width: tools.rem(24);
+				min-height: tools.rem(24);
+				i {
+					font-size: tools.rem(18);
+				}
+			}
+		}
+
+		.input_bar {
+			width: 100%;
+			max-height: tools.rem(300);
+			overflow: hidden;
+			margin: 0 8px;
+
+			.ql-container {
+				min-height: tools.rem(40);
+				height: 100%;
+				max-height: tools.rem(100);
+				border: 1px solid #dcdcdc;
+				border-radius: 4px;
+				background-color: #ffffff;
+			}
+
+			.ql-editor {
+				padding: tools.rem(7);
+				min-height: initial;
+
+				p {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}

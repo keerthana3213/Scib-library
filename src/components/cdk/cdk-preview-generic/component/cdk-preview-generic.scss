@@ -1,0 +1,62 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-preview-generic.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_cdk-preview-generic-bg-color);
+}
+
+.cdk-preview-generic {
+	display: flex;
+	padding: tools.rem(24 25);
+	justify-content: space-between;
+	align-items: center;
+
+	&--inverted {
+		flex-direction: row-reverse;
+
+		&__image {
+			margin-right: tools.rem(37);
+		}
+	}
+
+	&__information {
+		flex: 1;
+		min-width: tools.rem(230);
+	}
+
+	&__title {
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(16);
+		line-height: tools.rem(23);
+		color: black;
+		margin-right: tools.rem(37);
+		// max-width: tools.rem(190);
+	}
+
+	&__description {
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(12);
+		line-height: tools.rem(18);
+		color: tools.color(secondary, ultra-dark);
+		margin-top: tools.rem(8);
+		margin-right: tools.rem(51);
+		// max-width: tools.rem(176);
+	}
+
+	&__image {
+		flex: 1;
+		width: tools.rem(108);
+		height: tools.rem(105);
+		max-width: tools.rem(108);
+		max-height: tools.rem(105);
+		// margin-right: tools.rem(29);
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

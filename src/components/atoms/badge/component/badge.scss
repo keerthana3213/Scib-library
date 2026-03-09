@@ -1,0 +1,74 @@
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_atoms-badge-bg-color: var(--color-action-main-default);
+	--_atoms-badge-border-color: var(--color-action-main-default);
+	--_atoms-badge-text-color: var(--color-action-on-main-default);
+	--_atoms-badge-padding-top: 0;
+	--_atoms-badge-padding-bottom: 0;
+	--_atoms-badge-padding-x: 5px;
+}
+
+:host([variant='lightblue']) {
+	--_atoms-badge-bg-color: var(--color-background-alternative);
+	--_atoms-badge-border-color: var(--color-border-alternative);
+	--_atoms-badge-text-color: var(--color-text-default);
+}
+
+:host([variant='none']) {
+	--_atoms-badge-bg-color: var(--color-surface-flat);
+	--_atoms-badge-border-color: var(--color-border-default);
+	--_atoms-badge-text-color: var(--color-text-default);
+}
+
+:host([variant='red']) {
+	--_atoms-badge-bg-color: var(--atoms-badge-bg-color, red);
+	--_atoms-badge-border-color: var(--atoms-badge-text-color, white);
+	--_atoms-badge-text-color: var(--atoms-badge-text-color, white);
+}
+
+:host([type='md']) {
+	--_atoms-badge-padding-top: 3px;
+	--_atoms-badge-padding-bottom: 5px;
+	--_atoms-badge-padding-x: 8px;
+}
+
+/**
+ * Component
+ */
+:host {
+	display: block;
+
+	.badge-container {
+		display: inline-block;
+		font-family: var(--typescale-caption-default-font);
+		font-weight: var(--typescale-caption-default-weight);
+		font-size: var(--typescale-caption-default-size);
+		line-height: var(--typescale-caption-default-line-height);
+		background-color: var(--_atoms-badge-bg-color);
+		color: var(--_atoms-badge-text-color);
+		border-radius: tools.rem(16);
+		border-color: var(--_atoms-badge-border-color);
+		border-style: solid;
+		padding-top: var(--_atoms-badge-padding-top, 0);
+		padding-bottom: var(--_atoms-badge-padding-bottom, 0);
+		padding-right: var(--_atoms-badge-padding-x, tools.rem(5));
+		padding-left: var(--_atoms-badge-padding-x, tools.rem(5));
+		border-width: 1px;
+
+		&--hide {
+			display: none;
+		}
+	}
+}

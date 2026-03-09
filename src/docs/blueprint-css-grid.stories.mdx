@@ -1,0 +1,32 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Documentation/Grid - Blue print CSS" />
+
+## Grid system with Blueprint CSS
+
+The original documentation can be found [here](https://blueprintcss.dev/docs)
+
+### Examples
+
+#### Implicit columns
+
+Implicit uniform columns can define their values at the parent grid element. Unlike traditional Flexbox or float grid libraries there is no need for wrapper elements around each column.
+
+```html
+<div bp="grid 4@md">
+  <div>column 1</div>
+  <div>column 2</div>
+  <div>column 3</div>
+</div>
+```
+
+#### Explicit columns
+
+Columns that are not uniform can define their column span value directly on the column element. Column properties can be placed directly on the element with no need for wrapper elements.
+
+```html
+<div bp="grid">
+  <div bp="4">1</div>
+  <div bp="8">2</div>
+</div>
+```

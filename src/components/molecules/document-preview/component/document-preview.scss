@@ -1,0 +1,234 @@
+@use 'settings';
+@use 'tools';
+@use 'utilities';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_molecules-document-preview-bg-color: var(--molecules-document-preview-bg-color, magenta);
+	--_molecules-document-preview-border-top: var(--molecules-document-preview-border-top, 1px solid var(--theme-colors-grey-medium));
+	--_molecules-document-preview-wrap-list: var(--molecules-document-preview-wrap-list, wrap);
+	--_molecules-document-preview-height-list: var(--molecules-document-preview-height-list, 100%);
+	--_molecules-document-preview-max-width: var(--molecules-document-preview-max-width, 100%);
+}
+
+/**
+ * Components
+ */
+
+@keyframes c-attachedbar-item-spinner__animation {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(135%);
+	}
+}
+
+:host {
+	background-color: var(--_molecules-document-preview-bg-color);
+	@include tools.shadowIcons();
+	position: relative;
+
+	.preview-icon {
+		position: relative;
+		color: var(--color-icon-soft);
+		margin-left: 12px;
+	}
+
+	.document-preview-container {
+		padding: 8px 0px;
+		display: grid;
+		gap: 8px;
+	}
+
+	.preview-icon-extension {
+		position: absolute;
+		background: white;
+		font: var(--body-medium-default);
+		font-family: var(--typescale-body-medium-default-font);
+		font-size: 8px;
+		color: var(--color-icon-soft);
+		border: 1px solid var(--color-icon-soft);
+		border-radius: 3px;
+		width: 20px;
+		text-align: center;
+		line-height: 1;
+		text-transform: uppercase;
+		top: 0.6rem;
+		left: 0;
+		transform: translateX(5%);
+	}
+	.preview-icon-textcontent {
+		margin-left: 0.5rem;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		width: 100%;
+		&__title {
+			max-width: 145px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			color: var(--color-text-default);
+			font: var(--body-medium-strong);
+			font-family: var(--typescale-body-medium-strong-font);
+			font-size: var(--typescale-body-medium-strong-size);
+			font-weight: var(--typescale-body-medium-strong-weight);
+			font-style: var(--typescale-body-medium-strong-style);
+			line-height: var(--typescale-body-medium-strong-line-height);
+			text-align: left;
+			margin: 0;
+		}
+		&__subtitle {
+			max-width: 145px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			font: var(--body-medium-default);
+			font-family: var(--typescale-body-medium-default-font);
+			font-size: var(--typescale-body-medium-default-size);
+			font-weight: var(--typescale-body-medium-default-weight);
+			font-style: var(--typescale-body-medium-default-style);
+			line-height: var(--typescale-body-medium-default-line-height);
+			color: var(--color-text-soft);
+			text-align: left;
+			margin: 0;
+			&.--error {
+				color: tools.color(primary, base);
+			}
+		}
+	}
+
+	.preview-container {
+		&--border-style {
+			border-top: var(--_molecules-document-preview-border-top);
+		}
+		background-color: var(--color-surface-flat);
+	}
+	.preview-header {
+		color: tools.color(secondary, dark);
+		font-size: tools.rem(14);
+		line-height: tools.rem(20);
+	}
+	.preview-body {
+		transition: height 0.15s ease-in-out;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+	.preview-body-content-content {
+		padding: 0.5rem 0;
+		box-sizing: border-box;
+		max-height: tools.rem(150);
+		overflow-y: auto;
+	}
+	.fit-content-cards {
+		display: grid;
+		padding-top: 8px;
+		width: calc(100% - 8px);
+		gap: 8px;
+	}
+	.card-container {
+		--_ui-v2-card-padding: 0;
+		padding: 0 8px;
+	}
+	.preview-body-content-list {
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		height: var(--_molecules-document-preview-height-list);
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+
+		@include tools.desktop {
+			&::after {
+				display: none;
+			}
+			flex-wrap: var(--_molecules-document-preview-wrap-list);
+			flex-direction: row;
+		}
+
+		&__item {
+			--_ui-v2-card-padding: 0;
+			display: flex;
+			background-color: var(--color-surface-flat);
+			border-radius: var(--size-border-radius-02);
+			box-shadow: var(--elevation-raised);
+			height: 40px;
+			padding: 8px 0px;
+			& > a {
+				cursor: pointer;
+			}
+			& > span {
+				cursor: default;
+			}
+			&.--center {
+				align-items: center;
+			}
+		}
+	}
+	.mdc-card {
+		padding: 0;
+		width: fit-content !important;
+	}
+
+	.content-item-download {
+		width: 100%;
+		max-width: var(--_molecules-document-preview-max-width);
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+	.content-item-action {
+		@include utilities.force-reset(button);
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		margin-right: 8px;
+		color: var(--color-action-alternative-default);
+		cursor: pointer;
+	}
+
+	.content-item-spinner {
+		display: none;
+		height: 2px;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		overflow: hidden;
+	}
+
+	.content-button-download {
+		background: none;
+		border: none;
+		height: 100%;
+		color: var(--color-action-alternative-default);
+		cursor: pointer;
+		padding: 0;
+		margin-right: 8px;
+		&__action {
+			--icon-content: var(--theme-scib-icon-download);
+		}
+	}
+
+	.accordion-header {
+		color: tools.color(secondary, dark);
+		font-size: tools.rem(14);
+		height: 26px;
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+}

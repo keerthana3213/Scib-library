@@ -1,0 +1,162 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-ism-modal-detail.scss, justo
+ * después de la importación del tema -> @forward 'cdk-ism-modal-detail.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+@use 'objects';
+@use 'settings';
+@use 'tools';
+
+.cdk-ism-content {
+	.cdk-ism-content-table {
+		@include tools.only-mobile {
+			overflow: hidden;
+			overflow-x: scroll;
+			max-width: tools.rem(280);
+		}
+		@extend %customscrollbar;
+		&__table {
+			color: tools.color(secondary, ultra-dark);
+			border-collapse: collapse;
+			border-spacing: tools.rem(0 8);
+			table-layout: fixed;
+			border-radius: tools.rem(4);
+			box-shadow: 0 tools.rem(3) tools.rem(6) 0 rgba(155, 195, 211, 0.32);
+			@include tools.desktop {
+				width: 100%;
+			}
+			th,
+			td {
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				border-left: hidden;
+				padding-left: tools.rem(8);
+				width: auto;
+				// &:first-child {
+				// 	padding-left: 0;
+				// }
+			}
+			th {
+				@include tools.only-mobile {
+					padding-right: tools.rem(8);
+				}
+			}
+			tbody {
+				tr {
+					height: tools.rem(50);
+					td {
+						border-top: tools.rem(1) solid tools.color(tertiary, sky);
+						padding-bottom: 0;
+					}
+				}
+			}
+			.cdk-ism-content-table {
+				&__headers {
+					th {
+						text-align: left;
+						color: tools.color(secondary, dark);
+						border-left: tools.rem(1) solid tools.color(tertiary, sky);
+					}
+
+					th:first-child {
+						border-left: none;
+					}
+
+					th.cdk-ism-content-headers__hide {
+						@include tools.only-mobile {
+							position: absolute;
+							// right: 0%;
+							right: 11%;
+							width: tools.rem(48);
+							height: tools.rem(32);
+							border-left: none;
+							background-color: white;
+							box-shadow: -32px 0px 20px -6px white;
+						}
+					}
+				}
+
+				&__body {
+					&--selected {
+						background-color: tools.color(tertiary, light);
+					}
+				}
+
+				&__buttons {
+					@include tools.only-mobile {
+						position: absolute;
+						// right: 0%;
+						right: 11%;
+						width: tools.rem(48);
+						height: tools.rem(42);
+						padding-top: tools.rem(8);
+						padding-right: tools.rem(8);
+						background-color: white;
+						box-shadow: -32px 0px 20px -6px white;
+						border-top: 0px solid transparent !important;
+					}
+					&--selected {
+						@include tools.only-mobile {
+							background-color: tools.color(tertiary, light);
+							box-shadow: -32px 0px 20px -6px tools.color(tertiary, light);
+						}
+					}
+				}
+
+				&__void {
+					min-width: tools.rem(35);
+				}
+			}
+		}
+	}
+	&-table__hide {
+		background-color: tools.color(tertiary, ultra-light);
+		border-radius: tools.rem(4);
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		margin-top: tools.rem(16);
+
+		@include tools.only-mobile {
+			flex-direction: column;
+		}
+
+		p {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			color: tools.color(secondary, ultra-dark);
+			font-size: tools.rem(15);
+			line-height: tools.rem(22);
+			padding: tools.rem(16);
+			flex: 30%;
+		}
+		.cdk-ism-content-table {
+			&__straight {
+				flex: 25%;
+				&:last-child {
+					flex: 100%;
+				}
+			}
+			&__staged {
+				&:first-child,
+				&:nth-child(2) {
+					flex: 100%;
+				}
+				&:nth-child(4) {
+					flex: 63%;
+				}
+			}
+		}
+		&--title {
+			text-transform: uppercase;
+			font-size: tools.rem(12);
+			line-height: tools.rem(18);
+			letter-spacing: tools.rem(0.4);
+			color: black;
+		}
+	}
+}

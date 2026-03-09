@@ -1,0 +1,342 @@
+@use 'settings';
+@use 'tools';
+
+/**
+   *@description: this file stylizes the generic component modal with all types.
+**/
+
+.wc-modal {
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	min-height: tools.rem(385);
+	max-width: tools.rem(820);
+	position: relative;
+	margin: 10% auto tools.rem(20);
+	padding: tools.rem(30) tools.rem(60);
+	border-radius: tools.rem(5);
+	background: white;
+	color: black;
+
+	&__header {
+		display: block;
+		font-size: tools.rem(28);
+		line-height: tools.rem(32);
+
+		&--mrg {
+			margin-bottom: tools.rem(50);
+		}
+	}
+
+	&__txt {
+		max-height: tools.rem(240);
+		margin-bottom: tools.rem(30);
+		font-size: tools.rem(16);
+		line-height: tools.rem(24);
+		text-align: left;
+		overflow: auto;
+		&--block {
+			display: block;
+		}
+	}
+
+	&__overlay {
+		display: block;
+		width: 100%;
+		height: tools.rem(1250);
+		max-height: tools.rem(625);
+		position: fixed;
+		top: tools.rem(49);
+		left: 0;
+		overflow-x: hidden;
+		z-index: tools.z-index(overlay);
+		background: rgba(0, 0, 0, 0.7);
+
+		&--light {
+			background: rgba(0, 0, 0, 0.3);
+		}
+
+		&--solid {
+			height: tools.rem(622);
+			position: relative;
+			top: 0;
+			background: rgba(0, 0, 0, 1);
+		}
+
+		&--transparent {
+			background: transparent;
+		}
+
+		&[role='alert'] {
+			z-index: tools.z-index(oncanvas);
+		}
+	}
+
+	&__title {
+		display: block;
+		margin-bottom: tools.rem(25);
+		font-size: tools.rem(24);
+		line-height: tools.rem(28);
+		font-weight: normal;
+		text-align: center;
+		word-break: normal;
+		overflow-wrap: break-word;
+	}
+
+	&__subtitle {
+		display: block;
+		margin: tools.rem(10) 0;
+		font-size: tools.rem(18);
+		line-height: tools.rem(14);
+		font-weight: normal;
+		word-break: normal;
+		overflow-wrap: break-word;
+	}
+
+	&__pill {
+		display: block;
+		width: tools.rem(55);
+		margin: tools.rem(15) 0;
+		padding: tools.rem(2) tools.rem(8);
+		border-radius: tools.rem(4);
+		font-size: tools.rem(14);
+		line-height: tools.rem(20);
+		text-align: center;
+		background: tools.color(tertiary, base);
+		color: white;
+	}
+
+	&--refillable {
+		min-height: tools.rem(400);
+		margin: 7% auto;
+		padding: tools.rem(25) tools.rem(40);
+		text-align: left;
+
+		.wc-modal__title {
+			display: inline-block;
+			width: calc(100% - 317px);
+			margin-bottom: tools.rem(15);
+			text-align: left;
+			line-height: tools.rem(30);
+			vertical-align: top;
+
+			&--two {
+				width: calc(100% - 45px);
+				margin-bottom: tools.rem(24);
+			}
+
+			&--three {
+				width: calc(100% - 170px);
+			}
+		}
+	}
+
+	&--short {
+		max-width: tools.rem(785);
+		height: auto;
+		min-height: tools.rem(314);
+		max-height: tools.rem(424);
+		margin: tools.rem(130) auto tools.rem(20);
+	}
+
+	&--brdb {
+		margin-bottom: tools.rem(50);
+		padding-bottom: tools.rem(50);
+		border-bottom: tools.rem(2) solid tools.color(secondary, medium);
+	}
+
+	&--aligncenter {
+		text-align: center;
+	}
+
+	&--scandidates {
+		max-width: tools.rem(780);
+		margin-top: tools.rem(150);
+	}
+
+	&--message {
+		max-width: tools.rem(600);
+		min-height: tools.rem(300);
+		padding: 0;
+
+		.wc-modal {
+			&__box {
+				display: block;
+				position: relative;
+				padding: tools.rem(100) tools.rem(40) tools.rem(90);
+				border-radius: tools.rem(4);
+				box-sizing: border-box;
+				background: #ffffff;
+			}
+
+			&__txt {
+				display: block;
+				position: relative;
+				margin: 0;
+				font-size: tools.rem(18);
+				line-height: tools.rem(24);
+				text-align: center;
+				word-break: normal;
+				overflow-wrap: break-word;
+				overflow: visible;
+
+				&::before {
+					content: '';
+					display: block;
+					width: tools.rem(100);
+					height: tools.rem(95);
+					position: relative;
+					margin: 0 auto tools.rem(20);
+					background: transparent;
+					animation: mover 0.5s infinite alternate;
+					animation: mover 0.5s infinite alternate;
+
+					@keyframes mover {
+						0% {
+							transform: translateY(0);
+						}
+
+						100% {
+							transform: translateY(-10px);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&--confirm {
+		max-width: tools.rem(600);
+		min-height: tools.rem(300);
+		padding: 0;
+		.wc-modal {
+			&__box {
+				display: block;
+				position: relative;
+				padding: tools.rem(110) tools.rem(40) tools.rem(40);
+				border-radius: tools.rem(4);
+				box-sizing: border-box;
+				background: #ffffff;
+			}
+
+			&__txt {
+				display: block;
+				position: relative;
+				margin: 0;
+				font-size: tools.rem(20);
+				line-height: tools.rem(24);
+				font-weight: bold;
+				text-align: center;
+				word-break: normal;
+				overflow-wrap: break-word;
+				overflow: initial;
+			}
+		}
+	}
+
+	&--success {
+		.wc-modal__txt {
+			&::before {
+				background: url('#{settings.$icons_path}/success.svg');
+			}
+		}
+	}
+
+	&--error {
+		.wc-modal__txt {
+			&::before {
+				background: url('#{settings.$icons_path}/error.svg');
+			}
+		}
+	}
+}
+
+@include tools.media-query('sm') {
+	.wc-modal {
+		width: auto;
+		margin: tools.rem(100) auto tools.rem(15);
+
+		&--scandidates {
+			margin-top: tools.rem(150);
+		}
+
+		&--short {
+			margin: tools.rem(130) auto tools.rem(20);
+		}
+		&--confirm {
+			.wc-modal {
+				&__box {
+					padding-top: tools.rem(90);
+				}
+			}
+		}
+	}
+}
+
+@include tools.media-query('xs') {
+	.wc-modal {
+		box-sizing: border-box;
+		display: block;
+		width: auto;
+		position: relative;
+		margin: tools.rem(20) tools.rem(15);
+		padding: tools.rem(20) tools.rem(15);
+
+		&__title {
+			margin-bottom: tools.rem(20);
+		}
+
+		&__txt {
+			font-size: tools.rem(18);
+			line-height: tools.rem(26);
+
+			&--mrg {
+				margin-bottom: tools.rem(25);
+			}
+		}
+
+		&--refillable {
+			position: relative;
+
+			.wc-modal__title {
+				display: block;
+				width: calc(100% - 40px);
+				margin: 0 0 tools.rem(20);
+			}
+
+			.wc-btn {
+				width: 100%;
+				margin: 0 0 tools.rem(20);
+
+				&--close {
+					width: tools.rem(20);
+					min-width: tools.rem(20);
+					position: absolute;
+					top: tools.rem(15);
+					right: tools.rem(15);
+					padding: 0;
+				}
+			}
+
+			.wc-btn--icon {
+				width: tools.rem(30);
+			}
+		}
+
+		&--brdb {
+			margin-bottom: tools.rem(30);
+			padding-bottom: tools.rem(30);
+		}
+
+		&--confirm {
+			.wc-modal {
+				&__box {
+					padding: tools.rem(50) tools.rem(20) tools.rem(40);
+				}
+			}
+			.wc-btn.wc-btn--default {
+				margin-left: tools.rem(10);
+			}
+		}
+	}
+}

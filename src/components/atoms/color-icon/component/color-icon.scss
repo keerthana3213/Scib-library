@@ -1,0 +1,23 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * Component styles
+ */
+
+:host {
+	width: 100%;
+	height: 100%;
+
+	.color-icon {
+		&__container {
+			width: 100%;
+			height: 100%;
+
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}

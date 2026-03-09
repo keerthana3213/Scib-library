@@ -1,0 +1,31 @@
+import { getStoryConfig } from '../../../../.storybook/utils';
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+
+declare global {
+	namespace JSX {
+		interface IntrinsicElements {
+			[key: string]: any;
+		}
+	}
+}
+
+const meta: Meta = {
+	...getStoryConfig('scib-{{type}}-{{dashCase name}}'),
+	title: '{{storyType type}}/{{titleCase name}}',
+	render: (args) => (
+		<scib-{{type}}-{{dashCase name}} {...args}>
+			{args.content}
+		</scib-{{type}}-{{dashCase name}}>
+	)
+};
+export default meta;
+
+export const Playground: StoryObj = {
+	args: {
+		text: 'Prop: {{constantCase type}}{{dashCase name}}',
+		literals: {
+			title: '{{constantCase type}}{{dashCase name}}',
+		}
+	}
+};

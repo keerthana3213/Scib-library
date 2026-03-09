@@ -1,0 +1,76 @@
+@use 'tools';
+
+/**
+   *@description: this file stylizes the generic component progressbar
+**/
+
+.wc-progressbar {
+	&__box {
+		display: inline-block;
+		width: calc((100% / 2) - 120px);
+		margin: tools.rem(40) tools.rem(115) 0 0;
+		vertical-align: top;
+	}
+	&__bar {
+		height: tools.rem(4);
+		margin-bottom: tools.rem(7);
+		border-radius: tools.rem(2);
+		overflow: hidden;
+		background-color: tools.color(secondary, medium);
+	}
+
+	&__progress {
+		width: 0;
+		height: 100%;
+		background-color: tools.color(tertiary, base);
+		-webkit-transition: width 0.6s ease;
+		transition: width 0.6s ease;
+	}
+
+	&__percentage,
+	&__state {
+		display: block;
+		font-size: tools.rem(16);
+		line-height: tools.rem(22);
+		word-break: normal;
+		overflow-wrap: break-word;
+	}
+
+	&__percentage {
+		margin-bottom: tools.rem(5);
+		color: tools.color(tertiary, base);
+	}
+
+	&__state {
+		color: tools.color(secondary, ultra-dark);
+	}
+
+	&--tab {
+		&.wc-progressbar__box {
+			width: 100%;
+			margin: 0;
+			position: absolute;
+			bottom: tools.rem(-3);
+			left: 0;
+		}
+		.wc-progressbar {
+			&__progress {
+				background-color: tools.color(primary, base);
+			}
+
+			&__bar {
+				margin: 0;
+			}
+		}
+	}
+}
+
+@include tools.media-query('xs') {
+	.wc-progressbar {
+		&__box {
+			display: block;
+			width: 100%;
+			margin: 0 0 tools.rem(30);
+		}
+	}
+}

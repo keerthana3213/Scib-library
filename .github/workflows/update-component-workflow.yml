@@ -1,0 +1,17 @@
+name: Update
+
+on:
+  workflow_dispatch:
+    inputs:
+      update-version:
+        required: true
+        type: string
+        description: "Component Template's version to update"
+
+jobs:
+  update-reusable-workflow:
+    name: Update
+    uses: santander-group-shared-assets/gln-workflows/.github/workflows/update-component-workflows.yml@v1
+    with:
+      update-version: ${{ inputs.update-version }}
+    secrets: inherit

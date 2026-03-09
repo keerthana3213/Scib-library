@@ -1,0 +1,335 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Get Started/CSS Style Guide" />
+
+# Guía de estilos BEM Simplificado
+
+Dado que el framework provee de sus propias herramientas de encapsulación de estilos, el uso de metodología BEM para nomenclatura de clases resulta redudante con dichas herramientas. Mediante el método de encapsulamiento "scoped" de Stencil y Vue, CSS Modules de React o ViewEncapsulation.Emulated los framework generan un scope asociado al componente que a la práctica resulta equivalente al "Block" de BEM.
+
+Con la motivación de establecer una metodología que contemple estas características de los frameworks de encapsulamiento de estilos y adelgazar el código fuente tanto como sea posible, surge esta guía de estilos.
+
+## Table of Contents
+
+  1. [CSS Global](#css-global)
+  1. [Nomenclatura simplificada de elementos](#nomenclatura-simplificada-de-elementos)
+  1. [Elementos reutilización de código y exclusividad semántica](#elementos-reutilización-de-código-y-exclusividad-semántica)
+  1. [Nomenclatura simplificada de modificadores](#nomenclatura-simplificada-de-modificadores)
+  1. [Subelementos de máxima profundidad DOM](#subelementos-de-máxima-profundidad-dom)
+  1. [Estructura del fichero scss](#estructura-del-fichero-scss)
+  1. [Responsive](#responsive)
+
+
+## CSS Global
+
+Para garantizar tener el menor CSS bloqueante, es importante que el CSS global sea lo más ligero e imprescindible posible. De tal forma que el grueso de los estilos sea aportado dinámicamente al renderizar los componentes.
+
+Para el CSS Global, podemos usar arquitectura ITCSS teniendo en cuenta los siguientes puntos:
+
+- Las hojas de estilo para "component" no deben existir en los estilos globales, ya que corresponden a los estilos acoplados a los componentes del framework
+
+- Se pueden contemplar una capa de "overrides" o "theming" para dar una capa de estilos global a una librería (Material, Vaadin, etc). Es recomendable que si estos estilos no son consistentes, estos overrides no se importen en el global si no en cada componente propio donde sean utilizados dichos componentes de terceros.
+
+- Disponer una "tool" de un reset forzado de elementos nativos (Ej: `button`, `input`) que resetee los estilos de navegador para dejar dicho elemento como un `div`de base.
+
+- Todo selector de tipo `.class` debe mantener el prefijo correspondiente para evitar colisiones entre ellos: `u-` para utilidades, `o-` para objects.
+
+- IMPORTANTE: No usar selectores de tipo `.class` con el prefijo `c-` en los globales, pues serían selectores inseguros y podrían pisar estilos de los componentes.
+
+- IMPORTANTE: Al contrario que ITCSS indica, Las utilidades no deben llevar `!important` dado que se pierde la posibilidad de extender sus propiedades con un elemento. 
+
+```scss
+// Ejemplo de arquitectura ITCSS
+
+// Settings (no debe generar CSS, solo variables SCSS)
+$color-primary: red;
+
+// Tools (no debe generar CSS, solo declaración de mixin/funciones SCSS)
+@mixin example-mixin() { @content; }
+
+// Global theme tokens (de usarse custom properties)
+--theme--color-primary: red
+
+// Generics (Reset y normalización entre navegadores)
+body { margin: 0}
+
+// Elements (Estilización base de elementos nativos acorde al branding)
+h1 { margin: 0 } 
+
+// Component theme API (de usarse custom properties)
+--button--background-color: --theme--color-primary;
+
+// Objects (aportan sólo layout altamente reutilizable)
+.o-row { display: grid }
+
+// utilities (deben sobreescribir cualquier otro selector clase)
+.u-mt-2 { margin-top: 2rem }
+
+```
+
+> Es recomendable evitar los generics y elements compuestos con atributos (Ej: `input[hidden]`) ya que sobrescriben los selectores de clase si estos no llevan la especifidad de dicho atributo. Los generic/element deben ser selectores a etiqueta puros para garantizar su más baja prioridad en la cascada
+
+> Disponer una "tool" de un reset forzado de elementos nativos (Ej: `button`, `input`) que resetee los estilos de navegador para dejar dicho elemento como un `div`de base.
+
+## Nomenclatura simplificada de elementos
+
+La estilización asociada al componente debe ir con su `.scss` dentro del scaffolding del componente que provee el framework. Aqui realizaremos una importación tanto de los `settings` como `tools` para tener disponibles todas las variables, funciones y mixings SASS.
+
+Tradicionalmente, dada la complejidad del CSS por su naturaleza global en la maquetación nos hemos visto en la obligación de usar nomenclaturas que asocien unos determinados estilos a un elemento padre común para evitar colisiones por nomenclatura. Por ejemplo, para evitar que un `.menu-item` de la cabecera tomara estilos de un `.menu-item`de una sidebar, teníamos que matenerlos en scopes diferentes prefijando el padre en el nombre del selector, a saber: `.header__menu-item` y `.sidebar__menu-item`
+
+Si usamos un framework, él ya se encarga por nosotros de hacer esta tarea, generando un atributo, prefijo o clase de defensa basado en el nombre del componente.
+
+Por ejemplo, así compilarían los frameworks un selector `.c-menu-item` de nuestro código fuente si lo creamos en el `.scss` asociado al componente:
+
+```scss
+// header.component.scss
+
+// Angular
+.c-menu-item[_ngcontent-kje-c2] {}
+
+// Vue (scoped)
+.c-menu-item[data-v-f3f3eg9] {}
+
+// React (CSS Modules)
+.Header__c-menu-item__ax7yz {}
+
+// Stencil (scoped)
+.c-menu-item.sc-header {}
+```
+
+Como se puede observar, esto nos impediría que llegue al navegador dos selectores `c-menu-item` idénticos en diferentes componentes a pesar de que en nuestro código fuente HTML/CSS estemos manejándolo
+
+El uso del prefijo `c-` identifica dicho selector como uno de "componente". Esto nos previene que un posible selector global inseguro (sin prefijo alguno) ataque nuestros estilos (Por ejemplo, si existiera un `menu-item` declarado globalmente)
+
+> Nota: para el caso de CSS Modules no sería necesario prefijar las clases como 'c-' ya que al añadir automáticamente el nombre del Module a todos los selectores de la misma forma que hace BEM evitamos que existan globales sin prefijo capaces de atacar a nuestros elementos dentro del componente
+
+> Nota 2: Si usamos el Shadow DOM en el componente, tampoco necesitaríamos hacer uso del prefijo `c-` ya que es el mismo navegador el que impide que los estilos del document o los shadow context padres ataquen a elementos internos.
+
+Como se puede observar, esto nos simplifica bastante el código fuente y delegamos en el compilador del framework la tarea de securizar nuestros selectores dentro de un contexto de componente:
+
+```html
+<!-- BEM -->
+<header class="header">
+  <ul class="header__menu">
+    <li class="header__menu-item header__menu-item--active"><li>
+  </ul>
+</header>
+
+<!-- Simplificado -->
+<header class="c-host">
+  <ul class="c-menu">
+    <li class="c-menu-item --active"><li>
+  </ul>
+</header>
+```
+
+## Elementos reutilización de código y exclusividad semántica
+Para mantener simplicidad en la cascada y evitar colisiones de estilos, es importante que _*Solo exista un único elemento por cada nodo HTML*_
+
+```html
+<!-- Correcto -->
+<button class="c-menu-item"><button>
+
+<!-- Incorrecto -->
+<button class="c-menu-item c-button"><button>
+```
+
+Para poder reutilizar estilos, podemos usar una de las siguientes estrategias:
+
+- Realizar selectores compuestos con las propiedades comunes. Esto nos permite crear un selector común del cual hereden otros. Esto puede simplificarse con `@extends` de sass:
+
+```scss
+// CSS nativo
+.c-menu-item,
+.c-button {
+    // Propiedades CSS comunes
+}
+
+// Forma con SASS
+.c-menu-item {
+  @extends .c-menu;
+}
+```
+
+> La herencia puede ser compleja de manejar cuando implica múltiples niveles. En caso de usar esta estrategia es importante restringirlo a un único nivel.
+
+- Delegar todas las propiedades CSS reutilizables a un `@mixin` de SCSS e importarlas a través de `@include`. Esta estrategia implica que dichos estilos van a duplicarse en el navegador, pero manteniendo ún único código en nuestro `scss`
+
+- Si el conjunto de propiedades son susceptibles de ser reutilizadas en varios componentes y tienen un único propósito claro, podemos delegarlas a una utilidad en el CSS global:
+
+```scss
+.u-text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+```
+
+Esta regla no se aplica para modificadores y utilidades, pues están pensadas para convivir con un elemento dentro del mismo nodo HTML y aprovechar todas la potencia de la composición de selectores en el HTML como forma de reutilizar código:
+
+```html
+<!-- Correcto -->
+<button class="c-menu-item --active u-mt-2 u-d-flex"><button>
+
+```
+
+> Un uso correcto de un buen abanico de utilidades nos da la potencia de evitar mucho código reutilizado. Un enfoque utility-first nos permite que muchas partes de nuestra aplicación no requieran CSS semántico  ad-hoc para cada componente/pantalla: [Utility-first](https://tailwindcss.com/docs/utility-first/). Sin embargo, para que esta aproximación funcione correctamente y no tengamos un "zoológico de utilidades" difícil de mantener, requiere una alta consistencia en el diseño (EL UI debe estar racionalizado en design tokens y las pantallas deben diseñarse con esta filosofía muy presente)
+
+
+## Nomenclatura simplificada de modificadores
+
+Para el caso de los modificaciones, la regla BEM establece que un modificador implica una adición de estilos para cambiar, modificar o añadir apariencia a un elemento ya existente. Según la nomenclatura BEM, esto se haría de tal forma:
+
+```html
+<li class="header__menu-item header__menu-item--active"><li>
+```
+
+```scss
+.header__ {
+  &__menu-item {
+    &--active {
+
+    }
+  }
+}
+```
+
+BEM nos permite con esto que en el caso de tener múltiples elementos asociados a un nodo HTML, podamos tener múltiples modificadores sin que colisionen entre ellos:
+
+```html
+<button class="header__menu-item header__menu-item--active header__button header__button--active"><button>
+```
+
+Con el sistema
+
+Sin embargo, esto se aleja bastante de la filosofía de tener un único selector semántico asociado a cada elemento HTML y por tanto no debemos aplicarlo. Cualquier composición de selectores deberíamos hacerla según la estrategias vistas en el punto 3. Podemos entonces simplificar el modificador de esta forma:
+
+```html
+<button class="c-menu-item --active"><button>
+```
+
+> `c-menu-item` debe contener todas las propiedades base del elemento y `--active`
+
+Esto implica algunas reglas que debemos tener en cuenta:
+
+- Los modificadores deben ir prefijados con el doble dash: `--`
+- Los modificadores SIEMPRE deben ir asociados a elementos, NUNCA a utilidades ni objetos.
+- Todos los modificadores deberían tratar de ser compatibles entre sí en la medida de lo posible.
+- Los modificadores NUNCA deberán existir como selectores aislados:
+
+```scss
+// Correcto
+.c-menu-item.--active {
+  // propiedades del modificador
+}
+
+// Incorrecto: Estos estilos se aplicarán a cualquier elemento un modificador `--active`
+.--active {
+  // propiedades del modificador
+}
+```
+
+> El uso de modificadores se recomienda principalmente para los cambios de estado o diferentes variantes del elemento. Se desaconseja usarlo como método para reutilizar código entre dos elementos muy diferentes ("mutantes"), pues podría provocar colisiones entre los mismos modificadores: Como regla general, no deberíamos tener más propiedades CSS en un modificador de las que tenemos en el elemento.
+
+## Subelementos de máxima profundidad DOM
+
+Cuando necesitemos atacar a elementos hijos que sean los últimos en la profundidad DOM dentro de ese contexto, podemos emplear el selector de hijo inmediato `& > etiqueta` para evitar crear un nuevo elemento. Esta simplificación conlleva las siguientes reglas:
+
+- No debe ser aplicada cuando el elemento que queremos atacar tenga hijos.
+- No debe ser aplicada cuando el elemento tenga (o sea susceptible de tener) otros elementos hermanos con la misma etiqueta.
+- No debe ser aplicada si el elemento o los hijos son susceptibles de cambiar su etiqueta en un futuro (Por ejemplo, por SEO)
+
+Esta regla es especialmente interesante en aquellos elementos cuyos hijos sean siempre la misma etiqueta HTML según el estándar HTML:
+
+```scss
+.c-menu {
+  // Propiedades de la lista
+  & > li {
+    // Propiedades del item
+  }
+}
+```
+```html
+  <ul class="c-menu">
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+```
+
+
+## Estructura del fichero scss
+
+A continuación se detallan algunas sugerencias para la indentación del fichero:
+
+- No indentar nomenclatura. La indentación de nomenclatura, aunque nos permitiría reutilizar algunas propiedades fácilmente entre diferentes elementos en algunos casos y partes de la nomenclatura de los selectores, perjudica mucho la legibilidad de la cascada de CSS a largo plazo:
+
+- Es recomendable mantener en un primer nivel el elemento y en segundos niveles los modificadores, psudoselectores y elementos
+
+
+```scss
+// Recomendado
+.c-menu-item-link {
+  // Modificador
+  &.--active {}
+
+  // Modificador nativo
+  &:hover {}
+
+  // Subelemento
+  & > a
+} 
+
+// No recomendado
+.c {
+  &-menu {
+    &-item {
+      &-link {
+        &.--active {}
+        &:hover {}
+        & > a
+      }
+    }
+  }
+}
+```
+
+## Responsive
+ 
+Para la implementación del responsive se sigue una estrategia _mobile-first_. en CSS. Esto viene justificado por las siguientes motivaciones.
+
+- La tendencia del diseño es hacia esta estrategia. Habitualmente vemos que ciertos elementos visuales propios del mundo móvil se emplean ya en las versiones desktop. (Ej: un wizard de introducción a la plataforma por pasos similar al de las Apps nativas, o un area de notificaciones similar al de iOS/Android, una tab-bar para cambiar entre vistas...)
+- La necesidad de mantener la funcionalidad a través de todas las pantallas complica el "graceful degradation" desde Desktop hacia versiones más bajas. 
+- El ahorro de código CSS al tener un core de estilos compartido para todas las versiones + unas pequeñas modificaciones para las versiones tablet/desktop.
+
+Por ejemplo, imaginemos un contendor de tres cards:
+
+- En mobile, queremos que queden en bloque una debajo de otra
+- En tablet y desktop, queremos que aparezcan en la misma fila
+- En desktop, queremos aumentar el tamaño de la fuente, dado que la pantalla la tenemos más lejos 
+
+```scss
+  .c-container {
+    width: 100%;
+    font-size: 0.875rem;
+
+    // Aplica A PARTIR DE tablet (>= 768px)
+    @include tablet {
+      display: flex;
+    }
+
+    // Aplica A PARTIR DE desktop (>= 1280px)
+    @include desktop {
+      font-size: 1rem;
+    }
+
+  }
+```
+
+de forma extraordinara, para las casuísticas en las que un estilo no deba estar en más versiones más allá del mobile, existe un mixin que permite aplicar estilos sólo a la version de mobile:
+
+```scss
+  .c-container {
+    // SÓLO aplica en mobile (< 768px)
+    @include only-mobile {}
+  }
+```

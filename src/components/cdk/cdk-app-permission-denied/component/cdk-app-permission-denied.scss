@@ -1,0 +1,112 @@
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+@forward 'cdk-app-permission-denied.theme.scss';
+
+.cdk-app-permission-denied {
+	display: flex;
+	justify-content: center;
+	max-width: tools.rem(940);
+	margin: tools.rem(32) auto tools.rem(90);
+
+	@include tools.tablet {
+		justify-content: space-between;
+	}
+
+	&__figure {
+		display: none;
+		height: 100%;
+		max-width: tools.rem(320);
+		margin-top: tools.rem(42);
+		margin-right: tools.rem(42);
+
+		@include tools.tablet {
+			display: block;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	&__content {
+		max-width: tools.rem(540);
+	}
+
+	&__title {
+		font-family: settings.$font-bold-headline;
+		font-size: tools.rem(32);
+		line-height: tools.rem(46);
+		color: black;
+		margin-bottom: tools.rem(8);
+	}
+
+	&__description {
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(18);
+		line-height: tools.rem(26);
+		color: black;
+		margin-right: tools.rem(36);
+	}
+
+	&__list-container {
+		border-top: tools.rem(1) solid tools.color(tertiary, sky);
+		margin-top: tools.rem(16);
+		padding-top: tools.rem(16);
+		margin-right: tools.rem(36);
+	}
+
+	&__list-title {
+		font-family: settings.$font-bold-txt;
+		font-size: tools.rem(16);
+		line-height: tools.rem(23);
+		color: black;
+	}
+
+	&__list {
+		margin-top: tools.rem(4);
+		padding: 0 tools.rem(9) 0 tools.rem(8);
+	}
+
+	&__list-element {
+		display: flex;
+		justify-content: space-between;
+		position: relative;
+		padding-left: tools.rem(6);
+		padding-bottom: tools.rem(8);
+		margin-bottom: tools.rem(8);
+		border-bottom: tools.rem(1) solid tools.color(tertiary, sky);
+		align-items: center;
+		@extend %ellipsis;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: calc(50% - 5px);
+			left: 0;
+			display: block;
+			width: tools.rem(2);
+			height: tools.rem(2);
+			background: black;
+			border-radius: 50%;
+		}
+
+		.c-button.--link.--disableMinWidth.sc-scib-ui-button {
+			min-height: 0;
+
+			span {
+				font-size: tools.rem(14);
+				line-height: tools.rem(20);
+			}
+		}
+	}
+
+	&__list-element-txt {
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(16);
+		line-height: tools.rem(23);
+		color: black;
+	}
+}

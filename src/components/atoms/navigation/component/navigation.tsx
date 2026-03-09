@@ -1,0 +1,122 @@
+import { Component, Host, h, Prop, EventEmitter, Watch, State, Event, Element } from '@stencil/core';
+import { parseProp as _parseProp } from '../../../../utils/helpers/common';
+import { ILiterals } from '../models/navigation.model';
+import { VariantTypes } from '../../../../shared/models';
+
+/**
+ * Component description
+ *
+ * @slot content - Slot por defecto
+ */
+@Component({
+	tag: 'scib-atoms-navigation',
+	styleUrl: 'navigation.scss',
+	shadow: true
+})
+export class AtomsNavigation {
+	@Element() _hostRef: HTMLElement;
+
+	/**
+	 * La variante altera el valor de las custom properties
+	 * para cambiar la apariencia del componente en base al tema
+	 */
+	@Prop({ reflect: true }) variant: VariantTypes = 'white';
+
+	/**
+	 * Oculta el contenido del slot
+	 */
+	@Prop({ reflect: true }) hide: boolean;
+
+	/**
+	 * Propiedad que refleja sus cambios sobre un atributo en el Host del Custom Element y permite ser mutada internamente
+	 */
+	@Prop({ mutable: true, reflect: true }) text: string;
+
+	/**
+	 * Propiedad no primitiva (Objeto, Array). Requiere un watch que parsee a un State interno para usarse
+	 */
+	@Prop({ reflect: true }) literals: ILiterals | string;
+	@State() _literals: ILiterals;
+	@Watch('literals') parseLiterals(newLiterals: ILiterals | string) {
+		this._literals = _parseProp<ILiterals>(newLiterals as string);
+	}
+
+	/**
+	 * Ciclo de vida ejecutado antes del primer render
+	 */
+	componentWillLoad() {
+		this.parseLiterals(this.literals);
+	}
+
+	/**
+	 * Ciclo de vida ejecutado tras el primer Render después de la carga
+	 */
+	componentDidLoad() {}
+
+	/**
+	 * Ciclo de vida al eliminar la instancia del componente
+	 */
+	disconnectedCallback() {}
+
+	/**
+	 * Descripción del evento
+	 */
+	@Event() eventChange: EventEmitter;
+
+	render() {
+		return (
+			<Host style={{ textAlign: 'center' }}>
+				<div>
+					<slot />
+					<ul class="navigation">
+						<li>
+							<button aria-current="true">
+								<span class="sr-only"></span>
+							</button>
+						</li>
+						<li>
+							<button>
+								<span class="sr-only"></span>
+							</button>
+						</li>
+						<li>
+							<button>
+								<span class="sr-only"></span>
+							</button>
+						</li>
+						<li>
+							<button>
+								<span class="sr-only"></span>
+							</button>
+						</li>
+						<li>
+							<button>
+								<span class="sr-only"></span>
+							</button>
+						</li>
+						<li>
+							<button>
+								<span class="sr-only"></span>
+							</button>
+						</li>
+						<li>
+							<button>
+								<span class="sr-only"></span>
+							</button>
+						</li>
+						<li>
+							<button>
+								<span class="sr-only"></span>
+							</button>
+						</li>
+						<li>
+							<button>
+								<span class="sr-only"></span>
+							</button>
+						</li>
+					</ul>
+				</div>
+			</Host>
+		);
+	}
+}

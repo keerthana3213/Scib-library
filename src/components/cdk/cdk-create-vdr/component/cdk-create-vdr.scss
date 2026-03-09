@@ -1,0 +1,97 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-create-vdr.theme.scss';
+@forward '../libraries/tiny-slider.styles';
+
+.cdk-cvdr {
+	padding: tools.rem(10 0 26);
+	max-width: tools.rem(720);
+	overflow: visible;
+	.tns-nav {
+		display: none;
+	}
+
+	.tns-item {
+		padding: tools.rem(0 1);
+	}
+
+	&__form {
+		overflow: visible;
+	}
+
+	&__footer {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding-top: tools.rem(16);
+
+		.sc-scib-ui-button-h {
+			width: 100%;
+			height: 100%;
+			margin: tools.rem(0 10);
+
+			& .u-icon {
+				transform: rotate(180deg);
+			}
+
+			&:not(:only-child):first-child {
+				width: tools.rem(58);
+			}
+		}
+	}
+
+	&__notice {
+		font-size: tools.rem(13);
+		line-height: tools.rem(19);
+		color: black;
+		padding-bottom: tools.rem(16);
+
+		&--hide {
+			display: none;
+		}
+	}
+
+	&__group {
+		display: flex;
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.cdk-cvdr {
+		padding: tools.rem(26 26 26);
+		max-width: tools.rem(720);
+
+		&__notice {
+			padding-bottom: 0;
+		}
+
+		&__footer {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			&--end {
+				justify-content: flex-end;
+			}
+			.c-button.sc-scib-ui-button {
+				margin-right: auto;
+				margin-left: tools.rem(24);
+				max-width: tools.rem(200);
+			}
+			.sc-scib-ui-button-h {
+				width: auto;
+				margin: 0;
+
+				&:not(:only-child):first-child {
+					width: inherit;
+				}
+			}
+		}
+
+		&__group {
+			width: inherit;
+			justify-content: flex-end;
+		}
+	}
+}

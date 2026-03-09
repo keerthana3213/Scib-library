@@ -1,0 +1,4 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_cdk-vdr-detail-bg-color: var(--cdk-vdr-detail-bg-color, white);
+}

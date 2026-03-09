@@ -1,0 +1,22 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-added-tag.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+
+.ui-added {
+	font-size: tools.rem(16);
+	line-height: tools.rem(23);
+	display: flex;
+
+	.u-icon {
+		color: #63ba68;
+		margin: tools.rem(0 5);
+	}
+	&__label {
+		color: #444444;
+	}
+}

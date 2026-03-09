@@ -1,0 +1,162 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-messages-chat.scss, justo
+ * después de la importación del tema -> @forward 'cdk-messages-chat.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'settings';
+@use 'tools';
+
+@keyframes c-reply__fade-in {
+	from {
+		transform: scale(0.85);
+		opacity: 0;
+	}
+
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.c-reply {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: stretch;
+	padding: tools.rem(13 17);
+	border-radius: tools.rem(8);
+	border: 1px solid tools.color(secondary, medium);
+	background-color: white;
+	animation: c-reply__fade-in 0.3s ease-in-out forwards;
+	transform: scale(1);
+	will-change: 1;
+	transform-origin: bottom left;
+	margin: tools.rem(8 32 8 0);
+
+	@include tools.desktop {
+		margin: tools.rem(8 40 8 0);
+	}
+
+	&__figure {
+		display: inline-block;
+		width: tools.rem(32);
+		height: tools.rem(32);
+		margin: tools.rem(0 8 16 0);
+		border-radius: 50%;
+		border: tools.rem(2) solid #f2f2f2;
+		overflow: hidden;
+		text-align: center;
+		vertical-align: middle;
+		background: tools.color(secondary, medium);
+	}
+
+	&__header {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		margin-bottom: 0.5rem;
+	}
+
+	&__avatar {
+		min-width: 2rem;
+		margin-right: 0.5rem;
+		margin-left: 0;
+	}
+
+	&__header-text {
+		align-items: center;
+		width: 100%;
+		min-height: 2rem;
+		@include tools.desktop {
+			display: flex;
+			// flex-direction: row-reverse;
+			justify-content: space-between;
+		}
+	}
+
+	&__user,
+	&__body {
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(15);
+		line-height: tools.rem(22);
+	}
+
+	&__body {
+		width: 100%;
+	}
+
+	&__user {
+		align-self: center;
+		color: tools.color(secondary, ultra-dark);
+	}
+
+	&__txt {
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(12);
+		color: tools.color(secondary, dark);
+		align-self: flex-start;
+		&:last-child {
+			margin-right: 0;
+		}
+		&.--uppercase {
+			text-transform: uppercase;
+		}
+	}
+
+	&__unread-flag {
+		font-size: tools.rem(14);
+		font-family: settings.$font-bold-txt;
+		color: tools.color(primary, base);
+		display: flex;
+		align-items: flex-end;
+		white-space: nowrap;
+		&::after {
+			content: '';
+			margin-left: 0.5rem;
+			margin-right: 2.5rem;
+			position: relative;
+			bottom: 4px;
+			display: block;
+			height: 1px;
+			width: 100%;
+			background: tools.color(primary, base);
+		}
+	}
+
+	&__confirmation-icon {
+		display: inline;
+		font-size: 1rem;
+		line-height: 1;
+		position: relative;
+		top: 3px;
+		margin-left: 0.25rem;
+	}
+
+	&__files {
+		width: 100%;
+		margin-top: 1rem;
+		margin-bottom: -1rem;
+	}
+
+	&--is-sender {
+		margin: tools.rem(8 0 8 32);
+		flex-direction: row-reverse;
+		transform-origin: bottom right;
+		@include tools.desktop {
+			margin: tools.rem(8 0 8 40);
+			.c-reply__header {
+				flex-direction: row-reverse;
+			}
+			.c-reply__header-text {
+				flex-direction: row-reverse;
+			}
+			.c-reply__avatar {
+				margin-right: 0;
+				margin-left: 0.5rem;
+			}
+		}
+	}
+}

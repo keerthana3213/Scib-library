@@ -1,0 +1,61 @@
+/**
+ * @tokens CSS Body typescale
+ * @presenter body-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Thu, 07 Nov 2024 08:03:26 GMT
+ */
+
+:root[theme='new'][mode='dark'] {
+	// Pending
+}
+
+/**
+ * CUSTOM TOKENS
+*/
+:root[theme='new'][mode='dark'] {
+	--color-background-darker: #8f8f8f; /* Used for footer and header background color */
+	--color-surface-gradient: 68, 68, 68; /* Used for scroll container gradient */
+	--button-size-border-radius: var(--size-border-radius-05); /* Button border radius */
+	--color-action-on-brand-default: #222222; /* Used for action on brand default color */
+	--color-action-on-brand-hover: #222222; /* Used for action on brand hover color */
+	--color-action-on-brand-selected: #222222; /* Used for action on brand selected color */
+	--color-surface-on-brand-hover: var(--color-surface-read-only); /* Used for surface on brand hover color */
+	--color-surface-on-brand-selected: var(--color-surface-state-pressed); /* Used for surface on brand selected color */
+	--elevation-navbar: 0px 1px 3px rgba(68, 68, 68, 0.1); /* Used for main navbar elevation */
+	--color-header-background-clients: var(--color-header-background);
+	--color-header-background-employees: var(--color-dataviz-max-8-colors-08);
+	--color-header-on-background-clients: var(--color-header-on-background);
+	--color-header-on-background-employees: var(--color-action-on-brand-default);
+	--color-footer-background-clients: var(--color-footer-background);
+	--color-footer-background-employees: var(--color-footer-background);
+	--color-footer-on-background-clients: var(--color-footer-on-background);
+	--color-footer-on-background-employees: var(--color-footer-on-background);
+	--color-avatar-default: #28323c;
+	--color-avatar-green: #323f37;
+	--color-avatar-yellow: #302a19;
+	--color-avatar-red: #3a2a2a;
+	--color-avatar-purple: #363342;
+	--color-avatar-brown: #3c3430;
+	--color-avatar-grey: #313131;
+	--color-avatar-on-default: #b7d0dc;
+	--color-avatar-on-green: #b1ddb4;
+	--color-avatar-on-yellow: #e1d8bd;
+	--color-avatar-on-red: #fab2b2;
+	--color-avatar-on-purple: #c8add9;
+	--color-avatar-on-brown: #d3c0a9;
+	--color-avatar-on-grey: #d0d0d0;
+	--color-additional-palette-01: #ffd24d;
+	--color-additional-palette-02: #9f7700;
+	--color-additional-palette-03: #75c279;
+	--color-additional-palette-04: #009a40;
+	--color-additional-palette-05: #0138ff;
+	--color-additional-palette-06: #444444;
+	--color-additional-palette-07: #e60000;
+	--color-additional-palette-08: #b30000;
+	--color-additional-palette-09: #1ec9d2;
+	--color-additional-palette-10: #16949a;
+	--color-additional-palette-11: #da5694;
+	--color-additional-palette-12: #901a49;
+}

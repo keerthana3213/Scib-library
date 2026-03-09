@@ -1,0 +1,4 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_cdk-file-selector-bg-color: var(--cdk-file-selector-bg-color, white);
+}

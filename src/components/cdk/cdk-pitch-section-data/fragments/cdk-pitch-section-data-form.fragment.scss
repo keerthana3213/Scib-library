@@ -1,0 +1,158 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-pitch-section-data.scss, justo
+ * después de la importación del tema -> @forward 'cdk-pitch-section-data.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'settings';
+@use 'tools';
+
+.c-form {
+	background-color: white;
+	box-shadow: tools.rem(3 0 10 0) rgba(0, 0, 0, 0.12);
+	text-align: left;
+	padding: tools.rem(24 40);
+	font-family: settings.$font-regular-headline;
+	font-size: tools.rem(12);
+	color: black;
+	height: 100%;
+
+	h2 {
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(28);
+		margin-bottom: tools.rem(4);
+	}
+
+	&__subtitle {
+		font-size: tools.rem(16);
+		display: flex;
+		color: tools.color(secondary, ultra-dark);
+
+		span {
+			align-self: center;
+		}
+
+		span.u-icon {
+			color: tools.color(primary, base);
+		}
+	}
+
+	&__form {
+		figure {
+			margin-top: tools.rem(8);
+			border: dashed #cccccc tools.rem(1.5);
+			padding: tools.rem(4);
+			border-radius: tools.rem(2);
+
+			img {
+				margin: tools.rem(0);
+				padding: tools.rem(0);
+				object-fit: cover;
+				max-height: tools.rem(90);
+				//    max-width: tools.rem(290);
+				min-height: tools.rem(90);
+				//    min-width: tools.rem(300);
+				//    border: dashed #cccccc tools.rem(1.5);
+				// border-radius: tools.rem(2);
+				//    padding: tools.rem(4);
+			}
+		}
+
+		&--cover {
+			margin: tools.rem(18 0);
+			.c-cover__title {
+				font-size: tools.rem(12);
+			}
+			// &:hover {
+			// 	.c-form__form--upload {
+			// 		cursor: pointer;
+			// 	}
+			// }
+		}
+
+		&--upload {
+			margin-top: tools.rem(8);
+			object-fit: cover;
+			max-height: tools.rem(102);
+			// max-width: tools.rem(300);
+			height: tools.rem(102);
+			width: 100%;
+			// width: tools.rem(290);
+			border: dashed #cccccc tools.rem(1.5);
+			border-radius: tools.rem(2);
+			padding: tools.rem(4);
+			background-color: transparent;
+		}
+
+		&--cover-focused {
+			outline: dotted black tools.rem(1);
+		}
+
+		&--images {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
+			width: 100%;
+			max-height: tools.rem(102);
+			// min-width: tools.rem(300);
+			background: #deedf2;
+			// padding: tools.rem(4);
+		}
+
+		.u-icon {
+			font-size: tools.rem(40);
+			width: tools.rem(35);
+			height: tools.rem(30);
+		}
+
+		.icon-image {
+			color: #b6d4df;
+		}
+
+		.icon-upload {
+			font-size: tools.rem(16);
+			width: tools.rem(30);
+			height: tools.rem(30);
+			color: white;
+			background-color: #ec0000;
+			padding: tools.rem(2);
+			margin-left: tools.rem(10);
+			border-radius: tools.rem(90);
+		}
+
+		scib-ui-textarea {
+			margin-bottom: tools.rem(12);
+			font-size: tools.rem(16);
+		}
+
+		scib-ui-input {
+			font-size: tools.rem(16);
+		}
+	}
+
+	&__footernote {
+		text-align: right;
+
+		small {
+			font-size: tools.rem(12);
+		}
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	.c-form {
+		padding: tools.rem(24 20);
+
+		&__form {
+			figure {
+				img {
+					max-width: tools.rem(216);
+					min-width: tools.rem(216);
+				}
+			}
+		}
+	}
+}

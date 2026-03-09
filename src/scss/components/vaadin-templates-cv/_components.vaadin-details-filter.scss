@@ -1,0 +1,38 @@
+/**
+   *@description: this file stylizes the vaadin-details component with filter styles.
+   **Due to its structure, we can not use sass structure, but its functions,
+   **because in the compilation are compiled and generate stable css.
+**/
+
+[part='summary'] {
+	display: flex;
+	flex-flow: row;
+}
+
+[part='toggle'] {
+	order: 2;
+	transform: rotate(90deg);
+	color: #ec0000;
+}
+
+[part='summary-content'] {
+	order: 1;
+	margin-right: 10px;
+	font-size: 12px;
+	line-height: 18px;
+	font-weight: bold;
+	color: black;
+}
+
+:host(:not([disabled])) [part='summary']:hover [part='toggle'] {
+	color: #ec0000;
+	cursor: pointer;
+}
+
+:host([opened]) [part='toggle'] {
+	transform: rotate(-90deg);
+}
+
+[part='content'] {
+	padding: 10px 0 0;
+}

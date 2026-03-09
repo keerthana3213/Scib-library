@@ -1,0 +1,10 @@
+import { newE2EPage } from '@stencil/core/testing';
+
+describe('{{type}}-{{dashCase name}}', () => {
+	it('renders', async () => {
+		const page = await newE2EPage();
+		await page.setContent('<scib-{{type}}-{{dashCase name}}></scib-{{type}}-{{dashCase name}}>');
+		const element = await page.find('scib-{{type}}-{{dashCase name}}');
+		expect(element).toHaveClass('hydrated');
+	});
+});

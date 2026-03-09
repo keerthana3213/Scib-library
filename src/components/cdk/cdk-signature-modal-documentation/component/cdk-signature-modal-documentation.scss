@@ -1,0 +1,310 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-signature-modal-documentation.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_cdk-signature-modal-documentation-bg-color);
+
+	@include tools.shadowIcons();
+}
+.cdk-signature-modal-documentation {
+	&__title {
+		font-size: tools.rem(24);
+		line-height: tools.rem(34);
+		width: tools.rem(208);
+		margin-bottom: tools.rem(16);
+		font-weight: normal;
+	}
+
+	scib-cdk-file-selector {
+		margin-top: tools.rem(16);
+		display: block;
+
+		.cdk-fselector__txt {
+			font-size: tools.rem(16);
+			line-height: tools.rem(23);
+			margin-top: tools.rem(8);
+			&:before {
+				width: tools.rem(48);
+				height: tools.rem(48);
+				font-size: tools.rem(24);
+				padding: tools.rem(12) 0 0;
+				margin-bottom: tools.rem(8);
+			}
+		}
+
+		.ui-row {
+			margin-bottom: 0;
+		}
+	}
+
+	&__documentation-txt {
+		display: block;
+		margin-top: tools.rem(16);
+	}
+
+	&__file-container {
+		margin-top: tools.rem(15);
+	}
+
+	&__file-list {
+		width: 100%;
+		box-shadow: 0 3px 6px 0 rgba(155, 195, 211, 0.32);
+		border: tools.rem(1) solid;
+		border-radius: tools.rem(8);
+		box-sizing: border-box;
+		border-color: var(--_signature-border-primary, tools.color(tertiary, sky));
+	}
+
+	&__file-section {
+		display: flex;
+		width: 100%;
+		align-items: center;
+
+		&--right {
+			width: 100%;
+			justify-content: flex-end;
+			margin-top: tools.rem(8);
+			padding-left: tools.rem(27);
+
+			--atoms-button-font-size: #{tools.rem(24)};
+
+			.sc-scib-ui-input-h {
+				width: auto;
+			}
+
+			.c-root.sc-scib-ui-input {
+				height: tools.rem(39);
+				max-width: tools.rem(200);
+
+				input {
+					line-height: tools.rem(23);
+					max-height: tools.rem(39);
+					padding-right: tools.rem(32);
+				}
+
+				.c-inner-icon.u-icon.icon-fill-clear.--is-button.sc-scib-ui-input {
+					right: tools.rem(6);
+				}
+			}
+		}
+
+		&--bottom {
+			width: 100% !important;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: tools.rem(16 40);
+			.file-section {
+				width: 100%;
+				display: none;
+				&__top {
+					display: flex;
+					.ui-row {
+						justify-content: space-between;
+						flex-wrap: nowrap;
+					}
+					scib-ui-button {
+						width: tools.rem(110);
+					}
+				}
+				&__folder {
+					scib-cdk-signature-template-folder-navigation {
+						width: 100%;
+						margin-top: tools.rem(16);
+						cursor: default;
+					}
+				}
+			}
+			.active {
+				display: flex;
+			}
+		}
+
+		.icon-filepage {
+			width: tools.rem(20);
+			height: tools.rem(22);
+		}
+
+		.ui-ei-extension.sc-scib-ui-extension-icon {
+			width: tools.rem(16);
+			font-size: tools.rem(7);
+			top: tools.rem(8);
+		}
+	}
+
+	&__file {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		padding: tools.rem(17 20 9 22);
+		box-sizing: border-box;
+		align-items: center;
+		// cursor: move; /* fallback if grab cursor is unsupported */
+		// cursor: grab;
+		// cursor: -moz-grab;
+		// cursor: -webkit-grab;
+
+		scib-ui-button {
+			display: flex;
+
+			.c-button.--only-one-icon.sc-scib-ui-button {
+				min-width: 0;
+				min-height: 0;
+				padding: tools.rem(6);
+				display: inline-block;
+				margin-left: tools.rem(14);
+
+				.u-icon {
+					width: tools.rem(22);
+					height: tools.rem(22);
+				}
+			}
+		}
+
+		&:not(:first-of-type) {
+			border-top: tools.rem(1) solid;
+		}
+	}
+
+	&__file-name {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		margin-left: tools.rem(10);
+	}
+
+	&__file-name-doc {
+		display: none;
+	}
+
+	// &__file-drag {
+	// 	.c-button.--only-one-icon.--nobackground.sc-scib-ui-button {
+	// 		min-width: 0;
+	// 		min-height: 0;
+	// 		padding: 0;
+	// 		padding-right: tools.rem(6);
+	// 		margin-right: tools.rem(8);
+	// 		margin-left: 0;
+	// 		cursor: inherit;
+
+	// 		.u-icon {
+	// 			font-size: tools.rem(18);
+	// 			width: tools.rem(15);
+	// 			height: tools.rem(9);
+	// 		}
+	// 	}
+	// }
+	.file-section__only-folder {
+		.ui-row {
+			width: 100%;
+			margin: 0;
+			scib-atoms-button {
+				margin-left: auto;
+				margin-bottom: tools.rem(16);
+			}
+			scib-cdk-signature-template-folder-navigation {
+				width: 100%;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.cdk-signature-modal-documentation {
+		&__title {
+			font-size: tools.rem(28);
+			line-height: tools.rem(41);
+			width: 100%;
+			margin-bottom: 0;
+			color: var(--_signature-primary-text, black);
+		}
+
+		&__title--no-selector {
+			margin-bottom: tools.rem(16) !important;
+		}
+		scib-cdk-file-selector {
+			margin-top: tools.rem(16);
+			display: block;
+
+			.cdk-fselector__txt {
+				font-size: tools.rem(16);
+				line-height: tools.rem(23);
+				margin-top: tools.rem(8);
+				&:before {
+					width: tools.rem(48);
+					height: tools.rem(48);
+					font-size: tools.rem(24);
+					padding: tools.rem(12) 0 0;
+					margin-bottom: tools.rem(8);
+				}
+			}
+
+			.ui-row {
+				margin-bottom: 0;
+			}
+		}
+
+		&__documentation-txt {
+			display: block;
+			margin-top: tools.rem(16);
+		}
+
+		&__file-section {
+			width: 60%;
+
+			&--right {
+				width: 40%;
+				margin-top: 0;
+				padding-left: 0;
+			}
+
+			.icon-filepage {
+				width: tools.rem(24);
+				height: tools.rem(24);
+			}
+
+			.ui-ei-extension.sc-scib-ui-extension-icon {
+				width: tools.rem(20);
+				font-size: tools.rem(8);
+				top: 0.6rem;
+			}
+		}
+
+		&__file {
+			// flex-wrap: nowrap;
+			padding: tools.rem(9 14);
+
+			scib-ui-button {
+				.c-button.--only-one-icon.sc-scib-ui-button {
+					color: var(--_signature-primary, tools.color(primary, base));
+				}
+			}
+
+			&:not(:first-of-type) {
+				border-top-color: var(--_signature-border-primary, tools.color(tertiary, sky));
+			}
+		}
+
+		&__file-name {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			margin-left: tools.rem(10);
+		}
+
+		&__file-name-doc {
+			font-family: settings.$font-regular-txt;
+			font-size: tools.rem(16);
+			display: inline-block;
+		}
+
+		// &__file-drag {
+		// 	.c-button.--only-one-icon.--nobackground.sc-scib-ui-button {
+		// 		color: var(--_signature-secondary-text, tools.color(secondary, dark));
+		// 	}
+		// }
+	}
+}

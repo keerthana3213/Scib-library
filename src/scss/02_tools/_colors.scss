@@ -1,0 +1,23 @@
+@use '../01_settings/settings';
+@use "sass:list";
+@use "sass:map";
+
+/**
+   *@description: Function to obtain color and tone of the color map
+**/
+@function color($color-name, $color-variant) {
+	@return map.get(map.get(settings.$colors, $color-name), $color-variant);
+}
+
+/**
+*@description: mixin to config predefined color-schemes in background and color.
+**/
+@mixin btn-schema($name) {
+	@each $key, $value in $schemes {
+		@if $key == $name {
+			background-color: list.nth($value, 1);
+			color: list.nth($value, 2);
+			border-color: list.nth($value, 3);
+		}
+	}
+}

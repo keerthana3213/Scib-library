@@ -1,0 +1,176 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-messages-sendbar.theme.scss';
+@forward '../fragments/cdk-messages-sendbar-error.fragment';
+
+$card-border-radius: 8px;
+
+:host {
+	font-family: settings.$font-regular-txt;
+	// border: 1px solid tools.color(secondary, medium);
+	// border-radius: $card-border-radius;
+	// display: block;
+	// height: 100%;
+}
+
+.c-sendbar {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	background: white;
+	border-radius: 0;
+	box-shadow: 0 24px 24px 0 transparentize($color: black, $amount: 0.84);
+	// opacity: 0;
+	// transform: translateY(15px);
+	// animation: c-header__fade-in 0.65s cubic-bezier(0.50, 0, 0, 1) forwards;
+	& > * {
+		width: 100%;
+	}
+
+	@include tools.desktop {
+		border-radius: $card-border-radius;
+	}
+}
+
+.c-rich-editor {
+	height: calc(100%);
+	@include tools.desktop {
+		height: calc(100%);
+	}
+}
+
+.c-sendbar-footer {
+	// border-top: 2px solid tools.color(secondary, medium);
+	position: relative;
+	height: auto;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	background: tools.color(secondary, light);
+	box-sizing: border-box;
+	// border-bottom-left-radius: $card-border-radius;
+	// border-bottom-right-radius: $card-border-radius;
+	// padding: 0.75rem 1rem;
+	& > * {
+		@include tools.desktop {
+			width: auto;
+		}
+	}
+	& > *:not(:last-child) {
+		margin-right: 1rem;
+	}
+	@include tools.desktop {
+		//padding: 1rem;
+		& > *:not(:last-child) {
+			margin-right: tools.rem(16);
+		}
+	}
+}
+
+.c-sendbar-footer-button {
+	&.--right-mobile {
+		margin-left: auto;
+		@include tools.desktop {
+			margin-left: inherit;
+		}
+	}
+	&.--right {
+		@include tools.desktop {
+			margin-left: auto;
+		}
+	}
+
+	&.--small {
+		@include tools.desktop {
+			margin-right: tools.rem(7) !important;
+		}
+	}
+}
+
+.c-sendbar-attached-bar {
+	padding: 0 0 0 1rem;
+	box-sizing: border-box;
+	border: 1px solid #dcdcdc;
+	border-top: none;
+}
+.c-sendbar-added-file {
+	background-color: white;
+	box-sizing: border-box;
+	border: 1px solid #dcdcdc;
+	border-top: none;
+	border-radius: 0 0 4px 4px;
+	// margin-bottom: 100px;
+	padding-right: tools.rem(16);
+}
+
+scib-ui-options-menu {
+	position: fixed;
+	right: tools.rem(105);
+	bottom: tools.rem(75);
+	z-index: 999;
+	&.--right {
+		right: tools.rem(24);
+	}
+}
+
+.c-sendbar-warning-dialog {
+	font-family: settings.$font-regular-txt;
+	padding: 0;
+	width: 100%;
+	max-width: tools.rem(297);
+	max-height: 80vh;
+	overflow-y: auto;
+
+	&__title {
+		margin-top: 3%;
+		display: block;
+		margin: 0;
+		padding-top: tools.rem(24);
+		font-size: tools.rem(20);
+		line-height: tools.rem(28);
+		color: black;
+		margin-bottom: tools.rem(24);
+
+		strong {
+			font-family: settings.$font-bold-txt;
+		}
+	}
+
+	&__footer {
+		margin-top: tools.rem(24);
+		.sc-scib-ui-button-h {
+			margin: tools.rem(0 10);
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.c-sendbar-warning-dialog {
+		padding: tools.rem(26 26 26);
+		min-width: tools.rem(600);
+
+		&__title {
+			font-size: tools.rem(28);
+			line-height: tools.rem(34);
+		}
+
+		&__footer {
+			display: flex;
+			justify-content: flex-end;
+			padding-top: tools.rem(16);
+			align-items: center;
+		}
+
+		&__buttons {
+			display: flex;
+		}
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.c-sendbar-warning-dialog {
+		min-width: tools.rem(722);
+	}
+}

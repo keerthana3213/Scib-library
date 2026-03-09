@@ -1,0 +1,12 @@
+/**
+ * Public custom properties for accordion component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--ui-v2-card-background-color: var(--theme-colors-white);
+	--ui-v2-card-border-radius: 8px;
+	--ui-v2-card-padding: 25px;
+	--ui-v2-card-container-padding: var(--size-spacing-06);
+}

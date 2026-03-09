@@ -1,0 +1,163 @@
+import { getStoryConfig } from '../../../../.storybook/utils';
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+
+declare global {
+	namespace JSX {
+		interface IntrinsicElements {
+			[key: string]: any;
+		}
+	}
+}
+
+const meta: Meta = {
+	...getStoryConfig('scib-cdk-signature-modal-mailing'),
+	title: 'Design System/DEPRECATED/CDK/Signature Modal Mailing',
+	render: (args) => <scib-cdk-signature-modal-mailing {...args} />
+};
+export default meta;
+
+export const Playground: StoryObj = {
+	args: {
+		selectedSignatureType: undefined,
+		daysToExpireSiganture: '333',
+		filesUploaded: [],
+		recipientsList: [],
+		signatureMessage: 'Mensaje que se pone en el storybook pero que normalmente se recupera de otro sitio',
+		loadOnlyTemplates: false,
+		literals: {
+			dialog: {
+				helpTitle: 'Signature envelope',
+				helpSubtitle: 'Graphio - SCIB Digital Signature',
+				helpDescription:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				helpSubdescription: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
+				helpText:
+					'<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in.</p> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit am…</p>',
+				btnBack: 'Go back',
+				btnCancel: 'Cancel',
+				btnNext: 'Next',
+				btnHelpCancel: 'Exit',
+				btnHelpStart: 'Start',
+				btnFinish: 'Confirm and Create',
+				btnDuplicate: 'Confirm and Duplicate',
+				btnClearSelection: 'Clear selection',
+				btnShowFolders: 'Show folders',
+				noResultsText: 'No results',
+				checkLabel: "Don't show this help again",
+				helpVideoTitle: 'How to create an envelope?',
+				helpTextTitle: 'Signature envelope help',
+				btnCloseVideoHelp: 'Close video',
+				btnCloseTextHelp: 'Close help',
+				requiredLabel: '*Required input',
+				documentationTitle: 'Add documents to the envelope',
+				documentationTemplateTitle: 'Add template to the envelope',
+				configurationTitle: 'Configure the envelope',
+				confirmationTitle: 'Summary and recipients message',
+				selectorFilesTitle: 'Select or Drag Files to Upload*',
+				selectorFilesDuplicatedError: 'Duplicated filename',
+				selectorFilesMaxError: 'Sorry, you cannot upload more than 10 files',
+				selectorFilesMaxError2: 'Sorry, you cannot upload more than 1 file',
+				selectorFilesFormatError: 'The file or extension is not supported',
+				selectorFilesAttached: 'Attached document',
+				selectorTextDescription: 'Use the section above to attach documents then will appear in this area.',
+				documentTxt: 'Document',
+				categoryPlaceholder: 'Enter Category',
+				signatureTypesLabel: 'Signature type',
+				signatureTypesTooltipApp: "It's not allowed for the current process or your user doesn't have permissions for this type of signature",
+				checkSignOrderLabel: 'Set signing order',
+				signatureCheckLabel: 'Recipients',
+				recipientsTitle: 'Signer',
+				recipientsTitleCC: 'CC',
+				recipientGlcsPlaceholderInput: 'Enter your corporate name or GLCS',
+				recipientGlcsLabelInput: 'GLCS/ Company',
+				recipientNameLabelInput: 'Name*',
+				recipientNamePlaceholderInput: 'Enter recipient name...',
+				recipientEmailLabelInput: 'Email*',
+				recipientEmailPlaceholderInput: 'Enter recipient email...',
+				recipientOptionsLabelInput: 'Number/code*',
+				recipientOptionsPlaceholderInput: 'Enter number/code...',
+				recipientOptionsLabelInputCode: 'Code*',
+				recipientQualifiedIDNow: 'IDnow',
+				recipientOptionsPlaceholderInputCode: 'Enter code',
+				recipientOptionsPlaceholderInputSms: 'Phone number',
+				recipientOptionsLabelInputSmsFormat: 'Wrong format',
+				recipientOptionsLabelInputSmsRequired: 'Required',
+				recipientOptionsLabelInputSmsCountryRequired: 'Required prefix',
+				deleteRecipientBtn: 'Delete recipient',
+				addRecipientBtn: 'Add recipient',
+				pendingRecipientAlert: 'Pending to complete',
+				signatureDaysExpireLabel: 'Days to expire',
+				masiveLoadBtn: 'Massive load',
+				cancelMasiveLoadBtn: 'Cancel massive load',
+				downloadMasiveLoadTemplate: 'Download the CSV template provide. Then add here to Massive Recipients Load.',
+				resumeTitleSiganture: 'Signature',
+				resumeTitleDoc: 'Docu.',
+				resumeTitleExpiry: 'Expiry days',
+				resumeRecipientListTitle: 'Recipients list',
+				resumeCustomizeMailTitle: 'Customize mail',
+				resumeSubjectLabel: 'Subject*',
+				resumeSubjectPlaceholder: 'Write a subject...',
+				resumeMessageLabel: 'Message',
+				resumeMessagePlaceholder: 'Write a message...',
+				modalButtonText: 'New envelope',
+				close: 'Close',
+				modalCompleteMainTitle: 'Envelope sent!',
+				modalCompleteMessage: 'The envelope has been sent correctly',
+				modalCompleteOnlyBtn: 'Close',
+				modalProcessMainTitle: 'Do you want to exit?',
+				modalProcessMessage: 'If you close you will lose the progression',
+				modalProcessBtnLeft: 'Back',
+				modalProcessBtnRight: 'Close',
+				modalLoadingMainTitle: 'Loading content!',
+				modalLoadingMessage: 'Please wait',
+				modalErrorMainTitle: 'There has been an error.',
+				modalErrorMainTitleSizeLimit: 'Error in size file.',
+				modalErrorMainTitleAssignManager: 'Error assigning manager.',
+				modalErrorMessageSizeLimit: 'Please, check the size of the uploaded file does not exceed 25MB. Else, contact the administrator.',
+				modalErrorMessageAssignManager: 'An error has occurred, please try again later.',
+				modalErrorMessage: 'There has been an error with DocuSign connection. Please, try again later.',
+				modalErrorBtn: 'Close',
+				modalPermissionsMainTitle: 'Invalid permissions',
+				modalPermissionsMessage: 'Please, contact the administrator',
+				modalPermissionsBtn: 'Close',
+				modalAppPermissionsMainTitle: 'Invalid permissions',
+				modalAppPermissionsMessage: 'None of your permissions match with the app ones, contact the administrator',
+				modalAppPermissionsBtn: 'Close',
+				modalUserPermissionsMainTitle: 'Invalid permissions',
+				modalUserPermissionsMessage: "You don't have permissions, contact the administrator",
+				modalUserPermissionsBtn: 'Close',
+				modaldownServicesMainTitle: 'Services Fail',
+				modaldownServicesMessage: 'There has been an error. Please, try again later. If the error continues, contact the administrator.',
+				modaldownServicesBtn: 'Close',
+				folderEmptyState: {
+					mainTitle: 'This folder is empty.',
+					desc: 'Contact with the administrator if is an error.'
+				},
+				addTemplate: 'Add template',
+				noResults: 'No results',
+				employee: 'Employee',
+				buttonCancel: 'Cancel',
+				requiredInputs: '*Required inputs',
+				noTeamTitle: 'No team assigned',
+				noTeamText:
+					'You need to be assigned to a team in order to be able to set up digital signature envelopes. Please, contact your manager so you can be assigned to any of his/her teams.',
+				noTeamUnderstand: 'I understand',
+				glcsError: 'GLCS does not exist',
+				emailMessageError: 'Incorrect email format',
+				daystoExpireError: 'The value must be between 1 and 999',
+				maxLengthError: 'Reached maximum number of characters',
+				qualifiedOptional: 'Optional Configuration',
+				qualifiedOptionalLabel: 'Security configuration',
+				qualifiedOptionalInfo: 'Optional additional configuration. Only for users in some geographies with specific security requirements.',
+				optionalConfig: 'Optional configuration',
+				docAccessCode: 'Document access code',
+				docAccessCodeInfo: 'Access code that allows the document to be displayed',
+				accessCodeLabel: 'Access code',
+				errorMaxRecipients: 'The selected template cannot be applied. Please select another one.',
+				emailNotification: 'Email notification',
+				saveConfig: 'Save configuration'
+			}
+		}
+	}
+};

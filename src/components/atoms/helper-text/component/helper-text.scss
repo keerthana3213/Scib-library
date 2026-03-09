@@ -1,0 +1,126 @@
+@use 'tools';
+@use 'utilities';
+
+:host {
+	--_text-color: var(--color-text-soft);
+	--_text-icon-size: 20px;
+	--_text-font-family: var(--typescale-helper-text-font);
+	--_text-font-size: var(--typescale-helper-text-size);
+	--_text-font-weight: var(--typescale-helper-text-weight);
+	--_text-font-style: var(--typescale-helper-text-style);
+	--_text-line-height: var(--typescale-helper-text-line-height);
+
+	display: block;
+	width: var(--ui-v2-atoms-text-container, 100%);
+}
+
+:host([status='error']) {
+	--_text-color: var(--color-text-error);
+	--_text-icon-size: 20px;
+}
+
+:host([status='warning']) {
+	--_text-color: var(--color-text-warning);
+	--_text-icon-size: 20px;
+}
+
+:host([status='success']) {
+	--_text-color: var(--color-text-success);
+	--_text-icon-size: 20px;
+}
+
+:host([status='loading']) {
+	--_text-color: var(--color-text-soft);
+	--_text-icon-size: 16px;
+}
+
+:host([status='info']) {
+	--_text-color: var(--color-text-information);
+	--_text-icon-size: 20px;
+}
+
+/* Class for screen reader only text */
+.accessibility {
+	@include utilities.accessibility;
+}
+
+/* Ensure focus is visible for keyboard users */
+:host(:focus-within) {
+	outline: tools.rem(2px) solid var(--color-border-focus, #9bc3d3);
+	outline-offset: tools.rem(2px);
+}
+
+.text {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin-top: tools.rem(2px);
+
+	&__container {
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+
+	&__icon-container {
+		width: tools.rem(20px);
+		height: tools.rem(20px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-right: tools.rem(6px);
+	}
+
+	&__icon {
+		display: block;
+		font-size: var(--_text-icon-size);
+		width: var(--_text-icon-size);
+		height: var(--_text-icon-size);
+	}
+
+	&__content {
+		color: var(--_text-color);
+		font-family: var(--_text-font-family);
+		font-size: var(--_text-font-size);
+		font-weight: var(--_text-font-weight);
+		font-style: var(--_text-font-style);
+		line-height: var(--_text-line-height);
+
+		&.ellipsis {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			width: 100%;
+		}
+	}
+
+	&__tooltip {
+		display: flex;
+		align-items: center;
+		width: fit-content;
+		max-width: -webkit-fill-available;
+
+		::slotted(.text__content) {
+			display: block;
+		}
+	}
+}
+
+/* Configuration for accessible tooltip */
+scib-atoms-tooltip-info {
+	display: flex;
+	width: 100%;
+
+	--atoms-tooltip-info-display: flex;
+	--atoms-tooltip-info-top-bottom-distance: 100%;
+	--atoms-tooltip-info-size: 100%;
+}
+
+/* Support for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+	:host([status='loading']) {
+		.text__icon {
+			animation: none; /* Disable any animation */
+		}
+	}
+}

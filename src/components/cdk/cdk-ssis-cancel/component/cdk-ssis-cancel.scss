@@ -1,0 +1,79 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-ssis-cancel.theme.scss';
+
+.cdk-mssis {
+	&__title {
+		display: block;
+		margin: tools.rem(0 0 22);
+		font-size: tools.rem(20);
+		line-height: tools.rem(28);
+		color: black;
+	}
+
+	&__legend {
+		display: block;
+		margin-bottom: tools.rem(22);
+		font-size: tools.rem(14);
+		line-height: tools.rem(22);
+		color: tools.color(secondary, dark);
+	}
+
+	&__notice {
+		display: block;
+		margin-bottom: tools.rem(16);
+		font-size: tools.rem(13);
+		line-height: tools.rem(19);
+		color: black;
+	}
+
+	&__footer {
+		.sc-scib-ui-button-h {
+			width: 100%;
+			margin: tools.rem(0 10);
+		}
+	}
+
+	&__buttons {
+		display: flex;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.cdk-mssis {
+		margin-bottom: tools.rem(30);
+		padding: tools.rem(26 26 26);
+		min-width: tools.rem(650);
+
+		&__title {
+			margin: tools.rem(0 0 30);
+			font-size: tools.rem(28);
+			line-height: tools.rem(34);
+		}
+
+		&__legend {
+			margin-bottom: tools.rem(30);
+			font-size: tools.rem(18);
+			line-height: tools.rem(26);
+		}
+
+		&__notice {
+			display: inline-block;
+			margin-bottom: 0;
+		}
+
+		&__footer {
+			display: flex;
+			justify-content: space-between;
+			padding-top: tools.rem(16);
+			align-items: center;
+
+			.sc-scib-ui-button-h {
+				margin-right: auto;
+				margin-left: tools.rem(24);
+				max-width: tools.rem(200);
+			}
+		}
+	}
+}

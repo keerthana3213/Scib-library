@@ -1,0 +1,15 @@
+/**
+ * Public custom properties for slider component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-slider-bg-color-primary: var(--theme-colors-turquoise-dark, #137e84);
+	--atoms-slider-bg-color-secondary: var(--theme-colors-sky-dark, #9bc3d3);
+	--atoms-slider-track-inactive-color: var(--theme-colors-grey-dark, #767676);
+	--atoms-slider-tick-mark-inactive-color: var(--theme-colors-white, #ffffff);
+	--atoms-slider-tick-mark-active-color: var(--theme-colors-white, #ffffff);
+	--atoms-slider-margin: 0 24px;
+	--atoms-slider-margin-top: 20px;
+}

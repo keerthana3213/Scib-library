@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Help Playground</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Scripts del loader de la librería -->
+		<script type="module" src="/stencil-server/scib-ui-kit.esm.js" id="component-js-module"></script>
+		<script nomodule="" src="/stencil-server/scib-ui-kit.js" id="component-js"></script>
+
+		<!-- Stilos de la libreraía -->
+		<link rel="stylesheet" href="/stencil-server/scib-ui-kit.css" id="components-css" />
+	</head>
+
+	<body>
+		<header style="background-color: black; height: 56px"></header>
+		<scib-atoms-button
+			text="Click Me!"
+			size="s"
+			level="primary"
+			type="button"
+			(click)="()=>alert('ey')"
+			id="1"
+			style="top: 50px; left: 1300px; position: absolute"
+		>
+		</scib-atoms-button>
+
+		<scib-atoms-button
+			text="Click Me!"
+			size="s"
+			level="primary"
+			type="button"
+			(click)="()=>alert('ey')"
+			id="2"
+			style="left: 300px; top: 300px; position: absolute"
+		>
+		</scib-atoms-button>
+
+		<scib-atoms-button
+			text="Click Me!"
+			size="s"
+			level="primary"
+			type="button"
+			(click)="()=>alert('ey')"
+			id="3"
+			style="left: 400px; top: 600px; position: absolute"
+		>
+		</scib-atoms-button>
+
+		<scib-ui-button
+			size="xs"
+			primary
+			variant="flat"
+			ultrasmall
+			type="button"
+			(click)="()=>alert('ey')"
+			id="4"
+			style="left: 300px; top: 800px; position: absolute"
+			icon="icon-chevron-down"
+		>
+			Click Me!
+		</scib-ui-button>
+
+		<scib-molecules-overlay-bullets-container
+			components='[
+				{
+					"idBullet":"1",
+					"size":"normal",
+					"coordinates": {
+						"x":1371.28125,
+						"y":45
+					},
+					"highlight":false,
+					"contentCard": {
+						"content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
+						"arrowPosition":"left",
+						"tooltipCardTitle":"Track your credit line",
+						"linkTitle":"More info",
+						"btnTitle":"Next",
+						"disableLink":true
+					}
+				},
+				{
+					"idBullet":"2",
+					"size":"large",
+					"coordinates": {
+						"x":371.28125,
+						"y":295
+					},
+					"highlight":false,
+					"contentCard": {
+						"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
+						"arrowPosition": "left",
+						"tooltipCardTitle":"Track your credit line",
+						"linkTitle":"More info",
+						"btnTitle":"Next"
+					}
+				},
+				{
+					"idBullet":"3",
+					"coordinates": {
+						"x":471.28125,
+						"y":595
+					},
+					"highlight":false,
+					"contentCard": {
+						"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
+						"arrowPosition": "left",
+						"tooltipCardTitle":"Track your credit line",
+						"linkTitle":"More info",
+						"btnTitle":"Next"
+					}
+				},
+				{
+					"idBullet":"4",
+					"size" : "large",
+					"coordinates": {
+						"x":371.28125,
+						"y":795
+					},
+					"highlight":false,
+					"contentCard": {
+						"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
+						"arrowPosition": "left",
+						"tooltipCardTitle":"Track your credit line",
+						"linkTitle":"More info",
+						"btnTitle":"Next"
+					}
+				}]'
+		>
+		</scib-molecules-overlay-bullets-container>
+		<script>
+			const { left, x, y, right } = document.getElementById('1').getBoundingClientRect();
+			console.log(x, y, right, left);
+		</script>
+	</body>
+</html>

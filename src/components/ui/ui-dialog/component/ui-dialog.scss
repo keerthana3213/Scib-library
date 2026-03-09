@@ -1,0 +1,100 @@
+@use 'settings';
+@use 'tools';
+@use 'utilities';
+
+@forward 'ui-dialog.theme.scss';
+
+/** Este componente no se puede encapsular a causa de la librería "quill".
+* Para evitar colisión de estilos, se debe inyectar manualmente el "block" de BEM
+*/
+.c-scib-ui-dialog {
+	font-family: settings.$font-regular-txt;
+	border-radius: tools.rem(8);
+
+	&__header {
+		display: flex;
+		justify-content: flex-end;
+		position: relative;
+	}
+
+	&__button {
+		@include utilities.force-reset(button);
+		cursor: pointer;
+		color: tools.color(secondary, ultra-dark);
+		outline: none;
+		padding: 3px;
+		border-radius: 50%;
+		transition: box-shadow 0.15s;
+		position: absolute;
+		z-index: 20;
+	}
+
+	&__container {
+		position: relative;
+	}
+
+	&--absolute {
+		position: absolute;
+		z-index: tools.z-index(dialog);
+		height: 100%;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+	}
+
+	&--overflow {
+		position: fixed;
+
+		& fieldset {
+			overflow-y: auto;
+			overflow-x: hidden;
+			padding-right: tools.rem(28);
+
+			// // Mozilla support: thumb color and track color
+			// scrollbar-color: tools.color(tertiary, sky) tools.color(tertiary, light);
+			// scrollbar-width: thin; // Mozilla support: scrollbar width (specific width is not supported)
+
+			// &::-webkit-scrollbar {
+			//   width: tools.rem(12);
+
+			//   &-track {
+			//     background: tools.color(tertiary, light);
+			//     border-radius: 999px;
+			//   }
+
+			//   &-thumb {
+			//     background: tools.color(tertiary, sky);
+			//     border-radius: 999px;
+
+			//     &:hover {
+			//       background: tools.color(tertiary, focus);
+			//     }
+			//   }
+			// }
+		}
+
+		& > div:first-of-type {
+			display: flex !important;
+			height: 100%;
+
+			& > :first-child {
+				display: flex;
+				flex-direction: column;
+			}
+		}
+	}
+
+	&--fixed {
+		position: fixed;
+		z-index: tools.z-index(dialog);
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+	}
+}
+
+vaadin-dialog-overlay {
+	z-index: tools.z-index(dialog);
+}

@@ -1,0 +1,68 @@
+<!-- Scripts del loader de la librería -->
+<script type="module" src="/stencil-server/scib-ui-kit.esm.js" id="component-js-module"></script>
+
+<!-- Stilos de la libreraía -->
+<link rel="stylesheet" href="/stencil-server-assets/themes/scib.css" id="themes-css" />
+<link rel="stylesheet" href="/stencil-server/scib-ui-kit.css" id="components-css" />
+
+<style>
+	#storybook-docs h2#stories {
+		display: none !important;
+	}
+	html,
+	body {
+		background-color: var(--color-background-default);
+	}
+
+	/* Nuevos estilos para los componentes de stories */
+	.sb-container {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.sb-example-wrapper {
+		padding: 16px;
+		border: 1px solid #e5e5e5;
+		border-radius: 4px;
+	}
+
+	.sb-example-title {
+		margin: 0 0 8px 0;
+		font-size: 14px;
+		color: #666;
+	}
+
+	.sb-deprecated {
+		padding: 16px;
+		background: var(--color-icon-disabled);
+		border-radius: 4px;
+		cursor: not-allowed;
+	}
+</style>
+
+<script>
+	window.addEventListener('load', function () {
+		setTimeout(() => {
+			const parent = document.documentElement;
+			const classItem = parent.querySelector('.sb-main-padded');
+			const observer = new MutationObserver((mutationList, observer) => {
+				mutationList.forEach(function (mutation) {
+					if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+						const { target } = mutation;
+						const defaultBrand = !!target.classList.contains('default');
+						const newBrand = !!target.classList.contains('new-brand');
+						if (newBrand) {
+							parent.setAttribute('theme', 'new');
+						} else {
+							parent.removeAttribute('theme');
+						}
+					}
+				});
+			});
+			observer.observe(classItem, {
+				attributes: true
+			});
+		}, 3000);
+	});
+</script>

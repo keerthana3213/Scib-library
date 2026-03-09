@@ -1,0 +1,13 @@
+/**
+ * Public custom properties for accordion component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--ui-v2-text-field-helper-line-display: flex; //can be changed in ui-v2-select.scss
+	--ui-v2-text-field-input-border-radius: 4px 4px 0 0; //can be changed in molecules-range-input.scss
+	--ui-v2-text-field-fixed-icon-margin: 18px; //can be changed in molecules-range-input.scss
+	--ui-v2-text-field-input-value-margin-top: 15px; //can be changed in molecules-range-input.scss
+	--ui-v2-text-field-padding: 0 8px; //can be changed in molecules-range-input.scss
+}

@@ -1,0 +1,4 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_ui-separator-bg-color: var(--ui-separator-bg-color, white);
+}

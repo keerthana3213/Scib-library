@@ -1,0 +1,8 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_ui-notification-bg-color: var(--ui-notification-bg-color, white);
+	--ui-notification-inner-font-color: unset;
+	--ui-notification-inner-font-size: unset;
+	--ui-notification-inner-font-family: unset;
+	--ui-notification-inner-icon-color: unset;
+}

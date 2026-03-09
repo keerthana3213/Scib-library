@@ -1,0 +1,20 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-new-tag.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+
+.ui-new {
+	background-color: #1bb3bc;
+	width: tools.rem(57);
+	height: tools.rem(24);
+	color: white;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	padding: tools.rem(0 10);
+	font-family: settings.$font-bold-txt;
+}

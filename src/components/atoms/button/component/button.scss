@@ -1,0 +1,289 @@
+@use '@material/button/styles';
+@use '@material/button';
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_atoms-button-height: 48px;
+	--_atoms-button-min-width: 136px;
+	--_atoms-button-max-width: 100%;
+	--_atoms-button-padding: var(--atoms-button-padding);
+	--_atoms-button-font-family: var(--typescale-button-large-font);
+	--_atoms-button-font-size: var(--typescale-button-large-size);
+	--_atoms-button-font-line-height: var(--typescale-button-large-line-height);
+	--_atoms-button-font-weight: var(--typescale-button-large-weight);
+	--_atoms-button-font-style: var(--typescale-button-large-style);
+	--_atoms-button-icon-font-size: 24px;
+	--_atoms-button-box-shadow: var(--elevation-raised);
+	--_atoms-button-loading-size: 32px;
+	--_atoms-button-hover-background-color: var(--color-action-main-hover);
+	--_atoms-button-hover-cursor: pointer;
+	--_atoms-button-pointer-events: inherit;
+	--_atoms-button-border-radius: var(--button-size-border-radius);
+}
+
+:host([size='s']),
+:host([size='xs']) {
+	--_atoms-button-height: 32px;
+	--_atoms-button-min-width: 112px;
+	--_atoms-button-loading-size: 24px;
+	--_atoms-button-font-family: var(--typescale-button-medium-font);
+	--_atoms-button-font-size: var(--typescale-button-medium-size);
+	--_atoms-button-font-line-height: var(--typescale-button-medium-line-height);
+	--_atoms-button-font-weight: var(--typescale-button-medium-weight);
+	--_atoms-button-font-style: var(--typescale-button-medium-style);
+}
+
+// The color property will be deprecated in favor of level
+:host([color='primary']),
+:host([level='primary']) {
+	--mdc-theme-primary: var(--color-action-main-default);
+	--_atoms-button-base-color: var(--color-action-main-default);
+	--_atoms-button-hover-background-color: var(--color-action-main-hover);
+	--_atoms-button-base-color-disabled: var(--color-action-disabled);
+	--_atoms-button-label-color: var(--color-action-on-main-default);
+	--_atoms-button-label-color-hover: var(--color-action-on-main-hover);
+	--_atoms-button-icon-color: var(--color-action-on-main-default);
+	--_atoms-button-icon-color-over: var(--color-action-on-main-hover);
+}
+
+// The color property will be deprecated in favor of level
+:host([color='secondary']),
+:host([level='secondary']) {
+	--mdc-theme-primary: var(--color-button-secondary-default);
+	--_atoms-button-base-color: var(--color-button-secondary-default);
+	--_atoms-button-hover-background-color: var(--color-button-secondary-hover);
+	--_atoms-button-label-color: var(--color-button-on-secondary-default);
+	--_atoms-button-base-color-disabled: var(--color-action-disabled);
+	--_atoms-button-label-color-hover: var(--color-button-on-secondary-hover);
+	--_atoms-button-icon-color: var(--color-button-on-secondary-default);
+	--_atoms-button-icon-color-over: var(--color-button-on-secondary-hover);
+}
+
+// The color property will be deprecated in favor of level
+:host([color='none']),
+:host([color='tertiary']),
+:host([level='none']),
+:host([level='tertiary']) {
+	--mdc-theme-primary: var(--color-action-alternative-default);
+	--mdc-text-button-hover-state-layer-color: var(--color-surface-state-pressed);
+	--_atoms-button-base-color: var(--color-surface-state-default);
+	--_atoms-button-base-color-disabled: var(--color-surface-state-default);
+	--_atoms-button-hover-background-color: var(--color-surface-state-hover);
+	--_atoms-button-label-color: var(--color-action-alternative-default);
+	--_atoms-button-label-color-hover: var(--color-action-alternative-hover);
+	--_atoms-button-icon-color: var(--color-action-alternative-default);
+	--_atoms-button-icon-color-over: var(--color-action-alternative-hover);
+	--_atoms-button-box-shadow: none;
+}
+
+:host([disabled]:not([disabled='false'])) {
+	--_atoms-button-label-color-disabled: var(--color-action-on-disabled);
+	--_atoms-button-icon-color: var(--color-action-on-disabled);
+	--_atoms-button-pointer-events: none;
+	--_atoms-button-hover-cursor: default;
+	--_atoms-button-box-shadow: none;
+}
+
+:host([loading]:not([loading='false'])) {
+	--_atoms-button-pointer-events: none;
+	--_atoms-button-hover-cursor: default;
+}
+
+// The color property will be deprecated in favor of level
+:host([loading]:not([loading='false'])[color='primary']),
+:host([loading]:not([loading='false'])[level='primary']) {
+	--mdc-theme-primary: var(--color-action-main-hover);
+	--_atoms-button-hover-background-color: var(--color-action-main-hover);
+	--_atoms-button-base-color: var(--color-action-main-hover);
+	--_atoms-button-loading-color: var(--color-action-on-main-hover);
+}
+
+// The color property will be deprecated in favor of level
+:host([loading]:not([loading='false'])[color='secondary']),
+:host([loading]:not([loading='false'])[level='secondary']) {
+	--mdc-theme-primary: var(--color-button-secondary-hover);
+	--_atoms-button-hover-background-color: var(--color-button-secondary-hover);
+	--_atoms-button-base-color: var(--color-button-secondary-hover);
+	--_atoms-button-loading-color: var(--color-button-on-secondary-hover);
+}
+
+// The color property will be deprecated in favor of level
+:host([loading]:not([loading='false'])[color='none']),
+:host([loading]:not([loading='false'])[color='tertiary']),
+:host([loading]:not([loading='false'])[level='none']),
+:host([loading]:not([loading='false'])[level='tertiary']) {
+	--_atoms-button-loading-color: var(--color-action-alternative-default);
+}
+
+:host([variant^='icon']) {
+	--_atoms-button-padding: 0;
+	--_atoms-button-height: 48px;
+	--_atoms-button-min-width: 48px;
+	--_atoms-button-max-width: 48px;
+}
+
+:host([variant^='icon'][size='s']),
+:host([variant^='icon'][size='xs']) {
+	--_atoms-button-height: 32px;
+	--_atoms-button-min-width: 32px;
+	--_atoms-button-max-width: 32px;
+}
+
+/**
+ * Component
+ */
+:host {
+	display: block;
+	@include tools.shadowIcons();
+	$transition: all 200ms ease-in-out 0ms;
+
+	--mdc-text-button-container-shape: var(--_atoms-button-border-radius);
+	--atoms-loading-color-secondary: var(--_atoms-button-loading-color);
+	--atoms-loading-color-primary: var(--_atoms-button-loading-color);
+	--atoms-loading-size: var(--_atoms-button-loading-size);
+
+	min-width: var(--_atoms-button-min-width);
+	max-width: var(--_atoms-button-max-width);
+	height: var(--_atoms-button-height);
+
+	.mdc-button {
+		display: flex;
+		flex-direction: row;
+		gap: tools.rem(8px);
+		align-items: center;
+		justify-content: center;
+		@include button.height(var(--_atoms-button-height));
+		pointer-events: var(--_atoms-button-pointer-events);
+		box-shadow: var(--_atoms-button-box-shadow);
+		min-width: var(--_atoms-button-min-width);
+		max-width: var(--_atoms-button-max-width);
+		padding: var(--_atoms-button-padding);
+		border-radius: var(--_atoms-button-border-radius);
+		transition: none;
+		border: none;
+		width: 100%;
+
+		&.mdc-button {
+			display: flex;
+			box-shadow: var(--_atoms-button-box-shadow);
+
+			&--icon-leading {
+				flex-direction: row;
+			}
+
+			&--icon-trailing {
+				flex-direction: row-reverse;
+			}
+
+			&--basic {
+				color: var(--_atoms-button-label-color);
+				background-color: var(--_atoms-button-base-color);
+
+				&:hover {
+					transition: $transition;
+
+					label {
+						color: var(--_atoms-button-label-color-hover);
+					}
+				}
+
+				&.mdc-button[disabled] {
+					color: var(--_atoms-button-label-color-disabled);
+					background: var(--_atoms-button-base-color-disabled);
+					span {
+						font-family: var(--_atoms-button-font-family);
+						font-size: var(--_atoms-button-font-size);
+						font-weight: var(--_atoms-button-font-weight);
+						font-style: var(--_atoms-button-font-style);
+						line-height: var(--_atoms-button-font-line-height);
+					}
+				}
+			}
+
+			&--fab-icon {
+				color: var(--_atoms-button-label-color);
+				background-color: var(--_atoms-button-base-color);
+				max-width: var(--_atoms-button-min-width);
+				height: var(--_atoms-button-height);
+				border-radius: var(--_atoms-button-border-radius);
+				font-size: var(--_atoms-button-icon-font-size);
+				margin: 0;
+
+				&:hover {
+					transition: $transition;
+					.icon {
+						color: var(--_atoms-button-label-color-hover);
+					}
+				}
+			}
+
+			&:hover {
+				transition: $transition;
+				background-color: var(--_atoms-button-hover-background-color);
+				cursor: var(--_atoms-button-hover-cursor);
+				color: var(--_atoms-button-label-color-hover);
+			}
+		}
+
+		&__label {
+			font-family: var(--_atoms-button-font-family);
+			font-size: var(--_atoms-button-font-size);
+			font-weight: var(--_atoms-button-font-weight);
+			font-style: var(--_atoms-button-font-style);
+			line-height: var(--_atoms-button-font-line-height);
+			letter-spacing: normal;
+			text-transform: none;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+
+			&:first-letter {
+				text-transform: capitalize;
+			}
+		}
+
+		&__icon {
+			display: flex;
+			margin: 0;
+			height: var(--_atoms-button-icon-font-size);
+			width: var(--_atoms-button-icon-font-size);
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: var(--_atoms-button-icon-color);
+			font-size: var(--_atoms-button-icon-font-size);
+
+			:hover {
+				color: var(--_atoms-button-icon-color-over);
+				.icon {
+					color: var(--_atoms-button-icon-color-over);
+				}
+			}
+
+			.icon {
+				font-size: var(--_atoms-button-icon-font-size);
+			}
+		}
+
+		&[disabled] {
+			&.mdc-button {
+				&__icon {
+					.icon {
+						color: var(--_atoms-button-label-color-disabled) !important;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,245 @@
+@use 'settings';
+@use 'tools';
+@use 'objects';
+
+@forward 'cdk-signature-modal-mailing.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_molecules-cdk-signature-modal-mailing-bg-color);
+	@include tools.shadowIcons();
+}
+
+.cdk-signature-modal-mailing {
+	&__title {
+		font-size: tools.rem(24);
+		line-height: tools.rem(34);
+		width: tools.rem(208);
+		margin-bottom: tools.rem(16);
+	}
+
+	&__summary-data {
+		padding: tools.rem(19 6 11 16);
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		border: tools.rem(1) solid;
+		border-radius: tools.rem(8);
+		box-sizing: border-box;
+		margin-top: tools.rem(16);
+	}
+
+	&__summary-files {
+		width: 100%;
+		margin-left: 0;
+
+		.c-attachedbar-content.sc-scib-cdk-messages-attached-bar {
+			padding: 0;
+		}
+
+		.c-attachedbar-item-subtitle.sc-scib-cdk-messages-attached-bar {
+			display: none;
+		}
+
+		.c-attachedbar-item-title.sc-scib-cdk-messages-attached-bar {
+			width: tools.rem(140);
+			max-width: inherit;
+		}
+
+		.c-attachedbar-list.sc-scib-cdk-messages-attached-bar {
+			flex-wrap: wrap;
+		}
+
+		.c-attachedbar-list.sc-scib-cdk-messages-attached-bar::after {
+			display: none;
+		}
+	}
+
+	&__summary-options {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 80%;
+		margin-bottom: tools.rem(16);
+		white-space: nowrap;
+	}
+
+	&__summary-option {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__summary-title {
+		text-transform: uppercase;
+		font-size: tools.rem(12);
+		line-height: tools.rem(18);
+	}
+
+	&__summary-txt {
+		font-size: tools.rem(16);
+		line-height: tools.rem(23);
+	}
+
+	&__summary {
+		border-bottom: tools.rem(1) solid transparent;
+		margin-bottom: tools.rem(16);
+	}
+
+	&__message {
+		width: 100%;
+		box-sizing: border-box;
+		--ui-v2-text-field-textarea-height: #{tools.rem(150)};
+
+		scib-ui-input {
+			margin-top: tools.rem(8);
+
+			.c-input.sc-scib-ui-input {
+				line-height: tools.rem(20);
+				padding-top: tools.rem(13);
+				padding-bottom: tools.rem(13);
+			}
+		}
+
+		scib-ui-textarea {
+			display: block;
+			margin-top: tools.rem(24);
+		}
+
+		.sc-scib-ui-textarea-h .c-textarea.sc-scib-ui-textarea {
+			margin-bottom: 0;
+			height: tools.rem(180);
+		}
+		scib-ui-v2-text-field {
+			margin-top: tools.rem(16);
+			&:last-child {
+				margin-top: tools.rem(24);
+			}
+		}
+		// .cdk-signature-modal-mailing__summary--error {
+		// 	font-size: tools.rem(12);
+		// 	color: var(--theme-colors-santander-base);
+		// 	padding-left: tools.rem(16);
+		// }
+	}
+
+	&__summary-recipients {
+		margin: tools.rem(16 0 24);
+	}
+
+	&__summary-list-title {
+		font-family: settings.$font-bold-txt;
+		font-size: tools.rem(16);
+		line-height: tools.rem(23);
+	}
+
+	&__summary-list {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	&__summary-list-item {
+		width: 100%;
+		margin-top: tools.rem(8);
+		display: block;
+		@extend %ellipsis;
+
+		span {
+			display: block;
+			width: 100%;
+			padding-right: tools.rem(16);
+			box-sizing: border-box;
+		}
+	}
+
+	&__messages-modal {
+		position: absolute;
+		z-index: 1010;
+
+		&--actions {
+			display: flex;
+			flex-wrap: nowrap;
+
+			scib-atoms-button {
+				--atoms-button-min-width: #{tools.rem(172)};
+				--atoms-button-min-height: #{tools.rem(54)};
+				&:last-child {
+					margin-left: tools.rem(20);
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.cdk-signature-modal-mailing {
+		&__title {
+			font-size: tools.rem(28);
+			line-height: tools.rem(41);
+			width: 100%;
+			margin-bottom: 0;
+			color: var(--_signature-primary-text, black);
+		}
+
+		&__summary-data {
+			flex-direction: row;
+			border-color: var(--_signature-decorator-primary, tools.color(tertiary, light));
+			background: var(--_signature-decorator-secondary, tools.color(tertiary, ultra-light));
+		}
+
+		&__summary-files {
+			width: 72%;
+			margin-left: tools.rem(24);
+
+			.c-attachedbar-button-download.sc-scib-cdk-messages-attached-bar {
+				color: var(--_signature-primary, tools.color(primary, base));
+			}
+		}
+
+		&__summary-title {
+			color: var(--_signature-primary-text, black);
+		}
+
+		&__summary-options {
+			width: 45%;
+			margin-bottom: 0;
+		}
+
+		&__summary-list-title {
+			color: var(--_signature-primary-text, black);
+		}
+
+		&__summary-list-item {
+			width: 50%;
+			margin-top: tools.rem(8);
+			display: block;
+
+			span {
+				display: block;
+				width: 100%;
+				padding-right: tools.rem(16);
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+				box-sizing: border-box;
+			}
+		}
+
+		&__summary-txt {
+			color: var(--_signature-tertiary-text, tools.color(secondary, ultra-dark));
+		}
+
+		&__summary {
+			border-bottom-color: tools.color(secondary, medium);
+		}
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.cdk-signature-modal-mailing {
+		&__summary-options {
+			width: 40%;
+			margin-bottom: 0;
+		}
+	}
+}

@@ -1,0 +1,277 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_atoms-calendar-elevation: var(--atoms-calendar-elevation);
+	--_atoms-calendar-border-color: var(--atoms-calendar-border-color);
+	--_atoms-calendar-header-background-color: var(--atoms-calendar-header-background-color);
+	--_atoms-calendar-header-font-color: var(--atoms-calendar-header-font-color);
+	--_atoms-calendar-day-background-color: var(--atoms-calendar-day-background-color);
+	--_atoms-calendar-empty-day-background-color: var(--atoms-calendar-empty-day-background-color);
+	--_atoms-calendar-weekend-day-background-color: var(--atoms-calendar-weekend-day-background-color);
+	--_atoms-calendar-day-font-color: var(--atoms-calendar-day-font-color);
+	--_atoms-calendar-events-day-icon-font-color: transparent;
+	--_atoms-calendar-events-day-font-color: var(--atoms-calendar-day-font-color);
+	--_atoms-calendar-selected-day-background-color: var(--atoms-calendar-header-background-color);
+	--_atoms-calendar-selected-day-foreground-color: var(--theme-colors-white);
+	--_atoms-calendar-days-cursor: var(--atoms-calendar-days-cursor);
+}
+
+// The color property will be deprecated in favor of level
+:host([color='primary']),
+:host([level='primary']) {
+	--_atoms-calendar-events-day-icon-font-color: var(--theme-colors-santander-base);
+	--_atoms-calendar-events-day-font-color: var(--theme-colors-santander-base);
+	--_atoms-calendar-selected-day-border-color: var(--theme-colors-santander-medium);
+	--_atoms-calendar-selected-day-background-color: var(--theme-colors-santander-base);
+}
+
+// The color property will be deprecated in favor of level
+:host([color='secondary']),
+:host([level='secondary']) {
+	--_atoms-calendar-events-day-icon-font-color: var(--theme-colors-primary);
+	--_atoms-calendar-events-day-font-color: var(--theme-colors-primary);
+	--_atoms-calendar-selected-day-border-color: var(--theme-colors-primary);
+	--_atoms-calendar-selected-day-background-color: var(--theme-colors-primary);
+}
+
+/** 
+ * Component
+ */
+:host {
+	display: block;
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_atoms-calendar-bg-color);
+	@include tools.shadowIcons();
+
+	.calendar {
+		width: 100%;
+		box-shadow: var(--_atoms-calendar-elevation);
+		border-radius: tools.rem(8px);
+
+		&__header {
+			border: tools.rem(1px) solid var(--_atoms-calendar-border-color);
+			background-color: var(--_atoms-calendar-header-background-color);
+			border-top-left-radius: tools.rem(8px);
+			border-top-right-radius: tools.rem(8px);
+			height: tools.rem(25px);
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			align-items: center;
+			overflow: hidden;
+
+			&__text {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				font-family: settings.$font-regular-txt;
+				font-size: tools.rem(11px);
+				width: calc(100% / 7);
+				color: var(--_atoms-calendar-header-font-color);
+				height: 100%;
+
+				span {
+					padding-left: tools.rem(5px);
+					text-transform: capitalize;
+				}
+			}
+		}
+
+		&__body {
+			display: flex;
+			flex-direction: column;
+			border: 1px solid var(--_atoms-calendar-border-color);
+			border-top: none;
+			border-bottom-left-radius: tools.rem(8px);
+			border-bottom-right-radius: tools.rem(8px);
+			overflow: hidden;
+
+			&__week {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-evenly;
+				align-items: center;
+
+				&__day {
+					border-color: var(--_atoms-calendar-border-color);
+					border-style: solid;
+					border-width: 0;
+					border-right-width: tools.rem(1px);
+					border-bottom-width: tools.rem(1px);
+					height: tools.rem(75px);
+					width: calc((100% / 7) + 1px);
+					overflow: hidden;
+					position: relative;
+					background-color: var(--_atoms-calendar-day-background-color);
+					cursor: var(--_atoms-calendar-days-cursor);
+					--_atoms-background-action-button: var(--_atoms-calendar-day-background-color);
+
+					&--empty {
+						border-left-color: transparent;
+						border-right-color: transparent;
+						background-color: var(--_atoms-calendar-empty-day-background-color);
+						--_atoms-background-action-button: var(--_atoms-calendar-empty-day-background-color);
+					}
+
+					&--last {
+						border-bottom: none;
+					}
+
+					&--first {
+						border-right-color: var(--_atoms-calendar-border-color);
+					}
+
+					&--has-events {
+						.calendar__body__week__day__number {
+							.icon,
+							span {
+								color: var(--_atoms-calendar-events-day-font-color);
+							}
+
+							.icon {
+								color: var(--_atoms-calendar-events-day-icon-font-color);
+								visibility: visible;
+							}
+						}
+					}
+
+					&:hover {
+						.action-button {
+							opacity: 1;
+						}
+					}
+
+					&--disabled {
+						pointer-events: none;
+						--_atoms-calendar-days-cursor: default;
+						background: var(--theme-colors-grey-light);
+						opacity: 0.5;
+						.action-button {
+							display: none;
+						}
+						.calendar__body__week__day__info__action {
+							cursor: var(--_atoms-calendar-days-cursor);
+						}
+					}
+
+					&:last-child {
+						border-right: none;
+					}
+
+					&:nth-child(1n + 6) {
+						background-color: var(--_atoms-calendar-weekend-day-background-color);
+						--_atoms-background-action-button: var(--_atoms-calendar-weekend-day-background-color);
+					}
+
+					&__number {
+						display: grid;
+						grid-template-columns: repeat(2, minmax(0, 1fr));
+						align-items: center;
+						padding: tools.rem(5px 7px);
+						gap: tools.rem(0 7px);
+						text-align: left;
+
+						.icon {
+							font-size: tools.rem(6px);
+							color: transparent;
+							visibility: hidden;
+							justify-content: flex-start;
+						}
+
+						span {
+							line-height: tools.rem(15px);
+							color: var(--_atoms-calendar-day-font-color);
+							font-family: settings.$font-regular-headline;
+							font-size: tools.rem(10px);
+							text-align: right;
+						}
+					}
+
+					&__info {
+						display: flex;
+						flex-direction: column;
+						overflow: hidden;
+						padding: tools.rem(0 9px);
+
+						&__title {
+							font-size: tools.rem(14px);
+							font-family: settings.$font-regular-txt;
+							line-height: tools.rem(20px);
+							display: flex;
+							flex-direction: row;
+							justify-content: flex-start;
+							align-items: center;
+							gap: tools.rem(5px);
+							color: #222222;
+							text-overflow: ellipsis;
+							display: inline-block;
+							white-space: nowrap;
+							overflow: hidden;
+
+							span {
+								&:last-child {
+									color: var(--theme-colors-grey-dark);
+									padding-left: tools.rem(5px);
+								}
+							}
+						}
+
+						&__sub-title {
+							font-size: tools.rem(14px);
+							font-family: settings.$font-regular-txt;
+							line-height: tools.rem(20px);
+							color: var(--theme-colors-grey-dark);
+							display: flex;
+							flex-direction: row;
+							justify-content: flex-start;
+							align-items: center;
+							gap: tools.rem(5px);
+							text-overflow: ellipsis;
+							display: inline-block;
+							white-space: nowrap;
+							overflow: hidden;
+
+							span {
+								&:last-child {
+									padding-left: tools.rem(5px);
+								}
+							}
+						}
+
+						&__action {
+							position: absolute;
+							top: 0;
+							left: 0;
+							bottom: 0;
+							right: 0;
+							color: var(--theme-colors-santander-base);
+							cursor: pointer;
+							opacity: 0;
+							display: flex;
+							justify-content: flex-end;
+							align-items: flex-start;
+							transition: opacity 0.15s cubic-bezier(0.51, 0.78, 0.79, 0.98);
+
+							.icon {
+								background-color: var(--_action-button-background-color);
+								font-size: tools.rem(19px);
+								padding: tools.rem(6px 6px 0 0);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

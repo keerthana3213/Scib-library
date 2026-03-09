@@ -1,0 +1,140 @@
+@use '../01_settings/settings';
+@use '../02_tools/tools';
+
+.u-icon,
+i[class^='icon'],
+em[class^='icon'] {
+	display: flex;
+	line-height: 1;
+	font-weight: 400;
+	font-style: normal;
+	text-rendering: auto;
+	font-variant: normal;
+	align-items: center;
+	justify-content: center;
+	font-size: tools.rem(24);
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'scib-icons' !important;
+}
+
+// Other fonts
+
+@function _font-path($type) {
+	@return settings.$font_path + '/Santander-' + $type;
+}
+
+@function _flame-font-path($name) {
+	@return settings.$font_path + '/flame/' + $name;
+}
+
+// DEPRECATED FONTS
+
+@include tools.font-face(scib-txt-regular, _font-path('text-regular'));
+
+@include tools.font-face(scib-headline-regular, _font-path('headline-regular'));
+
+@include tools.font-face(scib-txt-bold, _font-path('text-bold'));
+
+@include tools.font-face(scib-headline-bold, _font-path('headline-bold'));
+
+@include tools.font-face(scib-txt-bold-italic, _font-path('text-bold-italic'));
+
+@include tools.font-face(scib-headline-bold-italic, _font-path('headline-bold-italic'));
+
+@include tools.font-face(scib-txt-italic, _font-path('text-italic'));
+
+@include tools.font-face(scib-headline-italic, _font-path('headline-italic'));
+
+@include tools.font-face(scib-txt-light, _font-path('text-light'));
+
+@include tools.font-face(scib-txt-light-italic, _font-path('text-light-italic'));
+
+@include tools.font-face(scib-micro-text, _font-path('micro-text'));
+
+@include tools.font-face(scib-micro-text-bold, _font-path('micro-text-bold'));
+
+@include tools.font-face(scib-micro-text-bold-italic, _font-path('micro-text-bold-italic'));
+
+@include tools.font-face(scib-micro-text-extra-bold, _font-path('micro-text-extra-bold'));
+
+@include tools.font-face(scib-micro-text-extra-bold-italic, _font-path('micro-text-extra-bold-italic'));
+
+@include tools.font-face(scib-micro-text-italic, _font-path('micro-text-italic'));
+
+@include tools.font-face(scib-micro-text-light, _font-path('micro-text-light'));
+
+@include tools.font-face(scib-micro-text-light-italic, _font-path('micro-text-light-italic'));
+
+@include tools.font-face(scib-micro-text-semi-bold, _font-path('micro-text-semi-bold'));
+
+@include tools.font-face(scib-micro-text-semi-bold-italic, _font-path('micro-text-semi-bold-italic'));
+
+// NEW FONTS
+
+@include tools.font-face('Santander Headline', _flame-font-path('headline/SantanderHeadlineLight'), otf ttf woff woff2, 300);
+
+@include tools.font-face('Santander Headline', _flame-font-path('headline/SantanderHeadline-Regular'), otf ttf woff woff2, 400);
+
+@include tools.font-face('Santander Headline', _flame-font-path('headline/SantanderHeadline-Bold'), otf ttf woff woff2, 700);
+
+@include tools.font-face('Santander Micro Text', _flame-font-path('micro-text/SantanderMicroText-Lt'), otf ttf woff woff2, 300);
+
+@include tools.font-face('Santander Micro Text', _flame-font-path('micro-text/SantanderMicroText'), otf ttf woff woff2, 400);
+
+@include tools.font-face('Santander Micro Text', _flame-font-path('micro-text/SantanderMicroText-Bd'), otf ttf woff woff2, 700);
+
+// Taildwind fonts
+.flame {
+	@include tools.define-taildwind-font('body-medium-default');
+	@include tools.define-taildwind-font('body-medium-strong');
+	@include tools.define-taildwind-font('body-large-default');
+	@include tools.define-taildwind-font('body-large-strong');
+	@include tools.define-taildwind-font('body-xlarge-default');
+	@include tools.define-taildwind-font('body-xlarge-strong');
+	@include tools.define-taildwind-font('caption-default');
+	@include tools.define-taildwind-font('caption-strong');
+	@include tools.define-taildwind-font('tag');
+	@include tools.define-taildwind-font('label-medium');
+	@include tools.define-taildwind-font('label-large');
+	@include tools.define-taildwind-font('placeholder');
+	@include tools.define-taildwind-font('helper-text');
+	@include tools.define-taildwind-font('amount');
+	@include tools.define-taildwind-font('badge-small');
+	@include tools.define-taildwind-font('badge-medium');
+	@include tools.define-taildwind-font('button-large');
+	@include tools.define-taildwind-font('button-medium');
+	@include tools.define-taildwind-font('action-link');
+	@include tools.define-taildwind-font('navbar-icon-label-default');
+	@include tools.define-taildwind-font('navbar-icon-label-strong');
+	@include tools.define-taildwind-font('headline-small');
+	@include tools.define-taildwind-font('headline-medium');
+	@include tools.define-taildwind-font('headline-large');
+	@include tools.define-taildwind-font('headline-xlarge');
+	@include tools.define-taildwind-font('display-small-default');
+	@include tools.define-taildwind-font('display-small-strong');
+	@include tools.define-taildwind-font('display-large-default');
+	@include tools.define-taildwind-font('display-large-strong');
+	@include tools.define-taildwind-font('display-xlarge-default');
+	@include tools.define-taildwind-font('display-xlarge-strong');
+	@include tools.define-taildwind-font('icon-label-xsmall-default');
+	@include tools.define-taildwind-font('icon-label-xsmall-strong');
+	@include tools.define-taildwind-font('icon-label-small-default');
+	@include tools.define-taildwind-font('icon-label-small-strong');
+	@include tools.define-taildwind-font('avatar-small');
+	@include tools.define-taildwind-font('avatar-medium');
+	@include tools.define-taildwind-font('avatar-large');
+	@include tools.define-taildwind-font('avatar-xlarge');
+	@include tools.define-taildwind-font('figure-xsmall-default');
+	@include tools.define-taildwind-font('figure-xsmall-strong');
+	@include tools.define-taildwind-font('figure-small-default');
+	@include tools.define-taildwind-font('figure-small-strong');
+	@include tools.define-taildwind-font('figure-medium-default');
+	@include tools.define-taildwind-font('figure-medium-strong');
+	@include tools.define-taildwind-font('figure-large-default');
+	@include tools.define-taildwind-font('figure-large-strong');
+	@include tools.define-taildwind-font('figure-xlarge-default');
+	@include tools.define-taildwind-font('figure-xlarge-strong');
+	@include tools.define-taildwind-font('figure-xxlarge-default');
+	@include tools.define-taildwind-font('figure-xxlarge-strong');
+}

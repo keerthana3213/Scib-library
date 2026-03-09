@@ -1,0 +1,109 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero ui-select.scss, justo
+ * después de la importación del tema -> @forward 'ui-select.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'tools';
+@use 'settings';
+@use 'objects';
+
+.c-option {
+	padding: 0.5rem 1rem;
+	display: flex;
+	align-items: center;
+
+	& > *:not(:last-child) {
+		margin-right: 0.5rem;
+	}
+}
+
+.c-option-text-wrapper {
+	width: calc(100% - 24px);
+}
+
+.c-option-avatar {
+	width: 1.5rem;
+	height: 1.5rem;
+	min-width: 1.5rem;
+	@include tools.desktop {
+		width: 2rem;
+		height: 2rem;
+		min-width: 2rem;
+	}
+}
+
+.c-option-detail {
+	display: flex;
+	flex-direction: column;
+
+	&__item {
+		&:first-child {
+			span {
+				&:first-child {
+					font-family: settings.$font-bold-txt;
+				}
+			}
+		}
+
+		&:last-child {
+			text-align: right;
+		}
+	}
+}
+
+.c-option-text {
+	font-size: 0.875rem;
+	line-height: 1.45;
+	width: 100%;
+
+	&.--main {
+		margin-bottom: 2px;
+		font-family: settings.$font-regular-txt;
+		@extend %ellipsis;
+		@include tools.desktop {
+			margin-bottom: 0;
+			flex-direction: row;
+		}
+	}
+
+	&.--detail {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		font-family: settings.$font-regular-txt;
+
+		& > span {
+			display: flex;
+			flex-direction: column;
+			color: tools.color(secondary, ultra-dark);
+			&:first-child {
+				span {
+					&:first-child {
+						font-family: settings.$font-bold-txt;
+					}
+				}
+			}
+
+			&:last-child {
+				text-align: right;
+			}
+		}
+	}
+	&.--secondary {
+		font-size: 0.75rem;
+		@extend %ellipsis;
+		color: tools.color(secondary, dark);
+		@include tools.desktop {
+			font-size: 0.875rem;
+			margin-left: 10px;
+		}
+	}
+
+	&__extra-info {
+		display: flex;
+		flex-direction: column;
+	}
+}

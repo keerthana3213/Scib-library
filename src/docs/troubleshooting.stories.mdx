@@ -1,0 +1,49 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Documentation/Problemáticas y casuísticas recurrentes" />
+
+#### No me actualiza el componente cuando hago cambios en su atributo en el DOM
+
+Puede ser porque el nombre del atributo sea el incorrecto. Las `@Prop` se nomenclan en camelCase, pero los atributos de HTML siempre deben ir en kebab-case:
+
+```typescript
+export class MyComponent {
+  @Prop() myCustomProp: string; 
+  ...
+}
+```
+
+```html
+<my-component my-custom-prop="test"></my-component>
+```
+
+#### Storybook lanza un error en consola desde el fichero 'react-dom.development.js'
+
+Es un error detectado, pero no solucionado. No afecta en nada, simplemente es molesto.
+
+#### Cuando paso un objeto o un array como JSON string a una @Prop(), no se parsea
+
+Stencil no parsea automáticamente strings JSON a objetos/arrays, hay que hacerlo manualmente y mandar el objeto parseado a un @State() para tenerlo disponible:
+```typescript
+  class MyComponent {
+
+    /** Listado de notificaciones a ser mostradas */
+    @Prop() notifications: string | ICDKNotificationAreaItem[];
+
+    /** Escucha los cambios en la prop */
+    @Watch('notifications') notificationsChange(newVal: string | ICDKNotificationAreaItem[]) { 
+      this._notifications = _parseProp(newVal);
+    }
+
+    @State() _notifications
+
+  }
+  
+```
+
+#### Error: [ ERROR ]  EPERM: operation not permitted, unlink 'C:\Users\xi334660\Projects\stencil-ui-kit\.stencil\www'
+
+Hay que borrar la carpeta de stencil. Suele ocurrir que se buggea en el cambio de ramas y al generar la fuente
+
+
+

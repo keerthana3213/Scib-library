@@ -1,0 +1,81 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-sidebar-communications.scss, justo
+ * después de la importación del tema -> @forward 'cdk-sidebar-communications.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'utilities';
+@use 'settings';
+@use 'tools';
+
+.c-tab {
+	@include utilities.force-reset(button);
+	cursor: pointer;
+	height: 3.5rem;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.6875rem;
+	flex-direction: column;
+	font-family: settings.$font-bold-txt;
+	border: 1px solid transparent;
+	border-bottom-color: tools.color(secondary, medium);
+	color: tools.color(secondary, dark);
+	outline: none;
+	transition: background 0.25s, color 0.25s, box-shadow 0.15s, border-color 0.25s;
+
+	&:hover {
+		background-color: tools.color(secondary, light);
+	}
+
+	&:focus:not(.--active):not(:active) {
+		box-shadow: inset 0px 0px 0px 2px tools.color(tertiary, focus);
+	}
+
+	&.--active {
+		background: tools.color(primary, base);
+		border-bottom-color: tools.color(primary, base);
+		color: white;
+	}
+
+	@include tools.desktop {
+		height: 6.5rem;
+	}
+}
+
+.c-tab-icon-container {
+	position: relative;
+}
+
+.c-tab-nots {
+	background: black;
+	height: 1.25rem;
+	width: 1.25rem;
+	color: white;
+	border-radius: 1000px;
+	position: absolute;
+	top: -10px;
+	left: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transform: scale(0.9);
+}
+
+.c-tab-day {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 7px;
+}
+
+.c-tab-label {
+	margin-top: 0.35rem;
+	display: none;
+	@include tools.desktop {
+		display: block;
+	}
+}

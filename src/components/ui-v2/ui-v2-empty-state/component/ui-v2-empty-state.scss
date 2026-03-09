@@ -1,0 +1,126 @@
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_ui-v2-empty-state-width-figure: var(--ui-v2-empty-state-width-figure, 124px);
+}
+
+/**
+ * Component
+ */
+:host {
+	display: block;
+
+	.emptye {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin: tools.rem(64 0);
+		&--reverse {
+			flex-direction: row-reverse;
+		}
+		&__figure {
+			display: block;
+			width: var(--_ui-v2-empty-state-width-figure);
+			height: auto;
+			margin: tools.rem(0 16 0 16);
+		}
+		&__title {
+			color: var(--color-text-default);
+			display: block;
+			font-family: var(--typescale-headline-medium-font);
+			font-size: var(--typescale-headline-medium-size);
+			line-height: var(--typescale-headline-medium-line-height);
+			font-weight: var(--typescale-headline-medium-weight);
+			font-style: var(--typescale-headline-medium-style);
+			text-align: left;
+		}
+		&__desc {
+			display: block;
+			color: var(--color-text-default);
+			margin-top: tools.rem(8);
+			font: var(--body-medium);
+			font-family: var(--typescale-body-medium-default-font);
+			font-size: var(--typescale-body-medium-default-size);
+			line-height: var(--typescale-body-medium-default-line-height);
+			font-weight: var(--typescale-body-medium-default-weight);
+			font-style: var(--typescale-body-medium-default-style);
+		}
+		&__button-area {
+			display: flex;
+			gap: tools.rem(16px);
+			margin-top: tools.rem(16px);
+			flex-wrap: wrap;
+			&__buton {
+				width: fit-content;
+			}
+		}
+		&__img {
+			display: block;
+			width: var(--_ui-v2-empty-state-width-figure);
+			height: auto;
+		}
+		&__content {
+			margin-top: tools.rem(30);
+		}
+	}
+}
+
+:host([size='xl']) {
+	--_ui-v2-empty-state-width-figure: 224px;
+	.emptye {
+		&__figure {
+			margin: tools.rem(0 80 0 80);
+		}
+		&__button {
+			margin-top: tools.rem(24);
+		}
+		&__title {
+			font-family: var(--typescale-headline-large-font);
+			font-size: var(--typescale-headline-large-size);
+			line-height: var(--typescale-headline-large-line-height);
+			font-weight: var(--typescale-headline-large-weight);
+			font-style: var(--typescale-headline-large-style);
+		}
+		&__desc {
+			font: var(--body-large);
+			font-family: var(--typescale-body-large-default-font);
+			font-size: var(--typescale-body-large-default-size);
+			line-height: var(--typescale-body-large-default-line-height);
+			font-weight: var(--typescale-body-large-default-weight);
+			font-style: var(--typescale-body-large-default-style);
+		}
+	}
+}
+
+:host([size='xs']) {
+	.emptye {
+		justify-content: center;
+		align-items: center;
+		margin: tools.rem(64 0);
+		flex-direction: column;
+		&--reverse {
+			flex-direction: column-reverse;
+		}
+		&__title {
+			display: flex;
+			text-align: center;
+			flex-direction: column;
+			align-items: center;
+		}
+		&__figure {
+			margin: tools.rem(24) 0 tools.rem(24) 0;
+		}
+	}
+}

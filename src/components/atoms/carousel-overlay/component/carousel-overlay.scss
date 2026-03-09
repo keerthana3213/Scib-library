@@ -1,0 +1,181 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_atoms-carousel-overlay-bg-color: var(--atoms-carousel-overlay-bg-color, magenta);
+}
+
+/** 
+ * Component
+ */
+$color-white: #fff;
+$color-black: tools.color(secondary, strong-dark);
+$color-btn: tools.color(primary, base);
+$shadow: 0 tools.rem(3) tools.rem(4) rgba(#000, 0.12);
+$btn-close-size-desktop: 26px;
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_atoms-carousel-overlay-bg-color);
+	@include tools.shadowIcons();
+	display: block;
+
+	.overlay {
+		background-color: rgba(0, 0, 0, 0.8);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		left: 0;
+		top: 0;
+		z-index: 1;
+
+		.container-overlay {
+			position: relative;
+
+			.container {
+				overflow: hidden;
+			}
+
+			.slider {
+				display: flex;
+				flex-flow: row nowrap;
+				align-items: center;
+				width: tools.rem(700);
+
+				@include tools.media-query('xs') {
+					width: calc(100vw - #{tools.rem(80)});
+				}
+
+				@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+					width: calc(100vw - #{tools.rem(80)});
+				}
+			}
+		}
+
+		.overlay-container {
+			min-width: 100%;
+			height: auto;
+			overflow: hidden;
+
+			&__item {
+				max-height: calc(100vh - 200px);
+				min-width: unset !important;
+				object-fit: contain;
+				height: 100%;
+				width: 100%;
+			}
+		}
+
+		.btn {
+			cursor: pointer;
+			position: absolute;
+			width: tools.rem(40);
+			height: tools.rem(40);
+			padding: tools.rem(7);
+			border: 1px solid $color-btn;
+			box-shadow: $shadow;
+			border-radius: 50%;
+			background-color: $color-white;
+			font-size: tools.rem(18);
+		}
+
+		.btn-next {
+			top: 50%;
+			right: 0;
+			transform: translate(50%, -50%);
+
+			&:active {
+				transform: translate(50%, -50%) scale(1.1);
+			}
+
+			.icon {
+				color: $color-btn;
+				margin-left: tools.rem(2);
+			}
+		}
+
+		.btn-prev {
+			top: 50%;
+			left: 0;
+			transform: translate(-50%, -50%);
+
+			&:active {
+				transform: translate(-50%, -50%) scale(1.1);
+			}
+
+			.icon {
+				color: $color-btn;
+				margin-right: tools.rem(2);
+			}
+		}
+
+		.btn-close {
+			cursor: pointer;
+			position: absolute;
+			top: tools.rem(-$btn-close-size-desktop);
+			right: tools.rem(-$btn-close-size-desktop);
+			border-radius: 50%;
+			background-color: transparent;
+			border: 1px solid var(--theme-colors-white);
+			box-shadow: $shadow;
+			padding: 0;
+
+			.icon {
+				color: $color-white;
+				font-size: tools.rem($btn-close-size-desktop);
+			}
+		}
+
+		.navigation {
+			position: absolute;
+			bottom: tools.rem(-28);
+			left: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			margin: tools.rem(20) 0 0;
+			padding: 0;
+			list-style: none;
+
+			&__item {
+				cursor: pointer;
+
+				&:not(:last-of-type) {
+					margin: tools.rem(0 8 0 0);
+				}
+
+				&::before {
+					content: '';
+					display: block;
+					width: tools.rem(8);
+					height: tools.rem(8);
+					background-color: var(--_atoms-carousel-navigation-button-color);
+					border-radius: 50%;
+				}
+
+				&--active {
+					&::before {
+						background-color: var(--_atoms-carousel-navigation-color);
+					}
+				}
+			}
+			&--hidden {
+				display: none;
+			}
+		}
+	}
+}

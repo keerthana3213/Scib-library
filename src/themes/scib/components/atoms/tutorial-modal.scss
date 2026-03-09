@@ -1,0 +1,25 @@
+/**
+ * Public custom properties for tutorialModal component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-tutorial-modal-bg-color: var(--theme-colors-white, #ffffff);
+	--atoms-tutorial-modal-min-width: 400px;
+	--atoms-tutorial-modal-max-width: 600px;
+	--atoms-tutorial-modal-min-height: 420px;
+	--atoms-tutorial-modal-max-height: 100%;
+	--atoms-tutorial-modal-container-padding: 40px 0;
+	--atoms-tutorial-modal-container-margin: 0 50px;
+	--atoms-tutorial-modal-content-padding-top: 20px;
+	--atoms-tutorial-modal-content-padding-right: 40px;
+	--atoms-tutorial-modal-content-padding-bottom: 20px;
+	--atoms-tutorial-modal-content-padding-left: 40px;
+	--atoms-tutorial-modal-border-color: var(--theme-colors-white, #ffffff);
+	--atoms-tutorial-modal-border-radius: 8px;
+	--atoms-tutorial-modal-bg-color: var(--theme-colors-white, #ffffff);
+	--atoms-tutorial-modal-bg-header: var(--theme-colors-santander-medium, #cc0000);
+	--atoms-tutorial-modal-bg-overlay: rgba(0, 0, 0, 0.32);
+	--atoms-tutorial-modal-padding-surface: 15px;
+}

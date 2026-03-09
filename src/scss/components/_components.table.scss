@@ -1,0 +1,67 @@
+@use 'utilities';
+@use 'tools';
+
+/**
+   *@description: this file stylizes the generic component table
+**/
+
+vaadin-grid.wc-table {
+	border: 0;
+	&--mrgl {
+		display: block;
+		margin-left: tools.rem(60);
+		position: relative;
+		&::before,
+		&::after {
+			content: '';
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			left: -100%;
+			background: white;
+		}
+
+		&::after {
+			left: inherit;
+			right: -100%;
+		}
+
+		vaadin-grid-cell-content {
+			font-size: tools.rem(14);
+			line-height: tools.rem(18);
+		}
+	}
+
+	&--out {
+		height: 100%;
+	}
+
+	vaadin-grid-cell-content {
+		padding: 0 tools.rem(8);
+	}
+	vaadin-grid-sorter {
+		max-width: calc(100% - 20px);
+		font-size: tools.rem(14);
+		line-height: tools.rem(22);
+		color: black;
+		&[direction='asc'],
+		&[direction='desc'] {
+			font-weight: bold;
+		}
+	}
+}
+@include tools.media-query('sm') {
+	vaadin-grid.wc-table {
+		&--mrgl {
+			margin-left: tools.rem(20);
+		}
+	}
+}
+
+@include tools.media-query('xs') {
+	vaadin-grid.wc-table {
+		&--mrgl {
+			margin-left: 0;
+		}
+	}
+}

@@ -1,0 +1,177 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-messages.scss, justo
+ * después de la importación del tema -> @forward 'cdk-messages.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'utilities';
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+@keyframes c-conversations-item_fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+$convitem__avatarPadding: 0.75rem;
+$convitem__avatarSizeMobile: 3rem;
+$convitem__avatarSizeDesktop: 2rem;
+
+.c-conversations-item-container {
+	width: 100%;
+	position: relative;
+	&:hover {
+		.c-conversations-item-unread-button {
+			opacity: 1;
+			background: transparentize($color: black, $amount: 0.95);
+		}
+	}
+}
+
+.c-conversations-item {
+	@include utilities.force-reset(button);
+	outline: none;
+	font-family: settings.$font-regular-txt;
+	will-change: transform;
+	//animation: c-conversations-item_fade-in 0.25s ease-in-out forwards;
+	opacity: 1;
+	transition: border-left-color 0.3s linear, box-shadow 0.15s linear, background-color 0.3s linear;
+	padding: tools.rem(12 16);
+	width: 100%;
+	display: flex;
+	position: relative;
+	text-align: left;
+	border-left: 4px solid transparent;
+	cursor: pointer;
+	box-sizing: border-box;
+
+	& * {
+		pointer-events: none;
+	}
+
+	&:focus:not(.--active):not(:active) {
+		box-shadow: inset 0px 0px 0px 2px tools.color(tertiary, focus);
+	}
+
+	&:hover {
+		background-color: tools.color(secondary, light) !important;
+	}
+
+	&.--active {
+		@include tools.desktop {
+			background-color: tools.color(tertiary, light) !important;
+			border-left-color: tools.color(primary, base);
+		}
+	}
+
+	&.--has-unread-elements {
+		.c-conversations-item-subject {
+			color: tools.color(primary, base);
+		}
+		// .c-conversations-item-preview { color: tools.color(primary, base) }
+	}
+
+	&:after {
+		background-color: tools.color(secondary, medium);
+		content: '';
+		position: absolute;
+		bottom: 0;
+		height: 1px;
+		left: 1.5rem;
+		right: 1rem;
+	}
+}
+
+.c-conversations-item-img {
+	min-width: $convitem__avatarSizeMobile;
+	height: $convitem__avatarSizeMobile;
+	margin-right: $convitem__avatarPadding;
+	top: tools.rem(4);
+	@include tools.desktop {
+		min-width: $convitem__avatarSizeDesktop;
+		height: $convitem__avatarSizeDesktop;
+	}
+}
+
+.c-conversations-item-wrapper {
+	flex: 1 1 auto;
+	width: calc(100% - #{$convitem__avatarSizeMobile} - #{$convitem__avatarPadding});
+	@include tools.desktop {
+		width: calc(100% - #{$convitem__avatarSizeDesktop} - #{$convitem__avatarPadding});
+	}
+}
+
+.c-conversations-item-header {
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.c-conversations-item-subject {
+	font-family: settings.$font-bold-txt;
+	font-size: 1rem;
+	margin-bottom: 0.25rem;
+	width: 100%;
+	@extend %ellipsis;
+}
+
+.c-conversations-item-date {
+	margin-left: auto;
+	font-size: 0.75rem;
+	margin-bottom: 0.25rem;
+}
+
+.c-conversations-item-subtitle {
+	font-size: 0.9375rem;
+	margin-bottom: 0.25rem;
+	display: flex;
+	align-items: center;
+	line-height: 1.3;
+	padding-right: 2rem;
+}
+
+.c-conversations-item-preview {
+	font-size: 0.875rem;
+	margin-bottom: 0.25rem;
+	color: tools.color(secondary, dark);
+	@extend %ellipsis;
+}
+
+.c-conversations-item-unread-button {
+	@include utilities.force-reset(button);
+	margin-left: auto;
+	color: tools.color(secondary, dark);
+	font-size: 1.25rem;
+	border-radius: 3px;
+	transition: opacity 0.15s linear;
+	background: unset;
+	position: absolute;
+	right: 1rem;
+	top: 50%;
+	z-index: 99999;
+	transform: translateY(-54%);
+	cursor: pointer;
+	outline: none;
+	@include tools.desktop {
+		opacity: 0;
+	}
+}
+
+.c-conversations-item-closed-tag {
+	margin-right: tools.rem(8);
+}
+
+.c-conversations-item-important {
+	font-family: settings.$font-bold-txt;
+	color: tools.color(primary, base);
+	position: relative;
+	bottom: 2px;
+	padding-right: 2px;
+}

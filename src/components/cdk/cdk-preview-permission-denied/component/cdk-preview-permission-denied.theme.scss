@@ -1,0 +1,4 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_cdk-preview-permission-denied-bg-color: var(--cdk-preview-permission-denied-bg-color, white);
+}

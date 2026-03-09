@@ -1,0 +1,11 @@
+{
+	"target": "https://employee-cert.scib.pre.corp/",
+	"contexts": [
+		{
+			"context": "/wrapper-portafirmas"
+		},
+		{
+			"context": "/wrapper-ecm-viewer"
+		}
+	]
+}

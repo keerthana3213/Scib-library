@@ -1,0 +1,197 @@
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	@include tools.shadowIcons();
+	--_atoms-tooltip-info-color: var(--color-surface-floating);
+	--_atoms-tooltip-info-display: var(--atoms-tooltip-info-display, inline-block);
+	--_atoms-tooltip-info-size: var(--atoms-tooltip-info-size, fit-content);
+	--_atoms-tooltip-info-white-space: var(--atoms-tooltip-info-white-space, nowrap);
+	--_atoms-tooltip-info-arrow-size: var(--atoms-tooltip-info-arrow-size, 10px);
+	--_atoms-tooltip-info-arrow-center-align: calc(50% - var(--_atoms-tooltip-info-arrow-size) / 2 - 1px);
+	--_atoms-tooltip-info-arrow-center-position: calc(100% - var(--_atoms-tooltip-info-arrow-size) / 2 - 1px);
+	--_atoms-tooltip-info-top-bottom-distance: var(--atoms-tooltip-info-top-bottom-distance, 175%);
+	--_atoms-tooltip-info-left-right-distance: var(--atoms-tooltip-info-left-right-distance, 15px);
+	--_atoms-tooltip-info-visibility: visible;
+	--_atoms-tooltip-info-box-max-width: fit-content;
+}
+
+:host([visibility='visible']) {
+	--_atoms-tooltip-info-visibility: visible;
+}
+
+:host([visibility='hidden']) {
+	--_atoms-tooltip-info-visibility: hidden;
+}
+
+:host([arrow='top-right']) {
+	--_atoms-tooltip-info-box-bottom: var(--_atoms-tooltip-info-top-bottom-distance);
+	--_atoms-tooltip-info-box-left: 40%;
+	--_atoms-tooltip-info-box-margin-left: calc(-15% - var(--_atoms-tooltip-info-arrow-size, 10px));
+	--_atoms-tooltip-info-arrow-top: var(--_atoms-tooltip-info-arrow-center-position);
+	--_atoms-tooltip-info-arrow-left: calc(15% - var(--_atoms-tooltip-info-arrow-size, 10px));
+	--_atoms-tooltip-info-arrow-bg-color: var(--_atoms-tooltip-info-color) transparent transparent transparent;
+	--_atoms-tooltip-info-arrow-rotation: -45deg;
+}
+
+:host([arrow='top']) {
+	--_atoms-tooltip-info-box-bottom: var(--_atoms-tooltip-info-top-bottom-distance);
+	--_atoms-tooltip-info-box-left: 50%;
+
+	--_atoms-tooltip-info-arrow-top: var(--_atoms-tooltip-info-arrow-center-position);
+	--_atoms-tooltip-info-arrow-left: var(--_atoms-tooltip-info-arrow-center-align); //Minus border-width (arrow thickness), to align arrow's tip
+	--_atoms-tooltip-info-arrow-bg-color: var(--_atoms-tooltip-info-color) transparent transparent transparent;
+	--_atoms-tooltip-info-arrow-rotation: -45deg;
+	--_atoms-tooltip-info-transform: translateX(-50%);
+}
+
+:host([arrow='bottom']) {
+	--_atoms-tooltip-info-box-top: var(--_atoms-tooltip-info-top-bottom-distance);
+	--_atoms-tooltip-info-box-left: 50%;
+
+	--_atoms-tooltip-info-arrow-top: auto;
+	--_atoms-tooltip-info-arrow-bottom: var(--_atoms-tooltip-info-arrow-center-position);
+	--_atoms-tooltip-info-arrow-left: var(--_atoms-tooltip-info-arrow-center-align);
+	--_atoms-tooltip-info-arrow-bg-color: transparent transparent var(--_atoms-tooltip-info-color) transparent;
+	--_atoms-tooltip-info-arrow-rotation: 135deg;
+	--_atoms-tooltip-info-transform: translateX(-50%);
+}
+
+:host([arrow='right']) {
+	--_atoms-tooltip-info-box-margin-left: 100%;
+	--_atoms-tooltip-info-box-left: calc(100% + var(--_atoms-tooltip-info-arrow-size) + var(--_atoms-tooltip-info-left-right-distance));
+	--_atoms-tooltip-info-box-top: 50%;
+	--_atoms-tooltip-info-box-margin-top: var(--atoms-tooltip-info-box-margin-top, 0%);
+
+	--_atoms-tooltip-info-arrow-top: var(--_atoms-tooltip-info-arrow-center-align);
+	--_atoms-tooltip-info-arrow-right: var(--_atoms-tooltip-info-arrow-center-position);
+	--_atoms-tooltip-info-arrow-bg-color: transparent var(--_atoms-tooltip-info-color) transparent transparent;
+	--_atoms-tooltip-info-arrow-rotation: 45deg;
+	--_atoms-tooltip-info-transform: translateY(-50%);
+}
+
+:host([arrow='left']) {
+	--_atoms-tooltip-info-box-margin-right: 100%;
+	--_atoms-tooltip-info-box-right: calc(100% + var(--_atoms-tooltip-info-arrow-size) + var(--_atoms-tooltip-info-left-right-distance));
+	--_atoms-tooltip-info-box-top: 50%;
+	--_atoms-tooltip-info-box-margin-top: var(--atoms-tooltip-info-box-margin-top, 0%);
+
+	--_atoms-tooltip-info-arrow-top: var(--_atoms-tooltip-info-arrow-center-align, calc(50% - 10px));
+	--_atoms-tooltip-info-arrow-left: var(--_atoms-tooltip-info-arrow-center-position);
+	--_atoms-tooltip-info-arrow-bg-color: transparent transparent transparent var(--_atoms-tooltip-info-color);
+	--_atoms-tooltip-info-arrow-rotation: 225deg;
+	--_atoms-tooltip-info-transform: translateY(-50%);
+}
+
+.tooltip-info {
+	position: relative;
+	display: var(--_atoms-tooltip-info-display);
+	width: var(--_atoms-tooltip-info-size);
+
+	&__box {
+		visibility: hidden;
+		width: var(--_atoms-tooltip-info-box-max-width);
+		background-color: var(--color-surface-floating);
+		padding: tools.rem(16px);
+		position: absolute;
+		z-index: 10;
+		text-align: initial;
+		box-shadow: var(--elevation-floating);
+		border: solid 1px var(--color-border-soft);
+		border-radius: 8px;
+		display: inline-flex;
+		white-space: var(--_atoms-tooltip-info-white-space);
+
+		//Theme
+		top: var(--_atoms-tooltip-info-box-top);
+		bottom: var(--_atoms-tooltip-info-box-bottom);
+		left: var(--_atoms-tooltip-info-box-left);
+		right: var(--_atoms-tooltip-info-box-right);
+		transform: var(--_atoms-tooltip-info-transform);
+
+		&--wrap {
+			white-space: initial;
+		}
+
+		.tooltip-info {
+			&__literal-containers {
+				display: flex;
+				flex-direction: column;
+			}
+
+			&__title {
+				color: var(--color-text-default);
+				margin: 0 0 8px;
+				font: var(--headline-small);
+				font-family: var(--typescale-headline-small-font);
+				font-size: var(--typescale-headline-small-size);
+				line-height: var(--typescale-headline-small-line-height);
+				font-weight: var(--typescale-headline-small-weight);
+				font-style: var(--typescale-headline-small-style);
+				text-align: left;
+			}
+
+			&__literals {
+				margin: 0;
+				color: var(--color-text-default);
+				font: var(--body-medium-dafault);
+				font-family: var(--typescale-body-medium-default-font);
+				font-size: var(--typescale-body-medium-default-size);
+				line-height: var(--typescale-body-medium-default-line-height);
+				font-weight: var(--typescale-body-medium-default-weight);
+				font-style: var(--typescale-body-medium-default-style);
+				text-align: left;
+			}
+
+			&__icon-container {
+				margin-left: 8px;
+				height: tools.rem(24px);
+				width: tools.rem(24px);
+				cursor: pointer;
+				display: inline-block;
+				.tooltip-info__icon {
+					--icon-content: var(--theme-scib-icon-close);
+					color: var(--color-icon-default);
+					height: tools.rem(24px);
+					width: tools.rem(24px);
+				}
+			}
+		}
+
+		.triangle {
+			display: block;
+			height: var(--_atoms-tooltip-info-arrow-size);
+			width: var(--_atoms-tooltip-info-arrow-size);
+			background-color: inherit;
+			border: inherit;
+			position: absolute;
+			top: var(--_atoms-tooltip-info-arrow-top);
+			left: var(--_atoms-tooltip-info-arrow-left);
+			right: var(--_atoms-tooltip-info-arrow-right);
+			bottom: var(--_atoms-tooltip-info-arrow-bottom);
+			clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+			transform: rotate(var(--_atoms-tooltip-info-arrow-rotation));
+			border-radius: 0 0 0 4px;
+		}
+	}
+
+	&:hover {
+		span {
+			user-select: text;
+			cursor: text;
+			&.tooltip-visible {
+				visibility: var(--_atoms-tooltip-info-visibility);
+			}
+		}
+	}
+}

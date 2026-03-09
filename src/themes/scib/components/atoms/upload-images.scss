@@ -1,0 +1,12 @@
+/**
+ * Public custom properties for upload-images component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-upload-images-container-max-width: 112px;
+	--atoms-upload-images-container-max-height: 112px;
+	--atoms-upload-images-container-min-width: 112px;
+	--atoms-upload-images-container-min-height: 112px;
+}

@@ -1,0 +1,23 @@
+name: Integration workflow
+
+on:
+  push:
+    branches:
+      - development
+      - develop
+      - main
+      - master
+      - 'release**'
+      - 'hotfix**'      
+
+
+
+jobs:
+  call-integration-workflow:
+    name: Integration workflow
+    uses: santander-group-scib-gln/cib-oasis-npm-workflows/.github/workflows/integration.yml@v1
+    with:
+      technology: 'SCIB React SPA'
+      templateName: 'JavascriptFrontOpenshiftTemplate'
+      isLibrary: false
+    secrets: inherit

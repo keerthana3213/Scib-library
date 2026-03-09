@@ -1,0 +1,38 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-list-request.scss, justo
+ * después de la importación del tema -> @forward 'cdk-list-request.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'settings';
+@use 'tools';
+
+.c-legend {
+	display: flex;
+	flex-direction: row;
+	text-align: left;
+}
+.c-legend-text {
+	display: block;
+	padding: tools.rem(5);
+	font-family: settings.$font-regular-txt;
+	font-size: tools.rem(20);
+	line-height: tools.rem(28);
+	text-align: center;
+	color: tools.color(secondary, ultra-dark);
+}
+
+.c-legend-panel {
+	margin-right: 1rem;
+}
+
+.c-legend-label {
+	display: block;
+	font-family: settings.$font-regular-txt;
+	font-size: tools.rem(12);
+	line-height: tools.rem(18);
+	color: black;
+	margin-bottom: 0.375rem;
+}

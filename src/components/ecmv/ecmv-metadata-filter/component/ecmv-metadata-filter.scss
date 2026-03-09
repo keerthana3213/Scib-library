@@ -1,0 +1,136 @@
+@use 'tools';
+@use 'settings';
+
+@forward 'ecmv-metadata-filter.theme.scss';
+
+.ecmv-filter {
+	box-sizing: border-box;
+	background: tools.color(tertiary, light);
+	border-radius: tools.rem(20);
+
+	&__title {
+		box-sizing: border-box;
+		display: inline-block;
+		width: 100%;
+		position: relative;
+		vertical-align: middle;
+		padding: tools.rem(5 30 5 38);
+		font-size: tools.rem(14);
+		line-height: tools.rem(20);
+		font-weight: bold;
+
+		&--ifilter {
+			&::before {
+				content: var(--theme-scib-icon-filter);
+				font-family: 'scib-icons';
+				display: inline-block;
+				position: absolute;
+				padding-right: tools.rem(6);
+				left: tools.rem(2);
+				margin-left: tools.rem(15);
+				vertical-align: bottom;
+				font-size: tools.rem(16);
+				color: tools.color(primary, base);
+			}
+		}
+
+		&--open {
+			padding-top: tools.rem(12);
+			padding-right: tools.rem(10);
+			&::before {
+				content: var(--theme-scib-icon-nofilter);
+				padding-right: tools.rem(2);
+				//transform: rotate(180deg);
+			}
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		&--active {
+			&::after {
+				background: tools.color(tertiary, base);
+				border-radius: 50%;
+				color: white;
+				content: attr(data-active);
+				font-family: settings.$font-bold-txt;
+				font-size: tools.rem(7);
+				height: tools.rem(11);
+				line-height: tools.rem(11);
+				margin-left: tools.rem(12);
+				position: absolute;
+				left: tools.rem(13);
+				text-align: center;
+				bottom: tools.rem(14);
+				width: tools.rem(11);
+			}
+		}
+		&--acordion {
+			&::before {
+				content: var(--theme-scib-icon-chevron-down);
+				font-family: 'scib-icons';
+				display: inline-block;
+				position: absolute;
+				right: tools.rem(10);
+				font-size: tools.rem(16);
+				color: tools.color(secondary, ultra-dark);
+			}
+		}
+	}
+	&__fieldset {
+		display: block;
+		margin-top: tools.rem(16);
+		padding: tools.rem(0 30);
+
+		.sc-scib-ui-dropdown-h {
+			display: inline-block;
+			margin: tools.rem(0 4);
+		}
+	}
+	&__footer {
+		display: flex;
+		align-items: center;
+		margin: tools.rem(16 0 19);
+		.sc-scib-ui-button-h {
+			&:last-child {
+				margin-left: tools.rem(16);
+			}
+		}
+	}
+}
+
+.dateRange {
+	display: inline-block;
+}
+
+.spanTo {
+	margin-left: 0.5rem;
+}
+
+.not-visible {
+	display: none;
+}
+
+.select-group-styleItem {
+	display: inline-block;
+	margin: 0 0 tools.rem(16) tools.rem(5);
+	min-width: tools.rem(176);
+	//height: 2.85rem;
+	.c-input.--disable-edit {
+		background: tools.color(secondary, medium);
+		cursor: auto;
+	}
+	.c-field.sc-scib-ui-input:hover {
+		border-color: tools.color(secondary, medium-dark);
+	}
+	.c-input.sc-scib-ui-input:hover {
+		cursor: auto;
+	}
+	.c-root.sc-scib-ui-input {
+		min-height: 0;
+	}
+	.ui-datepicker {
+		min-height: 0;
+	}
+}

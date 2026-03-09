@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Design System v-2/Molecules/Events Calendar/Api" parameters={{ status: 'beta' }}/>
+
+# API
+
+---
+
+## Minimal setup
+
+```html
+<scib-molecules-events-calendar
+	date="2022-01-01"
+	events='{"2022-11-14":{"selected":true},"2022-11-20":{"title":"Invoices","currency":"USD","total":5,"amount":375000,"selected":false},"2022-12-24":{"title":"Invoices","currency":"USD","total":5,"amount":718500,"selected":true},"2023-01-01":{"title":"New year!","currency":"USD","total":5,"amount":718500,"selected":true}}'
+>
+</scib-molecules-events-calendar>
+```
+
+## Available and default values
+
+You can find the default values in the [Playground page](?path=/story/design-system-v-2-molecules-events-calendar--playground).
+
+## Todo
+
+- Size property is not implemented yet.
+
+## Resources
+
+### Luxon [Website](https://moment.github.io/luxon/#/?id=luxon)
+
+In the events calendar, all dates are handled with Luxon.
+CustomEvents are emitted when an user interacts with the component. The events provide instances of the DateTime, Duration, Diff ... classes.
+
+## CSS Variables
+```scss
+:selector {
+    // Margin for the calendar header. By default, 12px bottom
+	--molecules-events-calendar-header-margin: 0 0 12px 0;
+
+    // Font family for the calendar date representation
+    --molecules-events-calendar-time-font-family: 'scib-headline-bold';
+
+    // Font size for the calendar date representation
+    --molecules-events-calendar-time-font-size: 16px;
+}
+```
+
+### Example
+```html
+<scib-molecules-events-calendar
+	date="2022-01-01"
+	style="--molecules-events-calendar-time-font-size: 24px"
+	events='{"2022-11-14":{"selected":true},"2022-11-20":{"title":"Invoices","currency":"USD","total":5,"amount":375000,"selected":false},"2022-12-24":{"title":"Invoices","currency":"USD","total":5,"amount":718500,"selected":true},"2023-01-01":{"title":"New year!","currency":"USD","total":5,"amount":718500,"selected":true}}'
+>
+</scib-molecules-events-calendar>

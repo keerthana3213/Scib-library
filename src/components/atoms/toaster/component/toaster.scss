@@ -1,0 +1,160 @@
+@use 'settings';
+@use 'tools';
+// @use '@material/snackbar/mdc-snackbar';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_atoms-toaster-width: var(--atoms-toaster-width);
+	--_atoms-toaster-label-color: var(--color-text-default);
+	--_atoms-toaster-align-items: var(--atoms-toaster-align-items, center);
+	--_atoms-toaster-background-color: var(--color-surface-floating);
+}
+
+:host([variant='actions']) {
+	--_atoms-toaster-align-items: flex-start;
+}
+
+:host([status='success']) {
+	--_atoms-toaster-background-color: var(--color-background-success);
+}
+:host([status='warning']) {
+	--_atoms-toaster-background-color: var(--color-background-warning);
+}
+:host([status='error']) {
+	--_atoms-toaster-background-color: var(--color-background-error);
+}
+:host([status='info']) {
+	--_atoms-toaster-background-color: var(--color-background-info);
+}
+
+:host([disable-animation='false']) {
+	@keyframes entranceAnimation {
+		from {
+			opacity: 0;
+			transform: translate3d(200vh, 0, 0);
+		}
+		to {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+
+	animation-duration: 0.5s;
+	animation-name: entranceAnimation;
+}
+
+/**
+ * Components
+ */
+
+:host {
+	@include tools.shadowIcons();
+	display: block;
+
+	.main {
+		display: flex;
+		flex-direction: column;
+		background-color: var(--_atoms-toaster-background-color);
+		box-shadow: var(--elevation-floating);
+		border-radius: var(--size-border-radius-03);
+		padding: var(--size-spacing-04);
+		position: inherit;
+	}
+
+	.mdc-snackbar {
+		margin: 0;
+		position: inherit;
+		align-items: var(--_atoms-toaster-align-items);
+
+		width: var(--_atoms-toaster-width);
+
+		&__container {
+			width: 100%;
+			display: flex;
+		}
+
+		&__label {
+			color: var(--_atoms-toaster-label-color);
+			font: var(--headline-small);
+			font-family: var(--typescale-headline-small-font);
+			padding: 0 var(--size-spacing-02);
+			font-size: var(--typescale-headline-small-size);
+			line-height: var(--typescale-headline-small-line-height);
+			font-weight: var(--typescale-headline-small-weight);
+			font-style: var(--typescale-headline-small-style);
+			margin-bottom: var(--size-spacing-02);
+			text-align: left;
+
+			&--description {
+				color: var(--_atoms-toaster-label-color);
+				font: var(--body-medium-default);
+				font-family: var(--typescale-body-medium-default-font);
+				padding: 0 var(--size-spacing-02);
+				font-size: var(--typescale-body-medium-default-size);
+				line-height: var(--typescale-body-medium-default-line-height);
+				font-weight: var(--typescale-body-medium-default-weight);
+				font-style: var(--typescale-body-medium-default-style);
+				margin-bottom: var(--size-spacing-02);
+				text-align: left;
+			}
+
+			&--action {
+				width: 100%;
+				cursor: pointer;
+				font: var(--action-link);
+				font-family: var(--typescale-action-link-font);
+				font-size: var(--typescale-action-link-size);
+				line-height: var(--typescale-action-link-line-height);
+				color: var(--color-action-alternative-default);
+				font-style: var(--typescale-action-link-style);
+				text-align: left;
+				font-weight: var(--typescale-action-link-weight);
+				padding: 0 var(--size-spacing-02);
+				&:hover {
+					color: var(--color-action-alternative-hover);
+				}
+			}
+		}
+		&__action {
+			--icon-content: var(--theme-scib-icon-close);
+			color: var(--color-icon-default);
+			cursor: pointer;
+		}
+		&__surface {
+			background-color: inherit;
+			box-shadow: none;
+			max-width: 100%;
+			flex-wrap: wrap;
+		}
+
+		&__actions {
+			width: 100%;
+			::slotted([slot='actions']) {
+				margin-left: tools.rem(26);
+			}
+		}
+
+		aside {
+			width: 100%;
+		}
+
+		.icons {
+			width: 24px;
+			height: 24px;
+		}
+	}
+	.column {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+}

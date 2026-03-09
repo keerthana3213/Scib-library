@@ -1,0 +1,29 @@
+{
+	"options": [
+		{
+			"name": "Atom",
+			"storyGroupName": "Design System/Atoms",
+			"folder": "atoms"
+		},
+		{
+			"name": "Molecule",
+			"storyGroupName": "Design System/Molecules",
+			"folder": "molecules"
+		},
+		{
+			"name": "Organism",
+			"storyGroupName": "Design System/Organisms",
+			"folder": "organisms"
+		},
+		{
+			"name": "Template",
+			"storyGroupName": "Design System/Templates",
+			"folder": "templates"
+		},
+		{
+			"name": "App",
+			"storyGroupName": "Design System/Apps",
+			"folder": "apps"
+		}
+	]
+}

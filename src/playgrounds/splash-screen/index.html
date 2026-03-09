@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Splash Screen Playground</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Scripts del loader de la librería -->
+		<script type="module" src="/stencil-server/scib-ui-kit.esm.js" id="component-js-module"></script>
+		<script nomodule="" src="/stencil-server/scib-ui-kit.js" id="component-js"></script>
+
+		<!-- Stilos de la libreraía -->
+		<link rel="stylesheet" href="/stencil-server/scib-ui-kit.css" id="components-css" />
+
+		<style>
+			html,
+			body {
+				background: #f2f2f2;
+				position: relative;
+				height: 100%;
+				width: 100%;
+				padding: 0;
+				margin: 0;
+			}
+			.container {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<scib-atoms-lottie-player autoplay="true" loop="true" src="/assets/animations/splash-desktop.json"></scib-atoms-lottie-player>
+		</div>
+	</body>
+</html>

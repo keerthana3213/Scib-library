@@ -1,0 +1,228 @@
+@use '@material/notched-outline/mdc-notched-outline';
+@use '@material/floating-label/mdc-floating-label';
+@use '@material/line-ripple/mdc-line-ripple';
+@use '@material/textfield';
+
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	/** Common props for all variants */
+	--_atoms-input-telephone-icon-cursor: var(--atoms-input-telephone-icon-cursor);
+}
+
+:host([variant='white']) {
+	/** Specific propr for white variant */
+	--_atoms-input-telephone-bg-color: var(--atoms-input-telephone-bg-color, white);
+	--_atoms-input-telephone-text-color: var(--theme-colors-grey-middle-dark);
+	--_atoms-input-telephone-label-color: var(--theme-colors-grey-dark);
+	--_atoms-input-telephone-bottom-line-color: var(--theme-colors-primary);
+	--_atoms-input-telephone-outline-color: var(--theme-colors-sky-base);
+	--_atoms-input-telephone-fill-color: var(--theme-colors-white);
+	--_atoms-input-telephone-invalid-color: var(--theme-colors-santander-medium);
+	--_atoms-input-telephone-icon-color: var(--atoms-input-telephone-icon-color);
+}
+
+:host([variant='blue']) {
+	/** Specific propr for blue variant */
+	--_atoms-input-telephone-bg-color: var(--atoms-input-telephone-bg-color, blue);
+	--_atoms-input-telephone-text-color: var(--theme-colors-grey-middle-dark);
+	--_atoms-input-telephone-label-color: var(--theme-colors-grey-middle-dark);
+	--_atoms-input-telephone-bottom-line-color: var(--theme-colors-primary);
+	--_atoms-input-telephone-outline-color: var(--theme-colors-sky-base);
+	--_atoms-input-telephone-fill-color: var(--theme-colors-sky-light);
+	--_atoms-input-telephone-invalid-color: var(--theme-colors-santander-medium);
+	--_atoms-input-telephone-icon-color: var(--atoms-input-telephone-icon-color);
+}
+
+/** 
+ * Component
+ */
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_atoms-input-telephone-bg-color);
+
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	@include textfield.core-styles;
+	@include tools.shadowIcons();
+
+	.input-telephone {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		position: relative;
+
+		&--disabled {
+			pointer-events: none;
+			opacity: 0.6;
+			cursor: none;
+		}
+
+		.mdc-text-field {
+			@include textfield.ink-color(var(--_atoms-input-telephone-text-color));
+			@include textfield.caret-color(var(--_atoms-input-telephone-text-color));
+			@include textfield.label-color(var(--_atoms-input-telephone-label-color));
+			@include textfield.bottom-line-color(var(--_atoms-input-telephone-bottom-line-color));
+			@include textfield.line-ripple-color(var(--_atoms-input-telephone-bottom-line-color));
+			@include textfield.hover-bottom-line-color(var(--_atoms-input-telephone-bottom-line-color));
+			@include textfield.fill-color(var(--_atoms-input-telephone-fill-color));
+			@include textfield.shape-radius(4px);
+			@include textfield.height(48px);
+			margin-bottom: tools.rem(4);
+			&:hover {
+				.mdc-text-field {
+					&__icon {
+						&--hover {
+							display: block;
+						}
+					}
+				}
+			}
+
+			&--invalid {
+				@include textfield.bottom-line-color(var(--_atoms-input-telephone-invalid-color));
+				@include textfield.line-ripple-color(var(--_atoms-input-telephone-invalid-color));
+				@include textfield.hover-bottom-line-color(var(--_atoms-input-telephone-invalid-color));
+			}
+
+			&--filled {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				.mdc-text-field {
+					&__input {
+						height: tools.rem(24px);
+						margin-top: tools.rem(15px);
+						font-family: settings.$font-regular-txt;
+						&::-webkit-outer-spin-button,
+						&::-webkit-inner-spin-button {
+							-webkit-appearance: none;
+							margin: 0;
+						}
+					}
+
+					&__ripple {
+						@include textfield.shape-radius(4px);
+						width: calc(100% - 2px);
+						border: tools.rem(1px) var(--_atoms-input-telephone-outline-color) solid;
+						border-bottom: none;
+
+						.mdc-floating-label {
+							font-family: settings.$font-regular-txt;
+
+							&--shake {
+								animation: none;
+							}
+						}
+
+						&::before {
+							background-color: var(--_atoms-input-telephone-fill-color);
+						}
+					}
+				}
+
+				.icon-container {
+					height: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: flex-end;
+					pointer-events: none;
+
+					&--handler {
+						pointer-events: auto;
+						cursor: var(--_atoms-input-telephone-icon-cursor);
+					}
+				}
+
+				.clean-icon {
+					--icon-content: var(--theme-scib-icon-error_dialog);
+				}
+
+				.mdc-floating-label {
+					display: block;
+					pointer-events: none;
+					left: tools.rem(80);
+					&:first-letter {
+						text-transform: capitalize;
+						right: tools.rem(24px);
+
+						&--icon {
+							right: tools.rem(48px);
+						}
+					}
+
+					&--shake {
+						animation: none;
+					}
+				}
+
+				.mdc-line-ripple {
+					&::after {
+						border-bottom-color: var(--_atoms-input-telephone-bottom-line-color);
+					}
+				}
+			}
+
+			.c-button {
+				display: flex;
+				min-width: tools.rem(65);
+				max-width: tools.rem(65);
+				position: relative;
+				height: 100%;
+				align-items: center;
+				color: var(--theme-colors-grey-middle-dark);
+				background-color: transparent;
+				border: none;
+				font-family: settings.$font-regular-txt;
+				font-size: tools.rem(16);
+				padding: 0;
+				cursor: pointer;
+				span:first-child {
+					min-width: tools.rem(30);
+					line-height: tools.rem(16);
+				}
+				.icon-container {
+					cursor: pointer;
+					color: var(--_atoms-input-telephone-icon-color);
+					.mdc-text-field__icon {
+						margin-left: 0;
+						&::before {
+							color: var(--_atoms-input-telephone-icon-color);
+						}
+					}
+				}
+			}
+		}
+		.c-error {
+			font-size: tools.rem(13);
+			color: var(--theme-colors-santander-base);
+			margin-left: tools.rem(16);
+		}
+		.c-select {
+			display: none;
+			position: absolute;
+			z-index: 100;
+			width: 100%;
+			--ui-v2-text-field-height: 48px;
+			&.show-select {
+				display: block;
+			}
+		}
+	}
+}

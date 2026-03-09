@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Notification Area Playground</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Scripts del loader de la librería -->
+		<script type="module" src="/stencil-server/scib-ui-kit.esm.js" id="component-js-module"></script>
+		<script nomodule="" src="/stencil-server/scib-ui-kit.js" id="component-js"></script>
+
+		<!-- Stilos de la libreraía -->
+		<link rel="stylesheet" href="/stencil-server/scib-ui-kit.css" id="components-css" />
+
+		<style>
+			sgcb-c-header {
+				background-size: contain;
+				background-position: center center;
+				background-repeat: no-repeat;
+				height: 48px;
+				background: red;
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+
+	<body style="background: #f2f2f2; padding-top: 48px">
+		<p>Test:</p>
+
+		<button id="push">Push new notification</button>
+
+		<sgcb-c-header></sgcb-c-header>
+
+		<scib-cdk-notification-area fixed></scib-cdk-notification-area>
+
+		<script>
+			// Selector
+			var $notificationArea = document.querySelector('scib-cdk-notification-area');
+
+			// Mocks
+			var notifications = [
+				{
+					id: '0',
+					type: 'message',
+					typeTxt: 'Message',
+					subject: 'What’s new in Cash Nexus?',
+					preview: 'Juan López: Hi, here you have the PDF you as…',
+					date: '5 min ago',
+					dateGroupTxt: null
+				},
+				{
+					id: '1',
+					type: 'message',
+					typeTxt: 'Message',
+					subject: 'Santander invites you to Formula 1',
+					preview: 'Save the Date 17/03/2020',
+					date: '15:45',
+					dateGroupTxt: 'Yesterday, 31 May 2020'
+				},
+				{
+					id: '2',
+					type: 'message',
+					typeTxt: 'Message',
+					subject: 'Subject text',
+					preview: 'Preview text',
+					date: '12:45',
+					dateGroupTxt: 'Yesterday, 31 May 2020'
+				},
+				{
+					id: '3',
+					type: 'message',
+					typeTxt: 'Message',
+					subject: 'Subject text',
+					preview: 'Preview text',
+					date: '12:45',
+					dateGroupTxt: 'Last month'
+				},
+				{
+					id: '4',
+					type: 'message',
+					typeTxt: 'Message',
+					subject: 'Subject text',
+					preview: 'Preview text',
+					date: '12:45',
+					dateGroupTxt: 'Last month'
+				},
+				{
+					id: '5',
+					type: 'message',
+					typeTxt: 'Message',
+					subject: 'Subject text',
+					preview: 'Preview text',
+					date: '12:45',
+					dateGroupTxt: 'Last month'
+				},
+				{
+					id: '6',
+					type: 'message',
+					typeTxt: 'Message',
+					subject: 'Subject text',
+					preview: 'Preview text',
+					date: '12:45',
+					dateGroupTxt: 'Last month'
+				},
+				{
+					id: '7',
+					type: 'message',
+					typeTxt: 'Message',
+					subject: 'Subject text',
+					preview: 'Preview text',
+					date: '12:45',
+					dateGroupTxt: 'Last month'
+				}
+			];
+			var literals = {
+				notificationsLabel: 'Notifications',
+				closeTxt: 'Close',
+				deleteTxt: 'Delete',
+				cancelTxt: 'Cancel',
+				clearTxt: 'Clear',
+				emptyTxt: 'You have no notifications',
+				clearAllTxt: 'Clear All',
+				moreText: 'more'
+			};
+			var profile = {
+				name: 'Javier Eduardo',
+				surname: 'Arietaleanizbeazcoechea',
+				greetingTxt: 'Hello,',
+				welcomeTxt: 'What´s new today?',
+				avatarPhotoSrc: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+				isAvatarAPicture: true
+			};
+
+			// Se setean los inputs
+			$notificationArea.profile = profile;
+			$notificationArea.notifications = notifications;
+			$notificationArea.literals = literals;
+			$notificationArea.notificationsCount = 56;
+
+			// Se suscribe a los eventos del "userAction"
+			$notificationArea.addEventListener('userAction', function (e) {
+				console.log(e.detail);
+
+				const newNots = Array.from({ length: 10 }).fill({
+					id: 123456,
+					type: 'message',
+					typeTxt: 'Message',
+					subject: 'New notification example push',
+					preview: 'Juan López: Hi, here you have the PDF you as…',
+					date: '1min ago',
+					dateGroupTxt: 'Last year'
+				});
+
+				switch (e.detail.type) {
+					// Solicita más notificaciones al back
+					case 'requestMoreNotifications':
+						setTimeout(() => {
+							$notificationArea.notifications = [...$notificationArea.notifications, ...newNots];
+						}, 500);
+						break;
+
+					// Limpia las notificaciones
+					case 'clearNotifications':
+						setTimeout(() => {
+							$notificationArea.notifications = [];
+							$notificationArea.notificationsCount = 0;
+						}, 500);
+						break;
+				}
+			});
+
+			// Push de una nueva notificación
+			document.querySelector('#push').addEventListener('click', function () {
+				const newNot = {
+					id: 12345,
+					type: 'message',
+					typeTxt: 'Message',
+					subject: 'New notification example push',
+					preview: 'Juan López: Hi, here you have the PDF you as…',
+					date: '1min ago',
+					dateGroupTxt: null
+				};
+
+				$notificationArea.notifications = [newNot, ...$notificationArea.notifications];
+				$notificationArea.notificationsCount = $notificationArea.notificationsCount + 1;
+			});
+		</script>
+	</body>
+</html>

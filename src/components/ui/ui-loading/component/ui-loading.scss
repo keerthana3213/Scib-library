@@ -1,0 +1,87 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-loading.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+
+	.c-btnloading {
+		margin: 0 auto;
+		max-width: tools.rem(280);
+
+		&__bottom {
+			margin-bottom: tools.rem(24);
+		}
+	}
+
+	.c-loading {
+		width: 100px;
+		margin: tools.rem(-35) auto;
+		transform: scale(0.65);
+
+		&:hover {
+			cursor: default;
+		}
+
+		&:before {
+			content: '';
+			display: block;
+			padding-top: 100%;
+		}
+
+		&__wrapper {
+			width: fit-content;
+			height: 100%;
+		}
+
+		&__circular {
+			animation: rotate 2s linear infinite;
+			height: 100%;
+			transform-origin: center center;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+
+		&__path {
+			stroke: tools.color(primary, base);
+			stroke-dasharray: 1, 200;
+			stroke-dashoffset: 0;
+			// stroke: tools.color(secondary, thirty);
+			animation: dash 1.5s ease-in-out infinite;
+			stroke-linecap: round;
+
+			&.--secondary {
+				stroke: tools.color(secondary, light);
+			}
+		}
+	}
+
+	@keyframes rotate {
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes dash {
+		0% {
+			stroke-dasharray: 1, 200;
+			stroke-dashoffset: 0;
+		}
+
+		50% {
+			stroke-dasharray: 89, 200;
+			stroke-dashoffset: -35px;
+		}
+
+		100% {
+			stroke-dasharray: 89, 200;
+			stroke-dashoffset: -124px;
+		}
+	}
+}

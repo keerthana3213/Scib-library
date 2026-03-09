@@ -1,0 +1,259 @@
+@use 'settings';
+@use 'tools';
+
+@use '@material/tab-bar/mdc-tab-bar';
+@use '@material/tab-scroller/mdc-tab-scroller';
+@use '@material/tab-indicator/mdc-tab-indicator';
+@use '@material/tab/mdc-tab';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_ui-v2-tabs-underline: var(--color-action-main-selected);
+	--_ui-v2-tabs-icon-active: var(--color-action-alternative-selected);
+	--_ui-v2-tabs-text: var(--color-text-default);
+	--_ui-v2-tabs-font-family: var(--typescale-body-large-strong-font);
+	--_ui-v2-tabs-font-size: var(--typescale-body-large-strong-size);
+	--_ui-v2-tabs-line-height: var(--typescale-body-large-strong-line-height);
+	--_ui-v2-tabs-weight: var(--typescale-body-large-default-weight);
+	--_ui-v2-tabs-active-weight: var(--typescale-body-medium-strong-weight);
+	--_ui-v2-tabs-height: var(--ui-v2-tabs-height);
+	--_ui-v2-tabs-padding: #{tools.rem(16px)};
+	--_ui-v2-tabs-border-top-width: #{tools.rem(3px)};
+	--_ui-v2-tabs-border-top-border-radius: 0;
+	--_ui-v2-tabs-color: var(--color-text-soft);
+	--_ui-v2-tabs-icon-desactive: var(--color-icon-soft);
+	--_ui-v2-tabs-handler-desactive-weight: var(--typescale-body-large-default-weight);
+	--_ui-v2-tabs-overflow: var(--ui-v2-tabs-overflow, hidden);
+	--_ui-v2-tabs-icon-size: #{tools.rem(24px)};
+}
+
+:host([level^='primary']) {
+	--_ui-v2-tabs-underline: var(--color-action-main-selected);
+	--_ui-v2-tabs-text: var(--color-text-default);
+	--_ui-v2-tabs-border-top-width: #{tools.rem(3px)};
+	--_ui-v2-tabs-border-top-border-radius: #{tools.rem(4px)} #{tools.rem(4px)} 0 0;
+
+	@include tools.only-mobile {
+		--_ui-v2-tabs-height: auto;
+	}
+}
+
+:host([level^='secondary']) {
+	--_ui-v2-tabs-underline: var(--color-action-main-selected);
+	--_ui-v2-tabs-text: var(--color-action-main-hover);
+	--_ui-v2-tabs-height: calc(var(--ui-v2-tabs-height) - 22px);
+	--_ui-v2-tabs-border-top-width: #{tools.rem(1px)};
+	--_ui-v2-tabs-padding: #{tools.rem(8px)};
+	--_ui-v2-tabs-font-family: var(--typescale-body-medium-default-font);
+	--_ui-v2-tabs-font-size: var(--typescale-body-medium-default-size);
+	--_ui-v2-tabs-line-height: var(--typescale-body-medium-default-line-height);
+	--_ui-v2-tabs-weight: var(--typescale-body-medium-default-weight);
+	--_ui-v2-tabs-active-weight: var(--typescale-body-medium-strong-weight);
+	--_ui-v2-tabs-icon-size: #{tools.rem(20px)};
+
+	@include tools.only-mobile {
+		--_ui-v2-tabs-height: auto;
+	}
+}
+
+:host([level='secondary-black']) {
+	--_ui-v2-tabs-text: var(--color-text-default);
+	--_ui-v2-tabs-border-top-width: #{tools.rem(2px)};
+	--_ui-v2-tabs-border-top-border-radius: #{tools.rem(4px)} #{tools.rem(4px)} 0 0;
+	--_ui-v2-tabs-padding: #{tools.rem(16px)};
+	--_ui-v2-tabs-font-family: var(--typescale-body-large-strong-font);
+	--_ui-v2-tabs-font-size: var(--typescale-body-large-strong-size);
+	--_ui-v2-tabs-line-height: var(--typescale-body-large-strong-line-height);
+	--_ui-v2-tabs-weight: var(--typescale-body-large-default-weight);
+	--_ui-v2-tabs-active-weight: var(--typescale-body-large-strong-weight);
+}
+
+:host([level^='primary-white']) {
+	--_ui-v2-tabs-underline: var(--color-action-main-selected);
+	--_ui-v2-tabs-text: var(--theme-colors-white, #ffffff);
+	--_ui-v2-tabs-border-top-width: 3px;
+	--_ui-v2-tabs-color: var(--color-text-soft);
+}
+
+/**
+ * Component
+ */
+:host {
+	display: block;
+	background: transparent;
+	--mdc-theme-primary: var(--_ui-v2-tabs-underline);
+	--tabs-full-with-content: 1 0 auto;
+	--tabs-adjust-with-content: 0 0 auto;
+	--atoms-tooltip-info-top-bottom-distance: 120%;
+
+	@include tools.shadowIcons();
+
+	.mdc-tab {
+		min-width: 0;
+		height: var(--_ui-v2-tabs-height);
+		padding-right: var(--_ui-v2-tabs-padding);
+		padding-left: var(--_ui-v2-tabs-padding);
+
+		&:hover {
+			.mdc-tab {
+				&__text-label {
+					color: var(--_ui-v2-tabs-text);
+				}
+			}
+		}
+
+		.mdc-tab__text-label {
+			font-family: var(--_ui-v2-tabs-font-family);
+			line-height: var(--_ui-v2-tabs-line-height);
+			color: var(--_ui-v2-tabs-color);
+			font-weight: var(--_ui-v2-tabs-weight);
+			font-size: var(--_ui-v2-tabs-font-size);
+			text-transform: none;
+			letter-spacing: 0;
+		}
+
+		.mdc-tab {
+			&__ripple {
+				&::before {
+					background-color: transparent;
+				}
+			}
+		}
+
+		.icon-container {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-end;
+			pointer-events: none;
+
+			@include tools.only-mobile {
+				align-items: center;
+			}
+
+			&--handler {
+				pointer-events: auto;
+				cursor: var(--_ui-v2-text-field-icon-cursor);
+			}
+		}
+
+		.icon {
+			position: relative;
+			::before {
+				font-size: var(--_ui-v2-tabs-icon-size);
+			}
+		}
+
+		&--active {
+			.mdc-tab__text-label {
+				color: var(--_ui-v2-tabs-text);
+				text-decoration: none;
+				font-weight: var(--_ui-v2-tabs-active-weight);
+			}
+			.mdc-tab-indicator {
+				&__content {
+					&--underline {
+						border-radius: var(--_ui-v2-tabs-border-top-border-radius);
+						border-top-width: var(--_ui-v2-tabs-border-top-width);
+						color: var(--_ui-v2-tabs-underline);
+						padding-bottom: 0;
+						margin-bottom: 0;
+						display: inline;
+						width: 100%;
+					}
+				}
+			}
+
+			.icon-container {
+				color: var(--_ui-v2-tabs-icon-active);
+			}
+		}
+
+		&-scroller {
+			overflow: var(--_ui-v2-tabs-overflow);
+
+			&__scroll-content {
+				flex: var(--tabs-with-content);
+			}
+
+			&__scroll-area {
+				overflow: var(--_ui-v2-tabs-overflow);
+
+				&--adjust {
+					display: inline-flex;
+				}
+			}
+		}
+
+		.mdc-tab {
+			&__ripple {
+				&::before {
+					background-color: transparent;
+				}
+				&::after {
+					background-color: var(--_ui-v2-tabs-underline);
+				}
+			}
+		}
+
+		&__icon {
+			display: inline-block;
+			@include tools.only-mobile {
+				display: block;
+			}
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: row;
+			gap: tools.rem(2px);
+			color: var(--_ui-v2-tabs-icon-desactive);
+
+			&__badge-mobile {
+				display: flex;
+				flex-direction: row;
+				gap: tools.rem(4px);
+				align-items: center;
+				justify-content: center;
+				height: tools.rem(32px);
+				margin-bottom: tools.rem(-8px);
+				padding-top: tools.rem(16px);
+			}
+
+			&--mobile {
+				display: flex;
+				flex-direction: column;
+			}
+		}
+
+		&--mobile {
+			display: none;
+			@include tools.only-mobile {
+				display: flex;
+				height: 100%;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+
+		&--desktop {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			@include tools.only-mobile {
+				display: none;
+			}
+		}
+	}
+}

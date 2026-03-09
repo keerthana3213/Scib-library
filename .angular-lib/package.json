@@ -1,0 +1,5 @@
+{
+  "name": "@scib/ui-kit/angular",
+  "version": "0.0.0",
+  "main": "esm2022/scib-ui-kit-angular.mjs"
+}

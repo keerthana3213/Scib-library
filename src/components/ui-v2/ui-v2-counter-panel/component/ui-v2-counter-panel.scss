@@ -1,0 +1,223 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	/** Common props for all variants */
+	--_ui-v2-counter-panel-label-font-size: var(--typescale-caption-default-size);
+	--_ui-v2-counter-panel-label-line-height: var(--typescale-caption-default-line-height);
+	--_ui-v2-counter-panel-label-color: var(--color-text-default);
+	--_ui-v2-counter-panel-text-font-size: var(--typescale-body-medium-default-size);
+	--_ui-v2-counter-panel-text-line-height: var(--typescale-body-medium-default-line-height);
+	--_ui-v2-counter-panel-text-color: var(--color-text-default);
+	--_ui-v2-counter-panel-spacer-margin-right: var(--ui-v2-counter-panel-spacer-margin-right, 6px);
+	--_ui-v2-counter-panel-spacer-margin-left: var(--ui-v2-counter-panel-spacer-margin-left, 15px);
+	--_ui-v2-counter-panel-border-color: var(--color-border-alternative);
+	--_ui-v2-counter-panel-background-color: var(--color-background-default);
+	--_ui-v2-counter-panel-box-shadow: var(--theme-elevation-4);
+}
+
+:host([size='m']) {
+	--_ui-v2-counter-panel-box-shadow: var(--theme-elevation-4);
+	--_ui-v2-counter-panel-text-font-size: var(--typescale-body-large-default-size);
+	--_ui-v2-counter-panel-text-line-height: var(--typescale-body-large-default-line-height);
+}
+
+:host([size='s']) {
+	--_ui-v2-counter-panel-box-shadow: -2px 0px 0px 0px;
+}
+
+$minWidth: 70px;
+$maxWidth: 72px;
+
+$smallBorderWidth: 1px;
+$minWidthSmall: 48px;
+$maxWidthSmall: 48px;
+$heightSmall: 24px;
+
+/** 
+ * Component
+ */
+:host {
+	display: block;
+
+	.counter-panel {
+		display: flex;
+		flex-flow: row wrap;
+		gap: tools.rem(9px);
+
+		&--small {
+			gap: tools.rem(6px);
+		}
+
+		&__container {
+			display: flex;
+			flex-direction: column;
+			min-width: $minWidth;
+			max-width: $maxWidth;
+			cursor: pointer;
+
+			&--small {
+				padding-left: var(--size-spacing-00);
+				min-width: $minWidthSmall;
+				max-width: $maxWidthSmall;
+				min-height: $heightSmall;
+				background-color: transparent;
+				border-radius: var(--size-border-radius-02);
+			}
+		}
+
+		&__label {
+			font-family: var(--typescale-caption-default-font);
+			font-size: var(--_ui-v2-counter-panel-label-font-size);
+			line-height: var(--_ui-v2-counter-panel-label-line-height);
+			color: var(--_ui-v2-counter-panel-label-color);
+			margin-bottom: var(--size-spacing-01);
+			text-transform: capitalize;
+			width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: inline-block;
+			white-space: nowrap;
+
+			&--small {
+				opacity: 1 !important;
+				line-height: var(--_ui-v2-counter-panel-label-line-height);
+				font-size: var(--_ui-v2-counter-panel-label-font-size);
+				margin-bottom: var(--size-spacing-00);
+			}
+
+			&--centerLabel {
+				display: flex;
+				justify-content: center;
+			}
+		}
+
+		&__spacer-line {
+			height: tools.rem(68px);
+			border-left: 1px solid var(--color-border-soft);
+			margin-left: var(--_ui-v2-counter-panel-spacer-margin-left);
+			margin-right: var(--_ui-v2-counter-panel-spacer-margin-right);
+		}
+
+		&__globalcontainer {
+			display: flex;
+			flex-direction: row;
+
+			&--small {
+				min-height: $heightSmall;
+			}
+		}
+
+		&__card {
+			width: 100%;
+			min-height: tools.rem(38px);
+			border: tools.rem(1px) var(--_ui-v2-counter-panel-border-color) solid;
+			background-color: var(--_ui-v2-counter-panel-background-color);
+			transition: opacity 0.2s linear;
+			border-radius: var(--size-border-radius-02);
+			justify-content: center;
+			flex-direction: row;
+			align-items: center;
+			position: relative;
+			display: flex;
+			color: var(--color-text-default);
+
+			&--small {
+				min-width: calc($minWidthSmall - $smallBorderWidth * 2);
+				max-width: calc($maxWidthSmall - $smallBorderWidth * 2);
+				min-height: calc($heightSmall - $smallBorderWidth * 2);
+				max-height: calc($heightSmall - $smallBorderWidth * 2);
+				height: 100%;
+				border-radius: var(--size-border-radius-02);
+				border: 1px var(--_ui-v2-counter-panel-status-background-color) solid;
+				background-color: var(--_ui-v2-counter-panel-status-background-color);
+				box-shadow: var(--_ui-v2-counter-panel-box-shadow) var(--_ui-v2-counter-panel-status-color);
+				opacity: 1;
+
+				&::after {
+					width: 0;
+					height: 0;
+					display: none;
+				}
+
+				&:hover {
+					box-shadow: var(--_ui-v2-counter-panel-box-shadow) var(--_ui-v2-counter-panel-status-color);
+				}
+			}
+
+			&--medium {
+				&:hover {
+					box-shadow: var(--_ui-v2-counter-panel-box-shadow);
+				}
+			}
+
+			&::after {
+				content: '';
+				position: absolute;
+				left: tools.rem(-1px);
+				top: tools.rem(-1px);
+				height: calc(100% + 2px);
+				width: tools.rem(4px);
+				background-color: var(--_ui-v2-counter-panel-status-color);
+				border-top-left-radius: var(--size-spacing-01);
+				border-bottom-left-radius: var(--size-spacing-01);
+			}
+
+			&--active {
+				box-shadow: var(--_ui-v2-counter-panel-box-shadow);
+				&--small {
+					color: var(--color-text-inverted);
+					font-weight: var(--typescale-body-medium-strong-weight);
+					background-color: var(--_ui-v2-counter-panel-status-color);
+					box-shadow: var(--_ui-v2-counter-panel-box-shadow) var(--_ui-v2-counter-panel-status-color);
+					border-color: var(--_ui-v2-counter-panel-status-color);
+				}
+			}
+
+			&--opacity {
+				opacity: 0.4;
+				&:hover {
+					opacity: 1;
+					box-shadow: var(--_ui-v2-counter-panel-box-shadow);
+				}
+
+				&--small {
+					opacity: 1;
+					&:hover {
+						box-shadow: var(--_ui-v2-counter-panel-box-shadow) var(--_ui-v2-counter-panel-status-color);
+					}
+				}
+			}
+
+			&__text {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: inline-block;
+				white-space: nowrap;
+				width: 100%;
+				text-align: center;
+				font-family: var(--typescale-body-medium-default-font);
+				padding: tools.rem(6px 11px 6px 15px);
+				font-size: var(--_ui-v2-counter-panel-text-font-size);
+				line-height: var(--_ui-v2-counter-panel-text-line-height);
+				color: var(--_ui-v2-counter-panel-text-color);
+
+				&--small {
+					line-height: var(--_ui-v2-counter-panel-text-line-height);
+					font-size: var(--_ui-v2-counter-panel-text-font-size);
+					padding: tools.rem(4 4 4 2);
+				}
+			}
+		}
+	}
+}

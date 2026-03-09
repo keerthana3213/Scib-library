@@ -1,0 +1,63 @@
+@use 'tools';
+
+@forward 'ecmv-search.theme.scss';
+
+.ecmv-search {
+	padding-top: tools.rem(15);
+	display: flex;
+	align-items: center;
+	width: 100%;
+
+	&__title {
+		display: inline-block;
+		margin-right: tools.rem(48);
+		font-size: tools.rem(28);
+		line-height: tools.rem(32);
+	}
+
+	&__box {
+		display: flex;
+		position: relative;
+		width: 100%;
+	}
+
+	&__input {
+		width: 100%;
+		box-sizing: border-box;
+		border: tools.rem(1) solid tools.color(secondary, medium-dark);
+		border-radius: tools.rem(4);
+		padding: tools.rem(12 45 12 12);
+		font-size: tools.rem(15);
+		line-height: tools.rem(24);
+		background-color: white;
+		-webkit-transition: width 0.4s ease-in-out;
+		transition: width 0.4s ease-in-out;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		&:focus {
+			border: 1px solid tools.color(tertiary, focus);
+		}
+
+		&:hover {
+			border: 1px solid black;
+		}
+	}
+	&__button {
+		margin-left: tools.rem(12);
+		scib-ui-button {
+			--ui-button-min-width: 136px;
+		}
+	}
+}
+
+.iconitem-glass {
+	box-sizing: content-box;
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: tools.color(secondary, dark);
+	padding: tools.rem(13);
+	&:hover {
+		cursor: pointer;
+	}
+}

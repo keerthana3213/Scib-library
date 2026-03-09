@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Atoms/ico/normal size/chevron forward-24 </title>
+    <g id="Atoms/ico/normal-size/chevron-forward-24-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(11.730769, 12.000000) scale(-1, 1) translate(-11.730769, -12.000000) translate(5.000000, 4.000000)" fill="#EC0000">
+            <g id="b.-icons-/-06.-system-/-SYS017---|-chevron-left-Copy" transform="translate(8.961538, 7.994987) scale(-1, 1) translate(-8.961538, -7.994987) translate(4.461538, 0.000000)">
+                <path d="M7.87011475,15.9899749 C7.57151923,15.9917105 7.28452229,15.8725628 7.07252092,15.6588321 L0.332291432,8.8079961 C0.119622979,8.59360307 0,8.30176218 0,7.99731384 C0,7.6928655 0.119622979,7.40102461 0.332291432,7.18663158 L7.07252092,0.335795586 C7.51301983,-0.111931862 8.22720966,-0.111931862 8.66770857,0.335795586 C9.10820747,0.783523035 9.10820747,1.50943266 8.66770857,1.9571601 L2.71383918,7.99731384 L8.66770857,14.0374676 C8.88037702,14.2518606 9,14.5437015 9,14.8481498 C9,15.1525982 8.88037702,15.4444391 8.66770857,15.6588321 C8.4557072,15.8725628 8.16871026,15.9917105 7.87011475,15.9899749 Z" id="🌈-Color" transform="translate(4.500000, 7.994987) rotate(-180.000000) translate(-4.500000, -7.994987) "></path>
+            </g>
+            <rect id="Rectangle" transform="translate(1.230769, 8.000000) scale(-1, 1) translate(-1.230769, -8.000000) " x="0" y="0" width="2.46153846" height="16" rx="1.23076923"></rect>
+        </g>
+    </g>
+</svg>

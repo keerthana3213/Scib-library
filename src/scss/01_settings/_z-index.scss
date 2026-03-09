@@ -1,0 +1,23 @@
+/**
+   *@description: this file is in charge of assigning the values to the z-index keyword
+   *@example: we can find an example on sgcb-store modal
+**/
+
+$z-index-map: (
+	base: 0,
+	basic: 5,
+	calendar: 50,
+	offcanvas: 100,
+	dropdown-icons: 105,
+	overlay: 150,
+	overlay-layer-1: 155,
+	oncanvas: 200,
+	initial: 300,
+	initial-scale: 350,
+	initial-s: 400,
+	initial-m: 500,
+	initial-l: 600,
+	initial-xl: 700,
+	lightbox: 800,
+	dialog: 1009,
+);

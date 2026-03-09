@@ -1,0 +1,201 @@
+@use 'tools';
+
+@forward 'ui-color-panel.theme.scss';
+
+.ui-color-panel {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border: 1px solid;
+	border-left-width: 10px;
+	box-sizing: border-box;
+	border-radius: 4px;
+	width: 100%;
+	cursor: pointer;
+	background: white;
+
+	&--btn {
+		padding: 0;
+		outline: 0;
+
+		&:focus {
+			outline: thin dotted;
+		}
+	}
+
+	&--active {
+		position: relative;
+
+		&:hover,
+		&:focus {
+			box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.12);
+		}
+	}
+
+	&--notactive {
+		opacity: 0.5;
+
+		&:hover,
+		&:focus {
+			opacity: 1;
+			box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.12);
+		}
+	}
+
+	&.--pending,
+	&.--more-30-days {
+		border-color: tools.color(seventh, medium-light);
+
+		&.--locked {
+			border-color: tools.color(seventh, ultra-light);
+		}
+	}
+
+	&.--requested {
+		border-color: tools.color(tertiary, dark);
+
+		&.--locked {
+			border-color: tools.color(tertiary, dark-light);
+		}
+	}
+
+	&.--in,
+	&.--progress,
+	&.--compensated,
+	&.--signed {
+		border-color: tools.color(sixtieth, base);
+	}
+
+	&.--done,
+	&.--payed {
+		border-color: tools.color(quaternary, base);
+	}
+
+	&.--onboarding {
+		border-color: tools.color(quaternary, medium);
+	}
+
+	&.--stand {
+		border-color: tools.color(seventh, light);
+	}
+
+	&.--canceled {
+		border-color: tools.color(secondary, ultra-dark);
+	}
+
+	&.--closed {
+		border-color: tools.color(secondary, dark);
+	}
+
+	&.--rejected {
+		border-color: tools.color(secondary, thirty);
+	}
+
+	&.--disabled {
+		border-color: tools.color(seventh, ultra-light);
+	}
+
+	&.--noaccepted {
+		border-color: tools.color(primary, base);
+	}
+
+	&.--creating {
+		border-color: tools.color(quintenary, base);
+	}
+
+	&.--more-90-days {
+		border-color: tools.color(primary, base);
+	}
+
+	&.--minus-30-days {
+		border-color: tools.color(quintenary, light);
+	}
+
+	&.--hover:hover {
+		box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.16);
+	}
+
+	&.--error {
+		border-color: tools.color(primary, dark);
+	}
+
+	& .ui-expand-btn {
+		display: flex;
+		align-items: flex-end;
+		background: none;
+		border: none;
+		position: relative;
+		padding: tools.rem(16 16 16 8);
+		cursor: pointer;
+
+		&:hover,
+		&:focus {
+			outline: 0;
+
+			.u-icon::before {
+				color: tools.color(primary, dark);
+			}
+		}
+
+		& .u-icon {
+			font-size: 18px;
+			color: tools.color(primary, base);
+			transform: rotate(90deg);
+		}
+
+		&.--expanded .u-icon {
+			transform: rotate(270deg);
+		}
+	}
+}
+
+.ui-color-panel-childs-container {
+	padding: tools.rem(0 0 0 18);
+}
+
+.ui-childs-expand {
+	overflow: hidden;
+	transition: height 0.15s ease-in-out;
+}
+
+.ui-data-container {
+	width: calc(100% - 48px);
+	display: inline-block;
+
+	&.--without-childs .cdk-panel-data {
+		padding-right: tools.rem(110);
+	}
+
+	&.--without-childs {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		width: 100%;
+		min-width: tools.rem(54);
+	}
+}
+
+.ui-color-panel-top-label {
+	margin-bottom: tools.rem(6);
+	white-space: nowrap;
+	font-size: tools.rem(13);
+	line-height: tools.rem(19);
+	color: black;
+}
+
+table .ui-color-panel {
+	display: table-cell;
+}
+
+@media only screen and (min-width: 1024px) {
+	.ui-color-panel {
+		& .ui-expand-btn {
+			align-items: center;
+			padding: tools.rem(0 16 0 8);
+		}
+	}
+	.ui-data-container {
+		width: 100%;
+	}
+}

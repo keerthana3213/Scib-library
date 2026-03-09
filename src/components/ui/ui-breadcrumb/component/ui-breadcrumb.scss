@@ -1,0 +1,40 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-breadcrumb.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+
+.ui-breadcrumb {
+	display: flex;
+	&__link {
+		font-family: settings.$font-bold-txt;
+		font-size: tools.rem(16);
+		line-height: tools.rem(23);
+
+		&:hover {
+			cursor: pointer;
+			color: red;
+		}
+
+		&--regular-text {
+			font-family: settings.$font-regular-txt;
+		}
+	}
+
+	&__actual {
+		color: #767676;
+		font-size: tools.rem(16);
+		line-height: tools.rem(23);
+	}
+	&__slash {
+		margin: tools.rem(0 6);
+		color: black;
+	}
+	&__slash-grey {
+		margin: tools.rem(0 6);
+		color: #767676;
+	}
+}

@@ -1,0 +1,240 @@
+@use '../../ui-v2-text-field/component/ui-v2-text-field.scss';
+@use '@material/menu-surface/mdc-menu-surface';
+@use '@material/list/mdc-list';
+@use '@material/menu/mdc-menu';
+@use '@material/textfield';
+
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public props to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_ui-v2-select-max-height-container: 176px;
+	--_ui-v2-select-text-options-margin-top: 0px;
+	--_ui-v2-text-field-helper-line-display: flex;
+	--ui-v2-scroll-container-gradiant-rgb-color: 245, 249, 251;
+	--_ui-v2-text-field-fixed-icon-color: var(--ui-v2-text-field-fixed-icon-color);
+	--_ui-v2-mdc-menu-position: var(--ui-v2-mdc-menu-position, absolute);
+	--_ui-v2-select-menu-position: var(--ui-v2-select-menu-position, relative);
+	--ui-v2-text-field-icon-color: var(--_ui-v2-select-text-field-icon-color);
+	--ui-v2-scroll-container-gradiant-height: 3px;
+	--viewport-overflow-x: hidden;
+	--_ui-v2-select-alternative-value-font-size: var(--ui-v2-select-alternative-value-font-size);
+	--_ui-v2-select-alternative-value-font-family: var(--ui-v2-select-alternative-value-font-family);
+	--_ui-v2-select-alternative-label-font-size: var(--ui-v2-select-alternative-label-font-size);
+	--_ui-v2-select-alternative-value-weight: var(--ui-v2-select-alternative-label-weight);
+	--_ui-v2-select-alternative-flow-direction: row;
+	--_ui-v2-select-alternative-container-align: center;
+	--_ui-v2-select-alternative-label-padding-left: 0px;
+	--_ui-v2-select-alternative-gap: var(--size-spacing-01);
+	--_ui-v2-select-label-color: var(--ui-v2-select-label-color);
+	--_ui-v2-select-value-text-color: var(--ui-v2-select-value-text-color);
+	--_ui-v2-select-tertiary-hover-value: var(--ui-v2-select-tertiary-hover-value);
+
+	--_ui-v2-select-option-text-color: var(--ui-v2-select-option-text-color);
+	--_ui-v2-select-option-hover-bg-color: var(--ui-v2-select-option-hover-bg-color);
+}
+
+:host([helperText]:not([helperText=''])) {
+	--_ui-v2-select-text-options-margin-top: -23px;
+}
+
+:host([read-only]:not([read-only='false'])) {
+	--_ui-v2-select-text-field-icon-color: var(--color-icon-disabled);
+}
+
+:host([level='secondary']) {
+	--_ui-v2-select-alternative-flow-direction: column;
+	--_ui-v2-select-alternative-container-align: flex-start;
+	--_ui-v2-select-alternative-label-padding-left: 6px;
+	--_ui-v2-select-alternative-gap: 0px;
+}
+
+/**
+ * Component
+ */
+:host {
+	display: block;
+	width: 100%;
+
+	.only-select {
+		--ui-v2-text-field-default-cursor: pointer;
+		--_ui-v2-text-field-border-color: var(--color-border-alternative) !important;
+		--_ui-v2-text-field-label-color: var(--color-text-default) !important;
+		--_ui-v2-text-field-input-border-bottom-color: var(--color-action-alternative-default) !important;
+		--_ui-v2-text-field-hover-input-border-color: var(--color-border-alternative) !important;
+		--_ui-v2-text-field-placeholder-color: var(--color-text-soft) !important;
+		--_ui-v2-text-field-input-text-color: var(--color-text-default) !important;
+		--_ui-v2-text-field-bg-color: var(--color-surface-flat) !important;
+		--_ui-v2-text-field-hover-bottom-border-width: 2px !important;
+		--_ui-v2-text-field-input-ripple-width: calc(100% - 2px) !important;
+		--_ui-v2-text-field-input-border-width: 1px !important;
+		--_ui-v2-text-field-fixed-icon-display: block !important;
+		--_ui-v2-text-field-default-cursor: pointer;
+		--_ui-v2-text-field-input-ripple-display: block;
+	}
+
+	.menu-wrapper {
+		background-color: var(--color-surface-flat);
+		position: var(--_ui-v2-select-menu-position);
+		width: 100%;
+		display: none;
+		margin-top: var(--_ui-v2-select-text-options-margin-top);
+
+		&--show {
+			display: block;
+		}
+
+		.mdc-menu {
+			width: 100%;
+			position: var(--_ui-v2-mdc-menu-position);
+			border-radius: 0;
+			box-shadow: var(--elevation-floating);
+			border-bottom: tools.rem(1px) var(--_ui-v2-select-text-options-border-bottom-color) solid;
+
+			&--open {
+				display: inline-block;
+				transform: scale(1);
+				opacity: 1;
+			}
+
+			&.mdc-menu-surface {
+				border-bottom: none;
+				background-color: var(--color-surface-flat);
+				border-radius: 0 0 tools.rem(4px) tools.rem(4px);
+				color: var(--color-text-default);
+			}
+
+			.mdc-list {
+				background-color: var(--color-surface-flat);
+				padding: tools.rem(4px);
+				max-height: var(--_ui-v2-select-max-height-container);
+				overflow: hidden;
+				height: 100%;
+
+				--ui-v2-scroll-container-padding-top: 0;
+				--ui-v2-scroll-container-padding-bottom: 0;
+				--ui-v2-scroll-container-padding-right: 0;
+				--ui-v2-scroll-container-padding-left: 0;
+				--ui-v2-scroll-container-gradiant-height: 0;
+
+				&--father {
+					padding-left: tools.rem(4px);
+				}
+
+				&--with-scroll {
+					margin-right: tools.rem(13px) !important;
+				}
+
+				&__container {
+					display: block;
+					height: 100%;
+					max-height: var(--_ui-v2-select-max-height-container);
+					&__spacer {
+						height: tools.rem(1px);
+						display: block;
+						margin: tools.rem(8px 12px 8px 5px);
+						background-color: var(--theme-colors-sky-base);
+
+						&--with-scroll {
+							margin-right: tools.rem(20px);
+						}
+					}
+				}
+
+				&-item {
+					min-height: tools.rem(24px);
+					padding: tools.rem(8px);
+					margin: 0;
+					display: flex;
+					flex-direction: row;
+					flex: 1 1 auto;
+					justify-content: flex-start;
+					align-items: center;
+
+					&__text {
+						font: var(--body-large-default);
+						font-family: var(--typescale-body-large-default-font);
+						font-size: var(--typescale-body-large-default-size);
+						line-height: var(--typescale-body-large-default-line-height);
+						font-weight: var(--typescale-body-large-default-weight);
+						font-style: var(--typescale-body-large-default-style);
+						color: var(--_ui-v2-select-option-text-color);
+						display: inline-block;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+					}
+
+					&:hover {
+						background: var(--_ui-v2-select-option-hover-bg-color);
+						color: var(--_ui-v2-select-text-option-text-color);
+						border-radius: tools.rem(4px);
+						cursor: pointer;
+					}
+				}
+			}
+
+			.mdc-list-checkbox {
+				margin-right: tools.rem(5px);
+
+				scib-ui-v2-checkbox {
+					&:hover {
+						background: var(--_ui-v2-select-text-options-hover-background);
+						color: var(--_ui-v2-select-text-option-text-hover-color);
+						--ui-v2-checkbox-label: var(--_ui-v2-select-text-option-text-hover-color);
+						border-radius: tools.rem(4px);
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
+	.altDesign-container {
+		display: flex;
+		flex-direction: var(--_ui-v2-select-alternative-flow-direction);
+		align-items: var(--_ui-v2-select-alternative-container-align);
+		gap: var(--_ui-v2-select-alternative-gap);
+
+		&__label {
+			cursor: default;
+			color: var(--_ui-v2-select-label-color);
+			font-weight: var(--typescale-body-medium-default-weight);
+			font-family: var(--typescale-body-medium-default-font);
+			font-size: var(--_ui-v2-select-alternative-label-font-size);
+			line-height: var(--typescale-body-medium-default-line-height);
+			padding-left: var(--_ui-v2-select-alternative-label-padding-left);
+		}
+		&__value-container {
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			gap: var(--size-spacing-01);
+			padding: tools.rem(2px) tools.rem(6px);
+			&:hover {
+				border-radius: var(--size-border-radius-03);
+				background-color: var(--_ui-v2-select-tertiary-hover-value);
+			}
+		}
+
+		&__value {
+			color: var(--_ui-v2-select-value-text-color);
+			font-weight: var(--_ui-v2-select-alternative-value-weight);
+			font-family: var(--_ui-v2-select-alternative-value-font-family);
+			font-size: var(--_ui-v2-select-alternative-value-font-size);
+		}
+	}
+}
+
+:host([invalid]:not([invalid='false'])) .only-select {
+	--_ui-v2-text-field-input-border-bottom-color: var(--color-border-error) !important;
+}

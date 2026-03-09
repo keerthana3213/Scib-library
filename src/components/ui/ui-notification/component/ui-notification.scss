@@ -1,0 +1,26 @@
+@forward 'ui-notification.theme.scss';
+@use 'tools';
+
+.ui-notification {
+	width: inherit;
+	&--subinput {
+		line-height: 30px;
+		min-height: 30px;
+		border-radius: 4px;
+		background-color: #deedf2;
+		padding: 3px 10px;
+		display: flex;
+		align-items: center;
+
+		& .icon {
+			font-size: tools.rem(24);
+			margin-right: 6px;
+			color: var(--ui-notification-inner-icon-color, unset);
+		}
+	}
+	&-text {
+		font-size: var(--ui-notification-inner-font-size, unset);
+		color: var(--ui-notification-inner-font-color, unset);
+		font-family: var(--ui-notification-inner-font-family, unset);
+	}
+}

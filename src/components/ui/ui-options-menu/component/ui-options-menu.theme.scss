@@ -1,0 +1,4 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_ui-options-menu-bg-color: var(--ui-options-menu-bg-color, white);
+}

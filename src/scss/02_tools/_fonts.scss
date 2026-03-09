@@ -1,0 +1,90 @@
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass-rem' as rem;
+
+/**
+   *@description: font-face function
+**/
+@function _str-replace($string, $search, $replace: '') {
+	$index: string.index($string, $search);
+	@if $index {
+		@return string.slice($string, 1, $index - 1) + $replace + _str-replace(str-slice($string, $index + string.length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+/**
+   *@description: mixin to integrate fonts by font-face
+**/
+
+@mixin font-face($name, $path, $exts: eot woff woff2 ttf, $size: false) {
+	$src: null;
+
+	$extmods: (
+		eot: '?',
+		svg: '#' + _str-replace($name, ' ', '_')
+	);
+
+	$formats: (
+		otf: 'opentype',
+		ttf: 'truetype'
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);
+		$format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);
+		$src: list.append($src, url(quote($path + '.' + $extmod)) format(quote($format)), comma);
+	}
+
+	@if $size {
+		@font-face {
+			font-family: quote($name);
+			font-display: block;
+			font-style: normal;
+			font-weight: $size;
+			src: $src;
+		}
+	} @else {
+		@font-face {
+			font-family: quote($name);
+			font-display: block;
+			src: $src;
+		}
+	}
+}
+
+@mixin shadowIcons() {
+	--icon-content: '';
+
+	i[class^='icon'],
+	em[class^='icon'] {
+		font-weight: 400;
+		font-style: normal;
+		font-variant: normal;
+		text-rendering: auto;
+		line-height: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: rem.convert(24px);
+		font-family: 'scib-icons' !important;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+
+		&::before {
+			content: var(--icon-content);
+		}
+	}
+}
+
+@mixin define-taildwind-font($name) {
+	&-font-family-#{$name} {
+		font-family: var(--typescale-#{$name}-font);
+		font-size: var(--typescale-#{$name}-size);
+		line-height: var(--typescale-#{$name}-line-height);
+		font-weight: var(--typescale-#{$name}-weight);
+		font-style: var(--typescale-#{$name}-style);
+	}
+}

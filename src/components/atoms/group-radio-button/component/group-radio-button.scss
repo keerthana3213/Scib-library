@@ -1,0 +1,202 @@
+@use '@material/radio/styles';
+@use '@material/form-field';
+@use '@material/radio';
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_atoms-group-radio-button-bg-color: var(--color-surface-flat);
+	--_atoms-group-radio-button-border-color: var(--color-border-default);
+	--_atoms-group-radio-button-margin-right: var(--atoms-group-radio-button-margin-right, #{tools.rem(8px)});
+	--_atoms-group-radio-button-width: var(--atoms-group-radio-button-width, #{tools.rem(24px)});
+	--_atoms-group-radio-button-box-shadow: var(--elevation-flat);
+	--_atoms-group-radio-button-focus-box-shadow: var(--elevation-flat-focus-outer);
+	--_atoms-group-radio-button-checked-border-color: var(--color-action-alternative-selected);
+	--_atoms-group-radio-button-checked-dot-color: var(--color-action-alternative-selected);
+	--_atoms-group-radio-button-checked-hover-border-color: var(--color-action-alternative-hover);
+	--_atoms-group-radio-button-checked-hover-dot-color: var(--color-action-alternative-hover);
+	--_atoms-group-radio-button-text-color: var(--color-text-default);
+	--_atoms-group-radio-button-text-font: var(--label-large);
+	--_atoms-group-radio-button-text-font-family: var(--typescale-label-font);
+	--_atoms-group-radio-button-text-font-size: var(--typescale-label-large-size);
+	--_atoms-group-radio-button-text-font-line-height: var(--typescale-label-large-line-height);
+	--_atoms-group-radio-button-text-font-weight: var(--typescale-label-weight);
+	--_atoms-group-radio-button-text-font-style: var(--typescale-label-style);
+	--_atoms-group-radio-button-cursor: pointer;
+}
+
+:host([disabled]:not([disabled='false'])) {
+	--_atoms-group-radio-button-bg-color: var(--color-surface-disabled);
+	--_atoms-group-radio-button-border-color: var(--color-border-disabled);
+	--_atoms-group-radio-button-checked-border-color: var(--color-border-disabled);
+	--_atoms-group-radio-button-checked-dot-color: var(--color-icon-disabled);
+	--_atoms-group-radio-button-text-color: var(--color-text-disabled);
+	--_atoms-group-radio-button-cursor: default;
+}
+
+:host([invalid]:not([invalid='false'])) {
+	--_atoms-group-radio-button-border-color: var(--color-border-error);
+	--_atoms-group-radio-button-checked-border-color: var(--color-border-error);
+	--_atoms-group-radio-button-checked-dot-color: var(--color-icon-error);
+	--_atoms-group-radio-button-checked-hover-border-color: var(--color-border-error);
+	--_atoms-group-radio-button-checked-hover-dot-color: var(--color-border-error);
+}
+
+:host([read-only]:not([read-only='false'])) {
+	--_atoms-group-radio-button-bg-color: var(--color-surface-disabled);
+	--_atoms-group-radio-button-border-color: var(--color-border-disabled);
+	--_atoms-group-radio-button-checked-border-color: var(--color-border-disabled);
+	--_atoms-group-radio-button-checked-dot-color: var(--color-icon-soft);
+	--_atoms-group-radio-button-text-color: var(--color-text-default);
+	--_atoms-group-radio-button-cursor: default;
+}
+
+/** 
+ * Component
+ */
+
+:host {
+	font-family: var(--_atoms-group-radio-button-text-font-family);
+	@include tools.shadowIcons();
+	display: block;
+
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
+
+		.mdc-form-field {
+			display: inline-flex;
+			align-items: center;
+			margin-right: var(--_atoms-group-radio-button-margin-right);
+			align-items: center;
+
+			&:has(.mdc-radio__helper-text) {
+				align-items: start !important;
+			}
+
+			label {
+				font-size: var(--_atoms-group-radio-button-text-font-size);
+				line-height: var(--_atoms-group-radio-button-text-font-line-height);
+				font-family: var(--_atoms-group-radio-button-text-font-family);
+				padding-left: tools.rem(2);
+				color: var(--_atoms-group-radio-button-text-color);
+				font: var(--_atoms-group-radio-button-text-font);
+				font-weight: var(--_atoms-group-radio-button-text-font-weight);
+				font-style: var(--_atoms-group-radio-button-text-font-style);
+			}
+
+			.mdc-radio {
+				width: var(--_atoms-group-radio-button-width);
+				height: var(--_atoms-group-radio-button-width);
+				padding: 0px;
+				margin: var(--_atoms-group-radio-button-margin-right);
+				box-shadow: var(--_atoms-group-radio-button-box-shadow);
+
+				&__ripple {
+					&::before,
+					&::after {
+						background-color: var(--_atoms-group-radio-button-border-color);
+					}
+				}
+				&__label-container {
+					&:has(.mdc-radio__helper-text) {
+						padding-top: tools.rem(8px);
+					}
+				}
+
+				&__helper-text {
+					text-wrap: wrap;
+					padding-left: tools.rem(2px);
+					padding: tools.rem(8px);
+					font-size: var(--typescale-helper-text-size);
+					line-height: var(--typescale-helper-text-line-height);
+					font-family: var(--typescale-helper-text-font);
+					font-weight: var(--typescale-helper-text-weight);
+					font-style: var(--typescale-helper-text-style);
+					color: var(--color-text-soft);
+					&__button {
+						display: inline-block;
+					}
+				}
+				&__native-control {
+					width: var(--_atoms-group-radio-button-width);
+					height: var(--_atoms-group-radio-button-width);
+					cursor: var(--_atoms-group-radio-button-cursor);
+
+					+ .mdc-radio__background {
+						width: var(--_atoms-group-radio-button-width);
+						height: var(--_atoms-group-radio-button-width);
+						background-color: var(--_atoms-group-radio-button-bg-color);
+						border-radius: 50%;
+						.mdc-radio__outer-circle {
+							border-width: 1px;
+							border-color: var(--_atoms-group-radio-button-border-color);
+						}
+						.mdc-radio__inner-circle {
+							border-width: 0px;
+							background-color: var(--_atoms-group-radio-button-checked-dot-color);
+						}
+					}
+
+					&:focus {
+						+ .mdc-radio__background .mdc-radio__outer-circle {
+							box-shadow: var(--_atoms-group-radio-button-focus-box-shadow);
+						}
+						+ .mdc-radio__background::before {
+							opacity: 0;
+						}
+					}
+					&:not(:checked) {
+						+ .mdc-radio__background .mdc-radio__outer-circle {
+							border-width: 1px;
+						}
+						&:hover:enabled {
+							+ .mdc-radio__background .mdc-radio__outer-circle {
+								border-color: var(--color-border-hover);
+							}
+						}
+					}
+					&:checked {
+						+ .mdc-radio__background .mdc-radio__outer-circle {
+							border-width: 2px;
+							border-color: var(--_atoms-group-radio-button-checked-border-color);
+						}
+						+ .mdc-radio__background .mdc-radio__inner-circle {
+							border-color: var(--_atoms-group-radio-button-checked-dot-color);
+						}
+						&:hover:enabled {
+							+ .mdc-radio__background .mdc-radio__outer-circle {
+								border-color: var(--_atoms-group-radio-button-checked-hover-border-color);
+							}
+							+ .mdc-radio__background .mdc-radio__inner-circle {
+								border-color: var(--_atoms-group-radio-button-checked-hover-dot-color);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.mdc-form-direction-row {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		margin-right: var(--_atoms-group-radio-button-margin-right);
+	}
+	.mdc-form-direction-column {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-right: var(--_atoms-group-radio-button-margin-right);
+	}
+}

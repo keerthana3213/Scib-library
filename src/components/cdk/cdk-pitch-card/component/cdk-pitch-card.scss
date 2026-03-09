@@ -1,0 +1,157 @@
+@use 'utilities';
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-pitch-card.theme.scss';
+@forward '../fragments/cdk-pitch-card-menu.fragment';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	-webkit-appearance: unset !important;
+	width: max-content;
+}
+
+.cdk-pitch-card {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: tools.rem(24);
+
+	&__menu {
+		position: absolute;
+		top: tools.rem(156);
+		left: tools.rem(184);
+		z-index: 2;
+	}
+
+	&__item {
+		position: relative;
+		// max-width: tools.rem(413);
+		min-width: tools.rem(248);
+		height: tools.rem(190);
+		border-radius: tools.rem(4);
+		box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.12);
+	}
+
+	&__content {
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		border-radius: tools.rem(4);
+	}
+
+	&__type {
+		position: absolute;
+		display: flex;
+		right: 0%;
+		width: tools.rem(53);
+		height: tools.rem(53);
+		justify-content: center;
+		align-items: center;
+		color: white;
+		background-color: tools.color(tertiary, focus);
+		border-radius: tools.rem(0 4);
+		z-index: 1;
+	}
+
+	&__box {
+		display: flex;
+		position: absolute;
+		top: 39%;
+		flex-direction: column;
+		justify-content: flex-start;
+		width: tools.rem(210);
+		max-width: tools.rem(210);
+		height: tools.rem(131); //  como en pitch 1.0
+		border-radius: tools.rem(4);
+		border: tools.rem(1) solid #efefef;
+		margin-left: tools.rem(16);
+		padding: tools.rem(16);
+		background-color: white;
+		box-sizing: border-box;
+
+		&--btn {
+			display: flex;
+			margin-left: tools.rem(28);
+			align-self: center;
+		}
+
+		&--action {
+			display: flex;
+			justify-content: space-between;
+			width: auto;
+			height: tools.rem(32);
+		}
+	}
+
+	&__title {
+		width: 100%;
+		font-size: tools.rem(16);
+		font-family: settings.$font-bold-headline;
+	}
+
+	&__buttons {
+		display: flex;
+		position: absolute;
+		bottom: tools.rem(16);
+		justify-content: space-between;
+		width: calc(100% - 32px); // necesario para el space-between
+	}
+
+	button {
+		@include utilities.force-reset(button);
+		box-sizing: border-box;
+		font-size: tools.rem(12);
+		line-height: tools.rem(24);
+		font-family: settings.$font-bold-txt;
+		text-transform: capitalize;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: tools.rem(5 15);
+		width: auto;
+		border-radius: tools.rem(35);
+		border: 1px solid transparent;
+		box-sizing: border-box;
+		cursor: pointer;
+		transition: opacity 0.15s linear;
+		transition: box-shadow 0.15s linear;
+		height: 32px;
+		background: tools.color(primary, base);
+		border-color: tools.color(primary, medium);
+		color: white;
+		overflow: visible;
+
+		&:hover {
+			background: tools.color(primary, medium);
+			border-color: tools.color(primary, medium);
+			color: white;
+		}
+	}
+}
+
+@media (min-width: 1400px) {
+	.cdk-pitch-card {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 768px) {
+	.cdk-pitch-card {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (max-width: 360px) and (orientation: portrait) {
+	.cdk-pitch-card {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+@media (max-width: 414px) and (orientation: portrait) {
+	.cdk-pitch-card {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+	}
+}

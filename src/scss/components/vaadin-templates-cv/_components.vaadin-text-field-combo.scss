@@ -1,0 +1,80 @@
+/**
+   *@description: this file stylizes the basic vaadin-text-field-combo component.
+   **Due to its structure, we can not use sass structure, but its functions,
+   **because in the compilation are compiled and generate stable css.
+**/
+
+label {
+	padding: 5px 0 0;
+}
+
+[part='text-field'] {
+	padding: 0;
+}
+
+[part='toggle-button'] {
+	display: inline-block;
+	color: #ec0000;
+}
+
+[part='clear-button'] {
+	display: none;
+}
+
+/*HOVER*/
+:host(:hover:not([readonly]):not([focused])) [part='input-field']::after {
+	opacity: 0;
+}
+
+:host(:hover:not([readonly]):not([focused])) [part='value']::placeholder {
+	color: #4c4c4c;
+}
+
+:host(:hover:not([focused])) [part='input-field'] {
+	cursor: pointer;
+	border: 1px solid black;
+}
+
+/*FOCUS*/
+:host([focused]:not([readonly])) [part='label'] {
+	color: black;
+}
+
+:host([focused]:not([readonly])) [part='input-field'],
+:host([focus-ring]) [part='input-field'] {
+	box-shadow: none;
+	border: 1px solid #9bc3d3;
+}
+
+:host([focused]:not([readonly])) [part='value'],
+:host([focused]:not([readonly])) [part='value']::placeholder {
+	color: #4c4c4c;
+}
+
+/*Error*/
+
+:host([error='true']) [part='label'] {
+	-webkit-text-fill-color: #ec0000;
+}
+
+:host([focused][error='true']) [part='input-field'],
+:host(:not([focused])[error='true']) [part='input-field'],
+:host([error='true']:hover) [part='input-field'] {
+	border: 1px solid #ec0000;
+	background-color: transparent;
+}
+
+/*DISABLED*/
+:host([disabled]) [part='label'] {
+	-webkit-text-fill-color: black;
+	opacity: 1;
+}
+
+:host([disabled]) [part='input-field'],
+:host([disabled]) [part='value'] {
+	-webkit-text-fill-color: #4c4c4c;
+}
+
+:host([disabled]) [part='input-field'] {
+	background-color: #e6e6e6;
+}

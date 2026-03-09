@@ -1,0 +1,289 @@
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+@forward 'cdk-members-tooltip.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+
+:host([read-by-tooltip]) {
+	.c-members-container {
+		padding-top: 0;
+		width: auto;
+	}
+	.c-members-tooltip {
+		width: max-content;
+		max-height: tools.rem(400);
+		overflow-y: auto;
+
+		.c-tooltip-member {
+			max-width: none;
+			border-bottom: 1px solid #c3dee7;
+
+			.c-tooltip-name-and-read-date {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+				width: 100%;
+			}
+		}
+
+		.c-tooltip-name {
+			color: #000000;
+			font-size: tools.rem(15);
+			letter-spacing: 0;
+			line-height: tools.rem(22);
+		}
+		.c-tooltip-read-date {
+			color: #767676;
+			font-size: tools.rem(12);
+			letter-spacing: 0;
+			line-height: tools.rem(18);
+			margin-left: tools.rem(14);
+			text-transform: uppercase;
+		}
+	}
+}
+
+:host([read-by-tooltip][is-mobile]) {
+	.c-members-container {
+		box-sizing: border-box;
+		width: 100%;
+		height: 100%;
+		max-width: none;
+	}
+	.c-members-tooltip {
+		box-sizing: border-box;
+		width: 100%;
+		height: 100%;
+		max-height: 100%;
+		padding: tools.rem(24);
+		border-radius: 0;
+	}
+	.c-tooltip-member {
+		div {
+			> .c-tooltip-name-and-read-date {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				width: 100%;
+			}
+		}
+	}
+
+	.c-tooltip-read-title {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		margin-bottom: tools.rem(26);
+		> span {
+			margin-right: 12px;
+			> i {
+				transform: rotate(180deg) scale(0.6);
+			}
+		}
+	}
+}
+
+.c-members-container {
+	padding-top: tools.rem(20);
+	display: none;
+	position: absolute;
+	width: max-content;
+	max-width: tools.rem(640);
+	// min-width: tools.rem(445);
+	z-index: 100;
+	cursor: default;
+
+	&:hover {
+		display: block;
+	}
+
+	&.--right {
+		right: 0;
+	}
+	&.--left {
+		left: 0;
+	}
+}
+
+.c-members-tooltip {
+	position: relative;
+	box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.12);
+	background: white;
+	border: 1px solid tools.color(secondary, light);
+	padding: tools.rem(20 40.5 2.5 24.5);
+	border-radius: tools.rem(8);
+
+	&.--right {
+		&:before,
+		&:after {
+			right: tools.rem(25);
+		}
+	}
+	&.--left {
+		&:before,
+		&:after {
+			left: tools.rem(25);
+		}
+	}
+
+	&.--top {
+		&:before,
+		&:after {
+			top: tools.rem(-8);
+		}
+	}
+	&.--bottom {
+		&:before,
+		&:after {
+			bottom: tools.rem(-8);
+		}
+	}
+
+	&:not(.--read-by-tooltip):before,
+	&:not(.--read-by-tooltip):after {
+		content: '';
+		position: absolute;
+		background: white;
+		border: 1px solid tools.color(secondary, light);
+		border-radius: tools.rem(8);
+		width: tools.rem(20);
+		height: tools.rem(20);
+		transform: rotate(45deg);
+		z-index: -1;
+	}
+
+	&:not(.--read-by-tooltip):after {
+		border: 1px solid transparent;
+		background-clip: content-box;
+		z-index: 0;
+	}
+
+	.c-tooltip-read-title {
+		color: #444444;
+		font-size: tools.rem(14);
+		font-weight: bold;
+		letter-spacing: 0;
+		line-height: tools.rem(20);
+		margin-bottom: tools.rem(20);
+	}
+
+	.c-members-list {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		width: 100%;
+		justify-content: space-between;
+
+		& > .c-tooltip-member:only-child {
+			width: 100%;
+		}
+
+		&__link {
+			color: tools.color(primary, base);
+			text-decoration: none;
+			width: 100%;
+			max-width: tools.rem(210);
+			margin-bottom: tools.rem(20);
+			display: flex;
+			align-items: center;
+
+			&:hover {
+				color: tools.color(primary, dark);
+			}
+		}
+	}
+
+	.c-tooltip-member {
+		width: 100%;
+		max-width: fit-content;
+		margin-bottom: tools.rem(10);
+		padding-bottom: tools.rem(10);
+
+		& div {
+			display: flex;
+			height: 100%;
+			align-items: center;
+		}
+	}
+
+	.c-tooltip-name {
+		@extend %ellipsis;
+		cursor: text;
+		font-size: tools.rem(14);
+		line-height: tools.rem(20);
+		color: tools.color(secondary, ultra-dark);
+		user-select: text;
+		-webkit-user-drag: none;
+		margin-left: tools.rem(14);
+		display: block;
+	}
+
+	.c-tooltip-name-and-read-date {
+		width: 100%;
+	}
+
+	.c-tooltip-avatar {
+		display: inline-block;
+		width: tools.rem(36);
+		height: tools.rem(36);
+		min-width: tools.rem(36);
+		min-height: tools.rem(36);
+		border: tools.rem(2) solid tools.color(secondary, medium);
+		border-radius: 50%;
+		overflow: hidden;
+		vertical-align: middle;
+		box-shadow: tools.rem(0 2 10 0) rgba(0, 0, 0, 0.2);
+
+		&.--employees {
+			border: tools.rem(2) solid tools.color(primary, base);
+		}
+
+		&.--fallback {
+			padding: tools.rem(5);
+			background: white;
+		}
+
+		&.--no-avatar {
+			display: flex;
+			align-items: center;
+			background: tools.color(secondary, light);
+		}
+	}
+
+	.c-tooltip-img {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.c-tooltip-no-avatar {
+		display: block;
+		width: 100%;
+		text-align: center;
+		color: tools.color(secondary, ultra-dark);
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.c-members-tooltip:not(.--read-by-tooltip) {
+		.c-tooltip-member {
+			width: calc(50% - 20px);
+			max-width: inherit;
+			padding-right: tools.rem(20);
+		}
+
+		.c-members-list {
+			flex-direction: row;
+
+			&__link {
+				width: calc(50% - 20px);
+				max-width: inherit;
+			}
+		}
+	}
+}

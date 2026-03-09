@@ -1,0 +1,122 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Design System/Molecules/Input Range/Api" parameters={{ status: 'beta' }}/>
+
+# API
+
+---
+
+### Range Input config
+
+The range input componeny has the following config interface:
+
+```
+{
+	prefix?: string;
+	datePickerConfig?: (Partial<AirDatepickerOptions> & CustomDatePickerConfig) 
+	amountInputConfig?: object;
+	disabledDates?: Partial<DisabledDatesConfig>;
+	locale?: string;
+	language?: DatePickerLanguages;
+	max?:string;
+	min?:string;
+    dateFormat:string;
+}
+```
+# prefix property
+
+This config set a prefix in the second input when is type amount and type range
+
+# datePickerConfig property
+
+This config set a config for datepicker component when is type date. You can see the valued admitted here: [air-datepicker](https://air-datepicker.com/docs)
+
+# amountInputConfig property
+
+Use this config to format the amount inputs. We are using the following external libraries to apply automatic formats with a simple configuration:
+
+| Input type | External library |
+| ------ | ------ |
+| number | [AutoNumeric.js](http://autonumeric.org/configurator) |
+
+
+Example with decimals
+
+````
+{
+    alwaysAllowDecimalCharacter: true,
+	decimalCharacterAlternative: ',',
+	decimalPlacesRawValue: 2,
+	decimalPlacesShownOnBlur: 2,
+	decimalPlacesShownOnFocus: 2,
+}
+````
+
+# disabledDates property
+
+To disable dates we must include the object **_disableDates_**. 
+It receives the key weekends which disabled weekends if the value is true. 
+Also we can disable dates with dates field, we will add an array with dates in ISO format and includeOffset with value false. Example: DateTime.now().toISO({ includeOffset: false }) 
+
+```
+disableDates:{
+		weekends:true,
+		dates:["2022-04-13", "2022-04-14" ,"2022-04-15" ,"2022-04-23"]
+}
+```
+# dateFormat property
+
+This property allowed a format string to return date selected in format introduced, if the property is empty date will be returned in ISO format by default
+We are using Luxon to manage all dates inside new v2 components, but in this component only we need to know 2 things to configure it.
+
+1. We have a prop called "format" where we can pass a custom token to modify the format that we will see inside the input box. 
+
+    [Table of tokens](https://moment.github.io/luxon/#/formatting?id=table-of-tokens)
+    
+
+2. The component accept custom values to init with the value that you want. The only requirement is that the value must be in ISO format.
+
+    [ISO 8601](https://moment.github.io/luxon/#/parsing?id=iso-8601)
+
+
+# locale
+This property set a locale for the dates in the range input type date
+
+# language
+This property set a language to the calendar in the range input type date
+
+# max
+This property allow to set a maximum date to pick in the range input type date
+
+# min
+This property allow to set a minimun date to pick in the range input type date
+
+
+
+### Value
+
+The value interface admitted and returned will have the following interface:
+
+```
+{
+    type:RangeTypes;
+	valueFrom: string;
+	valueTo: string;
+}
+```
+When is type date, values must be in ISO format
+
+
+## Range Types
+
+The range types values admitted are the following:
+
+```
+{
+	RANGE = '0',
+	EQUALS = '1',
+	FROM = '2',
+	TO = '3',
+}
+
+```

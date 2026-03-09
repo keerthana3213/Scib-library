@@ -1,0 +1,11 @@
+/**
+ * Public custom properties for events-calendar component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--molecules-events-calendar-header-margin: 0 0 12px 0;
+	--molecules-events-calendar-time-font-family: 'scib-headline-bold';
+	--molecules-events-calendar-time-font-size: 16px;
+}

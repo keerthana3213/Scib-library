@@ -1,0 +1,30 @@
+name: Create Protected Branch workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      change-type:
+        description: 'Choose the branch type to create. (release or hotfix)'
+        required: true
+        type: choice
+        options:
+          - release
+          - hotfix
+      functional-name:
+        description: 'Enter a functional name for the new branch.'
+        required: true
+        type: string
+      tag:
+        description: 'Enter the name of the branch or tag from which the new branch will be created.'
+        required: true
+        type: string
+
+jobs:
+    call-release-workflow:
+        name: Protected Branch workflow
+        uses: santander-group-scib-gln/cib-oasis-wfsreposmgmt/.github/workflows/create-protected-branch.yml@v1
+        with:
+            change-type: ${{ github.event.inputs.change-type }}
+            functional-name: ${{ github.event.inputs.functional-name }}
+            tag: ${{ github.event.inputs.tag }}
+        secrets: inherit

@@ -1,0 +1,59 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-delete-members.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+
+.cdk-delete-member {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: tools.rem(436);
+
+	.sc-scib-ui-avatar-h {
+		width: tools.rem(52);
+		height: tools.rem(52);
+	}
+
+	.sc-scib-ui-checkbox-h {
+		color: tools.color(secondary, dark);
+	}
+
+	&__group {
+		margin-bottom: tools.rem(24);
+	}
+
+	&__name {
+		font-size: tools.rem(14);
+		line-height: tools.rem(20);
+		color: tools.color(secondary, ultra-dark);
+		margin: tools.rem(6 0 16);
+	}
+
+	&__description {
+		text-align: center;
+		margin-bottom: tools.rem(32);
+		width: 100%;
+	}
+
+	&__message {
+		font-size: tools.rem(18);
+		line-height: tools.rem(26);
+		color: tools.color(secondary, thirty);
+
+		&--topics {
+			font-family: settings.$font-bold-txt;
+			color: tools.color(secondary, thirty);
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.cdk-delete-member {
+		margin: 0 auto;
+	}
+}

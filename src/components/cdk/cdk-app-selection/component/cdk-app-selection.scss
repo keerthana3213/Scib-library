@@ -1,0 +1,25 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-app-selection.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+
+.cdk-app-selection {
+	&__checkbox {
+		padding: tools.rem(10);
+
+		&:after {
+			content: '';
+			display: block;
+			margin-top: tools.rem(10);
+			bottom: tools.rem(16);
+			left: tools.rem(8);
+			width: calc(100% - 16px);
+			height: tools.rem(1);
+			background: tools.color(secondary, medium);
+		}
+	}
+}

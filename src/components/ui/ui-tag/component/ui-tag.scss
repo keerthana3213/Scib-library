@@ -1,0 +1,71 @@
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+@forward 'ui-tag.theme.scss';
+
+:host {
+	display: inline-flex;
+	vertical-align: top;
+	font-family: settings.$font-regular-txt;
+}
+
+@mixin textTag {
+	.ui-tag__text {
+		@content;
+	}
+}
+
+.ui-tag {
+	display: inline-block;
+	box-sizing: border-box;
+	cursor: default;
+	border-radius: tools.rem(4);
+	height: tools.rem(22);
+	width: auto;
+	background: black;
+	padding: tools.rem(2 4);
+	text-align: center;
+
+	&__text {
+		vertical-align: top;
+		box-sizing: border-box;
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(12);
+		line-height: tools.rem(18);
+		color: white;
+	}
+
+	&--clickable {
+		cursor: pointer;
+	}
+
+	&--min-w {
+		min-width: tools.rem(52);
+	}
+
+	&--lg {
+		height: tools.rem(26);
+		padding: tools.rem(4 4);
+		@include textTag {
+			font-size: tools.rem(16);
+			line-height: tools.rem(18);
+		}
+	}
+
+	&--sm {
+		height: tools.rem(20);
+		padding: tools.rem(1 4);
+		@include textTag {
+			font-size: tools.rem(12);
+			line-height: tools.rem(18);
+		}
+	}
+
+	&--closed {
+		background: tools.color(secondary, dark);
+		@include textTag {
+			color: white;
+		}
+	}
+}

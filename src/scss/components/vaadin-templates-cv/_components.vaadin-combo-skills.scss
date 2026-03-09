@@ -1,0 +1,22 @@
+/**
+   *@description: this file stylizes the vaadin-combo component with skills styles.
+   **Due to its structure, we can not use sass structure, but its functions,
+   **because in the compilation are compiled and generate stable css.
+**/
+
+label {
+	padding: 0;
+}
+
+[part='text-field'] {
+	padding: 0;
+}
+
+[part='toggle-button'] {
+	display: inline-block;
+	color: #ec0000;
+}
+
+[part='clear-button'] {
+	display: none;
+}

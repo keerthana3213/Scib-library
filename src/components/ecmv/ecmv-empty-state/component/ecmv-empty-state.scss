@@ -1,0 +1,120 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ecmv-empty-state.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_ecmv-empty-state-bg-color);
+}
+
+.cdk-ecmv-empty-state {
+	width: 100%;
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		margin: 0 auto;
+		padding: tools.rem(0 20);
+		max-width: tools.rem(800);
+		padding: tools.rem(70 0 120);
+	}
+
+	&__message {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: tools.rem(70 0 20);
+		background-color: #f2f2f2;
+	}
+
+	&__figure {
+		width: tools.rem(282);
+		height: tools.rem(200);
+	}
+
+	&__img {
+		width: 100%;
+		height: 100%;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		// align-items: center;
+		justify-content: center;
+	}
+
+	&__title {
+		font-family: settings.$font-bold-headline;
+		font-size: tools.rem(32);
+		line-height: tools.rem(46);
+		color: black;
+	}
+
+	&__description {
+		font-family: settings.$font-regular-headline;
+		font-size: tools.rem(18);
+		line-height: tools.rem(26);
+		color: black;
+		margin-top: tools.rem(2);
+	}
+}
+
+@media only screen and (max-width: 1025px) {
+	.cdk-ecmv-empty-state {
+		&__container {
+			max-width: initial;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		&__image {
+			margin-bottom: tools.rem(10);
+		}
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.cdk-ecmv-empty-state {
+		&__container {
+			padding: tools.rem(16 0 65);
+			max-width: initial;
+			justify-content: center;
+			align-items: center;
+		}
+
+		&__message {
+			max-width: initial;
+			justify-content: center;
+			align-items: center;
+			padding: tools.rem(16 0 20);
+			background-color: #f2f2f2;
+		}
+
+		&__content {
+			max-width: tools.rem(186);
+			margin-top: tools.rem(8);
+			text-align: center;
+		}
+
+		&__figure {
+			width: tools.rem(200);
+			height: 100%;
+		}
+
+		&__title {
+			font-size: tools.rem(20);
+			line-height: tools.rem(29);
+		}
+
+		&__description {
+			font-size: tools.rem(14);
+			line-height: tools.rem(20);
+			margin: tools.rem(4 0 0);
+		}
+	}
+}

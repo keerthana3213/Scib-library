@@ -1,0 +1,324 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-signature-modal.scss, justo
+ * después de la importación del tema -> @forward 'cdk-signature-modal.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'tools';
+@use 'settings';
+
+.cdk-signature-manager {
+	padding: tools.rem(3);
+	font-family: settings.$font-regular-txt;
+	&__title-container {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: space-between;
+		align-items: flex-start;
+		border-bottom: tools.rem(2) solid #9bc3d3;
+		h2 {
+			height: 41px;
+			color: #000000;
+			font-size: 28px;
+			letter-spacing: 0.2px;
+			line-height: 41px;
+		}
+	}
+
+	&__text-container {
+		margin-top: tools.rem(24);
+		font-size: tools.rem(18);
+		line-height: tools.rem(26);
+		color: black;
+		p {
+			margin-bottom: tools.rem(24);
+		}
+	}
+
+	&__title {
+		text-align: left;
+		margin: 0;
+		font-size: tools.rem(24);
+		line-height: tools.rem(34);
+		margin-bottom: tools.rem(4);
+	}
+
+	&__checkbox {
+		display: flex;
+		flex-direction: column;
+		&--checked {
+			margin-bottom: tools.rem(24);
+		}
+	}
+
+	&__finder {
+		margin: tools.rem(30) 0;
+
+		.content-list {
+			--ui-v2-scroll-container-padding-left: #{tools.rem(8px)};
+			--ui-v2-scroll-container-padding-bottom: #{tools.rem(8px)};
+			ul {
+				list-style: none;
+				margin-bottom: tools.rem(12);
+			}
+		}
+		.content-list__item {
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			align-items: center;
+			padding: tools.rem(6 0 6 4);
+			width: 100%;
+			border-bottom: 1px solid tools.color(secondary, medium);
+
+			&:last-child {
+				padding-bottom: tools.rem(12);
+				border-bottom: none;
+			}
+			&:hover {
+				cursor: pointer;
+				background-color: var(--theme-colors-sky-light);
+			}
+			span {
+				&:nth-child(odd) {
+					margin-right: tools.rem(12);
+				}
+			}
+			scib-atoms-avatar {
+				margin-right: tools.rem(8);
+				--atoms-avatar-size: #{tools.rem(36)};
+				--atoms-avatar-border-color: --theme-colors-grey-light;
+			}
+			.secondary-text {
+				color: var(--theme-colors-grey-dark);
+			}
+		}
+	}
+
+	&__above {
+		margin-bottom: 20px;
+	}
+
+	&__inputs {
+		margin-bottom: tools.rem(45);
+		display: inline-flex;
+		flex-direction: column;
+		& > div {
+			display: flex;
+		}
+		scib-ui-v2-text-field:first-child {
+			margin-right: tools.rem(16);
+		}
+		div > div {
+			border-bottom-color: #257fa4 !important;
+		}
+	}
+	&__error {
+		font-size: tools.rem(12);
+		color: var(--theme-colors-santander-base);
+		padding-left: tools.rem(16);
+		width: 100%;
+		margin-top: tools.rem(8);
+	}
+
+	&__section {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: 24px;
+	}
+
+	&__contact-info {
+		padding-left: tools.rem(15);
+		display: flex;
+		flex-direction: row;
+		.icon-style {
+			margin-left: 151px;
+			cursor: pointer;
+		}
+		.name {
+			height: 23px;
+			color: #000000;
+			font-size: 16px;
+			letter-spacing: 0;
+			line-height: 23px;
+		}
+		.employee {
+			height: 19px;
+			width: 55px;
+			color: #ec0000;
+			font-size: 13px;
+			letter-spacing: 0;
+			line-height: 19px;
+			text-align: center;
+		}
+		.rectangle {
+			align-items: center;
+			height: 22px;
+			width: 65px;
+			border-radius: 4px;
+			background-color: rgba(236, 0, 0, 0.1);
+		}
+		div {
+			display: flex;
+			flex-direction: column;
+			padding-top: tools.rem(3);
+		}
+	}
+
+	&__avatar {
+		box-sizing: border-box;
+		height: 36px;
+		width: 36px;
+		border: 2px solid #ec0000;
+		box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+		border-radius: 50%;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: tools.rem(16);
+	}
+
+	&__text {
+		width: 100%;
+	}
+
+	&__description {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: tools.rem(16);
+	}
+
+	&__icon {
+		display: none;
+	}
+
+	&__description-txt {
+		text-align: center;
+		font-size: tools.rem(16);
+		line-height: tools.rem(23);
+		color: black;
+	}
+
+	&__subdescription {
+		font-size: tools.rem(14);
+		line-height: tools.rem(20);
+		color: tools.color(secondary, ultra-dark);
+	}
+
+	&__footer {
+		z-index: 1;
+		border-top: tools.rem(2) solid #9bc3d3;
+
+		.required-text {
+			width: 25%;
+			height: 19px;
+			color: #000000;
+			font-size: 13px;
+			letter-spacing: 0;
+			line-height: 19px;
+		}
+
+		&-btns {
+			display: flex;
+			justify-content: flex-end;
+			margin-top: tools.rem(17);
+			--atoms-button-min-width: #{tools.rem(208)};
+			scib-atoms-button:first-child {
+				margin-right: tools.rem(24);
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.cdk-signature-manager {
+		padding: tools.rem(32 14 24);
+		width: tools.rem(640);
+		margin-top: 0;
+		margin-bottom: tools.rem(12);
+
+		&__title-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-end;
+
+			.c-button.--nobackground.sc-scib-ui-button {
+				min-width: 0;
+				min-height: 0;
+				padding: 0;
+				color: tools.color(primary, base);
+				display: inline-block;
+			}
+		}
+
+		&__title {
+			text-align: left;
+			margin: 0;
+			font-size: tools.rem(28);
+			line-height: tools.rem(41);
+			margin-bottom: tools.rem(4);
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: tools.rem(32);
+		}
+
+		&__icons-container {
+			margin: tools.rem(2 0 25);
+		}
+
+		&__icon {
+			display: block;
+			width: tools.rem(50);
+			height: tools.rem(50);
+			min-width: tools.rem(50);
+			min-height: tools.rem(50);
+			margin-right: tools.rem(32);
+
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		&__img {
+			margin-bottom: 0;
+		}
+
+		&__text {
+			width: 60%;
+		}
+
+		&__description {
+			margin-bottom: tools.rem(32);
+		}
+
+		&__description-txt {
+			text-align: left;
+			font-size: tools.rem(18);
+			line-height: tools.rem(26);
+		}
+
+		&__footer {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			border-top: tools.rem(2) solid #9bc3d3;
+			width: 100% !important;
+		}
+	}
+}

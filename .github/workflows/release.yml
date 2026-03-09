@@ -1,0 +1,18 @@
+name: Release workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+    call-release-workflow:
+        name: Release workflow
+        uses: santander-group-scib-gln/cib-oasis-npm-workflows/.github/workflows/release.yml@v1
+        with:
+          technology: 'SCIB React SPA'
+          templateName: 'JavascriptFrontOpenshiftTemplate'
+          scqa-gate-enabled: true
+          sast-gate-enabled: true
+          sca-gate-enabled: true
+          csa-gate-enabled: true
+          isLibrary: false
+        secrets: inherit

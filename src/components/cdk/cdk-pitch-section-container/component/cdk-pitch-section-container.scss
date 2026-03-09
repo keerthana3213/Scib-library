@@ -1,0 +1,82 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-pitch-section-container.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+
+.cdk-section {
+	display: flex;
+	width: 100%;
+
+	&__container {
+		margin: tools.rem(16 48 32);
+		border-top: tools.rem(1) solid rgba(0, 0, 0, 0.1);
+
+		.cdk-section {
+			&__header {
+				display: flex;
+				padding-top: tools.rem(12);
+				padding-bottom: tools.rem(24);
+
+				.icon-options:before {
+					color: tools.color(tertiary, focus);
+					font-size: tools.rem(18);
+				}
+
+				.cdk-section {
+					&__section-title {
+						padding-left: tools.rem(8);
+						font-size: tools.rem(18);
+						color: black;
+						align-self: center;
+					}
+				}
+			}
+
+			&__content {
+				display: block;
+				text-align: center;
+				margin-top: tools.rem(24);
+				padding-top: tools.rem(24);
+				background-size: 100% auto;
+				background-position: center;
+				background-repeat: no-repeat;
+
+				.cdk-section {
+					&__title {
+						font-size: tools.rem(22);
+						font-family: settings.$font-bold-headline;
+						margin-bottom: tools.rem(16);
+					}
+
+					&__text {
+						font-size: tools.rem(16);
+						line-height: tools.rem(23);
+						color: black;
+						width: 40%;
+						margin: auto;
+					}
+
+					&__button-box {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						//border-bottom: tools.rem(1) solid rgba(0, 0, 0, 0.1);
+
+						.cdk-section {
+							&__button {
+								width: tools.rem(154);
+								height: tools.rem(48);
+								margin-bottom: tools.rem(50);
+								padding-top: tools.rem(24);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

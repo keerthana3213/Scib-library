@@ -1,0 +1,134 @@
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+@forward 'cdk-dialog-process.theme.scss';
+
+.cdk-dprocess {
+	font-family: settings.$font-regular-txt;
+	&__box {
+		box-sizing: border-box;
+		width: tools.rem(255);
+		padding: tools.rem(55 0 12);
+		margin: 0 auto;
+		--status-image-url: url('');
+
+		.c-button.--link.sc-scib-ui-button {
+			width: auto;
+			margin: 0 auto;
+			min-height: 0;
+			height: auto;
+			margin-bottom: tools.rem(32);
+
+			.u-icon {
+				width: auto;
+
+				&:before {
+					font-size: tools.rem(21);
+				}
+			}
+		}
+	}
+
+	&__title {
+		font-family: settings.$font-regular-headline;
+		display: block;
+		position: relative;
+		margin-bottom: tools.rem(8);
+		font-size: tools.rem(28);
+		line-height: tools.rem(41);
+		text-align: center;
+		color: black;
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: tools.rem(100);
+			height: tools.rem(100);
+			top: tools.rem(-122);
+			left: calc((100% / 2) - 50px);
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-image: var(--status-image-url);
+		}
+	}
+
+	&__strong {
+		font-weight: normal;
+	}
+
+	&__paragraph {
+		@extend %breakword;
+		margin-bottom: tools.rem(32);
+		font-size: tools.rem(18);
+		line-height: tools.rem(26);
+		word-break: normal;
+		text-align: center;
+		color: tools.color(secondary, ultra-dark);
+
+		&--alt {
+			max-width: tools.rem(364);
+			word-break: normal;
+			font-size: tools.rem(20);
+			line-height: tools.rem(29);
+			color: black;
+			margin: 0 auto tools.rem(14);
+		}
+
+		&--smb {
+			margin-bottom: tools.rem(16);
+		}
+	}
+
+	&__footer {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&--double {
+			justify-content: space-between;
+		}
+		&--hidden {
+			display: none;
+		}
+		.c-button.sc-scib-ui-button {
+			min-width: tools.rem(120);
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.cdk-dprocess {
+		&__box {
+			width: tools.rem(450);
+			padding: tools.rem(70 12 40);
+		}
+
+		&__title {
+			&::before {
+				content: '';
+				width: tools.rem(132);
+				height: tools.rem(132);
+				top: tools.rem(-145);
+				left: calc((100% / 2) - 66px);
+			}
+		}
+
+		&__footer {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&--double {
+				justify-content: space-between;
+			}
+			&--hidden {
+				display: none;
+			}
+			.c-button.sc-scib-ui-button {
+				min-width: tools.rem(200);
+			}
+		}
+	}
+}

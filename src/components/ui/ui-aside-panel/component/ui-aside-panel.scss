@@ -1,0 +1,119 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-aside-panel.theme.scss';
+
+$commpanels__widthDesktop: 22rem;
+$commpanels__easing: cubic-bezier(0.65, 0.05, 0.05, 1);
+
+:host {
+	display: flex;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.ui-aside-panel {
+	background-color: rgba(255, 255, 255, 0.6);
+	position: fixed;
+	top: 0;
+	left: -101%;
+	transition: all 0.5s ease-in-out;
+	filter: brightness(0.75);
+	z-index: 1000;
+	height: 100%;
+	width: 100%;
+
+	&.--active {
+		filter: none;
+		position: fixed;
+		transform: translateX(101%);
+		transition: all 0.5s ease-in-out;
+	}
+
+	&__header {
+		background-color: white;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem;
+		padding-left: 2rem;
+		height: tools.rem(87px);
+		box-shadow: tools.rem(0 20 20 0) rgba(0, 0, 0, 0.06);
+		.aside-header {
+			&__tittle-wrapper {
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				img {
+					width: fit-content;
+				}
+			}
+
+			&__button-wrapper {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+	}
+
+	&__body {
+		width: 95%;
+		height: calc(100% - 87px);
+		background-color: tools.color(tertiary, ultra-light);
+		box-shadow: tools.rem(0 20 20 0) rgba(0, 0, 0, 0.06);
+		overflow-y: auto;
+
+		/* width */
+		&::-webkit-scrollbar {
+			width: 0.5rem;
+		}
+
+		/* Track */
+		&::-webkit-scrollbar-track {
+			background: tools.color(tertiary, light);
+			border-radius: 999px;
+		}
+
+		/* Handle */
+		&::-webkit-scrollbar-thumb {
+			background: tools.color(tertiary, focus);
+			border-radius: 999px;
+		}
+
+		// /* Handle on hover */
+		&::-webkit-scrollbar-thumb:hover {
+			background: tools.color(tertiary, base);
+		}
+
+		.additional-content {
+			&__header {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				img {
+					width: fit-content;
+				}
+			}
+
+			&--image {
+				height: tools.rem(200px);
+				background-size: cover;
+				background-clip: border-box;
+				background-repeat: no-repeat;
+				background-position: center center;
+				color: white;
+			}
+
+			&__body {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+	}
+}

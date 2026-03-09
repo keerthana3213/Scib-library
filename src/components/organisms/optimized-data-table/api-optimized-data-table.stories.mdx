@@ -1,0 +1,115 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Design System v-2/Organisms/Optimized Data Table/Api" parameters={{ status: 'stable' }}/>
+
+# API
+
+---
+
+Status formatterParams, two options:
+
+````
+{
+    'Issued': 'green',
+    'Pending paid': 'blue'
+}
+````
+
+````
+{
+    mapKey: 'statusId',
+    values: {
+        'id1': 'green',
+        'id2': 'blue'
+    }
+}
+````
+
+## _Action Link_
+
+Para modificar los valores por defecto de un **Action Link** se ha de pasar el objeto **_actionLinkRowConfig_** con la estructura siguiente:
+
+```
+actionLinkRowConfig: {
+    actionLinkName1: {
+        isHidden: boolean,
+        text: string,
+        allowClick: boolean,
+        newIcon: string,
+        hasTooltip: boolean,
+        tooltipText: string
+    },
+    actionLinkName2: {
+        isHidden: boolean,
+        text: string,
+        allowClick: boolean,
+        newIcon: string
+    }
+}
+```
+
+| Atributo | Acción | Valor por defecto |
+| ------ | ------ | ------ |
+| isHidden |  **True**: Oculta tanto el icono como el texto de la row | False |
+| text |  Texto a mostrar en la row |  |
+| allowClick |  **True**: El texto es cliclable y adquiere estilos de hipervínculo | False |
+| newIcon |  Reemplaza el icono mostrado por defecto. Debe ser un icono existente en storybook | **icon** (_Pasado desde el objeto **columns** al componente table_) |
+| hasTooltip | **True**: Muestra un tooltip al pasar el mouse por encima | False
+| tooltipText | Cambia el texto que se muestra en el tooltip. | Contenido de la columna señalada en **columnData** (_Pasado desde el objeto **columns** al componente table_) |
+| iconFirst | **false** Desplaza el icon antes que el texto que se muestra. |
+| fullText | **false** El contenido de la cell abarca todo el espacio disponible y se activa el overflow con ellipsis. |
+
+***_Nota_**: Todos los parámetros del objeto de configuración son OPCIONALES.
+
+### TOOLTIP en ACTIONLINK
+Para el tooltip podemos pasarle el contenido de una columna, como se venia haciendo hasta ahora en el resto de casos, desde **columnData** dentro del objeto **columns**:
+
+```
+formatterParams: {
+	icon: "open-eye",
+	columnData: 'comment'
+},
+```
+_En este caso obtendrá el contenido de la columna comments._
+
+O desde la configuración del propio actionLink:
+
+```
+ actionLinkName1: {
+        hasTooltip: true,
+        tooltipText: 'Este texto sobreescribe al texto de la columna comments'
+    },
+```
+
+Se puede elegir cualquiera de las dos formas, e incluso las dos a la vez, teniendo en cuenta que **tooltipText** tendrá prioridad (Machacará en esta row a el texto mostrado por defecto en la columna señalada en columnData, en el ejemplo **comment**)
+
+
+## _Traffic Lights_
+
+name: trafficLights
+
+This formatter recives the percent value as a value and ranges as an extra params.
+
+### formatterParams: 
+
+```
+lights: [
+    {
+        icon: 'circle-success',
+        color: '#81B484',
+        min: 0,
+        max: 50
+    },
+    {
+        icon: 'info-circle',
+        color: '#B19645',
+        min: 50,
+        max: 100
+    },
+    {
+        icon: 'warning',
+        color: '#F14040',
+        min: 100
+    }
+]
+```

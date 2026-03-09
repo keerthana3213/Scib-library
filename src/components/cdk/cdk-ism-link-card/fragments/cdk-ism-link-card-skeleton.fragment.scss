@@ -1,0 +1,9 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-ism-link-card.scss, justo
+ * después de la importación del tema -> @forward 'cdk-ism-link-card.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'settings';

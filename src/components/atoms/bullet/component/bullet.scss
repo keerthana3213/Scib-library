@@ -1,0 +1,34 @@
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	/** Common props for all variants */
+	--_atoms-bullet-bg-color: var(--atoms-bullet-bg-color, white);
+	--_atoms-bullet-width: var(--atoms-bullet-size-normal, 13px);
+	--_atoms-bullet-height: var(--atoms-bullet-size-normal, 13px);
+}
+
+:host([size='small']) {
+	--_atoms-bullet-width: var(--atoms-bullet-size-small, 11px);
+	--_atoms-bullet-height: var(--atoms-bullet-size-small, 11px);
+}
+
+:host([size='normal']) {
+	--_atoms-bullet-width: var(--atoms-bullet-size-normal, 13px);
+	--_atoms-bullet-height: var(--atoms-bullet-size-normal, 13px);
+}
+
+:host([size='large']) {
+	--_atoms-bullet-width: var(--atoms-bullet-size-large, 16px);
+	--_atoms-bullet-height: var(--atoms-bullet-size-large, 16px);
+}

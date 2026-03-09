@@ -1,0 +1,62 @@
+@use 'settings';
+@use 'tools';
+
+@mixin border-line-generator($columns) {
+	@for $i from 1 through $columns {
+		@if $i == 1 {
+			&__columns-#{$i} {
+				.scib-atoms-list-container__drag-and-drop-zone:nth-child(#{$i}n):nth-last-child(-n + #{$i}),
+				.scib-atoms-list-container__drag-and-drop-zone:nth-child(#{$i}n):nth-last-child(-n + #{$i})
+					~ .scib-atoms-list-container__drag-and-drop-zone {
+					--atoms-list-border-bottom-color: transparent;
+				}
+			}
+		} @else {
+			&__columns-#{$i} {
+				.scib-atoms-list-container__drag-and-drop-zone:nth-child(#{$i}n + 1):nth-last-child(-n + #{$i}),
+				.scib-atoms-list-container__drag-and-drop-zone:nth-child(#{$i}n + 1):nth-last-child(-n + #{$i})
+					~ .scib-atoms-list-container__drag-and-drop-zone {
+					--atoms-list-border-bottom-color: transparent;
+				}
+			}
+		}
+	}
+}
+
+.scib-atoms-list-container {
+	@include tools.shadowIcons();
+	@include border-line-generator(50);
+	gap: var(--atoms-list-column-gap, 0 32px);
+	grid-auto-rows: minmax(0, auto);
+	background-color: var(--color-surface-flat, transparent);
+	display: grid;
+
+	&__draggable {
+		> .scib-atoms-list-container__drag-and-drop-zone {
+			cursor: grab;
+
+			&.sortable-chosen,
+			&.sortable-drag {
+				cursor: grabbing;
+			}
+		}
+	}
+
+	&__drag-and-drop-zone {
+		position: relative;
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: 1;
+			height: 1px;
+			background-color: var(--atoms-list-border-bottom-color, magenta);
+		}
+	}
+
+	&__disable-border {
+		--atoms-list-border-bottom-color: transparent !important;
+	}
+}

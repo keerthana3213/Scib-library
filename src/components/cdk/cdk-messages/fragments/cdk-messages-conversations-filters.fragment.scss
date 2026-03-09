@@ -1,0 +1,14 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-messages.scss, justo
+ * después de la importación del tema -> @forward 'cdk-messages.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'tools';
+
+.c-conversations-filters {
+	border-top: 1px solid tools.color(secondary, medium);
+	height: 3rem;
+}

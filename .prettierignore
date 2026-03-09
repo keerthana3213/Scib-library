@@ -1,0 +1,77 @@
+### VisualStudioCode template
+.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+### IntelliJ project files
+.idea
+.idea/*
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.iml
+
+### git
+.git/*
+
+### Project settings
+
+## compiled output
+dist
+tmp
+out-tsc
+loader
+angular-output
+.wrappers
+.www
+
+## dependencies
+node_modules
+
+## misc
+.sass-cache
+connect.lock
+coverage/*
+libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+typings
+package-lock.json
+package.json
+yarn.lock
+
+## System Files
+.DS_Store
+Thumbs.db
+
+## Other
+.generators
+loader
+storybook-static
+docs
+src/assets
+src/**/*.stories.js
+src/**/*.json
+webfonts.json
+README.md
+CHANGELOG.md
+Jenkinsfile
+install_node.js
+src/**/*.mdx
+src/themes/**/components/_index.scss
+.github
+.gluon
+
+.react-lib/src/components.ts
+.angular-lib/src/lib
+angular
+react
+vue

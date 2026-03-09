@@ -1,0 +1,52 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-admin-finder.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+
+	.cdk-finder {
+		margin-bottom: tools.rem(24);
+		padding: tools.rem(24);
+		border-radius: tools.rem(4);
+		box-shadow: tools.rem(0 0 10 0) rgba(0, 0, 0, 0.12);
+		background: white;
+		&__title {
+			margin-bottom: tools.rem(24);
+			font-family: settings.$font-bold-headline;
+			font-size: tools.rem(18);
+			line-height: tools.rem(26);
+		}
+		&__form {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__fieldset {
+			display: inherit;
+			flex-direction: column;
+			gap: tools.rem(16);
+			width: 100%;
+		}
+
+		scib-ui-button {
+			margin-top: 1.3rem;
+			height: 100%;
+		}
+	}
+
+	@media only screen and (min-width: 768px) {
+		.cdk-finder {
+			&__form {
+				flex-direction: row;
+				gap: tools.rem(16);
+			}
+
+			&__fieldset {
+				flex-direction: row;
+				gap: tools.rem(16);
+			}
+		}
+	}
+}

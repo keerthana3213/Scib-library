@@ -1,0 +1,138 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-info-tooltip.theme.scss';
+
+.ui-tooltip {
+	font-family: settings.$font-regular-txt;
+	display: inline-block;
+	position: relative;
+	margin-left: tools.rem(10);
+	padding: 0;
+	vertical-align: text-top;
+
+	&__btn {
+		border: 0;
+		background: transparent;
+		&.icon-tooltip {
+			color: tools.color(primary, base);
+			&:hover,
+			&:focus {
+				cursor: pointer;
+				outline: none;
+				color: tools.color(primary, dark);
+			}
+		}
+	}
+
+	&__box {
+		position: absolute;
+		background: black;
+		max-width: var(--_ui-info-tooltip-max-width);
+		width: max-content;
+		border-radius: tools.rem(4);
+		z-index: 100;
+		&:before {
+			position: absolute;
+			content: '';
+			width: tools.rem(10);
+			height: tools.rem(10);
+			background: black;
+			transform: rotate(45deg);
+		}
+		@include tools.only-mobile {
+			max-width: tools.rem(248);
+		}
+	}
+
+	.--top {
+		bottom: tools.rem(28px);
+		left: tools.rem(5px);
+		&:before {
+			bottom: tools.rem(-3px);
+			left: tools.rem(3px);
+		}
+	}
+	.--right {
+		top: tools.rem(-17);
+		left: tools.rem(27);
+		&:before {
+			top: tools.rem(24);
+			left: tools.rem(-4);
+		}
+	}
+	.--bottom {
+		left: tools.rem(-5px);
+		&:before {
+			top: tools.rem(-3px);
+			left: tools.rem(12px);
+		}
+	}
+	.--left {
+		top: tools.rem(-17);
+		right: tools.rem(27);
+		&:before {
+			top: tools.rem(24);
+			right: tools.rem(-4);
+		}
+	}
+
+	&__box-under {
+		position: absolute;
+		background: black;
+		max-width: tools.rem(360);
+		width: max-content;
+		border-radius: tools.rem(4);
+		z-index: 100;
+		visibility: hidden;
+		display: inline-block;
+		&:not(.--from-mail) {
+			top: tools.rem(30);
+			left: tools.rem(0);
+			&:before {
+				top: tools.rem(-5);
+				left: tools.rem(30);
+			}
+		}
+		&:before {
+			position: absolute;
+			content: '';
+			width: tools.rem(10);
+			height: tools.rem(10);
+			background: black;
+			transform: rotate(45deg);
+		}
+		&.--from-mail {
+			bottom: tools.rem(28);
+			left: tools.rem(-5);
+			&:before {
+				bottom: tools.rem(-3);
+				left: tools.rem(3);
+			}
+		}
+	}
+	&__box-under:hover {
+		visibility: visible;
+	}
+
+	&__txt {
+		padding: tools.rem(16);
+		font-size: tools.rem(14);
+		line-height: tools.rem(20);
+		text-transform: none;
+		color: white;
+	}
+
+	&--active {
+		display: inline-block;
+	}
+
+	&--unactive {
+		display: none;
+	}
+}
+.ui-tooltip:hover {
+	.ui-tooltip__box-under {
+		visibility: visible;
+	}
+}

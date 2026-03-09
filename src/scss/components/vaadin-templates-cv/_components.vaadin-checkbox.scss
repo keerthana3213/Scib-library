@@ -1,0 +1,46 @@
+/**
+   *@description: this file stylizes the checkbox component from Vaadin library.
+   **Due to its structure, we can not use sass structure, but its functions,
+   **because in the compilation are compiled and generate stable css.
+**/
+
+[part='label'] {
+	display: inline-block;
+	font-size: 14px;
+	line-height: 20px;
+	word-break: normal;
+	overflow-wrap: break-word;
+}
+
+[part='checkbox'] {
+	width: 21px;
+	height: 21px;
+	margin-right: 10px;
+	border: 1px solid #ec0000;
+	line-height: 20px;
+	background-color: white;
+}
+
+[part='label']:not([empty]) {
+	margin: 0;
+}
+
+:host([indeterminate]) [part='checkbox'],
+:host([checked]) [part='checkbox'] {
+	background: #ec0000;
+}
+
+:host([checked]) [part='checkbox']::after {
+	width: 14px;
+	height: 20px;
+	top: 15px;
+	left: 9px;
+}
+
+@media only screen and (max-width: 767px) and (min-width: 320px) {
+	:host {
+		display: block;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+}

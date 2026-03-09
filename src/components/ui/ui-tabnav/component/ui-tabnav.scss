@@ -1,0 +1,93 @@
+@use 'settings';
+@use 'tools';
+@use 'utilities';
+
+@forward 'ui-tabnav.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+
+.ui-tabnav {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+
+	&__item {
+		@include utilities.force-reset(button);
+		outline: none;
+		display: flex;
+		flex-direction: row;
+		background: transparent;
+		padding: tools.rem(12 16);
+		border-bottom: tools.rem(3) solid transparent;
+
+		&:hover,
+		&:focus {
+			.ui-tabnav__text {
+				color: black;
+			}
+		}
+
+		&:disabled {
+			cursor: not-allowed;
+			color: tools.color(secondary, thirty);
+			&:hover,
+			&:focus {
+				.ui-tabnav__text {
+					color: tools.color(secondary, thirty);
+				}
+			}
+		}
+
+		&:not(:disabled) {
+			cursor: pointer;
+		}
+
+		&--active {
+			border-bottom: 3px solid tools.color(primary, base);
+
+			.ui-tabnav__text {
+				color: black;
+			}
+		}
+
+		&--max {
+			width: 100%;
+			justify-content: center;
+		}
+
+		&--small {
+			padding-bottom: tools.rem(4);
+			padding-top: 0;
+
+			.ui-tabnav__text {
+				font-size: tools.rem(12);
+				line-height: tools.rem(18);
+			}
+		}
+	}
+
+	&__text {
+		font-family: settings.$font-bold-txt;
+		font-size: tools.rem(16);
+		line-height: tools.rem(23);
+		text-transform: uppercase;
+		color: tools.color(secondary, dark);
+	}
+
+	&__icon {
+		padding: 0 0.3125rem;
+
+		&--left {
+			padding-left: 0;
+		}
+		&--right {
+			padding-right: 0;
+		}
+		&--hideText {
+			padding: 0;
+		}
+	}
+}

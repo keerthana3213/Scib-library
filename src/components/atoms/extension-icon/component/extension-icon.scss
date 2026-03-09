@@ -1,0 +1,62 @@
+@use 'settings';
+@use 'tools';
+@use 'utilities';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_atoms-extension-icon-bg-color: var(--atoms-extension-icon-bg-color, magenta);
+}
+
+:host([variant='white']) {
+	--_atoms-extension-icon-bg-color: var(--atoms-extension-icon-bg-color, white);
+}
+
+:host([variant='blue']) {
+	--_atoms-extension-icon-bg-color: var(--atoms-extension-icon-bg-color, blue);
+}
+
+/** 
+ * Component
+ */
+:host {
+	// font-family: settings.$font-regular-txt;
+	background-color: var(--_atoms-extension-icon-bg-color);
+	@include tools.shadowIcons();
+	display: block;
+
+	.atoms-ei {
+		&-container {
+			position: relative;
+		}
+
+		&-icon {
+			position: absolute;
+		}
+
+		&-extension {
+			position: absolute;
+			background: white;
+			font-family: settings.$font-bold-txt;
+			font-size: tools.rem(8px);
+			color: tools.color(secondary, ultra-dark);
+			border: tools.rem(1px) solid tools.color(secondary, ultra-dark);
+			border-radius: tools.rem(3px);
+			width: tools.rem(20px);
+			text-align: center;
+			line-height: 1;
+			text-transform: uppercase;
+			top: tools.rem(9.6px);
+			left: 0;
+			transform: translateX(5%);
+		}
+	}
+}

@@ -1,0 +1,123 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-messages.scss, justo
+ * después de la importación del tema -> @forward 'cdk-messages.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'settings';
+@use 'tools';
+
+$convheader__collapsing-transition: all 0.3s ease-in-out;
+
+.c-conversations-header-wrapper {
+	background: tools.color(secondary, light);
+	border-bottom: 1px solid tools.color(secondary, medium);
+	padding-bottom: tools.rem(16);
+	@include tools.only-mobile {
+		position: fixed;
+		width: 100%;
+		transition: transform 0.5s, z-index 0s 0.5s;
+		transform: none;
+		z-index: 0;
+		&.--collapsed {
+			z-index: -1;
+			transform: translateY(-100%);
+			transition: transform 0.5s, z-index 0s 0s;
+		}
+	}
+
+	&.--no-padding {
+		padding-bottom: tools.rem(0);
+		@include tools.desktop {
+			padding-bottom: tools.rem(0);
+		}
+	}
+}
+
+.c-conversations-header-searchbar {
+	width: 100%;
+	overflow-y: hidden;
+	display: flex;
+	align-items: flex-end;
+	padding-left: tools.rem(16);
+	padding-right: tools.rem(8);
+	transition: $convheader__collapsing-transition;
+	& > * {
+		width: 100%;
+	}
+	box-sizing: content-box;
+
+	@include tools.desktop {
+		padding-left: tools.rem(17);
+		padding-right: tools.rem(32);
+	}
+
+	&--adjust {
+		@include tools.desktop {
+			padding-right: tools.rem(17);
+		}
+	}
+}
+
+.c-conversations-header-top {
+	display: flex;
+	width: 100%;
+
+	scib-ui-tapbar {
+		width: 100%;
+	}
+}
+
+.c-conversations-header-title {
+	margin: 0;
+	color: black;
+	font-size: 1.75rem;
+	transition: $convheader__collapsing-transition;
+	margin-bottom: 0.5rem;
+}
+
+.c-conversations-header-msgs {
+	transition: $convheader__collapsing-transition;
+}
+
+.c-conversations-header-subtitle {
+	color: tools.color(secondary, dark);
+	display: inline;
+	font-size: 1.125rem;
+	text-transform: uppercase;
+}
+
+.c-conversations-header-nots {
+	background-color: tools.color(secondary, medium-dark);
+	margin-left: 0.5rem;
+	color: black;
+	font-size: 1rem;
+	position: relative;
+	border-radius: 10px;
+	padding: 0 10px 1px 10px;
+	bottom: 1px;
+}
+
+.c-conversations-header-buttons {
+	display: flex;
+	align-items: center;
+	margin-right: 0.5rem;
+}
+
+.c-conversations-header-close {
+	@include tools.desktop {
+		display: none;
+	}
+}
+
+.c-conversations-header-container-actions {
+	padding: tools.rem(16 4 0);
+	display: flex;
+	align-items: center;
+}
+
+.c-conversations-header-mailbox {
+	padding-top: tools.rem(16);
+}

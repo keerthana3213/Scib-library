@@ -1,0 +1,24 @@
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	/** Common props for all variants */
+	--_cdk-signature-modal-mailing-bg-color: var(--cdk-signature-modal-mailing-bg-color, magenta);
+}
+
+:host([variant='white']) {
+	/** Specific propr for white variant */
+	--_cdk-signature-modal-mailing-bg-color: var(--cdk-signature-modal-mailing-bg-color, white);
+}
+
+:host([variant='blue']) {
+	/** Specific propr for blue variant */
+	--_cdk-signature-modal-mailing-bg-color: var(--cdk-signature-modal-mailing-bg-color, blue);
+}

@@ -1,0 +1,79 @@
+@use 'settings';
+@use 'tools';
+@use '@material/circular-progress/mdc-circular-progress';
+@use '@material/linear-progress/mdc-linear-progress';
+@use '@material/circular-progress';
+@use '@material/linear-progress';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_atoms-loading-progress-bar-color: var(--atoms-loading-color-primary);
+	--_atoms-loading-buffer-color: var(--atoms-loading-buffer-color);
+	--_atoms-loading-track-color: var(--atoms-loading-track-color);
+}
+
+// The color property will be deprecated in favor of level
+:host([color='primary']),
+:host([level='primary']) {
+	--_atoms-loading-circular-color: var(--atoms-loading-color-primary);
+}
+
+// The color property will be deprecated in favor of level
+:host([color='secondary']),
+:host([level='secondary']) {
+	--_atoms-loading-circular-color: var(--atoms-loading-color-secondary);
+}
+
+:host([size='m']) {
+	--_atoms-loading-circular-size: #{var(--atoms-loading-size, tools.rem(42px))};
+}
+
+:host([size='s']) {
+	--_atoms-loading-circular-size: #{var(--atoms-loading-size, tools.rem(36px))};
+}
+
+:host([size='xs']) {
+	--_atoms-loading-circular-size: #{var(--atoms-loading-size, tools.rem(24px))};
+}
+
+:host {
+	font-family: settings.$font-regular-txt;
+	@include tools.shadowIcons();
+	@include linear-progress.core-styles;
+
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.mdc-linear-progress {
+		.mdc-linear-progress__bar {
+			@include linear-progress.bar-color(var(--_atoms-loading-progress-bar-color));
+		}
+
+		.mdc-linear-progress__buffer {
+			@include linear-progress.buffer-color(var(--_atoms-loading-buffer-color));
+		}
+	}
+
+	.mdc-circular-progress {
+		@include circular-progress.color(var(--_atoms-loading-circular-color));
+		width: (var(--_atoms-loading-circular-size));
+		height: (var(--_atoms-loading-circular-size));
+
+		&--indeterminate {
+			@include circular-progress.track-color(var(--_atoms-loading-track-color));
+		}
+	}
+}

@@ -1,0 +1,216 @@
+@use '@material/dialog';
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_ui-v2-dialog-min-width: var(--ui-v2-dialog-min-width, 400px);
+	--_ui-v2-dialog-max-width: var(--ui-v2-dialog-max-width, 820px);
+	--_ui-v2-dialog-min-height: var(--ui-v2-dialog-min-height, 300px);
+	--_ui-v2-dialog-max-height: var(--ui-v2-dialog-max-height, 100%);
+	--_ui-v2-dialog-position: var(--ui-v2-dialog-position, initial);
+	--_ui-v2-dialog-bottom: var(--ui-v2-dialog-bottom, initial);
+	--_ui-v2-dialog-container-padding: var(--ui-v2-dialog-container-padding, tools.rem(40px 0));
+	--_ui-v2-dialog-container-margin: var(--ui-v2-dialog-container-margin, tools.rem(0 50px));
+	--_ui-v2-dialog-scrim-background-color: var(--ui-v2-dialog-scrim-background-color, rgba(0, 0, 0, 0.32));
+	--_ui-v2-dialog-border-radius: var(--size-border-radius-04);
+	--_ui-v2-dialog-content-padding-top: var(--ui-v2-dialog-content-padding-top, 20px);
+	--_ui-v2-dialog-content-padding-right: var(--ui-v2-dialog-content-padding-right, 40px);
+	--_ui-v2-dialog-content-padding-bottom: var(--ui-v2-dialog-content-padding-bottom, 20px);
+	--_ui-v2-dialog-content-padding-left: var(--ui-v2-dialog-content-padding-left, 40px);
+	--_ui-v2-dialog-content-width: var(--ui-v2-dialog-content-width, calc(100% - 80px));
+	--_ui-v2-dialog-content-margin: var(--ui-v2-dialog-content-margin, tools.rem(12px 0));
+	--_ui-v2-dialog-header-info-direction: var(--ui-v2-dialog-header-info-direction, column);
+	--_ui-v2-dialog-icon-close-color: var(--color-icon-default);
+	--_ui-v2-dialog-actions-min-height: var(--ui-v2-dialog-actions-min-height, tools.rem(20px));
+	--_ui-v2-dialog-scroll-padding-bottom: var(--ui-v2-dialog-scroll-padding-bottom, 0);
+}
+
+/**
+ * Component
+ */
+:host {
+	--mdc-dialog-z-index: 998;
+	@include dialog.core-styles;
+	@include tools.shadowIcons();
+	display: block;
+
+	.mdc-dialog {
+		.mdc-dialog {
+			&__surface {
+				width: 100%;
+				min-width: var(--_ui-v2-dialog-min-width);
+				max-width: var(--_ui-v2-dialog-max-width);
+				min-height: var(--_ui-v2-dialog-min-height);
+				max-height: var(--_ui-v2-dialog-max-height);
+				border-radius: var(--_ui-v2-dialog-border-radius);
+				position: var(--_ui-v2-dialog-position);
+				bottom: var(--_ui-v2-dialog-bottom);
+				box-shadow: var(--elevation-floating);
+				overflow: visible;
+				background-color: var(--color-surface-flat);
+				@include tools.only-mobile {
+					min-width: 0;
+					max-width: 100%;
+					border-radius: var(--size-border-radius-01);
+				}
+			}
+			&__header {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				--icon-content: var(--theme-scib-icon-close);
+				margin: tools.rem(25px 40px 0);
+				outline: none;
+
+				&__info {
+					display: flex;
+					flex-direction: var(--_ui-v2-dialog-header-info-direction);
+					width: calc(100% - 64px);
+
+					&--title {
+						font: var(--headline-large);
+						font-family: var(--typescale-headline-large-font);
+						flex: 1 1 auto;
+						line-height: var(--typescale-headline-large-line-height);
+						font-size: var(--typescale-headline-large-size);
+						font-weight: var(--typescale-headline-medium-weight);
+						font-style: var(--typescale-headline-medium-style);
+						padding: tools.rem(0 0 8px 0);
+						color: var(--color-text-default);
+						margin: 0;
+						overflow-wrap: break-word;
+					}
+
+					&--subtitle {
+						font: var(--body-medium);
+						font-family: var(--typescale-body-medium-default-font);
+						line-height: var(--typescale-body-medium-default-line-height);
+						font-size: var(--typescale-body-medium-default-large-size);
+						font-weight: var(--typescale-body-medium-default-weight);
+						font-style: var(--typescale-body-medium-default-style);
+						color: var(--color-text-default);
+					}
+				}
+
+				&__close {
+					display: flex;
+					margin-top: tools.rem(4px);
+					margin-right: tools.rem(-12px);
+					justify-content: center;
+					align-items: flex-start;
+					cursor: pointer;
+
+					.icon {
+						&::before {
+							color: var(--_ui-v2-dialog-icon-close-color);
+						}
+					}
+				}
+			}
+
+			&__fixed-content {
+				overflow-wrap: break-word;
+				::slotted([slot='header']) {
+					padding: tools.rem(20px 40px 0);
+					overflow-wrap: break-word;
+					font: var(--body-medium);
+					font-family: var(--typescale-body-medium-default-font);
+					line-height: var(--typescale-body-medium-default-line-height);
+					font-size: var(--typescale-body-medium-default-large-size);
+					font-weight: var(--typescale-body-medium-default-weight);
+					font-style: var(--typescale-body-medium-default-style);
+					color: var(--color-text-default);
+				}
+			}
+
+			&__content {
+				overflow: hidden;
+				display: flex;
+				height: 100%;
+				justify-content: center;
+				padding: 0;
+				margin: var(--_ui-v2-dialog-content-margin);
+				color: var(--color-text-default);
+
+				slot {
+					display: block;
+					width: 100%;
+					height: 100%;
+				}
+
+				::slotted([slot='content']) {
+					position: relative;
+					padding-left: var(--_ui-v2-dialog-content-padding-left);
+					padding-top: var(--_ui-v2-dialog-content-padding-top);
+					padding-right: var(--_ui-v2-dialog-content-padding-right);
+					padding-bottom: var(--_ui-v2-dialog-content-padding-bottom);
+					display: block;
+					width: var(--_ui-v2-dialog-content-width);
+					height: calc(100% - 40px);
+				}
+
+				--ui-v2-scroll-container-padding-top: 0;
+				--ui-v2-scroll-container-padding-bottom: var(--_ui-v2-dialog-scroll-padding-bottom);
+				--ui-v2-scroll-container-padding-right: 0;
+				--ui-v2-scroll-container-padding-left: 0;
+
+				@include tools.only-mobile {
+					border-radius: var(--size-border-radius-01);
+				}
+			}
+
+			&__actions {
+				padding: 0;
+				margin: 0;
+				border: none;
+				min-height: var(--_ui-v2-dialog-actions-min-height);
+
+				::slotted([slot='actions']) {
+					margin: tools.rem(0 40px 25px);
+					padding: tools.rem(15px 0 0 0);
+					min-height: tools.rem(26px);
+					width: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: flex-end;
+				}
+			}
+		}
+
+		&__container {
+			transform: none;
+		}
+
+		&.mdc-dialog {
+			&--open {
+				.mdc-dialog {
+					&__container {
+						margin: var(--_ui-v2-dialog-container-margin);
+						padding: var(--_ui-v2-dialog-container-padding);
+						width: 100%;
+						height: 100%;
+						@include tools.only-mobile {
+							margin: 0;
+							padding: 0;
+						}
+					}
+
+					&__scrim {
+						background-color: var(--_ui-v2-dialog-scrim-background-color);
+						pointer-events: auto;
+					}
+				}
+			}
+		}
+	}
+}

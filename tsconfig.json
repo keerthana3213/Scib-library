@@ -1,0 +1,32 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"allowUnreachableCode": false,
+		"declaration": false,
+		"experimentalDecorators": true,
+		"lib": ["dom", "es2022", "dom.iterable"],
+		"moduleResolution": "node",
+		"module": "esnext",
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"target": "es2022",
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"jsx": "react",
+		"jsxFactory": "h",
+		"rootDir": "src",
+		"jsxFragmentFactory": "React.Fragment",
+		"paths": {
+			"@scib/ui-kit": ["./dist/types"]
+		}
+	},
+	"ts-node": {
+		"compilerOptions": {
+			"module": "commonjs"
+		}
+	},
+	"include": ["src", "src/tailwind.config.ts"],
+	"exclude": ["node_modules", "src/components.d.ts", "src/**/*stories.tsx", "**/*.spec.ts"]
+}

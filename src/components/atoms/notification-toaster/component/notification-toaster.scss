@@ -1,0 +1,194 @@
+@use '@material/menu-surface/mdc-menu-surface';
+@use '@material/list/mdc-list';
+@use '@material/menu/mdc-menu';
+
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_atoms-notification-toaster-arrow-right: #{var(--atoms-notification-toaster-arrow-right, tools.rem(100px))};
+	--_atoms-notification-toaster-arrow-top: #{var(--atoms-notification-toaster-arrow-top, tools.rem(-10px))};
+	--_atoms-notification-toaster-border-radius: #{var(--atoms-notification-toaster-border-radius, tools.rem(4px))};
+	--_atoms-notification-toaster-left: #{var(--atoms-notification-toaster-left, tools.rem(-170px))};
+	--_atoms-notification-toaster-position: #{var(--atoms-notification-toaster-position, absolute)};
+	--_atoms-notification-toaster-top: #{var(--atoms-notification-toaster-top, tools.rem(10px))};
+}
+
+/**
+ * Component
+ */
+:host {
+	@include tools.shadowIcons();
+	font-family: settings.$font-micro-text;
+	color: var(--theme-colors-black);
+
+	@media only screen and (max-width: 786px) {
+		--_atoms-notification-toaster-position: fixed;
+		--_atoms-notification-toaster-left: 0;
+	}
+
+	@media only screen and (min-width: 786px) {
+		--_atoms-notification-toaster-position: absolute;
+	}
+
+	.arrow {
+		width: tools.rem(20px);
+		height: tools.rem(20px);
+		transform: rotate(45deg);
+		background-color: var(--theme-colors-sky-light);
+		position: absolute;
+		right: var(--_atoms-notification-toaster-arrow-right);
+		top: var(--_atoms-notification-toaster-arrow-top);
+	}
+
+	.toaster {
+		&__container {
+			left: 0;
+			z-index: 1000;
+			position: var(--_atoms-notification-toaster-position);
+			transform: translate(var(--_atoms-notification-toaster-left), var(--_atoms-notification-toaster-top));
+
+			width: tools.rem(320px);
+
+			@media only screen and (max-width: 786px) {
+				width: 100vw;
+			}
+		}
+
+		&-box {
+			position: relative;
+			box-sizing: border-box;
+			border-radius: var(--_atoms-notification-toaster-border-radius);
+			box-shadow: var(--theme-elevation-4);
+			left: initial !important;
+			right: var(--ui-v2-menu-panel-right, unset);
+			background-color: var(--theme-colors-sky-light);
+			overflow: hidden;
+		}
+
+		&__closed {
+			display: none;
+		}
+	}
+
+	.card {
+		font-family: settings.$font-regular-txt;
+
+		&__container {
+			overflow: hidden;
+			flex: 1;
+			cursor: pointer;
+			background-color: var(--theme-colors-sky-light);
+			padding: tools.rem(12px) tools.rem(16px);
+		}
+
+		&__header {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		&__title {
+			color: var(--theme-colors-font-base-color);
+			font-weight: 700;
+			font-size: tools.rem(14px);
+			font-style: normal;
+			line-height: tools.rem(20px);
+			margin-top: tools.rem(6px);
+			max-width: tools.rem(312px);
+			text-overflow: ellipsis;
+			overflow: hidden;
+			display: block;
+			white-space: nowrap;
+		}
+
+		&__description {
+			font-weight: 400;
+			font-size: tools.rem(12px);
+			line-height: tools.rem(16px);
+			color: var(--theme-colors-font-base-color);
+			margin: 0;
+			font-style: normal;
+
+			max-width: tools.rem(312px);
+			text-overflow: ellipsis;
+			overflow: hidden;
+			display: block;
+			white-space: nowrap;
+		}
+
+		&__avatar {
+			padding: tools.rem(0 0 0 16px);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+		}
+	}
+
+	.close-icon-container {
+		position: absolute;
+		right: tools.rem(12px);
+		cursor: pointer;
+		margin-top: tools.rem(-4px);
+		margin-right: tools.rem(-8px);
+	}
+
+	.flex {
+		display: flex;
+	}
+
+	.divider {
+		height: tools.rem(1px);
+		background: var(--theme-colors-sky-medium);
+		&-container {
+			padding: tools.rem(0 16px);
+		}
+	}
+
+	.footer {
+		padding: tools.rem(6px 16px);
+		background-color: var(--theme-colors-sky-base-dark);
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		color: var(--theme-colors-turquoise-dark);
+		cursor: pointer;
+
+		&-text {
+			font-family: settings.$font-micro-text;
+			display: inline-flex;
+			align-items: center;
+			font-size: tools.rem(14px);
+			font-style: normal;
+			font-weight: 400;
+			line-height: tools.rem(24px);
+		}
+
+		&-border {
+			height: tools.rem(2px);
+			background-color: var(--theme-colors-turquoise-dark);
+		}
+
+		&__item-container {
+			width: tools.rem(20px);
+			height: tools.rem(20px);
+		}
+
+		&__icon {
+			color: var(--theme-colors-turquoise-dark);
+			width: tools.rem(20px);
+			height: tools.rem(20px);
+			font-size: tools.rem(20px);
+		}
+	}
+}

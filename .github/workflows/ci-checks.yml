@@ -1,0 +1,25 @@
+name: CI Checks workflow
+
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened]
+    branches:
+      - 'develop'
+      - 'development'
+      - 'main'
+      - 'master'
+      - 'release**'
+      - 'hotfix**'      
+
+
+jobs:
+  call-ci-checks-workflow:
+    name: CI Checks workflow
+    uses: santander-group-scib-gln/cib-oasis-npm-workflows/.github/workflows/ci-checks.yml@v1
+    with:
+      technology: 'SCIB React SPA'
+      scqa-gate-enabled: true
+      sast-gate-enabled: true
+      sca-gate-enabled: true
+      csa-gate-enabled: true
+    secrets: inherit

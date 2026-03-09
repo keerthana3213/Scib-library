@@ -1,0 +1,121 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-video.theme.scss';
+
+.cdk-video {
+	font-family: settings.$font-regular-txt;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: tools.rem(300);
+
+	&__titles {
+		width: 100%;
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin-bottom: tools.rem(30);
+			font-size: tools.rem(24);
+			line-height: tools.rem(34);
+			word-break: normal;
+			text-align: center;
+			color: black;
+
+			strong {
+				font-family: settings.$font-bold-txt;
+			}
+		}
+	}
+
+	&__video {
+		border-radius: tools.rem(4);
+		overflow: hidden;
+		width: 100%;
+		height: auto;
+		/*Estilos para ocultar el boton de descarga del video en versiones anterores de chrome a la de 67.0.3396.62*/
+		video::-internal-media-controls-download-button {
+			display: none;
+		}
+		video::-webkit-media-controls-enclosure {
+			overflow: hidden;
+		}
+		video::-webkit-media-controls-panel {
+			width: calc(100% + 18px); /* Ajustar los pixeles segun se necesite */
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.cdk-video {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: tools.rem(560);
+
+		&__titles {
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-size: tools.rem(32);
+				line-height: tools.rem(48);
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.cdk-video {
+		justify-content: flex-start;
+		height: auto;
+
+		&__titles {
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				margin: 0 0 tools.rem(20);
+				min-height: tools.rem(64);
+				text-align: left;
+				font-size: tools.rem(28);
+				line-height: tools.rem(32);
+			}
+		}
+		&__video {
+			display: block;
+			max-width: tools.rem(625);
+			margin: 0 auto;
+			padding-right: tools.rem(12);
+			&:focus {
+				outline: 0;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 1400px) {
+	.cdk-video {
+		&__titles {
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				min-height: tools.rem(100);
+				margin-bottom: tools.rem(15);
+				font-size: tools.rem(36);
+				line-height: tools.rem(52);
+			}
+		}
+	}
+}

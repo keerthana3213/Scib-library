@@ -1,0 +1,145 @@
+import { ICDKMessagesFile } from '../../../ecmv/ecmv-modal-files/models/ecmv-modal-files.model';
+
+export interface Literals {
+	dialog: {
+		helpTitle: string;
+		helpSubtitle: string;
+		helpDescription: string;
+		helpSubdescription: string;
+		helpText: string;
+		btnBack: string;
+		btnCancel: string;
+		btnNext: string;
+		btnHelpCancel: string;
+		btnHelpStart: string;
+		btnFinish: string;
+		btnDuplicate: string;
+		noResultsText: string;
+		checkLabel: string;
+		helpVideoTitle: string;
+		helpTextTitle: string;
+		btnCloseVideoHelp: string;
+		btnCloseTextHelp: string;
+		btnClearSelection: string;
+		btnShowFolders: string;
+		requiredLabel: string;
+		documentationTitle: string;
+		documentationTemplateTitle: string;
+		configurationTitle: string;
+		confirmationTitle: string;
+		selectorFilesTitle: string;
+		selectorFilesDuplicatedError: string;
+		selectorFilesMaxError: string;
+		selectorFilesMaxError2: string;
+		selectorFilesFormatError: string;
+		selectorFilesAttached: string;
+		selectorTextDescription: string;
+		documentTxt: string;
+		categoryPlaceholder: string;
+		signatureTypesLabel: string;
+		signatureTypesTooltipApp: string;
+		signatureTypesTooltipUser: string;
+		checkSignOrderLabel: string;
+		signatureCheckLabel: string;
+		recipientsTitle: string;
+		recipientNameLabelInput: string;
+		recipientNamePlaceholderInput: string;
+		recipientEmailLabelInput: string;
+		recipientEmailPlaceholderInput: string;
+		recipientGlcsLabelInput: string;
+		recipientGlcsPlaceholderInput: string;
+		recipientQualifiedIDNow: string;
+		glcsError: string;
+
+		recipientOptionsLabelInputCode: string;
+		recipientOptionsPlaceholderInputCode: string;
+		recipientOptionsLabelInputSms: string;
+		recipientOptionsPlaceholderInputSms: string;
+		recipientOptionsLabelInputSmsFormat: string;
+		recipientOptionsLabelInputSmsRequired: string;
+		recipientOptionsLabelInputSmsCountryRequired: string;
+
+		deleteRecipientBtn: string;
+		addRecipientBtn: string;
+		pendingRecipientAlert: string;
+		signatureDaysExpireLabel: string;
+		masiveLoadBtn: string;
+		cancelMasiveLoadBtn: string;
+		downloadMasiveLoadTemplate: string;
+		resumeTitleSiganture: string;
+		resumeTitleDoc: string;
+		resumeTitleExpiry: string;
+		resumeRecipientListTitle: string;
+		resumeCustomizeMailTitle: string;
+		resumeSubjectLabel: string;
+		resumeSubjectPlaceholder: string;
+		resumeMessageLabel: string;
+		resumeMessagePlaceholder: string;
+		modalButtonText: string;
+		close: string;
+		modalCompleteMainTitle: string;
+		modalCompleteMessage: string;
+		modalCompleteOnlyBtn: string;
+		modalProcessMainTitle: string;
+		modalProcessMessage: string;
+		modalProcessBtnLeft: string;
+		modalProcessBtnRight: string;
+		modalErrorMainTitle: string;
+		modalErrorMainTitleSizeLimit: string;
+		modalErrorMainTitleAssignManager: string;
+		modalErrorMessageSizeLimit: string;
+		modalErrorMessageAssignManager: string;
+		modalErrorMessage: string;
+		modalErrorBtn: string;
+		modalLoadingMainTitle: string;
+		modalLoadingMessage: string;
+		modalAppPermissionsMainTitle: string;
+		modalAppPermissionsMessage: string;
+		modalAppPermissionsBtn: string;
+		modalUserPermissionsMainTitle: string;
+		modalUserPermissionsMessage: string;
+		modalUserPermissionsBtn: string;
+		modaldownServicesMainTitle: string;
+		modaldownServicesMessage: string;
+		modaldownServicesBtn: string;
+		folderEmptyState: {
+			mainTitle: string;
+			desc: string;
+		};
+		addTemplate: string;
+		noTeamTitle: string;
+		noTeamText: string;
+		noTeamUnderstand: string;
+		daystoExpireError: string;
+		emailMessageError: string;
+		optionalConfig: string;
+		docAccessCode: string;
+		qualifiedOptionalLabel: string;
+		errorMaxRecipients: string;
+	};
+}
+
+export interface Template {
+	createdDateTime: string;
+	is21CFRPart11: string;
+	ownerName: string;
+	recipientsUri: string;
+	senderCompany: string;
+	senderEmail: string;
+	senderName: string;
+	status: string;
+	subject: string;
+	templateId: string;
+	templateUri: string;
+	name?: string;
+	description?: string;
+	signatureType?: string;
+}
+
+export interface DocumentsData {
+	filesUploaded: Array<ICDKMessagesFile>;
+	downloadFilesUrl: Array<string>;
+	isAsignedTemplate: boolean;
+	asignedTemplate: Template;
+	checkedFile: boolean;
+}

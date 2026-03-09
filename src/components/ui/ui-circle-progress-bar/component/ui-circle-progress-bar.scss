@@ -1,0 +1,61 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-circle-progress-bar.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.ui-circle {
+		position: relative;
+		width: tools.rem(115);
+		height: tools.rem(115);
+		margin: tools.rem(14);
+
+		&__progress {
+			svg {
+				display: block;
+				height: tools.rem(100);
+				stroke-linecap: round;
+			}
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: auto;
+			margin-right: -50%;
+			transform: translate(-50%, -50%);
+		}
+
+		&__percentage {
+			font-size: tools.rem(30);
+			line-height: tools.rem(36);
+			&--full {
+				&::before {
+					font-size: tools.rem(18);
+				}
+			}
+		}
+
+		&__number {
+			font-size: tools.rem(14);
+			line-height: tools.rem(20);
+			color: tools.color(secondary, ultra-dark);
+		}
+
+		&__txt {
+			font-size: tools.rem(13);
+			line-height: tools.rem(17);
+		}
+	}
+}

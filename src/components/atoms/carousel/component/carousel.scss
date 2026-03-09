@@ -1,0 +1,173 @@
+@use 'settings';
+@use 'tools';
+@use 'sass:math';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_atoms-carousel-navigation-color: var(--atoms-carousel-navigation-color, #222222);
+	--_atoms-carousel-navigation-button-color: var(--color-icon-soft);
+	--_atoms-carousel-top-btn: var(--atoms-carousel-top-btn, 0%);
+	--_atoms-carousel-position-prev-btn: var(--atoms-carousel-position-prev-btn, -1%);
+	--_atoms-carousel-position-next-btn: var(--atoms-carousel-position-next-btn, 0%);
+	--_atoms-tutorial-modal-bg-overlay: var(--atoms-tutorial-modal-bg-overlay, rgba(0, 0, 0, 0.32));
+}
+
+:host([variant='white']) {
+	--_atoms-carousel-bg-color: var(--atoms-carousel-bg-color, white);
+}
+
+//Preguntar si esto esta en uso
+:host([variant='blue']) {
+	--_atoms-carousel-bg-color: var(--atoms-carousel-bg-color, blue);
+}
+
+:host([position-navigation='center']) {
+	--_atoms-carousel-position-navigation: center;
+}
+
+:host([position-navigation='left']) {
+	--_atoms-carousel-position-navigation: flex-start;
+}
+
+:host([position-navigation='right']) {
+	--_atoms-carousel-position-navigation: flex-end;
+}
+
+/**
+ * Component
+ */
+$color-white: #fff;
+$gap: tools.rem(20);
+$shadow: 0 tools.rem(3) tools.rem(4) rgba(#000, 0.12);
+
+:host {
+	background-color: var(--_atoms-carousel-bg-color);
+	@include tools.shadowIcons();
+	display: block;
+
+	.slider {
+		position: relative;
+		margin: 0 $gap;
+		display: block;
+		height: 100%;
+
+		&__container {
+			height: 100%;
+			overflow: hidden;
+
+			slot {
+				display: flex;
+				flex-flow: row nowrap;
+				margin: 0 math.div(-$gap, 2);
+				height: 100%;
+			}
+		}
+
+		::slotted(*) {
+			padding: 0 math.div($gap, 2);
+			object-fit: contain;
+			align-self: center;
+			cursor: default;
+			max-width: 100%;
+			height: auto;
+			width: 100%;
+		}
+
+		&--actions {
+			::slotted(*) {
+				cursor: pointer;
+			}
+		}
+	}
+
+	.btn {
+		cursor: pointer;
+		position: absolute;
+
+		z-index: 1;
+	}
+
+	.btn-prev {
+		top: 50%;
+		left: 0;
+		transform: translate(-50%, -50%);
+
+		&:active {
+			transform: translate(-50%, -50%) scale(1.1);
+		}
+
+		.icon {
+			color: var(--color-icon-brand);
+			margin-right: tools.rem(2);
+		}
+	}
+
+	.btn-next {
+		top: 50%;
+		right: 0;
+		transform: translate(50%, -50%);
+
+		&:active {
+			transform: translate(50%, -50%) scale(1.1);
+		}
+
+		.icon {
+			color: var(--color-icon-brand);
+			margin-left: tools.rem(2);
+		}
+	}
+
+	.navigation {
+		display: flex;
+		justify-content: var(--_atoms-carousel-position-navigation);
+		align-items: center;
+		margin: tools.rem(20) 0 0;
+		padding: 0 $gap;
+		list-style: none;
+
+		&__item {
+			cursor: pointer;
+
+			&:not(:last-of-type) {
+				margin: tools.rem(0 8 0 0);
+			}
+
+			&::before {
+				content: '';
+				display: block;
+				width: tools.rem(8);
+				height: tools.rem(8);
+				background-color: var(--_atoms-carousel-navigation-button-color);
+				border-radius: 50%;
+			}
+
+			&--active {
+				&::before {
+					background-color: var(--_atoms-carousel-navigation-color);
+				}
+			}
+		}
+
+		&--hidden {
+			display: none;
+		}
+	}
+
+	.overlay {
+		display: none;
+		cursor: default;
+
+		&--show {
+			display: block;
+		}
+	}
+}

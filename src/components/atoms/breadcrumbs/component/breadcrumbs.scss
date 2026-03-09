@@ -1,0 +1,418 @@
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porps to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	/* Tamaños comunes */
+	--_atoms-breadcrumbs-breadcrumb-gap: #{var(--atoms-breadcrumbs-breadcrumb-gap, tools.rem(0px))};
+	--_atoms-breadcrumbs-s-font-size: #{var(--typescale-caption-strong-font, tools.rem(12px))};
+	--_atoms-breadcrumbs-m-font-size: #{var(--typescale-body-medium-strong-font, tools.rem(14px))};
+	--_atoms-breadcrumbs-s-height: #{var(--atoms-breadcrumbs-s-height, tools.rem(24px))};
+	--_atoms-breadcrumbs-m-height: #{var(--atoms-breadcrumbs-m-height, tools.rem(32px))};
+
+	/* Default level tokens - Version deprecated */
+	--_atoms-breadcrumbs-default-color-active: var(--atoms-breadcrumbs-colors-active);
+	--_atoms-breadcrumbs-default-goback-color: var(--theme-colors-turquoise-dark);
+	--_atoms-breadcrumbs-default-link-color: var(--color-text-default);
+	--_atoms-breadcrumbs-default-focus-color: var(--color-surface-state-default);
+	--_atoms-breadcrumbs-default-separator-color: var(--color-text-default);
+
+	/* primary level tokens */
+	--_atoms-breadcrumbs-primary-color-active: var(--color-text-default);
+	--_atoms-breadcrumbs-primary-icon-color: var(--color-action-alternative-default);
+	--_atoms-breadcrumbs-primary-link-color: var(--color-action-alternative-default);
+	--_atoms-breadcrumbs-primary-focus-color: var(--color-surface-state-default);
+	--_atoms-breadcrumbs-primary-hover-color: var(--color-action-alternative-hover);
+	--_atoms-breadcrumbs-primary-separator-color: var(--color-action-alternative-default);
+
+	--_atoms-breadcrumbs-primary-ellipsis-color: var(--color-action-alternative-default);
+
+	--_atoms-breadcrubms-s-text-icon-max-width: #{tools.rem(54px)};
+	--_atoms-breadcrubms-m-text-icon-max-width: #{tools.rem(75px)};
+}
+
+%icon {
+	display: flex;
+	font-weight: lighter;
+	position: relative;
+	--icon-content: var(--theme-scib-icon-chevron-left-thin);
+	cursor: pointer;
+	margin-right: tools.rem(2px);
+	&::before {
+		color: var(--_atoms-breadcrumbs-default-goback-color);
+		width: tools.rem(20px);
+		position: relative;
+		font-size: tools.rem(20px);
+	}
+}
+
+/**
+ * Component styles
+ */
+
+:host {
+	@include tools.shadowIcons();
+	display: block;
+
+	.atoms-breadcrumb {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		height: var(--_atoms-breadcrumbs-s-height);
+
+		.icon {
+			margin-right: tools.rem(4px);
+		}
+
+		.breadcrumb-goback-arrow {
+			@extend %icon;
+		}
+
+		.home-icon {
+			@extend %icon;
+			--icon-content: var(--theme-scib-icon-home);
+		}
+
+		&__icon-container {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			cursor: pointer;
+		}
+
+		&__icon-text {
+			font-size: tools.rem(12px);
+			font-family: var(--_atoms-breadcrumbs-s-font-size);
+			color: var(--_atoms-breadcrumbs-default-goback-color);
+			max-width: var(--_atoms-breadcrubms-s-text-icon-max-width);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: inline-block;
+			margin-right: tools.rem(2px);
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		&__list {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: var(--_atoms-breadcrumbs-breadcrumb-gap, 0px);
+			padding: tools.rem(0px 0px 0px 0px);
+		}
+
+		&__item {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+
+			&:first-child {
+				&::before {
+					content: none;
+				}
+			}
+			.breadcrumb-separator {
+				--icon-content: var(--theme-scib-icon-chevron-right-small);
+				color: var(--_atoms-breadcrumbs-default-separator-color);
+
+				&::before {
+					font-size: tools.rem(16px);
+					padding-top: tools.rem(2px);
+				}
+			}
+
+			.breadcrumb-primary-separator {
+				color: var(--_atoms-breadcrumbs-primary-separator-color);
+				margin: 0 tools.rem(4px);
+				font-size: tools.rem(14px);
+				font-weight: var(--typescale-caption-strong-weight);
+				font-family: var(--typescale-caption-strong-font, 'Santander Micro Text');
+				line-height: tools.rem(16px);
+			}
+		}
+
+		&__txt {
+			display: flex;
+			font-size: tools.rem(12px);
+			font-family: var(--typescale-body-medium-default-font, 'Santander Micro Text');
+			color: var(--_atoms-breadcrumbs-default-color-active);
+			font-family: var(--_atoms-breadcrumbs-s-font-size);
+			font-style: normal;
+			font-weight: 400;
+			align-items: center;
+		}
+
+		&__link {
+			display: flex;
+			align-items: center;
+			font-size: tools.rem(14px);
+			color: var(--_atoms-breadcrumbs-default-link-color);
+			font-family: var(--_atoms-breadcrumbs-s-font-size);
+			font-style: normal;
+			font-weight: 400;
+			padding: tools.rem(2px 4px);
+			border-radius: tools.rem(2px);
+
+			&:first-child {
+				padding-left: 0;
+			}
+
+			&:hover {
+				cursor: pointer;
+				text-decoration: underline;
+			}
+
+			&:focus-visible {
+				color: var(--_atoms-breadcrumbs-default-focus-color);
+				outline: none;
+				background-color: transparent;
+			}
+
+			&:active {
+				opacity: 0.7;
+			}
+		}
+	}
+
+	/* Cambiar el estado focus para usar color en lugar de background */
+	[role='button']:focus-visible,
+	[role='link']:focus-visible {
+		color: var(--_atoms-breadcrumbs-default-focus-color);
+		outline: none;
+		background-color: transparent;
+	}
+}
+
+// primary level styles - Actualizado según diseño Figma
+:host([level='primary']) {
+	.atoms-breadcrumb {
+		.icon {
+			margin-right: tools.rem(8px);
+		}
+		.breadcrumb-goback-arrow {
+			&::before {
+				color: var(--_atoms-breadcrumbs-primary-icon-color);
+			}
+		}
+
+		.home-icon {
+			&::before {
+				color: var(--_atoms-breadcrumbs-primary-icon-color);
+			}
+		}
+
+		&__icon-text {
+			color: var(--_atoms-breadcrumbs-primary-link-color);
+			font-weight: var(--typescale-caption-strong-weight);
+			font-size: tools.rem(14px);
+			font-family: var(--typescale-caption-strong-font, 'Santander Micro Text');
+			max-width: var(--_atoms-breadcrubms-m-text-icon-max-width);
+
+			&:hover {
+				color: var(--_atoms-breadcrumbs-primary-hover-color);
+				text-decoration: none;
+			}
+		}
+
+		&__item {
+			.breadcrumb-separator {
+				color: var(--_atoms-breadcrumbs-primary-separator-color);
+			}
+		}
+
+		&__txt {
+			font-weight: var(--typescale-caption-strong-weight);
+			font-size: tools.rem(14px);
+			color: var(--_atoms-breadcrumbs-primary-color-active);
+			font-family: var(--typescale-caption-strong-font, 'Santander Micro Text');
+
+			&:hover {
+				color: var(--_atoms-breadcrumbs-primary-color-active);
+				text-decoration: none;
+			}
+
+			/* Cambiar el estado focus para usar color en lugar de background */
+			&:focus-visible {
+				color: var(--_atoms-breadcrumbs-primary-color-active);
+				background-color: transparent;
+			}
+		}
+
+		&__link {
+			font-weight: var(--typescale-caption-strong-weight);
+			font-size: tools.rem(14px);
+			color: var(--_atoms-breadcrumbs-primary-link-color);
+			font-family: var(--typescale-caption-strong-font, 'Santander Micro Text');
+
+			&:hover {
+				color: var(--_atoms-breadcrumbs-primary-hover-color);
+				text-decoration: none;
+			}
+
+			/* Cambiar el estado focus para usar color en lugar de background */
+			&:focus-visible {
+				color: var(--_atoms-breadcrumbs-primary-focus-color);
+				background-color: transparent;
+			}
+
+			&--ellipsis {
+				color: var(--_atoms-breadcrumbs-primary-ellipsis-color);
+				font-weight: 700;
+				font-size: tools.rem(14px);
+				font-family: var(--typescale-caption-strong-font, 'Santander Micro Text');
+				position: relative;
+				margin-right: tools.rem(5px);
+				span {
+					&::before {
+						content: '...';
+						position: absolute;
+						top: 6%;
+						left: 50%;
+						transform: translate(-50%, -60%);
+					}
+				}
+			}
+		}
+
+		.breadcrumb-primary-separator {
+			color: var(--_atoms-breadcrumbs-primary-separator-color);
+			margin: 0 tools.rem(5px) 0 tools.rem(2px);
+		}
+	}
+
+	/* Cambiar el estado focus para usar color en lugar de background */
+	[role='button']:focus-visible,
+	[role='link']:focus-visible {
+		color: var(--_atoms-breadcrumbs-primary-focus-color);
+		background-color: transparent;
+	}
+
+	.atoms-breadcrumb {
+		&__link--ellipsis {
+			font-weight: 500;
+			color: var(--_atoms-breadcrumbs-primary-ellipsis-color);
+		}
+	}
+}
+
+:host([level='secondary']) {
+	.atoms-breadcrumb {
+		&__icon-text {
+			color: var(--_atoms-breadcrumbs-default-goback-color);
+			font-weight: var(--typescale-caption-strong-weight);
+			font-size: tools.rem(14px);
+			font-family: var(--typescale-caption-strong-font, 'Santander Micro Text');
+			max-width: var(--_atoms-breadcrubms-m-text-icon-max-width);
+
+			&:hover {
+				color: var(--_atoms-breadcrumbs-default-goback-color);
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+// Size styles - Medium
+:host([size='m']) {
+	.atoms-breadcrumb {
+		height: var(--_atoms-breadcrumbs-m-height);
+
+		.breadcrumb-goback-arrow,
+		.home-icon {
+			&::before {
+				width: tools.rem(24px);
+			}
+		}
+
+		.icon {
+			&::before {
+				font-size: tools.rem(24px);
+			}
+		}
+
+		&__icon-text {
+			font-size: tools.rem(16px);
+			font-family: var(--_atoms-breadcrumbs-m-font-size);
+		}
+
+		&__txt,
+		&__link {
+			font-size: tools.rem(16px);
+			font-family: var(--_atoms-breadcrumbs-m-font-size);
+		}
+
+		&__link {
+			font-size: tools.rem(16px);
+		}
+
+		&__item {
+			.breadcrumb-separator {
+				font-size: tools.rem(18px);
+			}
+
+			.breadcrumb-primary-separator {
+				font-size: tools.rem(16px);
+			}
+		}
+	}
+}
+
+/* Preferencia para reducir movimiento - mantener para accesibilidad básica */
+@media (prefers-reduced-motion: reduce) {
+	:host {
+		* {
+			transition: none !important;
+			animation: none !important;
+		}
+	}
+}
+
+// Estilos específicos para la elipsis y el menú desplegable
+:host {
+	position: relative;
+
+	// Estilos para el elemento elipsis
+	.atoms-breadcrumb__link--ellipsis {
+		cursor: pointer;
+		font-weight: 500;
+
+		&:hover {
+			text-decoration: none;
+			opacity: 0.8;
+		}
+	}
+
+	// Posicionamiento del menú desplegable
+	scib-ui-v2-menu-panel {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 1000;
+	}
+}
+
+// Mejorar la visibilidad de la elipsis en nivel secundario
+:host([level='primary']) {
+	.atoms-breadcrumb {
+		&__link--ellipsis {
+			color: var(--_atoms-breadcrumbs-primary-ellipsis-color);
+			font-weight: 600;
+
+			&:hover {
+				color: var(--_atoms-breadcrumbs-primary-hover-color);
+				cursor: pointer;
+			}
+		}
+	}
+}

@@ -1,0 +1,96 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-date-picker.theme.scss';
+
+.ui-datepicker {
+	position: relative !important;
+	min-height: tools.rem(90);
+
+	&--small {
+		max-width: 100%;
+		.custom-picker {
+			width: 100%;
+		}
+	}
+	&--medium {
+		max-width: 100%;
+		.custom-picker {
+			width: 100%;
+		}
+	}
+	&--full {
+		.custom-picker {
+			width: 100%;
+			margin-top: 0;
+		}
+	}
+	&--noMinHeight {
+		min-height: auto;
+	}
+	&__errormessage {
+		color: tools.color(primary, base);
+		font-size: tools.rem(12);
+	}
+}
+.c-label {
+	width: 100%;
+	margin-bottom: tools.rem(5);
+	color: black;
+	font-size: tools.rem(12);
+	line-height: tools.rem(18);
+	text-transform: uppercase;
+}
+
+.c-label__large {
+	width: 124%;
+}
+
+.custom-picker {
+	content: attr(placeholder) !important;
+	display: flex;
+	align-items: center;
+	padding: 0.5rem 0.8rem;
+	position: relative;
+	box-sizing: border-box;
+	height: tools.rem(50);
+	border: tools.rem(1) solid tools.color(secondary, medium-dark);
+	border-radius: tools.rem(4);
+	background: white;
+	cursor: pointer;
+	width: tools.rem(230);
+	color: #4c4c4c;
+	font-size: 1rem;
+	&:focus {
+		border-color: #cccccc;
+		outline: 0;
+	}
+}
+
+.disabled-picker {
+	background: tools.color(secondary, medium);
+	cursor: auto;
+	.icon-style {
+		color: tools.color(secondary, ultra-dark);
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.ui-datepicker {
+		&--small {
+			max-width: tools.rem(165);
+		}
+	}
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+	margin: 0;
+	padding: 0;
+	filter: invert(100%) brightness(50%) sepia(100%) saturate(10000%);
+}
+
+input[type='time']::-webkit-calendar-picker-indicator {
+	margin: 0;
+	padding: 0;
+	filter: invert(100%) brightness(50%) sepia(100%) saturate(10000%);
+}

@@ -1,0 +1,98 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-carousel.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_cdk-carousel-bg-color);
+}
+
+.cdk-carousel {
+	position: relative;
+	display: inline-flex;
+	flex-direction: column;
+	width: 100%;
+
+	.cdk-carousel__arrow {
+		background-color: transparent;
+		border: transparent;
+		position: absolute;
+		padding: tools.rem(16 0 16 16);
+		top: 40%;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	#prev {
+		transform: rotateY(180deg);
+		left: 0;
+	}
+	#next {
+		right: 0;
+	}
+	.icon-arrow-chassis:before {
+		color: tools.color(primary, base);
+	}
+
+	section {
+		display: inline-flex;
+		flex-direction: column;
+		width: 100%;
+		margin: tools.rem(8) auto tools.rem(0) auto;
+		.cdk-carousel {
+			&__content {
+				max-width: 95%;
+				width: 100%;
+				min-height: tools.rem(112);
+				margin: tools.rem(8 0);
+				position: relative;
+				overflow: hidden;
+				left: tools.rem(30);
+				right: 0;
+				&--item {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+				::slotted(*) {
+				}
+			}
+
+			&__dots {
+				display: flex;
+				align-self: center;
+				&--dot {
+					height: tools.rem(10);
+					width: tools.rem(10);
+					margin: tools.rem(0 4);
+					background-color: rgba(27, 179, 188, 0.2);
+					border-radius: 50%;
+					border: transparent;
+					display: inline-block;
+					&:hover {
+						background-color: tools.color(tertiary, base);
+						cursor: pointer;
+					}
+				}
+				&--active {
+					background-color: tools.color(tertiary, base);
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: 1440px) {
+	.cdk-carousel {
+		section {
+			.cdk-carousel {
+				&__content {
+					max-width: 96%;
+					left: tools.rem(27);
+				}
+			}
+		}
+	}
+}

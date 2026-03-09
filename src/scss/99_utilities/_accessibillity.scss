@@ -1,0 +1,54 @@
+@use '../01_settings/settings';
+@use '../02_tools/tools';
+
+/**
+   *@description: this file collects the mixin, function and classes defined to meet the accessibility of the development
+**/
+@mixin accessibility {
+	border: 0 !important;
+	clip: rect(0 0 0 0) !important;
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+}
+
+@if settings.$responsive {
+	@each $state in xs, sm, md, lg, xl {
+		@include tools.media-query(#{$state}) {
+			.accessibility--#{$state} {
+				@include accessibility;
+			}
+
+			.visuallyhidden--#{$state} {
+				display: none !important;
+			}
+		}
+	}
+}
+
+/** forces to reset element to <div> styles */
+@mixin force-reset($element) {
+	@if $element==button {
+		-webkit-appearance: unset;
+		background: unset;
+		border: none;
+		padding: unset;
+	} @else if $element==figure {
+		margin: 0;
+	} @else if $element==input {
+		padding: unset;
+		-webkit-appearance: unset;
+		border: none;
+	}
+}
+
+.accessibility {
+	@include accessibility;
+}
+
+.visuallyhidden {
+	display: none !important;
+}

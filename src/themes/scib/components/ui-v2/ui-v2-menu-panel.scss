@@ -1,0 +1,10 @@
+/**
+ * Public custom properties for accordion component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--ui-v2-menu-panel-right: unset;
+	--ui-v2-menu-panel-background-hover: var(--theme-colors-santander-ultra-light);
+}

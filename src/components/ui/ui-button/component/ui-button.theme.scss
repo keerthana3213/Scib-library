@@ -1,0 +1,5 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_ui-button-bg-color: var(--ui-button-bg-color, white);
+	--_ui-button-min-width: var(--ui-button-min-width, 200px);
+}

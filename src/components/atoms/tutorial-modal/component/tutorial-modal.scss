@@ -1,0 +1,171 @@
+@use 'settings';
+@use 'tools';
+
+:host {
+	--_atoms-tutorial-modal-min-width: var(--atoms-tutorial-modal-min-width, 400px);
+	--_atoms-tutorial-modal-max-width: var(--atoms-tutorial-modal-max-width, 600px);
+	--_atoms-tutorial-modal-min-height: var(--atoms-tutorial-modal-min-height, 420px);
+	--_atoms-tutorial-modal-max-height: var(--atoms-tutorial-modal-max-height, 100%);
+	--_atoms-tutorial-modal-container-padding: var(--atoms-tutorial-modal-container-padding, tools.rem(40px 0));
+	--_atoms-tutorial-modal-container-margin: var(--atoms-tutorial-modal-container-margin, tools.rem(0 50px));
+	--_atoms-tutorial-modal-content-padding-top: var(--atoms-tutorial-modal-content-padding-top, 20px);
+	--_atoms-tutorial-modal-content-padding-right: var(--atoms-tutorial-modal-content-padding-right, 40px);
+	--_atoms-tutorial-modal-content-padding-bottom: var(--atoms-tutorial-modal-content-padding-bottom, 20px);
+	--_atoms-tutorial-modal-content-padding-left: var(--atoms-tutorial-modal-content-padding-left, 40px);
+	--_atoms-tutorial-modal-border-color: var(--atoms-tutorial-modal-border-color, #ffffff);
+	--_atoms-tutorial-modal-border-radius: var(--atoms-tutorial-modal-border-radius, 8px);
+	--_atoms-tutorial-modal-bg-color: var(--atoms-tutorial-modal-bg-color, #ffffff);
+	--_atoms-tutorial-modal-bg-overlay: var(--atoms-tutorial-modal-bg-overlay, rgba(0, 0, 0, 0.32));
+	--_atoms-tutorial-modal-bg-header: var(--atoms-tutorial-modal-bg-header, #cc0000);
+	--_atoms-tutorial-modal-padding-surface: var(--atoms-tutorial-modal-padding-surface, 15px);
+}
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_atoms-tutorial-modal-bg-overlay);
+	display: flex;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	left: 0;
+	top: 0;
+
+	@include tools.shadowIcons();
+
+	.mdc-tutorial {
+		z-index: 600;
+		border-radius: var(--_atoms-tutorial-modal-border-radius);
+		background-color: var(--_atoms-tutorial-modal-bg-color);
+
+		.mdc-tutorial {
+			&__figure {
+				text-align: center;
+			}
+
+			&__surface {
+				min-width: var(--_atoms-tutorial-modal-min-width);
+				max-width: var(--_atoms-tutorial-modal-max-width);
+				min-height: var(--_atoms-tutorial-modal-min-height);
+				max-height: var(--_atoms-tutorial-modal-max-height);
+				border-radius: var(--_atoms-tutorial-modal-border-radius);
+				box-shadow: var(--theme-elevation-5);
+				padding: var(--_atoms-tutorial-modal-padding-surface);
+				overflow: visible;
+
+				@include tools.only-mobile {
+					min-width: 0;
+					max-width: 100%;
+					border-radius: 0;
+				}
+			}
+
+			&__header {
+				display: flex;
+				justify-content: flex-end;
+				margin: 1.25rem 2.5rem 0rem;
+				outline: none;
+				color: var(--_atoms-tutorial-modal-bg-red);
+				font-size: 1.2rem;
+
+				&__info {
+					display: flex;
+					flex-direction: column;
+
+					&--title {
+						font-family: settings.$font-bold-headline;
+						flex: 1 1 auto;
+						line-height: tools.rem(34px);
+						font-size: tools.rem(24px);
+						margin-bottom: 0;
+						padding: tools.rem(0 24px 7px 0);
+						color: var(--theme-colors-black);
+					}
+				}
+
+				&__close {
+					display: flex;
+					justify-content: center;
+					align-items: flex-start;
+					cursor: pointer;
+					font-weight: bold;
+					color: var(--_atoms-tutorial-modal-bg-header);
+				}
+			}
+
+			&__button {
+				display: flex;
+				justify-content: center;
+			}
+
+			&__checkbox {
+				font-size: tools.rem(14);
+				display: flex;
+				justify-content: center;
+				padding-bottom: tools.rem(16);
+				padding-top: tools.rem(16);
+			}
+
+			&__title {
+				font-size: tools.rem(25.6);
+				font-weight: bold;
+				display: flex;
+				justify-content: center;
+				letter-spacing: 0;
+				line-height: tools.rem(18);
+				color: var(--theme-colors-black);
+			}
+
+			&__description {
+				padding-left: var(--_atoms-tutorial-modal-content-padding-left);
+				padding-top: var(--_atoms-tutorial-modal-content-padding-top);
+				padding-right: var(--_atoms-tutorial-modal-content-padding-right);
+				padding-bottom: var(--_atoms-tutorial-modal-content-padding-bottom);
+				display: block;
+				width: calc(100% - 80px);
+				height: calc(100% - 40px);
+				font-size: tools.rem(17.6);
+				color: var(--theme-colors-black);
+				text-align: center;
+			}
+
+			&__content {
+				overflow: hidden;
+				display: flex;
+				height: 100%;
+				justify-content: center;
+				padding: 0;
+				margin: tools.rem(12px 0);
+
+				slot {
+					display: block;
+					width: 100%;
+					height: 100%;
+				}
+
+				::slotted([slot='content']) {
+					padding-left: var(--_atoms-tutorial-modal-content-padding-left);
+					padding-top: var(--_atoms-tutorial-modal-content-padding-top);
+					padding-right: var(--_atoms-tutorial-modal-content-padding-right);
+					padding-bottom: var(--_atoms-tutorial-modal-content-padding-bottom);
+					display: block;
+					width: calc(100% - 80px);
+					height: calc(100% - 40px);
+					font-size: tools.rem(17.6);
+					color: var(--theme-colors-black);
+					text-align: center;
+				}
+
+				--ui-v2-scroll-container-padding-top: 0;
+				--ui-v2-scroll-container-padding-bottom: 0;
+				--ui-v2-scroll-container-padding-right: 0;
+				--ui-v2-scroll-container-padding-left: 0;
+			}
+		}
+
+		&__container {
+			transform: none;
+		}
+	}
+}

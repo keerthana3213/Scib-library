@@ -1,0 +1,76 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-messages-new.scss, justo
+ * después de la importación del tema -> @forward 'cdk-messages-new.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'tools';
+
+@keyframes c-header__fade-in {
+	from {
+		transform: translateY(15px);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.c-header {
+	display: flex;
+	position: relative;
+	top: tools.rem(8);
+	@include tools.desktop {
+		top: tools.rem(15);
+	}
+}
+
+.c-header-card {
+	width: 100%;
+	background: white;
+	border-radius: tools.rem(8);
+	box-shadow: 0px 8px 16px 0px transparentize($color: black, $amount: 0.88);
+	padding: 1rem 1rem 0.5rem 1rem;
+	box-sizing: border-box;
+	opacity: 0;
+	transform: translateY(15px);
+	animation: c-header__fade-in 0.65s cubic-bezier(0.5, 0, 0, 1) forwards;
+	@include tools.desktop {
+		padding: tools.rem(16 24);
+	}
+}
+
+.c-header-title {
+	margin: 0;
+	font-size: 32px;
+	margin-bottom: 0.5rem;
+	display: none;
+	@include tools.desktop {
+		display: block;
+	}
+}
+
+.c-header-form-field {
+	margin-bottom: 1rem;
+}
+
+.c-header-form-switches {
+	margin-top: 1rem;
+	& > * {
+		margin-bottom: 0;
+	}
+	& > *:not(:last-child) {
+		margin-right: 1rem;
+		padding-right: 1rem;
+	}
+	@include tools.desktop {
+		& > *:not(:last-child) {
+			margin-right: 1rem;
+			padding-right: 1rem;
+			border-right: 1px solid tools.color(secondary, medium-dark);
+		}
+	}
+}

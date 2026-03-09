@@ -1,0 +1,57 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-messages-sendbar.scss, justo
+ * después de la importación del tema -> @forward 'cdk-messages-sendbar.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'tools';
+
+.c-sendbar-error {
+	padding: 0 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	@include tools.desktop {
+		flex-direction: row;
+		& > *:not(:last-child) {
+			margin-right: 1.5rem;
+		}
+	}
+}
+
+.c-sendbar-error-img {
+	// padding: 1rem;
+	margin-bottom: 1rem;
+	box-sizing: border-box;
+	& > svg {
+		display: flex;
+		justify-content: center;
+	}
+	@include tools.desktop {
+		margin-bottom: 1rem;
+	}
+}
+
+.c-sendbar-error-title {
+	font-size: 1.25rem;
+	line-height: 1.5;
+	margin-bottom: 0.5rem;
+}
+
+.c-sendbar-error-message {
+	display: flex;
+	align-items: center;
+	& > *:not(:last-child) {
+		margin-right: 0.5rem;
+	}
+}
+
+.c-sendbar-error-icon {
+	color: tools.color(primary, base);
+}
+
+.c-sendbar-error-message-txt {
+	color: tools.color(secondary, dark);
+}

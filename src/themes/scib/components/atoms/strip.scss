@@ -1,0 +1,13 @@
+/**
+ * Public custom properties for strip component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-strip-bg-color: var(--theme-colors-santander-base, magenta);
+	--atoms-strip-txt-color: var(--theme-colors-white, white);
+	--atoms-strip-padding: 24px 32px;
+	--atoms-strip-height: 100px;
+	--atoms-strip-z-index: 400;
+}

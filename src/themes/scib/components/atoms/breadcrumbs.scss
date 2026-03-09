@@ -1,0 +1,12 @@
+/**
+ * Public custom properties for breadcrumbs component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-breadcrumbs-bg-color: var(--theme-colors-white, magenta);
+	--atoms-breadcrumbs-colors-active: var(--theme-colors-grey-dark, #727272);
+	--atoms-breadcrumbs-breadcrumb-font-size: 12px;
+	--atoms-breadcrumbs-breadcrumb-gap: 0px;
+}

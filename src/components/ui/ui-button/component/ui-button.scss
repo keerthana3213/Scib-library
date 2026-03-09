@@ -1,0 +1,368 @@
+@use 'utilities';
+@use 'settings';
+@use 'sass:map';
+@use 'tools';
+
+@forward 'ui-button.theme.scss';
+@forward '../fragments/ui-button-loading.fragment';
+@forward '../fragments/ui-button-tooltip.fragment';
+
+:host {
+	-webkit-appearance: unset !important;
+}
+
+.c-button {
+	@include utilities.force-reset(button);
+	box-sizing: border-box;
+	position: relative;
+	font-size: tools.rem(16);
+	line-height: tools.rem(24);
+	font-family: settings.$font-bold-txt;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: tools.rem(5 15);
+	width: 100%;
+	min-width: tools.rem(130);
+	border-radius: tools.rem(35);
+	border: 1px solid transparent;
+	box-sizing: border-box;
+	cursor: pointer;
+	transition: opacity 0.15s linear;
+	transition: box-shadow 0.15s linear;
+	min-height: tools.rem(32);
+	min-width: tools.rem(32);
+
+	@include tools.tablet {
+		min-height: tools.rem(40);
+		min-width: tools.rem(160);
+		padding: tools.rem(10 15);
+	}
+
+	@include tools.desktop {
+		min-height: tools.rem(48);
+		min-width: var(--_ui-button-min-width);
+		padding: tools.rem(15 20);
+	}
+
+	& > span {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&.--only-icon-right {
+		& > span {
+			padding-left: 1.75rem;
+		}
+	}
+	&.--forseti {
+		& > span {
+			padding-left: 10px;
+		}
+	}
+
+	&.--no-padding-left.--only-icon-right {
+		& > span {
+			padding-left: 0.5rem;
+		}
+	}
+
+	&.--primary,
+	&.--secondary {
+		&:hover {
+			background: tools.color(primary, medium);
+			border-color: tools.color(primary, medium);
+			color: white;
+		}
+	}
+
+	&.--primary {
+		background: tools.color(primary, base);
+		border-color: tools.color(primary, medium);
+		color: white;
+		.c-loader-path {
+			stroke: white;
+		}
+	}
+
+	&.--secondary {
+		background: white;
+		border-color: tools.color(primary, base);
+		font-family: settings.$font-regular-txt;
+		color: tools.color(primary, base);
+		.c-loader-path {
+			stroke: tools.color(primary, base);
+		}
+	}
+
+	&.--nobackground {
+		background: transparent;
+		border-color: transparent;
+		color: inherit;
+		&:disabled {
+			background: transparent;
+
+			border: 0;
+			min-height: 0;
+			.c-icon {
+				border-color: tools.color(secondary, dark);
+				&::before {
+					color: tools.color(secondary, dark);
+				}
+			}
+			&:hover {
+				background: transparent;
+				border: 0;
+				color: tools.color(secondary, dark);
+			}
+		}
+	}
+
+	&.--only-one-icon {
+		min-width: tools.rem(40);
+		& > span {
+			@include utilities.accessibility();
+		}
+		padding: tools.rem(8);
+		min-width: auto;
+		justify-content: center;
+		.c-icon.--right {
+			margin-left: 0;
+		}
+		@include tools.tablet {
+			padding: tools.rem(12);
+			min-width: tools.rem(40);
+		}
+		@include tools.desktop {
+			padding: tools.rem(16);
+			min-width: tools.rem(40);
+		}
+	}
+
+	&.--only-one-icon-tablet {
+		.c-icon.--right {
+			display: none;
+		}
+		& > span {
+			padding-left: 0.25rem;
+		}
+		@media (max-width: map.get($map: settings.$mq-breakpoints, $key: tablet)) {
+			font-size: tools.rem(22);
+			& > span {
+				@include utilities.accessibility();
+			}
+			padding: tools.rem(16);
+			min-width: auto;
+			justify-content: center;
+			.c-icon.--right {
+				display: block;
+				margin-left: 0;
+				font-size: tools.rem(22);
+			}
+		}
+	}
+
+	&.--only-one-icon-desktop {
+		.c-icon.--right {
+			display: none;
+		}
+		& > span {
+			padding-left: 0.25rem;
+		}
+		padding: tools.rem(16);
+		@media (max-width: map.get($map: settings.$mq-breakpoints, $key: desktop)) {
+			& > span {
+				@include utilities.accessibility();
+			}
+			padding: tools.rem(8);
+			min-width: auto;
+			justify-content: center;
+			.c-icon.--right {
+				display: block;
+				margin-left: 0;
+				font-size: tools.rem(22);
+			}
+		}
+	}
+
+	&.--link {
+		padding: tools.rem(0 5);
+		color: tools.color(primary, base);
+		font-family: settings.$font-regular-txt;
+		span {
+			margin-left: 0;
+		}
+		&:hover {
+			background: transparent;
+			color: tools.color(primary, dark);
+		}
+		&:focus {
+			outline: none;
+			box-shadow: none;
+			color: tools.color(primary, dark);
+		}
+		&:disabled {
+			background: transparent;
+			border: 0;
+			min-height: 0;
+			.c-icon {
+				color: tools.color(secondary, dark);
+			}
+			&:hover {
+				background: transparent;
+				border: 0;
+				color: tools.color(secondary, dark);
+			}
+		}
+		.--left {
+			margin-left: 0;
+			span {
+				margin: auto;
+			}
+		}
+	}
+
+	&.--small {
+		min-height: 32px;
+		&:not(.--only-one-icon):not(.--no-lateral-padding) {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+	}
+
+	&.--ultrasmall {
+		min-height: 28px;
+		height: 40px;
+		&:not(.--only-one-icon):not(.--no-lateral-padding) {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+	}
+
+	&.--medium {
+		// padding: 0.5rem;
+		min-height: 40px;
+		&:not(.--only-one-icon):not(.--no-lateral-padding) {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+	}
+
+	&.--large {
+		// padding: 0.5rem;
+		min-height: 56px;
+		&:not(.--only-one-icon):not(.--no-lateral-padding) {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+	}
+
+	&.--small-txt {
+		font-size: tools.rem(14);
+		line-height: tools.rem(20);
+	}
+
+	&.--have-notification {
+		position: relative;
+		&:before {
+			content: '';
+			position: absolute;
+			top: tools.rem(5);
+			right: tools.rem(2);
+			width: tools.rem(12);
+			height: tools.rem(12);
+			background: tools.color(primary, medium);
+			border-radius: tools.rem(999);
+			opacity: 1;
+		}
+	}
+
+	&:disabled {
+		font-family: settings.$font-regular-txt;
+		background: tools.color(secondary, light);
+		border: tools.rem(1) solid tools.color(secondary, medium);
+		color: tools.color(secondary, dark);
+
+		&:hover {
+			opacity: 1;
+			cursor: not-allowed !important;
+			background: tools.color(secondary, light);
+			border: tools.rem(1) solid tools.color(secondary, medium);
+			color: tools.color(secondary, dark);
+		}
+	}
+
+	&.--loading {
+		& > span {
+			opacity: 0;
+		}
+		.c-icon {
+			opacity: 0;
+		}
+	}
+
+	&.--disableMinWidth {
+		min-width: auto;
+	}
+
+	&.--disableWidth {
+		width: auto;
+	}
+
+	&.--labelSize {
+		height: tools.rem(18);
+		min-height: 1rem;
+		line-height: 1rem;
+	}
+
+	&.--no-lateral-padding {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	&.--communication {
+		min-height: tools.rem(32);
+		height: tools.rem(32);
+		min-width: tools.rem(32);
+		width: tools.rem(32);
+		padding: tools.rem(3);
+		border: 0;
+
+		@include tools.desktop {
+			&:not(.--only-one-icon):not(.--no-lateral-padding) {
+				padding-left: tools.rem(16);
+				padding-right: tools.rem(16);
+			}
+		}
+	}
+
+	.ui-button-tooltip {
+		display: none;
+	}
+
+	&:hover:disabled .ui-button-tooltip,
+	&:focus:disabled .ui-button-tooltip {
+		display: block;
+	}
+
+	img {
+		width: 20%;
+	}
+}
+
+.c-icon {
+	&.--right {
+		margin-left: 0.75rem;
+	}
+	&.--left {
+		margin-left: auto;
+		& + span {
+			padding-left: 10px;
+			margin-left: 0;
+		}
+	}
+}
+
+.--redIcon i {
+	color: tools.color(primary, base);
+}

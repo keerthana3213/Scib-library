@@ -1,0 +1,168 @@
+/* Components */
+
+@forward 'components';
+@forward 'light';
+@forward 'dark';
+
+@forward 'new_brand_light';
+@forward 'new_brand_dark';
+
+:root {
+	--color-background-darker: #444444; /* Used for footer and header background color */
+	--color-surface-gradient: 255, 255, 255; /* Used for scroll container gradient */
+	--button-size-border-radius: var(--size-border-radius-05); /* Button border radius */
+	--color-text-on-brand: #ffffff; /* Used for text on brand color */
+	--color-icon-on-brand: #ffffff; /* Used for icon on brand color */
+	--color-action-on-brand-default: #ffffff; /* Used for action on brand default color */
+	--color-action-on-brand-hover: #ffffff; /* Used for action on brand hover color */
+	--color-action-on-brand-selected: #ffffff; /* Used for action on brand selected color */
+	--color-surface-on-brand-hover: var(--color-surface-read-only); /* Used for surface on brand hover color */
+	--color-surface-on-brand-selected: var(--color-surface-state-pressed); /* Used for surface on brand selected color */
+	--elevation-navbar: 0px 1px 3px rgba(68, 68, 68, 0.1); /* Used for main navbar elevation */
+	--color-header-background: var(--color-background-brand);
+	--color-header-background-clients: var(--color-background-brand);
+	--color-header-background-employees: var(--color-dataviz-max-8-colors-08);
+	--color-header-on-background: var(--color-action-on-brand-default);
+	--color-header-on-background-clients: var(--color-action-on-brand-default);
+	--color-header-on-background-employees: var(--color-action-on-brand-default);
+	--color-footer-background: var(--color-dataviz-max-8-colors-08);
+	--color-footer-background-clients: var(--color-dataviz-max-8-colors-08);
+	--color-footer-background-employees: var(--color-dataviz-max-8-colors-08);
+	--color-footer-on-background: var(--color-action-on-brand-default);
+	--color-footer-on-background-clients: var(--color-action-on-brand-default);
+	--color-footer-on-background-employees: var(--color-action-on-brand-default);
+	--color-avatar-default: #bbd7f2;
+	--color-avatar-green: #bae5cc;
+	--color-avatar-yellow: #ffe28c;
+	--color-avatar-red: #ffc9c9;
+	--color-avatar-purple: #e4c9ff;
+	--color-avatar-brown: #ddbba8;
+	--color-avatar-grey: #e4e4e4;
+	--color-avatar-on-default: #23779a;
+	--color-avatar-on-green: #008035;
+	--color-avatar-on-yellow: #856300;
+	--color-avatar-on-red: #990000;
+	--color-avatar-on-purple: #62337e;
+	--color-avatar-on-brown: #5a3c19;
+	--color-avatar-on-grey: #4b4b4b;
+	--color-additional-palette-01: #ffcc33;
+	--color-additional-palette-02: #856300;
+	--color-additional-palette-03: #63ba68;
+	--color-additional-palette-04: #008035;
+	--color-additional-palette-05: #0032e6;
+	--color-additional-palette-06: #444444;
+	--color-additional-palette-07: #cc0000;
+	--color-additional-palette-08: #990000;
+	--color-additional-palette-09: #1bb3bc;
+	--color-additional-palette-10: #137e84;
+	--color-additional-palette-11: #9e3667;
+	--color-additional-palette-12: #732645;
+}
+
+:root[mode='dark'] {
+	--color-background-darker: #8f8f8f; /* Used for footer and header background color */
+	--color-surface-gradient: 68, 68, 68; /* Used for scroll container gradient */
+	--button-size-border-radius: var(--size-border-radius-05); /* Button border radius */
+	--color-text-on-brand: #222222; /* Used for text on brand color */
+	--color-icon-on-brand: #222222; /* Used for icon on brand color */
+	--color-action-on-brand-default: #222222; /* Used for action on brand default color */
+	--color-action-on-brand-hover: #222222; /* Used for action on brand hover color */
+	--color-action-on-brand-selected: #222222; /* Used for action on brand selected color */
+	--color-surface-on-brand-hover: var(--color-surface-read-only); /* Used for surface on brand hover color */
+	--color-surface-on-brand-selected: var(--color-surface-state-pressed); /* Used for surface on brand selected color */
+	--elevation-navbar: 0px 1px 3px rgba(68, 68, 68, 0.1); /* Used for main navbar elevation */
+	--color-header-background: var(--color-background-brand);
+	--color-header-background-clients: var(--color-background-brand);
+	--color-header-background-employees: var(--color-dataviz-max-8-colors-08);
+	--color-header-on-background: var(--color-action-on-brand-default);
+	--color-header-on-background-clients: var(--color-action-on-brand-default);
+	--color-header-on-background-employees: var(--color-action-on-brand-default);
+	--color-footer-background: var(--color-dataviz-max-8-colors-08);
+	--color-footer-background-clients: var(--color-dataviz-max-8-colors-08);
+	--color-footer-background-employees: var(--color-dataviz-max-8-colors-08);
+	--color-footer-on-background: var(--color-action-on-brand-default);
+	--color-footer-on-background-clients: var(--color-action-on-brand-default);
+	--color-footer-on-background-employees: var(--color-action-on-brand-default);
+	--color-avatar-default: #28323c;
+	--color-avatar-green: #323f37;
+	--color-avatar-yellow: #302a19;
+	--color-avatar-red: #3a2a2a;
+	--color-avatar-purple: #363342;
+	--color-avatar-brown: #3c3430;
+	--color-avatar-grey: #313131;
+	--color-avatar-on-default: #b7d0dc;
+	--color-avatar-on-green: #b1ddb4;
+	--color-avatar-on-yellow: #e1d8bd;
+	--color-avatar-on-red: #fab2b2;
+	--color-avatar-on-purple: #c8add9;
+	--color-avatar-on-brown: #d3c0a9;
+	--color-avatar-on-grey: #d0d0d0;
+	--color-additional-palette-01: #ffd24d;
+	--color-additional-palette-02: #9f7700;
+	--color-additional-palette-03: #75c279;
+	--color-additional-palette-04: #009a40;
+	--color-additional-palette-05: #0138ff;
+	--color-additional-palette-06: #444444;
+	--color-additional-palette-07: #e60000;
+	--color-additional-palette-08: #b30000;
+	--color-additional-palette-09: #1ec9d2;
+	--color-additional-palette-10: #16949a;
+	--color-additional-palette-11: #da5694;
+	--color-additional-palette-12: #901a49;
+}
+
+/**
+ * DEPRECATED - DO NOT USE IN NEW COMPONENTS
+ */
+:root {
+	--theme-colors-white: #ffffff;
+	--theme-colors-black: #000000;
+	--theme-colors-primary: #257fa4;
+	--theme-colors-font-base-color: #222222;
+	--theme-colors-grey-light: #f0f0f0;
+	--theme-colors-grey-medium: #dcdcdc;
+	--theme-colors-grey-medium-dark: #cccccc;
+	--theme-colors-grey-thirty: #b5b5b5;
+	--theme-colors-grey-dark: #727272;
+	--theme-colors-grey-middle-dark: #444444;
+	--theme-colors-grey-ultra-dark: #222222;
+	--theme-colors-santander-ultra-light: #fee5e5;
+	--theme-colors-santander-light: #f24c4c;
+	--theme-colors-santander-base: #ec0000;
+	--theme-colors-santander-medium: #cc0000;
+	--theme-colors-santander-dark: #990000;
+	--theme-colors-sky-light: #f5f9fb;
+	--theme-colors-sky-base: #deedf2;
+	--theme-colors-sky-base-dark: #dae9ef;
+	--theme-colors-sky-medium: #cedee7;
+	--theme-colors-sky-dark: #9bc3d3;
+	--theme-colors-blue-base: #3366ff;
+	--theme-colors-blue-dark: #0032e6;
+	--theme-colors-blue-locked: #9ab4ff;
+	--theme-colors-turquoise-base: #1bb3bc;
+	--theme-colors-turquoise-dark: #137e84;
+	--theme-colors-green-light: #a2d6a5;
+	--theme-colors-green-base: #63ba68;
+	--theme-colors-green-medium: #008437;
+	--theme-colors-yellow-light: #ffe699;
+	--theme-colors-yellow-base: #ffcc33;
+	--theme-colors-yellow-medio: #f2ab4e;
+	--theme-colors-yellow-dark: #946f00;
+	--theme-colors-yellow-locked: #f1cd9e;
+	--theme-colors--purple-base: #9e3667;
+	--theme-colors--purple-dark: #732645;
+	--theme-elevation-0: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+	--theme-elevation-1: 0px 1px 4px 0px rgba(0, 0, 0, 0.12);
+	--theme-elevation-2: 0px 3px 4px 0px rgba(0, 0, 0, 0.12);
+	--theme-elevation-3: 0px 5px 8px 0px rgba(0, 0, 0, 0.12);
+	--theme-elevation-4: 0px 16px 32px -12px rgba(0, 0, 0, 0.16);
+	--theme-elevation-5: 0px 32px 32px -12px rgba(0, 0, 0, 0.16);
+	--theme-colors-success-primary: #008035;
+	--theme-colors-success-secondary: #f0f8f0;
+	--theme-colors-info-primary: #4775ff;
+	--theme-colors-info-secondary: #ebf0ff;
+	--theme-colors-warning-primary: #856300;
+	--theme-colors-warning-secondary: #fffaeb;
+	--theme-colors-error-primary: #990000;
+	--theme-colors-error-secondary: #fee5e5;
+}

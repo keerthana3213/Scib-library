@@ -1,0 +1,66 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-elements-list.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+
+.cdk-elements-list {
+	box-sizing: border-box;
+	border-radius: tools.rem(4);
+	border: tools.rem(1) solid tools.color(tertiary, sky);
+	box-shadow: 0 3px 6px 0 rgba(tools.color(tertiary, focus), 0.32);
+	background: white;
+	height: tools.rem(71);
+	margin: tools.rem(20);
+	padding: tools.rem(12 20 12 28);
+	position: relative;
+	display: flex;
+	flex-wrap: nowrap;
+
+	&__cell {
+		display: flex;
+		align-self: center;
+		-ms-flex-direction: column;
+		flex-direction: column;
+
+		&--btn {
+			margin-left: auto;
+			align-self: center;
+		}
+
+		&--action {
+			display: inline-block;
+			vertical-align: middle;
+			padding: tools.rem(0 16);
+
+			&:not(:last-of-type) {
+				border-right: tools.rem(1) solid tools.color(tertiary, focus);
+			}
+
+			.vl {
+				border-left: 6px solid green;
+				height: 500px;
+			}
+		}
+
+		span.icon-drag-hander {
+			transform: rotate(90deg);
+			color: tools.color(tertiary, focus);
+		}
+	}
+
+	span.cdk-elements-list__cell {
+		margin-left: tools.rem(18);
+	}
+
+	.icon-doc-eur:before {
+		color: tools.color(tertiary, focus);
+	}
+
+	scib-ui-extension-icon {
+		color: tools.color(tertiary, focus);
+	}
+}

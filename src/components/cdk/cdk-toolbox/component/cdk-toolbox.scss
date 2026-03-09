@@ -1,0 +1,135 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-toolbox.theme.scss';
+
+.cdk-toolbox {
+	position: fixed;
+	display: flex;
+	border-radius: tools.rem(22);
+	background: tools.color(secondary, light);
+	padding: tools.rem(4 6 4 14);
+	align-items: center;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.16);
+	width: max-content;
+	z-index: 410;
+
+	@include tools.tablet {
+		position: absolute;
+	}
+
+	&__menu {
+		display: flex;
+		align-items: center;
+		border-right: tools.rem(1) solid tools.color(secondary, medium-dark);
+		margin-right: tools.rem(16);
+	}
+
+	&__avatar.sc-scib-ui-avatar-h {
+		width: tools.rem(26);
+		min-width: tools.rem(26);
+		height: tools.rem(26);
+		cursor: pointer;
+	}
+
+	&__menu-btn {
+		display: block;
+		margin-right: tools.rem(4);
+
+		.c-button.--only-one-icon.--small.sc-scib-ui-button {
+			padding: tools.rem(4 6);
+			min-height: 0;
+			min-width: 0;
+		}
+
+		.u-icon {
+			font-size: tools.rem(20);
+			color: tools.color(primary, base);
+			width: auto;
+			height: auto;
+		}
+
+		&:hover,
+		&:focus {
+			.u-icon {
+				color: tools.color(primary, dark);
+			}
+		}
+
+		&:first-of-type {
+			margin-left: tools.rem(11);
+		}
+
+		&:last-of-type {
+			margin-right: tools.rem(11);
+		}
+
+		&--drag {
+			.c-button.--only-one-icon.--small.sc-scib-ui-button {
+				cursor: move;
+
+				.u-icon {
+					color: tools.color(secondary, dark);
+				}
+			}
+		}
+
+		&--messages {
+			position: relative;
+
+			&::before {
+				content: attr(data-title);
+				display: inline-block;
+				position: absolute;
+				bottom: tools.rem(3);
+				right: tools.rem(3);
+				border-radius: 50%;
+				width: tools.rem(16);
+				height: tools.rem(16);
+				margin-right: tools.rem(3);
+				font-family: settings.$font-bold-txt;
+				font-size: tools.rem(11);
+				line-height: tools.rem(15);
+				color: white;
+				background: tools.color(primary, base);
+				text-align: center;
+				cursor: pointer;
+				z-index: 1;
+				pointer-events: none;
+			}
+		}
+
+		&--more {
+			&::before {
+				font-size: tools.rem(8);
+			}
+		}
+	}
+
+	&__close-btn {
+		display: block;
+
+		.c-button.--only-one-icon.--small.sc-scib-ui-button {
+			background: tools.color(secondary, ultra-dark);
+			border: 0;
+			border-radius: 100%;
+			padding: tools.rem(9);
+			min-height: 0;
+			min-width: 0;
+
+			.u-icon {
+				font-size: tools.rem(14);
+				color: white;
+				width: auto;
+				height: auto;
+			}
+		}
+
+		&:focus,
+		&:hover {
+			.c-button.--only-one-icon.--small.sc-scib-ui-button {
+				background: tools.color(secondary, super-dark);
+			}
+		}
+	}
+}

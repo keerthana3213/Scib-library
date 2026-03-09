@@ -1,0 +1,61 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-messages-new.scss, justo
+ * después de la importación del tema -> @forward 'cdk-messages-new.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'tools';
+
+@keyframes c-body__fade-in {
+	from {
+		transform: translateY(15px);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.c-body {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	background: white;
+	border-radius: 4px;
+	box-shadow: 0px 2rem 24px 0px transparentize($color: black, $amount: 0.85);
+	opacity: 0;
+	transform: translateY(15px);
+	animation: c-header__fade-in 0.65s cubic-bezier(0.5, 0, 0, 1) forwards 0.15s;
+	& > * {
+		width: 100%;
+	}
+	overflow: hidden;
+}
+
+.c-body-editable {
+	height: 100%;
+	padding: 1.5rem;
+	box-sizing: border-box;
+	transition: box-shadow 0.3s linear;
+}
+
+.c-body-editable:focus {
+	box-shadow: inset 0px 0px 0px 2px tools.color(tertiary, focus);
+}
+
+.c-body-footer {
+	height: auto;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	background: tools.color(secondary, light);
+	padding: 1.5rem;
+	box-sizing: border-box;
+	& > *:not(:last-child) {
+		margin-right: 1.5rem;
+	}
+}

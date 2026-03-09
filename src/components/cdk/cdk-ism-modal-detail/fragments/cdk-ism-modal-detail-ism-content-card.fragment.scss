@@ -1,0 +1,21 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-ism-modal-detail.scss, justo
+ * después de la importación del tema -> @forward 'cdk-ism-modal-detail.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'settings';
+@use 'tools';
+@use 'objects';
+.cdk-ism-content-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	max-height: tools.rem(500);
+	padding-right: tools.rem(8);
+	overflow: hidden;
+	overflow-y: auto;
+	@extend %customscrollbar;
+}

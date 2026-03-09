@@ -1,0 +1,184 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-login-phishing-form.theme.scss';
+
+.cdk-login-phishing-form {
+	font-size: tools.rem(16);
+	font-family: settings.$font-regular-txt;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+
+	&__box {
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+	}
+
+	&__title {
+		font-size: tools.rem(24);
+		line-height: tools.rem(34);
+		font-family: settings.$font-bold-headline;
+		margin-bottom: tools.rem(16);
+	}
+
+	&__link {
+		text-decoration: none;
+		color: tools.color(primary, base);
+		font-size: tools.rem(14);
+		text-align: center;
+		width: fit-content;
+		height: 100%;
+
+		&:hover,
+		&:focus {
+			color: tools.color(primary, dark);
+		}
+
+		&--public {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			margin: tools.rem(24 32 108) auto;
+			padding-right: tools.rem(8);
+			position: absolute;
+			top: -50%;
+			right: 0;
+
+			.u-icon {
+				margin-left: tools.rem(8);
+			}
+		}
+	}
+
+	&__resend-icon {
+		padding-right: tools.rem(8);
+	}
+
+	&__input {
+		margin-bottom: tools.rem(12);
+
+		&--code input {
+			letter-spacing: tools.rem(10);
+
+			&::placeholder {
+				letter-spacing: normal;
+			}
+		}
+	}
+
+	&__div {
+		padding: tools.rem(0 20);
+		width: 50%;
+	}
+
+	&__description {
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(16);
+		line-height: tools.rem(20);
+		margin-bottom: tools.rem(30);
+
+		&--extra-p-b {
+			margin-bottom: tools.rem(32);
+		}
+
+		&--bold {
+			font-family: settings.$font-bold-txt;
+		}
+
+		&--small {
+			font-size: tools.rem(14);
+		}
+
+		&--italic {
+			font-style: italic;
+		}
+	}
+
+	&__form {
+		& .cdk-login-phishing-form__error {
+			color: tools.color(primary, base);
+			font-size: tools.rem(13);
+			position: relative;
+			top: tools.rem(-24);
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		margin-bottom: tools.rem(48);
+
+		&--less-m-b {
+			margin-bottom: tools.rem(40);
+		}
+
+		scib-ui-button {
+			width: tools.rem(162);
+		}
+	}
+
+	&__recaptcha {
+		width: 100%;
+		height: 10%;
+		margin-bottom: 20px;
+	}
+
+	&__resend {
+		border-top: tools.rem(1) solid tools.color(tertiary, sky);
+		padding: tools.rem(16 0 48);
+		margin: tools.rem(0 20);
+	}
+
+	&__resend-txt {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		padding: 0 !important;
+	}
+
+	&__form,
+	h2,
+	#link-contact,
+	p {
+		padding: tools.rem(0 20);
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.cdk-login-phishing-form {
+		height: 100%;
+		&__box {
+			width: 100%;
+			top: tools.rem(112);
+
+			&__title {
+				font-size: tools.rem(20);
+				font-family: settings.$font-bold-headline;
+				margin-bottom: tools.rem(32);
+			}
+
+			.cdk-login-phishing-form__form,
+			h2,
+			#link-contact {
+				padding: tools.rem(0 24);
+			}
+		}
+
+		&__link--public {
+			position: absolute;
+			top: tools.rem(8);
+			left: 85%;
+			margin: tools.rem(16 16 0 0);
+			font-size: 0;
+			z-index: 1;
+			max-height: tools.rem(42);
+			color: tools.color(secondary, light);
+		}
+	}
+}

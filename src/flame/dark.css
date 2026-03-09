@@ -1,0 +1,811 @@
+/**
+ * @tokens CSS Body typescale
+ * @presenter body-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-body-medium-default-font: Santander Micro Text; /* Used as smaller body texts on desktop screens. e.g.  Alert, calendar, tab label... */
+	--typescale-body-medium-default-size: 0.875rem;
+	--typescale-body-medium-default-line-height: 1.25rem;
+	--typescale-body-medium-default-weight: 400;
+	--typescale-body-medium-default-style: normal;
+	--typescale-body-medium-strong-font: Santander Micro Text; /* Used as strong smaller body texts on desktop screens. */
+	--typescale-body-medium-strong-size: 0.875rem;
+	--typescale-body-medium-strong-line-height: 1.25rem;
+	--typescale-body-medium-strong-weight: 700;
+	--typescale-body-medium-strong-style: normal;
+	--typescale-body-large-default-font: Santander Micro Text; /* Used as standard body texts on desktop screens. */
+	--typescale-body-large-default-size: 1rem;
+	--typescale-body-large-default-line-height: 1.5rem;
+	--typescale-body-large-default-weight: 400;
+	--typescale-body-large-default-style: normal;
+	--typescale-body-large-strong-font: Santander Micro Text; /* Used as strong standard body texts on desktop screens. */
+	--typescale-body-large-strong-size: 1rem;
+	--typescale-body-large-strong-line-height: 1.5rem;
+	--typescale-body-large-strong-weight: 700;
+	--typescale-body-large-strong-style: normal;
+	--typescale-body-xlarge-default-font: Santander Micro Text; /* Used as larger body texts on desktop screens. e.g. Lead paragraphs */
+	--typescale-body-xlarge-default-size: 1.125rem;
+	--typescale-body-xlarge-default-line-height: 1.5rem;
+	--typescale-body-xlarge-default-weight: 400;
+	--typescale-body-xlarge-default-style: normal;
+	--typescale-body-xlarge-strong-font: Santander Micro Text; /* Used as strong larger body texts on desktop screens. e.g. Lead paragraphs */
+	--typescale-body-xlarge-strong-size: 1.125rem;
+	--typescale-body-xlarge-strong-line-height: 1.5rem;
+	--typescale-body-xlarge-strong-weight: 700;
+	--typescale-body-xlarge-strong-style: normal;
+}
+
+/**
+ * @tokens CSS Caption typescale
+ * @presenter caption-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-caption-default-font: Santander Micro Text; /* Used as small, supportive body texts on desktop screens. */
+	--typescale-caption-default-size: 0.75rem;
+	--typescale-caption-default-line-height: 1rem;
+	--typescale-caption-default-weight: 400;
+	--typescale-caption-default-style: normal;
+	--typescale-caption-strong-font: Santander Micro Text; /* Used as strong small, supportive body texts on desktop screens. */
+	--typescale-caption-strong-size: 0.75rem;
+	--typescale-caption-strong-line-height: 1rem;
+	--typescale-caption-strong-weight: 700;
+	--typescale-caption-strong-style: normal;
+}
+
+/**
+ * @tokens CSS Tag typescale
+ * @presenter tag-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-tag-font: Santander Micro Text; /* Used for tag texts. */
+	--typescale-tag-size: 0.875rem;
+	--typescale-tag-line-height: 1.25rem;
+	--typescale-tag-weight: 700;
+	--typescale-tag-style: normal;
+}
+
+/**
+ * @tokens CSS Label typescale
+ * @presenter label-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-label-medium-font: Santander Micro Text; /* Used for label texts on medium variant of components. e.g. checkbox and radio button. */
+	--typescale-label-medium-size: 0.875rem;
+	--typescale-label-medium-line-height: 1.5rem;
+	--typescale-label-medium-weight: 400;
+	--typescale-label-medium-style: normal;
+	--typescale-label-large-font: Santander Micro Text; /* Used for default label texts. */
+	--typescale-label-large-size: 1rem;
+	--typescale-label-large-line-height: 1.5rem;
+	--typescale-label-large-weight: 400;
+	--typescale-label-large-style: normal;
+}
+
+/**
+ * @tokens CSS Placeholder typescale
+ * @presenter placeholder-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-placeholder-font: Santander Micro Text; /* Used for input placeholder texts. */
+	--typescale-placeholder-size: 1rem;
+	--typescale-placeholder-line-height: 1.5rem;
+	--typescale-placeholder-weight: 400;
+	--typescale-placeholder-style: normal;
+}
+
+/**
+ * @tokens CSS Helper text typescale
+ * @presenter helper-text-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-helper-text-font: Santander Micro Text; /* Used for input helper texts. */
+	--typescale-helper-text-size: 0.875rem;
+	--typescale-helper-text-line-height: 1.25rem;
+	--typescale-helper-text-weight: 400;
+	--typescale-helper-text-style: normal;
+}
+
+/**
+ * @tokens CSS Amount typescale
+ * @presenter amount-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-amount-font: Santander Headline; /* Used for amount input texts. */
+	--typescale-amount-size: 2rem;
+	--typescale-amount-line-height: 2.5rem;
+	--typescale-amount-weight: 400;
+	--typescale-amount-style: normal;
+}
+
+/**
+ * @tokens CSS Badge typescale
+ * @presenter badge-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-badge-small-font: Santander Micro Text; /* Used for small badge number. */
+	--typescale-badge-small-size: 0.5;
+	--typescale-badge-small-line-height: 0.625;
+	--typescale-badge-small-weight: 700;
+	--typescale-badge-small-style: normal;
+	--typescale-badge-medium-font: Santander Micro Text; /* Used for medium badge number. */
+	--typescale-badge-medium-size: 0.6875;
+	--typescale-badge-medium-line-height: 1;
+	--typescale-badge-medium-weight: 700;
+	--typescale-badge-medium-style: normal;
+}
+
+/**
+ * @tokens CSS Button typescale
+ * @presenter button-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-button-large-font: Santander Micro Text; /* Used for medium button text. */
+	--typescale-button-large-size: 1rem;
+	--typescale-button-large-line-height: 1.5rem;
+	--typescale-button-large-weight: 700;
+	--typescale-button-large-style: normal;
+	--typescale-button-medium-font: Santander Micro Text; /* Used for small button text. */
+	--typescale-button-medium-size: 0.875rem;
+	--typescale-button-medium-line-height: 1.25rem;
+	--typescale-button-medium-weight: 700;
+	--typescale-button-medium-style: normal;
+}
+
+/**
+ * @tokens CSS Action link typescale
+ * @presenter action-link-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-action-link-font: Santander Micro Text; /* Used for action link button text on desktop screens. */
+	--typescale-action-link-size: 0.875rem;
+	--typescale-action-link-line-height: 1.25rem;
+	--typescale-action-link-weight: 700;
+	--typescale-action-link-style: normal;
+}
+
+/**
+ * @tokens CSS Navbar icon label typescale
+ * @presenter navbar-icon-label-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-navbar-icon-label-default-font: Santander Micro Text; /* DEPRECATED!!! Please use the token: typescale-icon-label-xsmall-default */
+	--typescale-navbar-icon-label-default-size: 0.625rem;
+	--typescale-navbar-icon-label-default-line-height: 1rem;
+	--typescale-navbar-icon-label-default-weight: 400;
+	--typescale-navbar-icon-label-default-style: normal;
+	--typescale-navbar-icon-label-strong-font: Santander Micro Text; /* DEPRECATED!!! Please use the token: typescale-icon-label-xsmall-strong */
+	--typescale-navbar-icon-label-strong-size: 0.625rem;
+	--typescale-navbar-icon-label-strong-line-height: 1rem;
+	--typescale-navbar-icon-label-strong-weight: 700;
+	--typescale-navbar-icon-label-strong-style: normal;
+}
+
+/**
+ * @tokens CSS Icon label typescale
+ * @presenter icon-label-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-icon-label-xsmall-default-font: Santander Micro Text; /* Used exclusively for default navbar icon labels and 5 option bottom-bar icon labels. */
+	--typescale-icon-label-xsmall-default-size: 0.625rem;
+	--typescale-icon-label-xsmall-default-line-height: 1rem;
+	--typescale-icon-label-xsmall-default-weight: 400;
+	--typescale-icon-label-xsmall-default-style: normal;
+	--typescale-icon-label-xsmall-strong-font: Santander Micro Text; /* Used exclusively for strong navbar icon labels and 5 option bottom-bar icon labels. */
+	--typescale-icon-label-xsmall-strong-size: 0.625rem;
+	--typescale-icon-label-xsmall-strong-line-height: 1rem;
+	--typescale-icon-label-xsmall-strong-weight: 700;
+	--typescale-icon-label-xsmall-strong-style: normal;
+	--typescale-icon-label-small-default-font: Santander Micro Text; /* Used exclusively for default shortcut button and bottom-bar icon labels. */
+	--typescale-icon-label-small-default-size: 0.75rem;
+	--typescale-icon-label-small-default-line-height: 1rem;
+	--typescale-icon-label-small-default-weight: 400;
+	--typescale-icon-label-small-default-style: normal;
+	--typescale-icon-label-small-strong-font: Santander Micro Text; /* Used exclusively for strong bottom-bar icon labels. */
+	--typescale-icon-label-small-strong-size: 0.75rem;
+	--typescale-icon-label-small-strong-line-height: 1rem;
+	--typescale-icon-label-small-strong-weight: 700;
+	--typescale-icon-label-small-strong-style: normal;
+}
+
+/**
+ * @tokens CSS Figure typescale
+ * @presenter figure-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-figure-xsmall-default-font: Santander Headline; /* Used as smallest default figure texts. */
+	--typescale-figure-xsmall-default-size: 0.75rem;
+	--typescale-figure-xsmall-default-line-height: 1rem;
+	--typescale-figure-xsmall-default-weight: 400;
+	--typescale-figure-xsmall-default-style: normal;
+	--typescale-figure-xsmall-strong-font: Santander Headline; /* Used as smallest strong figure texts. */
+	--typescale-figure-xsmall-strong-size: 0.75rem;
+	--typescale-figure-xsmall-strong-line-height: 1rem;
+	--typescale-figure-xsmall-strong-weight: 700;
+	--typescale-figure-xsmall-strong-style: normal;
+	--typescale-figure-small-default-font: Santander Headline; /* Used as small default figure texts. */
+	--typescale-figure-small-default-size: 0.75rem;
+	--typescale-figure-small-default-line-height: 1rem;
+	--typescale-figure-small-default-weight: 400;
+	--typescale-figure-small-default-style: normal;
+	--typescale-figure-small-strong-font: Santander Headline; /* Used as small strong figure texts. */
+	--typescale-figure-small-strong-size: 0.75rem;
+	--typescale-figure-small-strong-line-height: 1rem;
+	--typescale-figure-small-strong-weight: 700;
+	--typescale-figure-small-strong-style: normal;
+	--typescale-figure-medium-default-font: Santander Headline; /* Used as medium default figure texts. */
+	--typescale-figure-medium-default-size: 1rem;
+	--typescale-figure-medium-default-line-height: 1.5rem;
+	--typescale-figure-medium-default-weight: 400;
+	--typescale-figure-medium-default-style: normal;
+	--typescale-figure-medium-strong-font: Santander Headline; /* Used as medium strong figure texts. */
+	--typescale-figure-medium-strong-size: 1rem;
+	--typescale-figure-medium-strong-line-height: 1.5rem;
+	--typescale-figure-medium-strong-weight: 700;
+	--typescale-figure-medium-strong-style: normal;
+	--typescale-figure-large-default-font: Santander Headline; /* Used as large default figure texts. */
+	--typescale-figure-large-default-size: 1.125rem;
+	--typescale-figure-large-default-line-height: 1.5rem;
+	--typescale-figure-large-default-weight: 400;
+	--typescale-figure-large-default-style: normal;
+	--typescale-figure-large-strong-font: Santander Headline; /* Used as large strong figure texts. */
+	--typescale-figure-large-strong-size: 1.125rem;
+	--typescale-figure-large-strong-line-height: 1.5rem;
+	--typescale-figure-large-strong-weight: 700;
+	--typescale-figure-large-strong-style: normal;
+	--typescale-figure-xlarge-default-font: Santander Headline; /* Used as xlarge default figure texts. */
+	--typescale-figure-xlarge-default-size: 1.5rem;
+	--typescale-figure-xlarge-default-line-height: 1.75rem;
+	--typescale-figure-xlarge-default-weight: 400;
+	--typescale-figure-xlarge-default-style: normal;
+	--typescale-figure-xlarge-strong-font: Santander Headline; /* Used as xlarge strong figure texts. */
+	--typescale-figure-xlarge-strong-size: 1.5rem;
+	--typescale-figure-xlarge-strong-line-height: 1.75rem;
+	--typescale-figure-xlarge-strong-weight: 700;
+	--typescale-figure-xlarge-strong-style: normal;
+	--typescale-figure-xxlarge-default-font: Santander Headline; /* Used as xxlarge default figure texts. */
+	--typescale-figure-xxlarge-default-size: 2rem;
+	--typescale-figure-xxlarge-default-line-height: 2.25rem;
+	--typescale-figure-xxlarge-default-weight: 400;
+	--typescale-figure-xxlarge-default-style: normal;
+	--typescale-figure-xxlarge-strong-font: Santander Headline; /* Used as xxlarge strong figure texts. */
+	--typescale-figure-xxlarge-strong-size: 2rem;
+	--typescale-figure-xxlarge-strong-line-height: 2.25rem;
+	--typescale-figure-xxlarge-strong-weight: 700;
+	--typescale-figure-xxlarge-strong-style: normal;
+}
+
+/**
+ * @tokens CSS Avatar typescale
+ * @presenter avatar-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-avatar-small-font: Santander Headline; /* Used for small avatar text. */
+	--typescale-avatar-small-size: 0.875rem;
+	--typescale-avatar-small-line-height: 1.25rem;
+	--typescale-avatar-small-weight: 700;
+	--typescale-avatar-small-style: normal;
+	--typescale-avatar-medium-font: Santander Headline; /* Used for medium avatar text. */
+	--typescale-avatar-medium-size: 1rem;
+	--typescale-avatar-medium-line-height: 1.5rem;
+	--typescale-avatar-medium-weight: 700;
+	--typescale-avatar-medium-style: normal;
+	--typescale-avatar-large-font: Santander Headline; /* Used for large avatar text. */
+	--typescale-avatar-large-size: 1.25rem;
+	--typescale-avatar-large-line-height: 1.5rem;
+	--typescale-avatar-large-weight: 700;
+	--typescale-avatar-large-style: normal;
+	--typescale-avatar-xlarge-font: Santander Headline; /* Used for large avatar text. */
+	--typescale-avatar-xlarge-size: 1.75rem;
+	--typescale-avatar-xlarge-line-height: 2rem;
+	--typescale-avatar-xlarge-weight: 700;
+	--typescale-avatar-xlarge-style: normal;
+}
+
+/**
+ * @tokens CSS Display typescale
+ * @presenter display-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-display-small-default-font: Santander Headline; /* Used as h2 on desktop screens. */
+	--typescale-display-small-default-size: 2.625rem;
+	--typescale-display-small-default-line-height: 3.25rem;
+	--typescale-display-small-default-weight: 400;
+	--typescale-display-small-default-style: normal;
+	--typescale-display-small-strong-font: Santander Headline; /* Used as strong h2 on desktop screens. */
+	--typescale-display-small-strong-size: 2.625rem;
+	--typescale-display-small-strong-line-height: 3.25rem;
+	--typescale-display-small-strong-weight: 700;
+	--typescale-display-small-strong-style: normal;
+	--typescale-display-large-default-font: Santander Headline; /* Used as h1 on online banking desktop screens. */
+	--typescale-display-large-default-size: 3rem;
+	--typescale-display-large-default-line-height: 3.75rem;
+	--typescale-display-large-default-weight: 400;
+	--typescale-display-large-default-style: normal;
+	--typescale-display-large-strong-font: Santander Headline;
+	--typescale-display-large-strong-size: 3rem;
+	--typescale-display-large-strong-line-height: 3.75rem;
+	--typescale-display-large-strong-weight: 700;
+	--typescale-display-large-strong-style: normal;
+	--typescale-display-xlarge-default-font: Santander Headline; /* Used as h1 on marketing desktop screens. e.g. Hero section */
+	--typescale-display-xlarge-default-size: 3.375rem;
+	--typescale-display-xlarge-default-line-height: 4rem;
+	--typescale-display-xlarge-default-weight: 400;
+	--typescale-display-xlarge-default-style: normal;
+	--typescale-display-xlarge-strong-font: Santander Headline;
+	--typescale-display-xlarge-strong-size: 3.375rem;
+	--typescale-display-xlarge-strong-line-height: 4rem;
+	--typescale-display-xlarge-strong-weight: 700;
+	--typescale-display-xlarge-strong-style: normal;
+}
+
+/**
+ * @tokens CSS Headline typescale
+ * @presenter headline-typescale
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--typescale-headline-small-font: Santander Headline; /* Used as h6 on desktop screens. */
+	--typescale-headline-small-size: 1.125rem;
+	--typescale-headline-small-line-height: 1.5rem;
+	--typescale-headline-small-weight: 700;
+	--typescale-headline-small-style: normal;
+	--typescale-headline-medium-font: Santander Headline; /* Used as h5 on desktop screens. */
+	--typescale-headline-medium-size: 1.25rem;
+	--typescale-headline-medium-line-height: 1.5rem;
+	--typescale-headline-medium-weight: 700;
+	--typescale-headline-medium-style: normal;
+	--typescale-headline-large-font: Santander Headline; /* Used as h4 on desktop screens. */
+	--typescale-headline-large-size: 1.5rem;
+	--typescale-headline-large-line-height: 2rem;
+	--typescale-headline-large-weight: 700;
+	--typescale-headline-large-style: normal;
+	--typescale-headline-xlarge-font: Santander Headline; /* Used as h3 on desktop screens. */
+	--typescale-headline-xlarge-size: 1.75rem;
+	--typescale-headline-xlarge-line-height: 2rem;
+	--typescale-headline-xlarge-weight: 700;
+	--typescale-headline-xlarge-style: normal;
+}
+
+/**
+ * @tokens CSS Border size
+ * @presenter border-size
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--size-border-radius-01: 0rem; /* squared 0px */
+	--size-border-radius-02: 0.25rem; /* rounded 4px */
+	--size-border-radius-03: 0.5rem; /* rounded 8px */
+	--size-border-radius-04: 0.75rem; /* rounded 12px */
+	--size-border-radius-05: 3.125rem; /* full rounded */
+	--size-border-radius-06: 0.125rem; /* rounded 2px */
+	--size-border-width-01: 0.0625rem; /* 1px border width */
+	--size-border-width-02: 0.125rem; /* 2px border width */
+}
+
+/**
+ * @tokens CSS Spacing size
+ * @presenter spacing-size
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--size-spacing-10: 3.5rem; /* 56px */
+	--size-spacing-11: 4rem; /* 64px */
+	--size-spacing-12: 4.5rem; /* 72px */
+	--size-spacing-13: 5rem; /* 80px */
+	--size-spacing-14: 5.5rem; /* 88px */
+	--size-spacing-15: 6rem; /* 96px */
+	--size-spacing-00: 0.125rem; /* 2px */
+	--size-spacing-01: 0.25rem; /* 4px */
+	--size-spacing-02: 0.5rem; /* 8px */
+	--size-spacing-03: 0.75rem; /* 12px */
+	--size-spacing-04: 1rem; /* 16px */
+	--size-spacing-05: 1.25rem; /* 20px */
+	--size-spacing-06: 1.5rem; /* 24px */
+	--size-spacing-07: 2rem; /* 32px */
+	--size-spacing-08: 2.5rem; /* 40px */
+	--size-spacing-09: 3rem; /* 48px */
+}
+
+/**
+ * @tokens CSS Dataviz color
+ * @presenter dataviz-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-dataviz-max-8-colors-01: #f46666; /* 1st in the order of sequence of a 1 to 8 color chart. */
+	--color-dataviz-max-8-colors-02: #49c3ca; /* 2nd in the order of sequence of a 1 to 8 color chart. */
+	--color-dataviz-max-8-colors-03: #b25f86; /* 3rd in the order of sequence of a 1 to 8 color chart. */
+	--color-dataviz-max-8-colors-04: #4c98b3; /* 4th in the order of sequence of a 1 to 8 color chart. */
+	--color-dataviz-max-8-colors-05: #ffd75c; /* 5th in the order of sequence of a 1 to 8 color chart. */
+	--color-dataviz-max-8-colors-06: #92cf96; /* 6th in the order of sequence of a 1 to 8 color chart. */
+	--color-dataviz-max-8-colors-07: #5c85ff; /* 7th in the order of sequence of a 1 to 8 color chart. */
+	--color-dataviz-max-8-colors-08: #727272; /* 8th in the order of sequence of a 1 to 8 color chart. */
+	--color-dataviz-max-15-colors-10: #ba8d08; /* 10th in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-11: #92cf96; /* 11th in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-12: #49a54e; /* 12th in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-13: #5c85ff; /* 13th in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-14: #0f4afa; /* 14th in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-15: #727272; /* 15th in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-01: #f46666; /* 1st in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-02: #cc0000; /* 2nd in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-03: #49c3ca; /* 3rd in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-04: #16999d; /* 4th in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-05: #b25f86; /* 5th in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-06: #95325d; /* 6th in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-07: #4c98b3; /* 7th in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-08: #9bc3d3; /* 8th in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-15-colors-09: #ffd75c; /* 9th in the order of sequence of a 1 to 15 color chart. */
+	--color-dataviz-max-20-colors-10: #9bc3d3; /* 10th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-11: #ffd75c; /* 11th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-12: #ba8d08; /* 12th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-13: #ffebae; /* 13th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-14: #92cf96; /* 14th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-15: #49a54e; /* 15th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-16: #c1e4c3; /* 16th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-17: #5c85ff; /* 17th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-18: #0f4afa; /* 18th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-19: #aec2ff; /* 19th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-20: #727272; /* 20th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-01: #f46666; /* 1st in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-02: #cc0000; /* 2nd in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-03: #49c3ca; /* 3rd in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-04: #16999d; /* 4th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-05: #a4e1e5; /* 5th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-06: #b25f86; /* 6th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-07: #95325d; /* 7th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-08: #d9afc3; /* 8th in the order of sequence of a 1 to 20 color chart. */
+	--color-dataviz-max-20-colors-09: #4c98b3; /* 9th in the order of sequence of a 1 to 20 color chart. */
+}
+
+/**
+ * @tokens CSS Action color
+ * @presenter action-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-action-main-default: #f46666; /* Used for default state of main actions. */
+	--color-action-main-hover: #f67f7f; /* Used for hover state of main actions. */
+	--color-action-main-selected: #f46666; /* Used for selected state of main actions. */
+	--color-action-on-main-default: #222222; /* Used for elements that are placed over the main action color. It should only be used for texts and icons. */
+	--color-action-on-main-hover: #222222; /* Used for the hover state of elements that are placed over the main action color. It should only be used for texts and icons. */
+	--color-action-on-main-selected: #222222; /* Used for the selected state of elements that are placed over the main action color. It should only be used for texts and icons. */
+	--color-action-alternative-default: #5fcad0; /* Used for  default state minor interactions. It doesn't matter if it's a background, a text or a border. */
+	--color-action-alternative-hover: #a4e1e5; /* Used for hover state of minor interactions. */
+	--color-action-alternative-selected: #5fcad0; /* Used for selected state of minor interactions. */
+	--color-action-on-alternative-default: #222222; /* Used for elements over the alternative default action color. It should only be used for texts and icons. */
+	--color-action-on-alternative-hover: #222222; /* Used for the hover state of elements that are placed over the alternative action color. It should only be used for texts and icons. */
+	--color-action-on-alternative-selected: #222222; /* Used for the selected state of elements that are placed over the alternative action color. It should only be used  for texts and icons. */
+	--color-action-disabled: rgba(255, 255, 255, 0.12); /* Used for background of actions disabled state. */
+	--color-action-on-disabled: rgba(255, 255, 255, 0.32); /* Used for foreground elements of actions disabled state. */
+}
+
+/**
+ * @tokens CSS Background color
+ * @presenter background-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-background-default: #2e2e2e; /* Used to create hierarchy as a sunken background and also as a decorative background. */
+	--color-background-alternative: #222222; /* Used to create hierarchy as a sunken background and also as a decorative background. */
+	--color-background-soft: #141414; /* Used to create hierarchy and as a decorative background. */
+	--color-background-alternative-strong: #444444; /* Used to create hierarchy and as a decorative background. */
+	--color-background-strong: #cccccc; /* Used to generate contrast in elements on a background default, soft or alternative. */
+	--color-background-inverted: #ffffff; /* Used for backgrounds with high contrast against the interface. */
+	--color-background-brand: #f46666; /* Used for non-interactive backgrounds with the brand color. */
+	--color-background-brand-strong: #f67f7f; /* Used for non-interactive backgrounds with a lighter brand color. */
+	--color-background-overlay: rgba(
+		20,
+		20,
+		20,
+		0.8
+	); /* Used for overlays, darkening the screen focusing the user eye on the element which appears. */
+	--color-background-info: #184e62; /* Used for info feedback backgrounds. */
+	--color-background-success: #264528; /* Used for success feedback backgrounds. */
+	--color-background-warning: #574305; /* Used for info warning backgrounds. */
+	--color-background-error: #430404; /* Used for error feedback backgrounds. */
+}
+
+/**
+ * @tokens CSS Surface color
+ * @presenter surface-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-surface-flat: #2e2e2e; /* Used for assets that sit on the display background. */
+	--color-surface-raised: #383838; /* Used for interactive assets on the UI with elevation. */
+	--color-surface-floating: #444444; /* Used for foreground assets and temporary assets which appear on top of the UI. */
+	--color-surface-disabled: rgba(255, 255, 255, 0.12); /* Used for disabled surfaces. */
+	--color-surface-read-only: rgba(255, 255, 255, 0.2); /* Used for read-only surfaces. */
+	--color-surface-state-default: rgba(255, 255, 255, 0); /* Used for foreground assets and temporary assets which appear on top of the UI. */
+	--color-surface-state-hover: rgba(255, 255, 255, 0.08); /* Used for the interactive layer in hover state in some assets when needed. */
+	--color-surface-state-pressed: rgba(255, 255, 255, 0.12); /* Used for the interactive layer in pressed state in some assets when needed. */
+	--color-surface-state-selected: rgba(95, 202, 208, 0.1); /* Used for the interactive layer in selected state in some assets when needed. */
+	--color-surface-state-selected-hover: rgba(95, 202, 208, 0.14); /* Used for the interactive layer in selected hover in some assets when needed. */
+	--color-surface-state-disabled: rgba(255, 255, 255, 0); /* Used for the interactive layer in disabled state in some assets when needed. */
+	--color-surface-state-read-only: rgba(255, 255, 255, 0); /* Used for the interactive layer in read-only state in some assets when needed. */
+}
+
+/**
+ * @tokens CSS Text color
+ * @presenter text-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-text-default: #ffffff; /* Used for the default text on the interface. */
+	--color-text-soft: #c7c7c7; /* Used for secondary text. */
+	--color-text-disabled: rgba(255, 255, 255, 0.32); /* Used for disabled text. */
+	--color-text-inverted: #222222; /* Used for text on inverted and high contrasted background colors. */
+	--color-text-brand: #fab2b2; /* Used for non-interactive text with the brand color. */
+	--color-text-info: #b7d0dc; /* Used for info feedback texts. */
+	--color-text-success: #b1ddb4; /* Used for success feedback texts. */
+	--color-text-warning: #ffe699; /* Used for warning feedback texts. */
+	--color-text-error: #fab2b2; /* Used for error feedback texts. */
+}
+
+/**
+ * @tokens CSS Icon color
+ * @presenter icon-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-icon-default: #ffffff; /* Used as default color for icons on the interface which are not a primary or secondary actions. */
+	--color-icon-soft: #c7c7c7; /* Used for secondary icons that support text. */
+	--color-icon-disabled: rgba(255, 255, 255, 0.32); /* Used for disabled icons. */
+	--color-icon-inverted: #222222; /* Used for icons on inverted and high contrasted background colors. */
+	--color-icon-brand: #ffffff; /* Used for non-interactive icons with the brand color. */
+	--color-icon-info: #b7d0dc; /* Used for info feedback icons. */
+	--color-icon-success: #b1ddb4; /* Used for success feedback icons. */
+	--color-icon-warning: #ffe699; /* Used for warning feedback icons. */
+	--color-icon-error: #f67f7f; /* Used for error feedback icons. */
+}
+
+/**
+ * @tokens CSS Border color
+ * @presenter border-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-border-default: #a2a2a2; /* Used for strong dividers and interactive borders and their states. */
+	--color-border-soft: #575757; /* Used as a soft border and divider. */
+	--color-border-hover: #c7c7c7; /* Used for interactive borders hover state. */
+	--color-border-disabled: #575757; /* Used for interactive borders disabled state. */
+	--color-border-alternative: #575757; /* Used as an alternative border and dividers. */
+	--color-border-inverted: #222222; /* Used for borders on inverted and high contrasted background colors. */
+	--color-border-info: #b7d0dc; /* Used for info feedback borders. */
+	--color-border-success: #b1ddb4; /* Used for success feedback borders. */
+	--color-border-warning: #ffe699; /* Used for warning feedback borders. */
+	--color-border-error: #f67f7f; /* Used for error feedback borders. */
+}
+
+/**
+ * @tokens CSS Button color
+ * @presenter button-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-button-secondary-default: #4d4d4d; /* Exception compontent token for secondary button background. */
+	--color-button-secondary-hover: #575757; /* Used for the secondary button hover state background. */
+	--color-button-on-secondary-default: #ffffff; /* Used for elements over the secondary button default state background. */
+	--color-button-on-secondary-hover: #ffffff; /* Used for elements over the secondary button hover state background. */
+}
+
+/**
+ * @tokens CSS Header color
+ * @presenter header-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-header-background: #2e2e2e; /* Used for the header main background. */
+	--color-header-background-alternative: #f46666; /* Used for the header alternative background. */
+	--color-header-on-background: #ffffff; /* Used for elements over the header background. */
+	--color-header-border: #575757; /* Used for border and dividers of the header. */
+	--color-header-icon: #f46666; /* Used for icons of the header. */
+}
+
+/**
+ * @tokens CSS Navbar color
+ * @presenter navbar-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-navbar-background: #2e2e2e; /* Used for the navbar background. */
+	--color-navbar-on-background: #ffffff; /* Used for elements over the navbar background. */
+	--color-navbar-on-background-icon-label: #ffffff; /* Used for icon labels over the navbar background. */
+	--color-navbar-background-sticky: #444444; /* Used for the navbar background when it is sticky. */
+	--color-navbar-background-alternative: #f46666; /* Used for the sidebar header background. */
+	--color-navbar-on-background-alternative: #ffffff; /* Used for elements over the sidebar header background. E.g. icons, title */
+	--color-navbar-on-background-alternative-icon-label: #ffffff; /* Used for icon labels over the sidebar header background. */
+}
+
+/**
+ * @tokens CSS Loader color
+ * @presenter loader-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-loader-background: rgba(20, 20, 20, 0.96); /* Used for the loader overlay background. */
+}
+
+/**
+ * @tokens CSS Decorative color
+ * @presenter decorative-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-decorative-boston: #f67f7f; /* Used for red decorative elements ensuring accessibility contrast. */
+	--color-decorative-ruby: #fab2b2; /* Used for darker red decorative elements ensuring accessibility contrast. */
+	--color-decorative-yellow: #ffe185; /* Used for yellow decorative elements ensuring accessibility contrast. */
+	--color-decorative-green: #83c887; /* Used for green decorative elements ensuring accessibility contrast. */
+	--color-decorative-turquoise: #5fcad0; /* Used for turquoise decorative elements ensuring accessibility contrast. */
+	--color-decorative-blue: #7094ff; /* Used for blue decorative elements ensuring accessibility contrast. */
+	--color-decorative-purple: #c587a4; /* Used for purple decorative elements ensuring accessibility contrast. */
+	--color-decorative-sky: #9bc3d3; /* Used for sky decorative elements ensuring accessibility contrast. */
+}
+
+/**
+ * @tokens CSS Tag color
+ * @presenter tag-color
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--color-tag-primary: #9bc3d3; /* Used for the primary tag background. */
+	--color-tag-promo: #856300; /* Used for the promotional tag background. */
+}
+
+/**
+ * @tokens CSS Elevation
+ * @presenter elevation
+*/
+/**
+ * Do not edit directly
+ * Generated on Tue, 05 Dec 2023 10:45:09 GMT
+ */
+
+:root {
+	--elevation-flat: 0px 0px 0px rgba(20, 20, 20, 0); /* Used for assets that sit on the display background. */
+	--elevation-flat-focus-outer: 0px 0px 0px 2px rgba(46, 46, 46, 1), 0px 0px 0px 4px rgba(112, 148, 255, 1); /* Outer focus used on interactive elements with elevation flat. */
+	--elevation-flat-focus-inner: inset 0px 0px 0px 2px rgba(46, 46, 46, 1), inset 0px 0px 0px 4px rgba(112, 148, 255, 1); /* Inner focus used on interactive elements with elevation flat. */
+	--elevation-raised: 0px 1px 6px rgba(20, 20, 20, 0.6); /* Used for interactive assets on the UI with elevation. */
+	--elevation-raised-focus: 0px 0px 0px 2px rgba(46, 46, 46, 1), 0px 0px 0px 4px rgba(112, 148, 255, 1), 0px 1px 6px rgba(20, 20, 20, 0.6); /* Outer focus used on interactive elements with elevation raised. */
+	--elevation-floating: 0px 1px 10px rgba(20, 20, 20, 0.6); /* Used for foreground assets and temporary assets which appear on top of the UI. */
+	--elevation-floating-focus: 0px 0px 0px 2px rgba(46, 46, 46, 1), 0px 0px 0px 4px rgba(112, 148, 255, 1), 0px 1px 10px rgba(20, 20, 20, 0.6); /* Outer focus used on interactive elements with elevation floating. */
+}

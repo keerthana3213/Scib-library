@@ -1,0 +1,12 @@
+/**
+ * Public custom properties for loading component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-loading-color-primary: var(--theme-colors-santander-base, #ec0000);
+	--atoms-loading-color-secondary: var(--theme-colors-grey-light, #f2f2f2);
+	--atoms-loading-buffer-color: var(--theme-colors-sky-dark, #9bc3d3);
+	--atoms-loading-track-color: var(--theme-colors-grey-light, #f2f2f2);
+}

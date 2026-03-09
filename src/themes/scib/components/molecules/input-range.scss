@@ -1,0 +1,13 @@
+/**
+ * Public custom properties for input-range component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--molecules-input-range-bg-color: var(--theme-colors-white, magenta);
+	--molecules-input-range-text-field-color-primary: var(--theme-colors-primary, #257fa4);
+	--molecules-input-range-text-field-icon-color: var(--theme-colors-grey-dark);
+	--molecules-input-range-text-field-icon-cursor: default;
+	--molecules-input-range-select-width: 100px;
+}

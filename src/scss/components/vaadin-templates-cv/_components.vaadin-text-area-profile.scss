@@ -1,0 +1,108 @@
+/**
+   *@description: this file stylizes the text-field component with label and full width.
+   **Due to its structure, we can not use sass structure, but its functions,
+   **because in the compilation are compiled and generate stable css.
+**/
+
+.vaadin-text-field-container,
+.vaadin-text-area-container {
+	display: block;
+}
+
+[part='label'] {
+	display: block;
+	padding-bottom: 3px;
+	font-size: 12px;
+	line-height: 18px;
+	text-transform: uppercase;
+	color: black;
+}
+
+:host([focused]):not([readonly]) [part='label'] {
+	color: black;
+}
+
+[part='input-field'] {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0;
+	border-radius: 4px;
+	border: 1px solid #cccccc;
+	background: white;
+}
+
+[part='value'] {
+	box-sizing: border-box;
+	height: 100px !important;
+	padding: 12px;
+	border-radius: 4px;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 24px;
+	background: white;
+	color: #767676;
+	resize: none;
+}
+
+/*FOCUS*/
+:host([focused]:not([readonly])) [part='label'] {
+	color: black;
+}
+
+:host([focused]:not([readonly])) [part='input-field'],
+:host([focus-ring]) [part='input-field'] {
+	box-shadow: none;
+	border: 1px solid #9bc3d3;
+}
+
+:host([focused]:not([readonly])) [part='value'],
+:host([focused]:not([readonly])) [part='value']::placeholder {
+	color: #4c4c4c;
+}
+/*HOVER*/
+:host(:hover:not([readonly]):not([focused])) [part='input-field']::after {
+	opacity: 0;
+}
+
+:host(:hover:not([readonly]):not([focused])) [part='value']::placeholder {
+	color: #4c4c4c;
+}
+
+:host(:hover:not([readonly]):not([focused])) [part='input-field'] {
+	cursor: pointer;
+	border: 1px solid black;
+}
+
+/*Error*/
+
+:host([error='true']) [part='label'] {
+	-webkit-text-fill-color: #ec0000;
+}
+
+:host([error='true']) [part='input-field'],
+:host(:hover:not([readonly]):not([focused])[error='true']) [part='input-field'],
+:host([focused]:not([readonly])[error='true']) [part='input-field'] {
+	border: 1px solid #ec0000;
+	background-color: transparent;
+}
+
+/*DISABLED*/
+
+:host([disabled]) [part='label'] {
+	-webkit-text-fill-color: black;
+	opacity: 1;
+}
+
+:host([disabled]:hover:not([readonly]):not([focused])) [part='input-field'] {
+	border: 1px solid #cccccc;
+}
+
+:host([disabled]) [part='input-field'],
+:host([disabled]) [part='value'] {
+	background-color: #e6e6e6;
+	-webkit-text-fill-color: #4c4c4c;
+}
+
+:host([disabled]) [part='value']:hover {
+	cursor: not-allowed;
+}

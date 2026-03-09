@@ -1,0 +1,75 @@
+@use 'objects';
+@use 'tools';
+
+@forward 'ui-label-data.theme.scss';
+
+.ui-labeldata {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin-top: tools.rem(8);
+	margin-bottom: tools.rem(4);
+	padding-bottom: tools.rem(12);
+
+	&__wrapper {
+		display: flex;
+
+		.ui-labeldata__data {
+			@extend %ellipsis;
+			display: inline-block;
+			font-size: tools.rem(16);
+			line-height: tools.rem(24);
+			color: tools.color(secondary, ultra-dark);
+		}
+
+		.ui-labeldata__icon {
+			display: inline-block;
+			font-size: tools.rem(16);
+			line-height: tools.rem(24);
+		}
+	}
+
+	&__label {
+		@extend %ellipsis;
+		display: inline-block;
+		margin-bottom: tools.rem(5);
+		font-size: tools.rem(12);
+		line-height: tools.rem(18);
+		text-transform: uppercase;
+		color: black;
+	}
+
+	&__copy {
+		display: inline-block;
+		margin-left: tools.rem(10);
+
+		.icon-doc_ok {
+			color: tools.color(quaternary, base);
+			vertical-align: super;
+			font-size: tools.rem(15);
+			display: none;
+		}
+
+		.icon-copy {
+			vertical-align: super;
+			font-size: tools.rem(15);
+			display: inline;
+		}
+
+		&--enabled {
+			color: tools.color(primary, base);
+		}
+
+		&--disabled {
+			color: tools.color(secondary, medium);
+		}
+	}
+
+	&--mb {
+		margin-bottom: tools.rem(24);
+	}
+
+	&--separator {
+		padding-bottom: tools.rem(6);
+	}
+}

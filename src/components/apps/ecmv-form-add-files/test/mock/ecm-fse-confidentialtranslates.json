@@ -1,0 +1,1 @@
+[{"id":1,"fsename":"PUBLIC","metaname":"Public"},{"id":2,"fsename":"INTERNAL","metaname":"Internal"},{"id":3,"fsename":"CONFIDENTIAL","metaname":"Confidential"},{"id":4,"fsename":"RESTCONFIDENTIAL","metaname":"RestrictedConfidential"},{"id":5,"fsename":"SECRET","metaname":"Secret"}]

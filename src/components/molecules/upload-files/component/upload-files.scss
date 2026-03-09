@@ -1,0 +1,242 @@
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_molecules-upload-files-color: var(--color-action-alternative-default);
+	--_molcules-upload-files-icon-margin-bottom: 0;
+	--_molcules-upload-files-icon-margin-rigth: 0;
+	--_molcules-upload-files-icon-direction: column;
+	--_molecules-upload-files-background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%23CCC' stroke-width='1' stroke-dasharray='12%2c 6' stroke-dashoffset='9' stroke-linecap='square'/%3e%3c/svg%3e");
+
+	--ui-v2-scroll-container-padding-top: 0;
+
+	--molecules-document-preview-max-width: 228px;
+
+	--ui-row-align-items: flex-start;
+}
+
+:host([size='m']) {
+	/** Specific propr for success type */
+	--_molecules-upload-files-height: 120px;
+	--_molcules-upload-files-icon-margin-bottom: var(--size-spacing-02);
+	--_molecules-upload-files-icon-size: 44px;
+}
+
+:host([size='s']) {
+	/** Specific propr for success type */
+	--_molcules-upload-files-icon-direction: row;
+	--_molecules-upload-files-height: 48px;
+	--_molecules-upload-files-icon-size: 24px;
+	--_molcules-upload-files-icon-margin-rigth: 8px;
+}
+
+:host {
+	@include tools.shadowIcons();
+	.upload-files {
+		display: block;
+		text-align: center;
+		height: 100%;
+		margin-top: 3px;
+
+		&__title {
+			margin-bottom: tools.rem(16);
+		}
+
+		&__draggdrop {
+			height: var(--_molecules-upload-files-height);
+			width: 100%;
+			box-sizing: border-box;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-image: var(--_molecules-upload-files-background-image);
+			border-radius: 4px;
+			flex-direction: var(--_molcules-upload-files-icon-direction);
+			background-color: var(--color-surface-flat);
+			border-color: var(--color-border-soft);
+			&--drop {
+				background-color: var(--color-surface-state-selected);
+				--_molecules-upload-files-background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%23127277' stroke-width='1' stroke-dasharray='12%2c 6' stroke-dashoffset='9' stroke-linecap='square'/%3e%3c/svg%3e");
+			}
+
+			&:hover {
+				cursor: pointer;
+				.upload-files__txt {
+					color: var(--color-action-alternative-hover);
+				}
+				.upload-files__action {
+					color: var(--color-action-alternative-hover);
+				}
+			}
+
+			&--disabled {
+				background-color: var(--color-surface-disabled);
+				--_molecules-upload-files-background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%23575757' stroke-width='1' stroke-dasharray='12%2c 6' stroke-dashoffset='9' stroke-linecap='square'/%3e%3c/svg%3e");
+				&:hover {
+					cursor: default;
+					.upload-files__txt {
+						color: var(--color-text-disabled);
+					}
+					.upload-files__action {
+						color: var(--color-text-disabled);
+					}
+				}
+			}
+		}
+		.accessibility {
+			border: 0 !important;
+			clip: rect(0 0 0 0) !important;
+			height: 1px !important;
+			margin: -1px !important;
+			overflow: hidden !important;
+			padding: 0 !important;
+			position: absolute !important;
+			width: 1px !important;
+		}
+		&__txt {
+			display: inline-block;
+			vertical-align: middle;
+			position: relative;
+			font: var(--body-medium-strong);
+			font-family: var(--typescale-body-medium-strong-font);
+			font-size: var(--typescale-body-medium-strong-size);
+			line-height: var(--typescale-body-medium-strong-line-height);
+			color: var(--_molecules-upload-files-color);
+			font-weight: var(--typescale-body-medium-strong-weight);
+			font-style: var(--typescale-body-medium-strong-style);
+			text-align: left;
+			&--drop {
+				color: var(--color-action-alternative-hover);
+			}
+			&--disabled,
+			&--disabled.upload-files__txt--drop {
+				color: var(--color-text-disabled);
+			}
+		}
+		&__info {
+			display: flex;
+			margin-top: tools.rem(8);
+			font: var(--body-medium-default);
+			font-family: var(--typescale-body-medium-default-font);
+			font-size: var(--typescale-body-medium-default-size);
+			line-height: var(--typescale-body-medium-default-line-height);
+			color: var(--color-text-soft);
+			font-weight: var(--typescale-body-medium-default-font-weight);
+			font-style: var(--typescale-body-medium-default-style);
+			text-align: left;
+			&--disabled {
+				color: var(--color-text-disabled);
+			}
+
+			&--error {
+				color: var(--color-text-error);
+			}
+		}
+
+		&__action {
+			--icon-content: var(--theme-scib-icon-add_files);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			position: relative;
+			box-sizing: border-box;
+			vertical-align: middle;
+			margin-bottom: var(--_molcules-upload-files-icon-margin-bottom);
+			margin-right: var(--_molcules-upload-files-icon-margin-rigth);
+			color: var(--_molecules-upload-files-color);
+			width: var(--_molecules-upload-files-icon-size);
+			height: var(--_molecules-upload-files-icon-size);
+
+			&--disabled {
+				color: var(--color-text-disabled);
+				cursor: auto;
+			}
+		}
+
+		&__error {
+			display: block;
+			font-size: tools.rem(14);
+			line-height: tools.rem(22);
+			text-align: left;
+			color: var(--_molecules-upload-files-color);
+
+			&--top-margined {
+				margin-top: tools.rem(10);
+			}
+		}
+
+		&--disabled:hover {
+			cursor: auto;
+		}
+
+		/* Nuevo sistema de layout flexible */
+		&__container {
+			display: flex;
+			width: 100%;
+			gap: 1rem;
+
+			/* Modo de distribución por filas (vertical) */
+			&.--layout-mode.--rows {
+				flex-direction: column;
+
+				.upload-files__preview-container,
+				.upload-files__controls-container {
+					width: 100%;
+				}
+			}
+
+			/* Modo de distribución por columnas (horizontal) */
+			&.--layout-mode.--columns {
+				flex-direction: row;
+				align-items: flex-start;
+
+				.upload-files__preview-container {
+					flex: 1;
+					max-width: 50%;
+				}
+
+				.upload-files__controls-container {
+					flex: 1;
+					padding-top: 8px;
+				}
+			}
+		}
+
+		&__preview-container {
+			min-height: var(--_molecules-upload-files-height);
+		}
+
+		&__controls-container {
+			min-height: var(--_molecules-upload-files-height);
+		}
+
+		&__errors-container {
+			margin-top: 1rem;
+			width: 100%;
+		}
+	}
+
+	@media only screen and (max-width: 768px) {
+		--ui-v2-scroll-container-padding-left: 0;
+		--ui-v2-scroll-container-padding-top: 8px;
+	}
+
+	scib-molecules-document-preview {
+		max-width: 250px;
+	}
+
+	scib-ui-column {
+		min-height: var(--_molecules-upload-files-height);
+	}
+}

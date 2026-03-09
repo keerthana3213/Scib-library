@@ -1,0 +1,410 @@
+@use 'ui-v2-text-field/component/ui-v2-text-field.scss';
+@use '@material/textfield';
+
+@use 'settings';
+@use 'tools';
+
+@import '~air-datepicker/air-datepicker.css';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	/** Common props for all variants */
+	--_molecules-input-range-bg-color: var(--color-surface-flat);
+	--_molecules-input-range-text-field-icon-cursor: var(--molecules-input-range-text-field-icon-cursor);
+	--_molecules-input-range-select-width: 110px;
+	--_molecules-input-range-text-field-text-color: var(--color-text-default);
+	--_molecules-input-range-text-field-label-color: var(--color-text-soft);
+	--_molecules-input-range-text-field-outline-color: var(--color-border-alternative);
+	--_molecules-input-range-text-field-bottom-line-color: var(--color-border-alternative);
+	--_molecules-input-range-text-field-fill-color: var(--color-surface-flat);
+	--_molecules-input-range-text-field-invalid-color: var(--color-text-error);
+	--_molecules-input-range-text-field-fixed-icon-color: var(--color-action-alternative-default);
+	--_molecules-input-range-select-margin-right: -1px;
+	--_molecules-input-range-text-field-border-width: 1px 1px 0 0;
+
+	--_ui-v2-text-field-input-ripple-display: block !important;
+}
+
+:host([disabled]:not([disabled='false'])) {
+	--_molecules-input-range-text-field-bottom-line-color: transparent;
+	--_molecules-input-range-text-field-icon-cursor: default;
+	--_molecules-input-range-select-margin-right: 0px;
+	--_molecules-input-range-text-field-border-width: 0px;
+}
+
+:host([invalid]:not([invalid='false'])) {
+	--_molecules-input-range-text-field-bottom-line-color: var(--color-border-error);
+	--_ui-v2-text-field-invalid-color: var(--color-border-error);
+}
+
+:host([read-only]:not([read-only='false'])) {
+	--_ui-v2-text-field-bg-color: var(--color-surface-flat);
+	--_ui-v2-text-field-hover-bottom-border-width: 2px;
+	--_ui-v2-text-field-input-border-color: var(--color-border-alternative);
+	--_ui-v2-text-field-input-border-bottom-color: var(--color-action-alternative-default);
+	--_ui-v2-text-field-input-border-radius: var(--ui-v2-text-field-input-border-radius);
+	--_ui-v2-text-field-input-border-width: var(--ui-v2-text-field-input-border-width, 1px);
+	--_ui-v2-text-field-input-border-style: solid;
+	--_ui-v2-text-field-placeholder-color: var(--color-text-soft);
+}
+
+/** 
+ * Component
+ */
+:host {
+	display: block;
+	position: relative;
+	@include tools.shadowIcons();
+
+	--ui-v2-text-field-input-ripple-width: 100%;
+	--ui-v2-text-field-padding: 0 6px 0 8px;
+	--ui-v2-select-menu-position: absolute;
+	--_ui-v2-text-field-translate-floating-label: -130%;
+
+	scib-ui-v2-date-picker {
+		--ui-v2-text-field-input-border-radius: 0 4px 0 0;
+		--_ui-v2-text-field-input-ripple-width: calc(100% - 1px);
+		--_ui-v2-text-field-input-border-width: 1px 1px 0 0;
+	}
+
+	.datepicker-wrapper {
+		width: 100%;
+	}
+
+	.icon-container--handler {
+		$borderType: tools.rem(1px) var(--_ui-v2-text-field-outline-color) solid;
+
+		border-right: $borderType;
+		border-top: $borderType;
+		border-top-right-radius: 4px;
+	}
+
+	.input-range__select--empty-label {
+		&::after {
+			height: 21px !important;
+		}
+	}
+
+	.input-range {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+
+		&--hidden {
+			display: none !important;
+		}
+
+		&__second-text-field {
+			width: 100%;
+		}
+
+		&__text-field {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+
+			&--empty-value.input-range__text-field--with-secondary-input:focus-within .input-range__second-text-field {
+				display: block;
+			}
+
+			&--with-secondary-input {
+				.label-floating {
+					transform: translateY(-96%) scale(0.75);
+				}
+			}
+		}
+
+		&__select {
+			width: calc(100% + 1px);
+			display: flex;
+			flex-direction: row;
+			margin-right: var(--_molecules-input-range-select-margin-right);
+			max-width: var(--_molecules-input-range-select-width);
+			--ui-v2-text-field-input-value-margin-top: 2px;
+			--ui-v2-text-field-input-border-radius: 4px 0 0 0;
+			--ui-v2-text-field-outline-color: var(--color-border-alternative) transparent transparent var(--color-border-alternative);
+			--ui-v2-text-field-fixed-icon-margin: 0px;
+			--ui-v2-text-field-input-value-margin-top: 2px;
+			--_ui-v2-text-field-input-ripple-display: block !important;
+
+			&::after {
+				content: '';
+				height: 35px;
+				width: 1px;
+				position: absolute;
+				left: calc(var(--_molecules-input-range-select-width) - 2px);
+				top: 7px;
+				background-color: var(--color-border-alternative);
+			}
+		}
+
+		&__second-text-field {
+			.mdc-text-field {
+				padding-left: 0;
+			}
+
+			&--hidden {
+				display: none;
+
+				.input-range__text-field > .mdc-line-ripple {
+					background-color: blue !important;
+				}
+			}
+		}
+
+		.input-container {
+			.input-to-right-align {
+				text-align: right;
+
+				.clean-icon {
+					width: 24px;
+				}
+			}
+		}
+	}
+
+	.input-container {
+		display: flex;
+		flex: 1 1 100%;
+		flex-direction: column;
+
+		.date-picker {
+			&__container {
+				width: calc(100% - var(--_molecules-input-range-select-width) + 1px);
+				left: calc(var(--_molecules-input-range-select-width) - 1px);
+				position: absolute;
+				display: block;
+				z-index: 99;
+				bottom: 0;
+				right: 0;
+
+				scib-ui-v2-date-picker::part(input) {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.date-container {
+		display: flex;
+		flex: 1 1 100%;
+
+		.date-picker {
+			display: flex;
+			position: relative;
+			flex: 1 1 100%;
+
+			&__group {
+				display: flex;
+				flex: 1 1 100%;
+			}
+		}
+	}
+
+	.mdc-text-field {
+		border-radius: 0 !important;
+		@include textfield.label-color(var(--_ui-v2-text-field-label-color));
+
+		&__invalid {
+			@include textfield.bottom-line-color(var(--_ui-v2-text-field-invalid-color));
+			@include textfield.line-ripple-color(var(--_ui-v2-text-field-invalid-color));
+			@include textfield.hover-bottom-line-color(var(--_ui-v2-text-field-invalid-color));
+		}
+
+		&:hover {
+			> *:hover {
+				> .mdc-text-field__icon,
+				~ .icon-container > .mdc-text-field__icon {
+					&--hover {
+						display: block;
+					}
+				}
+			}
+		}
+
+		.mdc-text-field__affix--prefix {
+			color: var(--color-text-soft) !important;
+		}
+
+		&--empty-label {
+			.mdc-text-field {
+				&__input {
+					margin-top: 0 !important;
+				}
+			}
+		}
+
+		&--filled {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&:first-child {
+				padding-right: 0px;
+				padding-left: 5px;
+			}
+
+			&.input-to {
+				margin-left: -3px;
+				width: calc(100% + 3px);
+			}
+
+			&.input-from {
+				.mdc-text-field__ripple {
+					border-style: solid;
+					border-color: var(--color-border-alternative);
+					border-width: var(--_molecules-input-range-text-field-border-width);
+					border-radius: 0 4px 0 0 !important;
+
+					&--only {
+						border-top-right-radius: 4px !important;
+					}
+				}
+			}
+
+			.mdc-text-field {
+				&__input {
+					text-overflow: ellipsis;
+					height: tools.rem(24px);
+					margin-top: tools.rem(15px);
+
+					&::-webkit-outer-spin-button,
+					&::-webkit-inner-spin-button {
+						-webkit-appearance: none;
+						margin: 0;
+					}
+
+					&[type='number'] {
+						appearance: textfield;
+						-moz-appearance: textfield;
+					}
+
+					&.input-from {
+						padding-left: 2px;
+					}
+				}
+
+				&__icon {
+					margin-left: tools.rem(16px);
+					color: var(--_molecules-input-range-text-field-label-color);
+					pointer-events: none;
+
+					&--fixed {
+						margin-left: tools.rem(18px);
+						color: var(--_molecules-input-range-text-field-fixed-icon-color);
+					}
+
+					&--hover {
+						width: 100%;
+						padding-right: tools.rem(5px);
+						display: none;
+						font-size: tools.rem(16px);
+						color: var(--_molecules-input-range-text-field-label-color);
+						cursor: pointer;
+						pointer-events: auto;
+						height: fit-content;
+					}
+				}
+
+				&__ripple {
+					width: calc(100% - 1px);
+					border-top-right-radius: 4px;
+					border-top-left-radius: 0px;
+					border-color: var(--_molecules-input-range-text-field-outline-color) transparent;
+					border-bottom: none;
+					border-left: none;
+
+					&--only {
+						transition: none !important;
+						border-right: tools.rem(1px) var(--_molecules-input-range-text-field-outline-color) solid;
+						border-top-right-radius: 4px;
+						border-top-left-radius: 0px;
+					}
+
+					&--range {
+						border-top-right-radius: 0;
+						border-right: none;
+					}
+
+					&--right {
+						border-right: tools.rem(1px) var(--_molecules-input-range-text-field-outline-color) solid;
+						border-top-right-radius: 4px;
+						border-left: none;
+						border-bottom: none;
+					}
+
+					&::before {
+						background-color: var(--_molecules-input-range-text-field-fill-color);
+					}
+				}
+			}
+
+			.icon-container {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-end;
+				pointer-events: none;
+				padding-right: tools.rem(10px);
+
+				&--handler {
+					pointer-events: auto;
+					cursor: var(--_molecules-input-range-text-field-icon-cursor);
+				}
+			}
+
+			.mdc-floating-label {
+				display: block;
+				pointer-events: none;
+				line-height: tools.rem(16px);
+				margin-top: tools.rem(1px);
+				left: 8px;
+
+				&:first-letter {
+					text-transform: capitalize;
+					right: tools.rem(24px);
+
+					&--icon {
+						right: tools.rem(48px);
+					}
+				}
+
+				&--shake {
+					animation: none;
+				}
+			}
+
+			.mdc-line-ripple {
+				&::after {
+					border-bottom-color: var(--_molecules-input-range-text-field-bottom-line-color);
+				}
+			}
+
+			.mdc-text-field__affix {
+				&--prefix {
+					padding-top: tools.rem(15px);
+					padding-right: tools.rem(5px);
+				}
+			}
+
+			&.mdc-text-field--empty-label {
+				.mdc-text-field__affix {
+					&--prefix {
+						padding-top: 0;
+					}
+				}
+			}
+		}
+	}
+}

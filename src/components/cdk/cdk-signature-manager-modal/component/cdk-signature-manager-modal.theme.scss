@@ -1,0 +1,5 @@
+@use 'tools';
+
+:host {
+	--_cdk-signature-manager-modal-bg-color: var(--cdk-signature-manager-modal-bg-color, white);
+}

@@ -1,0 +1,254 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-messages-chat.scss, justo
+ * después de la importación del tema -> @forward 'cdk-messages-chat.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'utilities';
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+@keyframes c-header-info__fade-in {
+	from {
+		transform: translateY(15px);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.c-header-info {
+	display: flex;
+	position: relative;
+	top: tools.rem(5);
+	@include tools.desktop {
+		top: 1rem;
+	}
+
+	&__author-mobile {
+		display: none;
+		margin: tools.rem(0 17);
+		padding: tools.rem(16 0 17);
+		border-top: tools.rem(1) solid tools.color(secondary, medium);
+
+		@include tools.only-mobile {
+			display: flex;
+		}
+
+		&--hide {
+			display: none;
+		}
+	}
+
+	&__author-container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__author-name {
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(14);
+		line-height: tools.rem(20);
+		color: tools.color(secondary, ultra-dark);
+		margin-bottom: tools.rem(4);
+	}
+	&__author-date {
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(12);
+		line-height: tools.rem(18);
+		color: tools.color(secondary, dark);
+		text-transform: uppercase;
+	}
+}
+
+.c-header-info-card {
+	width: 100%;
+	background: white;
+	border-radius: 4px;
+	box-shadow: 0px 2rem 24px 0px transparentize($color: black, $amount: 0.85);
+	box-sizing: border-box;
+	opacity: 0;
+	transform: translateY(15px);
+	animation: c-header-info__fade-in 0.65s cubic-bezier(0.5, 0, 0, 1) forwards;
+}
+
+.c-header-info-card-skeleton {
+	@include utilities.animationSkeleton();
+	position: relative;
+	width: 100%;
+	box-sizing: border-box;
+	height: tools.rem(120);
+	overflow: hidden;
+
+	&--header {
+		height: tools.rem(271);
+	}
+}
+
+.c-header-info-title-text {
+	@extend %ellipsis;
+}
+
+.c-header-info-avatar-wrapper {
+	width: auto;
+	display: flex;
+	align-items: flex-end;
+	position: absolute;
+	top: -2.5rem;
+	right: 0;
+
+	@include tools.desktop {
+		padding: 0 1.5rem 2rem 1rem;
+		position: static;
+	}
+}
+
+.c-header-info-card-subject {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-family: settings.$font-bold-txt;
+	font-size: tools.rem(18);
+	line-height: tools.rem(26);
+	padding-right: tools.rem(146);
+
+	&::before {
+		content: '';
+		width: 4px;
+		background: tools.color(primary, base);
+		position: absolute;
+		left: 0;
+		top: tools.rem(10);
+		bottom: tools.rem(8);
+	}
+
+	@include tools.only-mobile {
+		padding-right: tools.rem(100);
+	}
+
+	@include tools.desktop {
+		font-size: tools.rem(20);
+		line-height: tools.rem(29);
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: row;
+		padding: tools.rem(13 21 11);
+		align-items: center;
+	}
+}
+
+.c-header-tab-files {
+	position: absolute;
+	bottom: tools.rem(7);
+	right: 1rem;
+
+	& .c-header-tab {
+		font-size: 26px;
+		background: none;
+		border: none;
+		height: auto;
+		color: tools.color(secondary, thirty);
+		padding: 7px;
+		border-bottom: 3px solid transparent;
+		cursor: pointer;
+
+		&.--active {
+			color: tools.color(primary, base);
+			border-bottom: 3px solid tools.color(primary, base);
+		}
+	}
+}
+
+.c-header-info-avatar {
+	width: tools.rem(32);
+	height: tools.rem(32);
+	margin-right: tools.rem(16);
+	line-height: initial;
+
+	@include tools.desktop {
+		width: tools.rem(32);
+		height: tools.rem(32);
+		@media only screen and (max-height: 860px) {
+			width: tools.rem(32);
+			height: tools.rem(32);
+		}
+	}
+
+	&__container {
+		display: none;
+		position: absolute;
+		top: tools.rem(-40);
+		right: 0;
+
+		@include tools.only-mobile {
+			display: inline-block;
+		}
+	}
+}
+
+.c-header-info-closed-tag {
+	margin-right: tools.rem(8);
+}
+
+.c-header-info-card-avatar {
+	width: tools.rem(40);
+	min-width: tools.rem(40);
+	height: tools.rem(40);
+	margin-right: tools.rem(9);
+}
+
+.c-header-info-card-author {
+	display: flex;
+	align-items: center;
+	padding: 1rem 1rem 0.5rem 1rem;
+	box-sizing: border-box;
+	@media only screen and (max-height: 860px) {
+		padding: 0.5rem 1rem 0rem 1rem;
+	}
+}
+
+.c-header-info-card-author-name {
+	@extend %ellipsis;
+	font-size: 0.875rem;
+	margin-bottom: 0.15rem;
+	color: tools.color(secondary, ultra-dark);
+	@include tools.desktop {
+		font-size: 1rem;
+	}
+}
+
+.c-header-info-card-author-date {
+	// align-self: flex-end;
+	// display: flex;
+	// align-items: center;
+	font-size: 0.75rem;
+	color: tools.color(secondary, dark);
+	text-transform: uppercase;
+	@include tools.desktop {
+		text-align: right;
+		align-self: flex-end;
+	}
+}
+
+.c-header-info-card-info {
+	padding-left: 0.5rem;
+	width: 100%;
+	width: calc(100% - 3rem);
+	@include tools.desktop {
+		padding-left: 1rem;
+		display: flex;
+		justify-content: space-between;
+		height: 2.5rem;
+		align-items: center;
+	}
+}

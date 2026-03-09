@@ -1,0 +1,13 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-wrapper.theme.scss';
+
+.ui-wrapper {
+	font-family: settings.$font-regular-txt;
+	width: 100%;
+	max-width: tools.rem(1400);
+	margin: 0 auto;
+	padding: var(--ui-wrapper-padding-top-bottom) var(--ui-wrapper-padding-left-right);
+	box-sizing: border-box;
+}

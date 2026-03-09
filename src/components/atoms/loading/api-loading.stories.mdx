@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Design System v-2/Atoms/Loading/Api" parameters={{ status: 'stable' }}/>
+
+# API
+
+---
+
+This is the list of all default CSS properties that you can override :
+
+```css
+--atoms-loading-color-secondary: var(--theme-colors-sky-dark, #9bc3d3);
+--atoms-loading-color-primary: var(--theme-colors-santander-base, #ec0000);
+--atoms-loading-circular-size-px: 36px;
+--atoms-loading-color-white: var(--theme-colors-grey-light, #f2f2f2);
+--atoms-loading-size-m: 42px;
+--atoms-loading-size-s: 36px;
+--atoms-loading-size-xs: 24px;
+```
+Value field should be between 0 and 100 to draw the progress. For indetermintate use -1
+
+
+Get more info about circular progress :
+
+https://github.com/material-components/material-components-web/tree/master/packages/mdc-circular-progress
+
+Get more info about linear progress :
+
+https://github.com/material-components/material-components-web/tree/master/packages/mdc-linear-progress

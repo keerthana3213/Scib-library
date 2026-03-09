@@ -1,0 +1,84 @@
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_organisms-help-faqs-bg-color: var(--organisms-help-faqs-bg-color, rgba(0, 0, 0, 0.3));
+	--_organisms-help-faqs-bg-dialog-color: var(--organisms-help-faqs-bg-dialog-color, rgba(0, 0, 0, 0.32));
+	--_organisms-help-faqs-animate-duration: var(--organisms-help-faqs-animate-duration, 1s);
+	--_organisms-help-faqs-animate-delay: var(--organisms-help-faqs-animate-delay, 1s);
+	--_organisms-help-faqs-animate-repeat: var(--organisms-help-faqs-animate-repeat, 1);
+}
+
+:host([variant='white']) {
+	--_organisms-help-faqs-bg-color: var(--organisms-help-faqs-bg-color, white);
+	--_organisms-help-faqs-bg-dialog-color: var(--organisms-help-faqs-bg-dialog-color, rgba(0, 0, 0, 0.3));
+}
+
+:host([variant='blue']) {
+	--_organisms-help-faqs-bg-color: var(--organisms-help-faqs-bg-color, blue);
+}
+
+/**
+ * Component
+ */
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_organisms-help-faqs-bg-dialog-color);
+	@include tools.shadowIcons();
+
+	scib-atoms-strip {
+		// Overwrite scib-atoms-strip
+		--atoms-strip-bg-color: black !important;
+		--atoms-strip-height: 74px;
+		--atoms-strip-txt-color: white;
+		--atoms-strip-z-index: 600;
+	}
+
+	scib-atoms-tutorial-modal {
+		// Overwrite scib-atoms-tutorial-modal
+		--atoms-tutorial-modal-bg-overlay: var(--_organisms-help-faqs-bg-dialog-color);
+	}
+
+	// .tutorial {
+	// 	background-color: var(--_organisms-help-faqs-bg-dialog-color);
+	// }
+
+	.animate__animated {
+		-webkit-animation-duration: 1s;
+		animation-duration: 1s;
+		-webkit-animation-duration: var(--_organisms-help-faqs-animate-duration);
+		animation-duration: var(--_organisms-help-faqs-animate-duration);
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+	}
+
+	@keyframes fadeInDownBig {
+		0% {
+			opacity: 0;
+			-webkit-transform: translate3d(0, -2000px, 0);
+			transform: translate3d(0, -2000px, 0);
+		}
+
+		to {
+			opacity: 1;
+			-webkit-transform: translateZ(0);
+			transform: translateZ(0);
+		}
+	}
+
+	.animate__fadeInDownBig {
+		-webkit-animation-name: fadeInDownBig;
+		animation-name: fadeInDownBig;
+	}
+}

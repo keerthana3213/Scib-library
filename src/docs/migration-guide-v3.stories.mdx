@@ -1,0 +1,221 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Get Started/Migration Guide v3+" />
+
+<div style={{display:'flex', justifyContent:'flex-end', marginBottom:'24px'}}>
+  <select id="lang-selector-migration" style={{padding:'6px 12px', borderRadius:'6px', border:'1px solid #ccc', fontSize:'14px'}} onChange={(e) => {
+    const lang = e.target.value;
+    document.documentElement.setAttribute('lang', lang);
+    document.body.setAttribute('lang', lang);
+    Array.from(document.querySelectorAll('.lang-block-migration')).forEach(block => {
+      block.style.display = block.getAttribute('data-lang') === lang ? 'block' : 'none';
+    });
+  }} defaultValue="es">
+    <option value="es">🇪🇸 Español</option>
+    <option value="en">🇬🇧 English</option>
+  </select>
+</div>
+
+<div className="lang-block-migration" data-lang="es" style={{display:'block'}}>
+> **ℹ️ Importante:** La integración de Angular solo es compatible a partir de Angular v14+. Si usas una versión anterior, deberás actualizar Angular o utilizar el modelo anterior de integración importando los ficheros ts en tu tsconfig.json`.
+
+# 🚀 Migration Guide v3+
+
+¡Bienvenido a la nueva versión de `@scib/ui-kit`! A partir de la versión **3.0.0** todo es mucho más sencillo: ya no necesitas configurar `includes` ni `paths` en tu `tsconfig`. Solo necesitas instalar el paquete y empezar a importar.
+
+---
+
+## 🧹 1. Desinstala versiones antiguas
+
+Si tienes versiones previas de los paquetes wrappers, elimínalos:
+
+```bash
+npm uninstall @scib/ui-kit
+```
+
+---
+
+## 📦 2. Instala la nueva versión
+
+Instala la versión mínima recomendada (3.0.0 o superior):
+
+```bash
+npm install -D @scib/ui-kit@^3.0.0
+```
+
+---
+
+## 🧽 3. Limpia tu configuración de TypeScript
+
+Elimina cualquier referencia a los antiguos includes y paths relacionados con `@scib/angular-ui-kit`, `@scib/react-ui-kit` o rutas personalizadas de `@scib/ui-kit` en tus archivos `tsconfig.json` y `tsconfig.app.json`.
+
+### Ejemplo de limpieza en `tsconfig.app.json`:
+
+- Elimina líneas como:
+
+```jsonc
+"include": [
+  "node_modules/@scib/angular-ui-kit/**/*",
+  "node_modules/@scib/react-ui-kit/**/*",
+  "node_modules/@scib/ui-kit/dist/angular/**/*",
+  "node_modules/@scib/ui-kit/dist/react/**/*",
+  "node_modules/@scib/ui-kit/dist/types/components/**/*"
+]
+```
+
+- Deja solo lo necesario, por ejemplo:
+
+```jsonc
+"include": [
+  "src/**/*.d.ts",
+  "src/main.ts",
+  "src/polyfills.ts"
+]
+```
+
+### Ejemplo de limpieza en `tsconfig.json`:
+
+- Elimina cualquier entrada en `paths` como:
+
+```jsonc
+"paths": {
+  "@scib/angular-ui-kit": ["node_modules/@scib/ui-kit/dist/angular/index.ts"],
+  "@scib/react-ui-kit": ["node_modules/@scib/ui-kit/dist/react/index.ts"]
+}
+```
+
+- Si no tienes otros paths personalizados, puedes dejar el objeto vacío o eliminar la clave `paths` si no es necesaria.
+
+---
+
+## ✨ 4. Importa directamente desde `@scib/ui-kit`
+
+Ahora puedes importar cualquier componente, hook o utilidad directamente:
+
+```typescript
+import { ScibAtomsButtonModule } from '@scib/ui-kit/angular';
+```
+
+No necesitas modificar tu `tsconfig.json` ni añadir rutas personalizadas.
+
+---
+
+## 📝 5. ¡Listo para usar!
+
+Ya puedes usar todos los componentes y utilidades del kit sin configuraciones adicionales. Por ejemplo:
+
+```tsx
+<scib-atoms-button lavel="button">Hello UI Kit!</scib-atoms-button>
+```
+
+---
+
+## 🎉 Ventajas de la nueva versión
+
+- Sin configuración extra de TypeScript
+- Imports unificados y simples
+- Menos dependencias y menos errores
+- Actualizaciones más fáciles
+</div>
+
+<div className="lang-block-migration" data-lang="en" style={{display:'none'}}>
+> **ℹ️ Important:** The Angular integration is only supported from Angular v14+. If you are using an older version, you must either upgrade Angular or use the previous integration model by importing the ts files in your tsconfig.json.
+
+# 🚀 Migration Guide v3+
+
+Welcome to the new version of `@scib/ui-kit`! Starting from **3.0.0** everything is much simpler: you no longer need to configure `includes` or `paths` in your `tsconfig`. Just install the package and start importing.
+
+---
+
+## 🧹 1. Uninstall old versions
+
+If you have previous versions of the wrapper packages, remove them:
+
+```bash
+npm uninstall @scib/ui-kit
+```
+
+---
+
+## 📦 2. Install the new version
+
+Install the minimum recommended version (3.0.0 or higher):
+
+```bash
+npm install -D @scib/ui-kit@^3.0.0
+```
+
+---
+
+## 🧽 3. Clean your TypeScript configuration
+
+Remove any references to old includes and paths related to `@scib/angular-ui-kit`, `@scib/react-ui-kit` or custom paths for `@scib/ui-kit` in your `tsconfig.json` and `tsconfig.app.json` files.
+
+### Example cleanup in `tsconfig.app.json`:
+
+- Remove lines like:
+
+```jsonc
+"include": [
+  "node_modules/@scib/angular-ui-kit/**/*",
+  "node_modules/@scib/react-ui-kit/**/*",
+  "node_modules/@scib/ui-kit/dist/angular/**/*",
+  "node_modules/@scib/ui-kit/dist/react/**/*",
+  "node_modules/@scib/ui-kit/dist/types/components/**/*"
+]
+```
+
+- Leave only what's necessary, for example:
+
+```jsonc
+"include": [
+  "src/**/*.d.ts",
+  "src/main.ts",
+  "src/polyfills.ts"
+]
+```
+
+### Example cleanup in `tsconfig.json`:
+
+- Remove any entry in `paths` like:
+
+```jsonc
+"paths": {
+  "@scib/angular-ui-kit": ["node_modules/@scib/ui-kit/dist/angular/index.ts"],
+  "@scib/react-ui-kit": ["node_modules/@scib/ui-kit/dist/react/index.ts"]
+}
+```
+
+- If you don't have other custom paths, you can leave the object empty or remove the `paths` key if not needed.
+
+---
+
+## ✨ 4. Import directly from `@scib/ui-kit`
+
+Now you can import any component, hook or utility directly:
+
+```typescript
+import { ScibAtomsButtonModule } from '@scib/ui-kit/angular';
+```
+
+No need to modify your `tsconfig.json` or add custom paths.
+
+---
+
+## 📝 5. Ready to use!
+
+You can now use all kit components and utilities without extra configuration. For example:
+
+```tsx
+<scib-atoms-button lavel="button">Hello UI Kit!</scib-atoms-button>
+```
+
+---
+
+## 🎉 Benefits of the new version
+
+- No extra TypeScript configuration
+- Unified and simple imports
+- Fewer dependencies and fewer errors
+- Easier updates
+</div>

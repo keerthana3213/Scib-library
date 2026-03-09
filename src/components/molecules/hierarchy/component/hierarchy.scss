@@ -1,0 +1,168 @@
+@use 'settings';
+@use 'tools';
+:host {
+	@include tools.shadowIcons();
+	display: block;
+}
+.divider {
+	border: solid 0px var(--color-border-alternative);
+	margin: 0;
+	border-top-width: 1px;
+}
+.hierarchy {
+	position: relative;
+	display: flex;
+	flex-direction: var(--_atoms-accordion-column-direction, column);
+	background-color: var(--color-surface-state-default);
+	color: var(--color-text-default);
+
+	&__header {
+		position: relative;
+		margin: 12px 0px 12px 6px;
+		display: flex;
+		justify-content: space-between;
+		&__cursor {
+			cursor: pointer;
+		}
+		&__container {
+			&__title {
+				text-overflow: ellipsis;
+				overflow: hidden;
+				font-family: var(--typescale-body-medium-strong-font);
+				font-size: var(--typescale-body-medium-strong-size);
+				line-height: var(--typescale-body-medium-strong-line-height);
+				font-weight: var(--typescale-body-medium-strong-weight);
+				font-style: var(--typescale-body-medium-strong-style);
+				&--thin {
+					font-family: var(--typescale-body-medium-default-font);
+					font-size: var(--typescale-body-medium-default-size);
+					line-height: var(--typescale-body-medium-default-line-height);
+					font-weight: var(--typescale-body-medium-default-weight);
+					font-style: var(--typescale-body-medium-default-style);
+				}
+				min-width: 200px;
+			}
+			&__icon-son {
+				--icon-content: var(--theme-scib-icon-arrow-son);
+				color: var(--color-additional-palette-10);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 1.25rem;
+			}
+			&__columns {
+				--atoms-tag-display: block;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				&__tag {
+					display: flex;
+					justify-content: center;
+				}
+			}
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+
+			align-items: center;
+			.information {
+				font-family: var(--typescale-body-medium-default-font);
+				font-size: var(--typescale-body-medium-default-size);
+				line-height: var(--typescale-body-medium-default-line-height);
+				font-weight: var(--typescale-body-medium-default-weight);
+				font-style: var(--typescale-body-medium-default-style);
+				text-justify: center;
+				width: 64px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				margin: 1px 6px;
+			}
+		}
+	}
+	&__content {
+		padding-bottom: 12px;
+		margin-left: 20px;
+		width: calc(100% - 20px);
+		&--hidden {
+			display: none;
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		.white-space {
+			margin-left: 8px;
+			width: tools.rem(24px);
+			padding: 1px 6px;
+		}
+		&__btn {
+			background: transparent;
+			border: none;
+			cursor: pointer;
+			margin-left: 8px;
+			outline: none !important;
+			&--toggle {
+				--icon-content: var(--theme-scib-icon-chevron-down-thin);
+			}
+			&--open {
+				.icon-chevron {
+					--icon-content: var(--theme-scib-icon-chevron-up-thin);
+				}
+			}
+			.icon {
+				width: tools.rem(24px);
+				color: var(--color-additional-palette-10);
+			}
+			&--menu {
+				--icon-content: var(--theme-scib-icon-3-dots-horizontal);
+			}
+		}
+	}
+	&__cursor {
+		cursor: pointer;
+	}
+}
+.header {
+	display: flex;
+	margin: 12px 0px 12px 6px;
+	justify-content: space-between;
+	&__options {
+		display: flex;
+		&__white-space {
+			display: block;
+			min-width: 36px;
+			content: '';
+			padding: 1px 6px;
+		}
+	}
+	&__titles {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		color: var(--color-background-darker);
+		font-size: var(--typescale-caption-default-size);
+		font-family: var(--typescale-caption-default-font);
+		line-height: var(--typescale-caption-default-line-height);
+		font-weight: var(--typescale-caption-default-weight);
+		font-style: var(--typescale-caption-default-style);
+		&__columns {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			&__text {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				margin: 1px 6px;
+			}
+
+			&--controls {
+				display: inline-block;
+				min-width: 64px;
+				text-align: center;
+			}
+			min-width: 64px;
+		}
+	}
+}
+scib-ui-v2-menu-panel {
+	--ui-v2-menu-panel-right: 0;
+}

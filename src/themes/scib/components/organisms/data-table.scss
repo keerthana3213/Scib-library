@@ -1,0 +1,10 @@
+/**
+ * Public custom properties for data-table component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--organisms-data-table-action-link-color: var(--theme-colors-santander-base, #ec0000);
+	--organisms-data-table-selected-row-background-color: transparent;
+}

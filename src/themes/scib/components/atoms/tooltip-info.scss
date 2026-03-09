@@ -1,0 +1,19 @@
+/**
+ * Public custom properties for tooltip-info component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-tooltip-info-color: var(--theme-colors-font-base-color);
+	--atoms-tooltip-info-color-before: var(--theme-colors-grey-medium-dark);
+	--atoms-tooltip-info-display: inline-block;
+	--atoms-tooltip-info-size: fit-content;
+	--atoms-tooltip-info-size-100: 100%;
+	--atoms-tooltip-info-white-space: nowrap;
+	--atoms-tooltip-info-arrow-size: 10px;
+	--atoms-tooltip-info-arrow-size-before: 11px;
+	--atoms-tooltip-info-top-bottom-distance: 175%;
+	--atoms-tooltip-info-left-right-distance: 15px;
+	--atoms-tooltip-info-box-margin-top: 0%;
+}

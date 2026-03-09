@@ -1,0 +1,252 @@
+{
+    "welcome": {
+        "description.1": "Hello! How could I help you today?",
+        "style": "column",
+        "button.1.type": "option",
+        "button.1.action": "next_to",
+        "button.1.option": " productInformation",
+        "button.1.button_title": "Product information",
+        "button.2.type": "option",
+        "button.2.action": "next_to",
+        "button.2.option": "accessError",
+        "button.2.button_title": "Access error",
+        "button.3.type": "option",
+        "button.3.action": "next_to",
+        "button.3.option": "newUser",
+        "button.3.button_title": "New user"
+    },
+    "access-error": {
+        "translations": {
+            "bubble.1": {
+                "description.1": "These are your results:"
+            },
+            "bubble.2": {
+                "description.1": "Problems with your access? Try to reset your password"
+            },
+            "bubble.3": {
+                "description.1": "If the problem persists, please contact us through this textbox explaining the issue."
+            },
+            "bubble.4": {
+                "title": "Support contact",
+                "button.1.type": "mail",
+                "button.1.action": "mail_to",
+                "button.1.button_title": "scibdigitalplatform@gruposantander.com"
+            }
+        },
+        "enabled": true
+    },
+    "client-onboarding": {
+        "translations": {
+            "bubble.1": {
+                "description.1": "These are your results:"
+            },
+            "bubble.2": {
+                "title": "Global contact",
+                "button.1.type": "mail",
+                "button.1.action": "mail_to",
+                "button.1.button_title": "scibdigitalplatform@gruposantander.com"
+            }
+        },
+        "enabled": true
+    },
+    "collections": {
+        "translations": {
+            "bubble.1": {
+                "description.1": "These are your results:"
+            },
+            "bubble.2": {
+                "title": "Phone contact",
+                "description.1": "From 8 a.m. to 5 p.m. from Monday to Thursday, and Friday from 8 a.m. to 3 p.m.",
+                "button.1.type": "phone",
+                "button.1.button_title": "+34 912 573 060"
+            },
+            "bubble.3": {
+                "title": "Mail contact",
+                "button.1.type": "mail",
+                "button.1.action": "mail_to",
+                "button.1.button_title": "GTBClientService@gruposantander.com"
+            }
+        },
+        "enabled": true
+    },
+    "confirming-east-asia": {
+        "translations": {
+            "bubble.1": {
+                "description.1": "These are your results:"
+            },
+            "bubble.2": {
+                "style": "none",
+                "title": "East Asia contact",
+                "description.1": "From 8 a.m. to 5 p.m. from Monday to Thursday, and Friday from 8 a.m. to 3 p.m.",
+                "button.1.type": "phone",
+                "button.1.button_title": "08082340867"
+            },
+            "bubble.3": {
+                "title": "Global contact",
+                "button.1.type": "mail",
+                "button.1.action": "mail_to",
+                "button.1.button_title": "scibdigitalplatform@gruposantander.com"
+            }
+        },
+        "enabled": true
+    },
+    "confirming-eu": {
+        "translations": {
+            "bubble.1": {
+                "description.1": "These are your results:"
+            },
+            "bubble.2": {
+                "style": "none",
+                "title": "EU contact",
+                "description.1": "From 8 a.m. to 5 p.m. from Monday to Thursday, and Friday from 8 a.m. to 3 p.m.",
+                "button.1.type": "phone",
+                "button.1.button_title": "08082340867"
+            },
+            "bubble.3": {
+                "title": "Global contact",
+                "button.1.type": "mail",
+                "button.1.action": "mail_to",
+                "button.1.button_title": "scibdigitalplatform@gruposantander.com"
+            }
+        },
+        "enabled": true
+    },
+    "confirming-uk": {
+        "translations": {
+            "bubble.1": {
+                "description.1": "These are your results:"
+            },
+            "bubble.2": {
+                "style": "none",
+                "title": "UK contact",
+                "description.1": "From 8 a.m. to 5 p.m. from Monday to Thursday, and Friday from 8 a.m. to 3 p.m.",
+                "button.1.type": "phone",
+                "button.1.button_title": "08082340867"
+            },
+            "bubble.3": {
+                "title": "Global contact",
+                "button.1.type": "mail",
+                "button.1.action": "mail_to",
+                "button.1.button_title": "scibdigitalplatform@gruposantander.com"
+            }
+        },
+        "enabled": true
+    },
+    "confirming-usa": {
+        "translations": {
+            "bubble.1": {
+                "description.1": "These are your results:"
+            },
+            "bubble.2": {
+                "style": "none",
+                "title": "USA contact",
+                "description.1": "From 8 a.m. to 5 p.m. from Monday to Thursday, and Friday from 8 a.m. to 3 p.m.",
+                "button.1.type": "phone",
+                "button.1.button_title": "08082340867"
+            },
+            "bubble.3": {
+                "title": "Global contact",
+                "button.1.type": "mail",
+                "button.1.action": "mail_to",
+                "button.1.button_title": "scibdigitalplatform@gruposantander.com"
+            }
+        },
+        "enabled": true
+    },
+    "confirming": {
+        "translations": {
+            "bubble.1": {
+                "description.1": "What is your geography?"
+            },
+            "bubble.2": {
+                "style": "row",
+                "button.1.type": "option",
+                "button.1.action": "get_to",
+                "button.1.option": "confirmingUk",
+                "button.1.button_title": "UK",
+                "button.2.type": "option",
+                "button.2.action": "get_to",
+                "button.2.option": "confirmingEu",
+                "button.2.button_title": "Europe",
+                "button.3.type": "option",
+                "button.3.action": "get_to",
+                "button.3.option": "confirmingUsa",
+                "button.3.button_title": "USA",
+                "button.4.type": "option",
+                "button.4.action": "get_to",
+                "button.4.option": "confirmingEastAsia",
+                "button.4.button_title": "East Asia"
+            }
+        },
+        "enabled": true
+    },
+    "new-user": {
+        "translations": {
+            "bubble.1": {
+                "description.1": "What is the product you are interested for?"
+            },
+            "bubble.2": {
+                "style": "column",
+                "button.1.type": "option",
+                "button.1.action": "next_to",
+                "button.1.option": "clientOnboarding",
+                "button.1.button_title": "Client onboarding",
+                "button.2.type": "option",
+                "button.2.action": "next_to",
+                "button.2.option": "confirming",
+                "button.2.button_title": "Confirming",
+                "button.3.type": "option",
+                "button.3.action": "next_to",
+                "button.3.option": "rpp",
+                "button.3.button_title": "RPP",
+                "button.4.type": "option",
+                "button.4.action": "next_to",
+                "button.4.option": "collections",
+                "button.4.button_title": "Collections"
+            }
+        },
+        "enabled": true
+    },
+    "product-information": {
+        "translations": {
+            "bubble.1": {
+                "description.1": "What is the product you are interested for?",
+                "image.1": [
+                    {
+                        "url": "https://s3.boaw.cloudstorage.corp/scib-pre-pr-digitalchannels/cms-headless/public/media/image/2023-11/Banner_where_we_are.JPG"
+                    }
+                ]
+            },
+            "bubble.2": {
+                "style": "column",
+                "button.1.type": "option",
+                "button.1.action": "next_to",
+                "button.1.option": "confirming",
+                "button.1.button_title": "Confirming",
+                "button.2.type": "option",
+                "button.2.action": "next_to",
+                "button.2.option": "rpp",
+                "button.2.button_title": "RPP",
+                "button.3.type": "option",
+                "button.3.action": "next_to",
+                "button.3.option": "collections",
+                "button.3.button_title": "Collections"
+            }
+        },
+        "enabled": true
+    },
+    "rpp": {
+        "translations": {
+            "bubble.1": {
+                "description.1": "These are your results:"
+            },
+            "bubble.2": {
+                "title": "Global contact",
+                "button.1.type": "mail",
+                "button.1.action": "mail_to",
+                "button.1.button_title": "scibdigitalplatform@gruposantander.com"
+            }
+        },
+        "enabled": true
+    }
+}

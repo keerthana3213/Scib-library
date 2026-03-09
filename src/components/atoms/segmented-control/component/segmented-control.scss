@@ -1,0 +1,120 @@
+@use 'settings';
+@use 'tools';
+
+@mixin typescale($name) {
+	font-family: var(--typescale-#{$name}-font);
+	font-size: var(--typescale-#{$name}-size);
+	line-height: var(--typescale-#{$name}-line-height);
+	font-weight: var(--typescale-#{$name}-weight);
+	font-style: var(--typescale-#{$name}-style);
+}
+
+@mixin addTransition($prop, $time, $mode, $delay: 0s) {
+	-webkit-transition: #{$prop} #{$time} #{$mode};
+	-moz-transition: #{$prop} #{$time} #{$mode};
+	-o-transition: #{$prop} #{$time} #{$mode};
+	transition: #{$prop} #{$time} #{$mode};
+	transition-delay: #{$delay};
+}
+
+/**
+ * Component styles
+ */
+
+:host {
+	width: fit-content;
+	@include tools.shadowIcons();
+
+	.segmented-controls {
+		gap: 10px;
+		user-select: none;
+		width: fit-content;
+		box-sizing: border-box;
+		position: relative;
+
+		&-options {
+			display: flex;
+			border-radius: 12px;
+			padding: 4px;
+			gap: 4px;
+			width: fit-content;
+			height: 40px;
+			box-sizing: border-box;
+			@include typescale('body-medium-default');
+			background-color: var(--color-background-alternative);
+
+			&-background {
+				z-index: 0;
+				height: 32px;
+				width: auto;
+				position: absolute;
+				border-radius: 8px;
+				background-color: var(--color-surface-raised);
+				box-shadow: var(--elevation-raised);
+
+				&.transition {
+					@include addTransition(transform, 0.3s, cubic-bezier(0.18, 0.39, 0.58, 0.93));
+				}
+			}
+
+			&-item {
+				cursor: pointer;
+				z-index: 1;
+				user-select: none;
+				text-align: center;
+				padding: 6px 8px;
+				border-radius: 8px;
+				box-sizing: border-box;
+				color: var(--color-text-default);
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				gap: 4px;
+
+				&.active {
+					color: var(--color-action-alternative-default);
+					@include typescale('body-medium-strong');
+					@include addTransition(all, 0.1s, ease-in-out);
+
+					.icon {
+						font-size: 24px;
+					}
+				}
+
+				.icon {
+					font-size: 24px;
+				}
+
+				span {
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+:host([size='m']) {
+	.segmented-controls-options {
+		@include typescale('body-medium-default');
+		&-item {
+			&.active {
+				@include typescale('body-medium-strong');
+			}
+		}
+	}
+}
+
+:host([size='s']) {
+	.segmented-controls-options {
+		@include typescale('caption-default');
+		&-item {
+			&.active {
+				@include typescale('caption-strong');
+			}
+		}
+	}
+}

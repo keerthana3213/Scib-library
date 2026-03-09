@@ -1,0 +1,156 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_step-info-max-width: var(--step-info-max-width);
+	--_step-info-min-width: var(--step-info-min-width);
+	--_step-info-text-color: var(--molecules-status-modal-bg-color);
+	--_molecules-step-info-text-color: var(--molecules-step-info-text-color);
+	--_molecules-step-info-step-color: var(--molecules-step-info-step-color);
+	--_molecules-step-info-text-info-color: var(--molecules-step-info-text-info-color);
+	--_molecules-step-info-icon-color: var(--molecules-step-info-icon-color);
+}
+
+/** 
+ * Component
+ */
+
+:host {
+	font-family: settings.$font-regular-headline;
+	background-color: var(--_molecules-step-info-bg-color);
+	@include tools.shadowIcons();
+
+	.step-info {
+		max-width: var(--_step-info-max-width);
+		min-width: var(--_step-info-min-width);
+
+		&__header {
+			&--image {
+				max-width: tools.rem(75);
+				max-height: tools.rem(75);
+				position: inherit;
+				margin: auto;
+				padding: tools.rem(0 0 16 0);
+				img {
+					width: tools.rem(75);
+				}
+			}
+			h1 {
+				font-family: settings.$font-bold-headline;
+				line-height: tools.rem(32);
+				font-size: tools.rem(24);
+				padding: tools.rem(0 0 24 0);
+				color: var(--_molecules-step-info-text-color);
+				margin: 0;
+				text-align: center;
+			}
+			span {
+				font-family: settings.$font-micro-text;
+				display: flex;
+				color: var(--_molecules-step-info-text-color);
+				font-size: tools.rem(18);
+				line-height: tools.rem(24);
+				letter-spacing: 0;
+			}
+		}
+
+		&__content {
+			font-family: settings.$font-micro-text;
+			color: var(--_molecules-step-info-text-color);
+		}
+
+		&__steps {
+			display: flex;
+			flex-direction: row;
+			text-align: left;
+		}
+
+		&__step {
+			&:last-child {
+				.step-info {
+					&__step--number {
+						&:before {
+							display: none;
+						}
+					}
+				}
+			}
+			&--number {
+				display: flex;
+				position: relative;
+				flex-direction: row;
+
+				h1 {
+					height: tools.rem(32);
+					width: tools.rem(32);
+					font-size: tools.rem(24);
+					margin-top: tools.rem(25);
+					text-align: center;
+					border-radius: 50%;
+					color: var(--_molecules-step-info-step-color);
+					background-color: tools.color(tertiary, focus);
+					border: solid tools.color(tertiary, focus);
+					font-family: settings.$font-bold-headline;
+				}
+				&:before {
+					content: '';
+					display: block;
+					width: calc(100% - 0px - 0px - 0px);
+					height: tools.rem(1);
+					background: tools.color(tertiary, focus);
+					position: absolute;
+					top: 50%;
+					left: tools.rem(37);
+				}
+			}
+			&--text {
+				font-family: settings.$font-micro-text;
+				margin: tools.rem(0 48 0 0);
+				max-width: tools.rem(202);
+
+				h3 {
+					font-size: tools.rem(16);
+					line-height: tools.rem(24);
+				}
+				span {
+					font-size: tools.rem(14);
+					line-height: tools.rem(20);
+					color: var(--_molecules-step-info-text-info-color);
+				}
+			}
+		}
+
+		&__information {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			text-align: left;
+			font-size: tools.rem(16);
+			margin: tools.rem(24 25 24 0);
+			color: var(--_molecules-step-info-text-info-color);
+
+			&--icon {
+				color: var(--_molecules-step-info-icon-color);
+				padding: tools.rem(0 11 0 0);
+				align-self: center;
+			}
+		}
+
+		&__actions {
+			::slotted([slot='actions']) {
+				margin: tools.rem(24 0 0 0);
+				border-top: tools.rem(1) solid tools.color(tertiary, focus);
+			}
+		}
+	}
+}

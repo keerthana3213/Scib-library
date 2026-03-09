@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Ssis Playground</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Scripts del loader de la librería -->
+		<script type="module" src="/stencil-server/scib-ui-kit.esm.js" id="component-js-module"></script>
+		<script nomodule="" src="/stencil-server/scib-ui-kit.js" id="component-js"></script>
+
+		<!-- Stilos de la libreraía -->
+		<link rel="stylesheet" href="/stencil-server/scib-ui-kit.css" id="components-css" />
+	</head>
+
+	<body>
+		<h3>Clientes:</h3>
+		<br />
+
+		<scib-cdk-list-request
+			is-employee="false"
+			literals='{
+        "loadBtn": "Load more",
+        "totalHeader": "6 Total Request"
+    }'
+			request-labels='{
+        "status":"Status",
+        "id":"ID Request",
+        "creationDate":"Creation Date"
+    }'
+			buttons='{
+        "textBtns": [
+            {"name": "Cancel", "label": "Cancel", "icon": "close", "event":"cancelRequest"},
+            {"name": "Confirm", "label": "Confirm", "icon": "confirm", "event":"confirmRequest"}
+        ],
+        "iconBtns": [
+            {"name": "Message", "label": "Message", "icon": "message", "event":"openRequest"}
+        ]
+    }'
+			legend='{
+        "pendingLabel":"Pending",
+        "requestedLabel":"Requested",
+        "inProgressLabel":"In progress",
+        "doneLabel":"Done",
+        "cancelLabel":"Cancel",
+        "pending": 2,
+        "requested": 1,
+        "inProgress": 1,
+        "done": 1,
+        "cancel": 1
+    }'
+			requests='[
+        {
+            "requestData": {
+                "status": "Pending",
+                "id": "313432",
+                "creationDate": "12/03/2012"
+            },
+            "childsData": {
+                "labels" : ["Product", "Currency", "Bank Swift Code", "Account Number"],
+                "data": [
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"}
+                ]
+            },
+            "locked": false,
+            "petitionStatus": "pending"
+        },
+        {
+            "requestData": {
+                "status": "Pending",
+                "id": "313432",
+                "creationDate": "12/03/2012"
+            },
+            "childsData": {
+                "labels" : ["Product", "Currency", "Bank Swift Code", "Account Number"],
+                "data": [
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"}
+                ]
+            },
+            "locked": true,
+            "petitionStatus": "pending"
+        },
+        {
+            "requestData": {
+                "status": "Requested",
+                "id": "313432",
+                "creationDate": "12/03/2012"
+            },
+            "childsData": {
+                "labels" : ["Product", "Currency", "Bank Swift Code", "Account Number"],
+                "data": [
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"}
+                ]
+            },
+            "locked": false,
+            "petitionStatus": "requested"
+        },
+        {
+            "requestData": {
+                "status": "In Progress",
+                "id": "313432",
+                "creationDate": "12/03/2012"
+            },
+            "locked": false,
+            "petitionStatus": "progress"
+        },
+        {
+            "requestData": {
+                "status": "Done",
+                "id": "313432",
+                "creationDate": "12/03/2012"
+            },
+            "childsData": {
+                "labels" : ["Product", "Currency", "Bank Swift Code", "Account Number"],
+                "data": [
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"}
+                ]
+            },
+            "locked": false,
+            "petitionStatus": "done"
+        },
+        {
+            "requestData": {
+                "status": "Canceled",
+                "id": "313432",
+                "creationDate": "12/03/2012"
+            },
+            "childsData": {
+                "labels" : ["Product", "Currency", "Bank Swift Code", "Account Number"],
+                "data": [
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"}
+                ]
+            },
+            "locked": false,
+            "petitionStatus": "Canceled"
+        }
+]'
+		>
+		</scib-cdk-list-request>
+
+		<br /><br />
+
+		<h3>Empleados:</h3>
+
+		<br />
+
+		<scib-cdk-list-request
+			is-employee="true"
+			literals='{
+        "totalHeader": "6 Total Request",
+        "loadBtn": "Load more"
+    }'
+			request-labels='{
+        "status":"Status",
+        "id":"ID Request",
+        "creationDate":"Creation Date",
+        "client": "Client"
+    }'
+			buttons='{
+        "textBtns": [
+            {"name": "Cancel", "label": "Cancel", "icon": "close", "event":"cancelRequest"},
+            {"name": "Lock", "label": "Lock", "icon": "unlock", "event":"lockRequest"},
+            {"name": "Unlock", "label": "Unlock", "icon": "lock", "event":"unlockRequest"}
+        ],
+        "iconBtns": [
+            {"name": "Appian", "label": "Go to Appian", "icon": "appian", "event":"openAppian"},
+            {"name": "Message", "label": "Message", "icon": "message", "event":"openRequest"}
+        ]
+    }'
+			requests='[
+        {
+            "requestData": {
+                "status": "Pending",
+                "id": "313432",
+                "creationDate": "12/03/2012",
+                "client": "Repsol"
+            },
+            "childsData": {
+                "labels" : ["Product", "Currency", "Bank Swift Code", "Account Number"],
+                "data": [
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"}
+                ]
+            },
+            "locked": false,
+            "petitionStatus": "pending"
+        },
+        {
+            "requestData": {
+                "status": "Pending",
+                "id": "313432",
+                "creationDate": "12/03/2012",
+                "client": "Repsol"
+            },
+            "childsData": {
+                "labels" : ["Product", "Currency", "Bank Swift Code", "Account Number"],
+                "data": [
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"}
+                ]
+            },
+            "locked": true,
+            "petitionStatus": "pending"
+        },
+        {
+            "requestData": {
+                "status": "Requested",
+                "id": "313432",
+                "creationDate": "12/03/2012",
+                "client": "Repsol"
+            },
+            "childsData": {
+                "labels" : ["Product", "Currency", "Bank Swift Code", "Account Number"],
+                "data": [
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"}
+                ]
+            },
+            "locked": false,
+            "petitionStatus": "requested"
+        },
+        {
+            "requestData": {
+                "status": "In Progress",
+                "id": "313432",
+                "creationDate": "12/03/2012",
+                "client": "Repsol"
+            },
+            "locked": false,
+            "petitionStatus": "in-progress"
+        },
+        {
+            "requestData": {
+                "status": "Done",
+                "id": "313432",
+                "creationDate": "12/03/2012",
+                "client": "Repsol"
+            },
+            "childsData": {
+                "labels" : ["Product", "Currency", "Bank Swift Code", "Account Number"],
+                "data": [
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"}
+                ]
+            },
+            "locked": false,
+            "petitionStatus": "done"
+        },
+        {
+            "requestData": {
+                "status": "Canceled",
+                "id": "313432",
+                "creationDate": "12/03/2012",
+                "client": "Repsol"
+            },
+            "childsData": {
+                "labels" : ["Product", "Currency", "Bank Swift Code", "Account Number"],
+                "data": [
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"},
+                    {"product": "Flexible incoming", "currency": "EUR", "code": "123456789127", "accountNumber": "TRG1 ESMMXXXX00015000490000F2"}
+                ]
+            },
+            "locked": false,
+            "petitionStatus": "Canceled"
+        }
+]'
+		>
+		</scib-cdk-list-request>
+
+		<script>
+			const $list = document.querySelector('scib-cdk-list-request');
+
+			var count = 0;
+
+			const requestAdd = [
+				{
+					requestData: {
+						status: 'Pending',
+						id: '313432',
+						creationDate: '12/03/2012'
+					},
+					childsData: {
+						labels: ['Product', 'Currency', 'Bank Swift Code', 'Account Number'],
+						data: [
+							{
+								product: 'Flexible incoming',
+								currency: 'EUR',
+								code: '123456789127',
+								accountNumber: 'TRG1 ESMMXXXX00015000490000F2'
+							},
+							{
+								product: 'Flexible incoming',
+								currency: 'EUR',
+								code: '123456789127',
+								accountNumber: 'TRG1 ESMMXXXX00015000490000F2'
+							},
+							{
+								product: 'Flexible incoming',
+								currency: 'EUR',
+								code: '123456789127',
+								accountNumber: 'TRG1 ESMMXXXX00015000490000F2'
+							}
+						]
+					},
+					locked: false,
+					petitionStatus: 'pending'
+				},
+				{
+					requestData: {
+						status: 'Pending',
+						id: '313432',
+						creationDate: '12/03/2012'
+					},
+					childsData: {
+						labels: ['Product', 'Currency', 'Bank Swift Code', 'Account Number'],
+						data: [
+							{
+								product: 'Flexible incoming',
+								currency: 'EUR',
+								code: '123456789127',
+								accountNumber: 'TRG1 ESMMXXXX00015000490000F2'
+							},
+							{
+								product: 'Flexible incoming',
+								currency: 'EUR',
+								code: '123456789127',
+								accountNumber: 'TRG1 ESMMXXXX00015000490000F2'
+							},
+							{
+								product: 'Flexible incoming',
+								currency: 'EUR',
+								code: '123456789127',
+								accountNumber: 'TRG1 ESMMXXXX00015000490000F2'
+							}
+						]
+					},
+					locked: false,
+					petitionStatus: 'pending'
+				},
+				{
+					requestData: {
+						status: 'Pending',
+						id: '313432',
+						creationDate: '12/03/2012'
+					},
+					childsData: {
+						labels: ['Product', 'Currency', 'Bank Swift Code', 'Account Number'],
+						data: [
+							{
+								product: 'Flexible incoming',
+								currency: 'EUR',
+								code: '123456789127',
+								accountNumber: 'TRG1 ESMMXXXX00015000490000F2'
+							},
+							{
+								product: 'Flexible incoming',
+								currency: 'EUR',
+								code: '123456789127',
+								accountNumber: 'TRG1 ESMMXXXX00015000490000F2'
+							},
+							{
+								product: 'Flexible incoming',
+								currency: 'EUR',
+								code: '123456789127',
+								accountNumber: 'TRG1 ESMMXXXX00015000490000F2'
+							}
+						]
+					},
+					locked: false,
+					petitionStatus: 'pending'
+				},
+				{
+					requestData: {
+						status: 'Pending',
+						id: '313432',
+						creationDate: '12/03/2012'
+					},
+					childsData: {
+						labels: ['Product', 'Currency', 'Bank Swift Code', 'Account Number'],
+						data: [
+							{
+								product: 'Flexible incoming',
+								currency: 'EUR',
+								code: '123456789127',
+								accountNumber: 'TRG1 ESMMXXXX00015000490000F2'
+							},
+							{
+								product: 'Flexible incoming',
+								currency: 'EUR',
+								code: '123456789127',
+								accountNumber: 'TRG1 ESMMXXXX00015000490000F2'
+							},
+							{
+								product: 'Flexible incoming',
+								currency: 'EUR',
+								code: '123456789127',
+								accountNumber: 'TRG1 ESMMXXXX00015000490000F2'
+							}
+						]
+					},
+					locked: false,
+					petitionStatus: 'pending'
+				}
+			];
+
+			$list.addEventListener('loadMoreRequests', function () {
+				console.log('CARGAR MAS PETICIONES');
+				setTimeout(() => {
+					if (typeof $list.requests === 'string') $list.requests = JSON.parse($list.requests);
+					$list.requests = [...$list.requests, ...requestAdd];
+					++count;
+					if (count > 1) {
+						$list.showLoading = false;
+					}
+				}, 1000);
+			});
+			$list.addEventListener('clickRequestButton', function (e) {
+				console.log('Evento: ' + e.detail.type + ' con ID: ' + e.detail.id);
+			});
+		</script>
+	</body>
+</html>

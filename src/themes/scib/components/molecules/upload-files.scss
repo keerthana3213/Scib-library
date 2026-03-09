@@ -1,0 +1,13 @@
+/**
+ * Public custom properties for upload-files component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--molecules-upload-files-bg-color: var(--theme-colors-white, magenta);
+	--molecules-upload-files-border-color-drop: var(--theme-colors-green-medium);
+	--molecules-upload-files-border-color-error: var(--theme-colors-grey-middle-dark);
+	--molecules-upload-files-color: var(--theme-colors-santander-base);
+	--molecules-upload-files-color-disabled: var(--theme-colors-grey-dark, #767676);
+}

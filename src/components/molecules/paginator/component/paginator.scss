@@ -1,0 +1,383 @@
+@use 'settings';
+@use 'tools';
+
+@import '~tui-pagination/dist/tui-pagination.min.css';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_molecules-paginator-border-bottom-color: var(--molecules-paginator-border-bottom-color);
+	--_molecules-paginator-arrows-color: var(--molecules-paginator-arrows-color);
+	--_molecules-paginator-flex-paginator-options: var(--molecules-paginator-flex-paginator-options);
+	--ui-v2-scroll-container-gradiant-rgb-color: var(--color-surface-flat);
+}
+
+:host([variant='standard']) {
+	--_molecules-paginator-display-tui-element: inline-block;
+	--_molecules-paginator-tui-page-btn-width: auto;
+	--_molecules-paginator-tui-page-btn-selected-background: transparent;
+	--_molecules-paginator-tui-page-btn-selected-color: #767676;
+	--_molecules-paginator-tui-paginator-options-active-color: #767676;
+	--molecules-paginator-tui-paginator-pages-border-left: none;
+}
+
+:host([variant='advanced']) {
+	--_molecules-paginator-display-tui-element: none;
+	--_molecules-paginator-tui-page-btn-width: #{tools.rem(24px)};
+	--_molecules-paginator-tui-page-btn-selected-background: var(--color-action-alternative-default);
+	--_molecules-paginator-tui-page-btn-selected-color: var(--color-action-on-main-default);
+	--_molecules-paginator-tui-paginator-options-active-color: var(--color-text-default);
+	--molecules-paginator-tui-paginator-pages-border-left: #{tools.rem(1px)} solid #cedee7;
+}
+
+/**
+ * Component
+ */
+
+:host {
+	display: block;
+	background: transparent;
+	@include tools.shadowIcons();
+	--ui-v2-card-padding: 0px;
+	--ui-v2-scroll-container-padding-top: 0px;
+	--ui-v2-scroll-container-padding-right: 0px;
+	--ui-v2-scroll-container-padding-bottom: 0px;
+	--ui-v2-scroll-container-padding-left: 0px;
+
+	.paginator {
+		min-height: tools.rem(50px);
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-end;
+		background: transparent;
+		user-select: none;
+		flex-flow: row wrap;
+		padding: 0px 22px;
+		width: calc(100% - 44px);
+		gap: tools.rem(10px);
+
+		&--advanced {
+			padding: 0;
+			width: 100%;
+		}
+
+		&__total {
+			padding: tools.rem(14px 0);
+			font-size: tools.rem(14px);
+			line-height: tools.rem(20px);
+			color: var(--color-text-default);
+
+			&__label {
+				font-family: settings.$font-bold-txt;
+				padding-right: tools.rem(3px);
+			}
+
+			&__value {
+				font-family: settings.$font-regular-txt;
+			}
+		}
+
+		&__options {
+			display: flex;
+			flex: var(--_molecules-paginator-flex-paginator-options);
+			justify-content: flex-end;
+			padding: tools.rem(14px 0);
+
+			.items {
+				display: flex;
+				flex-direction: row;
+				list-style: none;
+				margin: 0;
+
+				&__item {
+					display: flex;
+
+					&__button {
+						min-width: tools.rem(17px);
+						height: tools.rem(22px);
+						border: none;
+						background-color: transparent;
+						cursor: pointer;
+						padding: 0;
+						margin: tools.rem(0 6px);
+						font-family: settings.$font-regular-txt;
+						font-size: tools.rem(15px);
+						line-height: tools.rem(22px);
+						position: relative;
+						display: flex;
+						justify-content: center;
+						color: var(--color-text-default);
+						transition: 0.3s ease all;
+
+						&::after {
+							display: var(--_molecules-paginator-display-tui-element);
+							transition: 0.3s ease all;
+							position: absolute;
+							content: '';
+							width: 0;
+							height: tools.rem(2px);
+							margin: 0 auto;
+							bottom: tools.rem(-2px);
+							background: var(--_molecules-paginator-border-bottom-color);
+							opacity: 0;
+							border-radius: tools.rem(1px);
+						}
+
+						&--active {
+							color: var(--_molecules-paginator-tui-paginator-options-active-color);
+							transition: 0.3s ease all;
+							&::after {
+								transition: 0.3s ease all;
+								width: 100%;
+								opacity: 1;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&__pages {
+			padding: tools.rem(14px 0);
+
+			&__container {
+				margin: 0;
+
+				&.tui-pagination {
+					height: tools.rem(22px);
+					display: flex;
+					flex-direction: row;
+					flex-wrap: nowrap;
+
+					.tui-prev-is-ellip,
+					.tui-next-is-ellip {
+						display: none;
+						pointer-events: none;
+						.tui-ico-ellip {
+							color: var(--color-text-default);
+						}
+					}
+
+					.tui-first {
+						display: var(--_molecules-paginator-display-tui-element);
+						transform: rotate(180deg);
+						--icon-content: var(--theme-scib-icon-chevron-forward);
+					}
+					.tui-last {
+						display: var(--_molecules-paginator-display-tui-element);
+						--icon-content: var(--theme-scib-icon-chevron-forward);
+					}
+
+					.tui-prev {
+						transform: rotate(180deg);
+						--icon-content: var(--theme-scib-icon-chevron-right-thin);
+					}
+					.tui-next {
+						--icon-content: var(--theme-scib-icon-chevron-right-thin);
+					}
+
+					.tui-page-btn {
+						font: var(--body-large-default);
+						font-family: var(--typescale-body-large-default-font);
+						font-size: var(--typescale-body-large-default-size);
+						line-height: var(--typescale-body-large-default-line-height);
+						font-weight: var(--typescale-body-large-default-weight);
+						font-style: var(--typescale-body-large-default-style);
+						border: none;
+						background: transparent;
+						color: var(--color-text-default);
+						padding: 0;
+						width: var(--_molecules-paginator-tui-page-btn-width);
+						min-width: tools.rem(9px);
+						text-align: center;
+						cursor: pointer;
+						padding: 0;
+						margin: tools.rem(0 7px);
+						height: var(--typescale-body-large-default-line-height);
+						transition: 0.3s ease all;
+
+						&::after {
+							display: var(--_molecules-paginator-display-tui-element);
+							transition: 0.3s ease all;
+							position: absolute;
+							content: '';
+							width: 0;
+							height: tools.rem(2px);
+							margin: 0 auto;
+							left: 0;
+							bottom: tools.rem(-2px);
+							background: var(--_molecules-paginator-border-bottom-color);
+							opacity: 0;
+							border-radius: tools.rem(1px);
+						}
+
+						&.tui-is-selected {
+							border-radius: 50%;
+							background: var(--_molecules-paginator-tui-page-btn-selected-background);
+							color: var(--_molecules-paginator-tui-page-btn-selected-color);
+							transition: 0.3s ease all;
+							&::after {
+								transition: 0.3s ease all;
+								width: 100%;
+								opacity: 1;
+							}
+						}
+
+						&.tui-first,
+						&.tui-last,
+						&.tui-prev,
+						&.tui-next {
+							min-width: tools.rem(7px);
+							margin: tools.rem(0 2px);
+							border: none;
+							padding: 0;
+
+							.icon {
+								font-size: tools.rem(15px);
+								width: tools.rem(15px);
+								height: 100%;
+							}
+						}
+
+						&.tu-prev {
+							margin-right: tools.rem(5px);
+						}
+
+						&.tu-next {
+							margin-left: tools.rem(5px);
+						}
+					}
+				}
+			}
+			&.disable-next {
+				.tui-next,
+				.tui-last {
+					color: var(--color-text-disabled);
+					pointer-events: none;
+					cursor: default;
+				}
+			}
+		}
+	}
+	.advanced-paginator {
+		display: flex;
+		align-items: center;
+		gap: tools.rem(5px);
+		.text-items {
+			font: var(--body-medium-default);
+			font-family: var(--typescale-body-medium-default-font);
+			font-size: var(--typescale-body-medium-default-size);
+			line-height: var(--typescale-body-medium-default-line-height);
+			font-weight: var(--typescale-body-medium-default-weight);
+			font-style: var(--typescale-body-medium-default-style);
+			color: var(--color-text-default);
+		}
+	}
+	.view-selector {
+		font-weight: 400;
+		display: flex;
+		align-items: center;
+		font: var(--body-medium-default);
+		font-family: var(--typescale-body-medium-default-font);
+		font-size: var(--typescale-body-medium-default-size);
+		line-height: var(--typescale-body-medium-default-line-height);
+		font-weight: var(--typescale-body-medium-default-weight);
+		font-style: var(--typescale-body-medium-default-style);
+		cursor: pointer;
+		color: var(--color-text-default);
+	}
+	.view-selector-icon {
+		width: tools.rem(10px);
+		height: tools.rem(10px);
+		font-size: tools.rem(15px) !important;
+		margin-left: tools.rem(5px);
+	}
+	.up-direction {
+		transform: translateX(tools.rem(-110px)) translateY(tools.rem(-142px)) !important;
+	}
+	.down-direction {
+		transform: translateX(tools.rem(-110px)) translateY(tools.rem(22px)) !important;
+	}
+	.dropdown {
+		z-index: 2;
+		position: absolute;
+		width: tools.rem(110px);
+		scib-ui-v2-scroll-container {
+			--ui-v2-scroll-container-gradiant-height: 0px;
+		}
+
+		.mdc-list {
+			padding: 4px;
+			.mdc-list-item {
+				padding: tools.rem(4px);
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				cursor: pointer;
+
+				&__text {
+					font: var(--body-medium-default);
+					font-family: var(--typescale-body-medium-default-font);
+					font-size: var(--typescale-body-medium-default-size);
+					line-height: var(--typescale-body-medium-default-line-height);
+					font-weight: var(--typescale-body-medium-default-weight);
+					font-style: var(--typescale-body-medium-default-style);
+					color: var(--color-text-soft);
+					width: 50%;
+				}
+
+				&__item-container {
+					width: 10%;
+					height: tools.rem(20px);
+					margin-right: tools.rem(15px);
+				}
+
+				&__icon {
+					color: var(--color-icon-brand);
+					width: tools.rem(20px);
+					height: tools.rem(20px);
+					font-size: tools.rem(20px);
+				}
+				&:hover {
+					background: var(--color-surface-state-hover);
+					color: var(--_ui-v2-select-text-option-text-color);
+					border-radius: tools.rem(4px);
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	.scroll-changes {
+		background-color: var(--color-surface-flat);
+		box-shadow: var(--elevation-floating);
+		--ui-v2-scroll-container-gradiant-rgb-color: var(--color-surface-flat);
+		margin: 0;
+		padding: tools.rem(8px) 0;
+	}
+
+	@media only screen and (max-width: 1500px) {
+		.scroll-changes-activated {
+			max-height: tools.rem(120px);
+			margin-bottom: 0;
+		}
+	}
+
+	.no-selectable {
+		cursor: default !important;
+	}
+
+	.paginator-padding {
+		padding: 0rem 1.625rem 0rem 1.6875rem;
+	}
+}

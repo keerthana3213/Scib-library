@@ -1,0 +1,57 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-empty-state.theme.scss';
+
+.ui-emptye {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin: tools.rem(64 0);
+
+	&__title {
+		display: block;
+		font-family: settings.$font-bold-txt;
+		font-size: tools.rem(28);
+		line-height: tools.rem(34);
+		text-align: center;
+	}
+
+	&__figure {
+		display: block;
+		width: tools.rem(260);
+		height: auto;
+		margin: 0 0 tools.rem(24);
+	}
+
+	&__desc {
+		display: block;
+		margin-top: tools.rem(15);
+		font-family: settings.$font-regular-txt;
+		font-weight: normal;
+		font-size: tools.rem(22);
+		line-height: tools.rem(30);
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.ui-emptye {
+		flex-direction: row;
+
+		&__figure {
+			margin-right: tools.rem(80);
+		}
+
+		&__title {
+			font-size: tools.rem(32);
+			line-height: tools.rem(38);
+			text-align: left;
+		}
+
+		&__desc {
+			font-size: tools.rem(18);
+			line-height: tools.rem(26);
+		}
+	}
+}

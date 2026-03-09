@@ -1,0 +1,6 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_ui-input-bg-color: var(--ui-input-bg-color, white);
+	--_ui-input-width-menu: var(--ui-input-width-menu, 564px);
+	--_ui-input-height-menu: var(--ui-input-height-menu, 270px);
+}

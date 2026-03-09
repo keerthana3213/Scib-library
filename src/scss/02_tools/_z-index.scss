@@ -1,0 +1,15 @@
+@use '../01_settings/settings';
+@use 'sass:map';
+
+/**
+   *@description: function to create z-index map
+**/
+
+@function z-index($name, $schema: settings.$z-index-map) {
+	@if map.has-key($schema, $name) {
+		@return map.get($schema, $name);
+	} @else {
+		@warn 'The value #{$name} is not in the map '$z-index--map'';
+		@return null;
+	}
+} ;

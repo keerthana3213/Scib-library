@@ -1,0 +1,46 @@
+/**
+   *@description: this file defines the variables we will use to define our responsive behavior
+**/
+
+// If we have included this file, set a variable to tell the rest of the
+// framework that we have some responsive settings.
+$responsive: true;
+
+$mq-mobile: 20;
+$mq-tablet: 48;
+$mq-desktop: 64;
+$mq-wide: 75;
+$mq-ultra-wide: 87.5;
+
+// Hold our breakpoint aliases and conditions in a list, these can be invoked later on via the `media-query()` mixin found in
+// `_tools.responsive`
+
+$wf__mobile-first: false !default;
+
+$breakpoints: (
+	'xs': 'only screen and (min-width: #{$mq-mobile}rem) and (max-width: #{$mq-tablet - 0.01}rem)',
+	'sm': 'only screen and (min-width: #{$mq-tablet}rem) and (max-width: #{$mq-desktop - 0.01}rem)',
+	'md': 'only screen and (min-width: #{$mq-desktop}rem) and (max-width: #{$mq-wide - 0.01}rem)',
+	'lg': 'only screen and (min-width: #{$mq-wide}rem) and (max-width: #{$mq-ultra-wide - 0.01}rem)',
+	'xl': 'only screen and (min-width: #{$mq-ultra-wide}rem)',
+	'wide': 'only screen and (min-width: #{$mq-mobile}rem)',
+) !default;
+
+@if ($wf__mobile-first == true) {
+	$breakpoints: (
+		'xs': 'only screen and (min-width: #{$mq-mobile}rem)',
+		'sm': 'only screen and (min-width: #{$mq-tablet}rem)',
+		'md': 'only screen and (min-width: #{$mq-desktop}rem)',
+		'lg': 'only screen and (min-width: #{$mq-wide}rem)',
+		'xl': 'only screen and (min-width: #{$mq-ultra-wide}rem)',
+		'wide': 'only screen and (min-width: #{$mq-mobile}rem)',
+	);
+}
+
+$mq-breakpoints: (
+	mobile: 20rem,
+	tablet: 48rem,
+	desktop: 64rem,
+	wide: 75rem,
+	ultra-wide: 87.5rem,
+);

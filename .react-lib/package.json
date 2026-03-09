@@ -1,0 +1,7 @@
+{
+  "name": "@scib/ui-kit/react",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "tsc --project tsconfig.json && node generate-package-json.js"
+  }
+}

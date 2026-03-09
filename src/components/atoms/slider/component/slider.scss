@@ -1,0 +1,76 @@
+@use 'settings';
+@use 'tools';
+
+@use '@material/slider/styles';
+@use '@material/slider';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_atoms-slider-tick-mark-inactive-color: var(--atoms-slider-tick-mark-inactive-color);
+	--_atoms-slider-tick-mark-active-color: var(--atoms-slider-tick-mark-active-color);
+	--_atoms-slider-margin: var(--atoms-slider-margin, 0 24px);
+	--_atoms-slider-margin-top: var(--atoms-slider-margin-top, 20px);
+}
+
+:host([color='primary']) {
+	--_atoms-slider-thumb-color: var(--atoms-slider-bg-color-primary);
+	--_atoms-slider-track-active-color: var(--atoms-slider-bg-color-primary);
+	--_atoms-slider-track-inactive-color: var(--atoms-slider-track-inactive-color);
+}
+
+:host([color='secondary']) {
+	--_atoms-slider-thumb-color: var(--atoms-slider-bg-color-secondary);
+	--_atoms-slider-track-active-color: var(--atoms-slider-bg-color-secondary);
+	--_atoms-slider-track-inactive-color: var(--atoms-slider-track-inactive-color);
+}
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_atoms-slider-bg-color);
+	@include tools.shadowIcons();
+	display: block;
+
+	.mdc-slider {
+		@include slider.thumb-color(var(--_atoms-slider-thumb-color));
+		@include slider.track-active-color(var(--_atoms-slider-track-active-color));
+		@include slider.track-inactive-color(var(--_atoms-slider-track-inactive-color), 1);
+		margin: var(--_atoms-slider-margin);
+
+		&__thumb-knob {
+			border: solid 2px white !important;
+		}
+
+		.mdc-slider {
+			&__thumb {
+				&::before {
+					background-color: var(--_atoms-slider-thumb-color);
+				}
+				&::after {
+					background-color: var(--_atoms-slider-thumb-color);
+				}
+			}
+		}
+
+		&__tick-mark {
+			&--inactive {
+				background-color: var(--_atoms-slider-tick-mark-inactive-color);
+			}
+
+			&--active {
+				background-color: var(--_atoms-slider-tick-mark-active-color);
+			}
+		}
+	}
+	.margin-top {
+		margin-top: var(--_atoms-slider-margin-top);
+	}
+}

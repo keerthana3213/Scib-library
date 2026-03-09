@@ -1,0 +1,60 @@
+@use 'tools';
+
+/**
+   *@description: this file contains the different styles of error messages and development stages
+**/
+
+.wc-error {
+	display: block;
+	margin: tools.rem(10) 0;
+	font-size: tools.rem(12);
+	line-height: tools.rem(18);
+	font-weight: normal;
+	color: tools.color(primary, base);
+	word-break: normal;
+	overflow-wrap: break-word;
+	&--alignr {
+		text-align: right;
+	}
+	&--alignl {
+		text-align: left;
+	}
+	&--inputvad {
+		margin: tools.rem(-7) 0 tools.rem(10);
+		padding-right: tools.rem(10);
+	}
+	&--mrgt {
+		margin-top: tools.rem(5);
+	}
+}
+
+.wc-noinfo {
+	display: block;
+	font-size: tools.rem(12);
+	line-height: tools.rem(18);
+	font-style: italic;
+	color: tools.color(secondary, dark);
+	&--two {
+		display: inline-block;
+		width: calc(100% - 30px);
+		vertical-align: middle;
+	}
+}
+
+.wc-noresults {
+	margin: tools.rem(130) auto;
+	&__message {
+		display: block;
+		font-size: tools.rem(18);
+		line-height: tools.rem(24);
+		text-align: center;
+		font-style: italic;
+		color: tools.color(secondary, dark);
+	}
+}
+
+@include tools.media-query('xs') {
+	.wc-noresults {
+		margin: tools.rem(100) auto;
+	}
+}

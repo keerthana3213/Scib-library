@@ -1,0 +1,166 @@
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+@forward 'cdk-my-apps-card.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+
+.ui-card {
+	&-container {
+		display: block;
+		border-radius: tools.rem(4);
+		border: tools.rem(1) solid tools.color(secondary, medium);
+		background: white;
+		position: relative;
+		color: inherit;
+		margin-bottom: tools.rem(16);
+		cursor: pointer;
+	}
+	&-article {
+		padding-right: tools.rem(16);
+		display: flex;
+	}
+}
+
+.cdk-my-apps-card {
+	display: grid;
+	flex: 85%;
+	grid-template-columns: 12% 88%;
+	padding: tools.rem(8 0 8 10);
+
+	&-title {
+		margin: auto 1rem;
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		a {
+			@extend %ellipsis;
+			font-size: tools.rem(20);
+			line-height: tools.rem(24);
+			font-family: settings.$font-bold-txt;
+			color: tools.color(secondary, ultra-dark);
+			display: flex;
+			flex-direction: column;
+			color: black;
+		}
+	}
+
+	&-icon {
+		display: flex;
+		flex-direction: column;
+
+		figure {
+			display: inline;
+			text-align: center;
+		}
+
+		img {
+			width: 61px;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+}
+
+.cdk-my-apps-card-action {
+	display: flex;
+	flex-direction: column;
+	flex: 15%;
+
+	label {
+		font-size: tools.rem(13);
+		color: #767676;
+		font-family: settings.$font-regular-txt;
+	}
+
+	.icon-lock-24 {
+		margin: auto;
+		background: #f2f2f2;
+		border-radius: 17px;
+		padding: 3px;
+		color: #767676;
+	}
+
+	.center {
+		display: inline;
+		text-align: center;
+		margin: auto;
+	}
+
+	scib-ui-switch {
+		padding: tools.rem(8);
+	}
+}
+
+@media only screen and (max-width: 1023px) {
+	.cdk-my-apps-card {
+		grid-template-columns: 16% 84%;
+
+		&-title {
+			margin: auto 1rem;
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			a {
+				font-size: tools.rem(18);
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.cdk-my-apps-card {
+		grid-template-columns: 25% 75%;
+		min-width: tools.rem(188);
+		&-title {
+			margin: auto 1rem;
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			a {
+				font-size: tools.rem(18);
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	.ui-card-article {
+		display: grid;
+		grid-template-columns: 80% 20%;
+	}
+	.cdk-my-apps-card {
+		grid-template-columns: 25% 75%;
+		&-title {
+			margin: auto 1rem;
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			a {
+				font-size: tools.rem(18);
+			}
+		}
+	}
+	scib-ui-switch {
+		padding: tools.rem(0) !important;
+	}
+}

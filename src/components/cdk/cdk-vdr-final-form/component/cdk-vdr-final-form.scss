@@ -1,0 +1,67 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-vdr-final-form.theme.scss';
+
+.--font-family-scib {
+	font-family: settings.$font-regular-txt;
+}
+
+.cdk-cvdr {
+	&__title {
+		margin-bottom: tools.rem(24);
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			display: block;
+			font-size: tools.rem(20);
+			line-height: tools.rem(28);
+			color: black;
+
+			strong {
+				font-family: settings.$font-bold-txt;
+			}
+		}
+	}
+
+	&__paragraph {
+		margin-bottom: tools.rem(24);
+		font-size: tools.rem(14);
+		line-height: tools.rem(20);
+	}
+
+	&__multiselect {
+		margin-bottom: tools.rem(30);
+	}
+
+	&__fieldset {
+		min-height: 444px;
+		.c-field.sc-scib-ui-select::after {
+			content: none;
+		}
+		.c-select.displace-placeholder.sc-scib-ui-select:hover {
+			cursor: text;
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.cdk-cvdr {
+		&__title {
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				margin-bottom: tools.rem(30);
+				font-size: tools.rem(28);
+				line-height: tools.rem(34);
+			}
+		}
+	}
+}

@@ -1,0 +1,665 @@
+@use 'tools';
+@use 'settings';
+
+@import '~tabulator-tables/dist/css/tabulator_materialize.min.css';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	--_organisms-data-table-action-link-color: var(--organisms-data-table-action-link-color, magenta);
+}
+
+:host([variant='white']) {
+	/** Specific propr for white variant */
+}
+
+:host([variant='blue']) {
+	/** Specific propr for blue variant */
+}
+
+/**
+ * Component
+ */
+
+@mixin emptyTitleCol() {
+	&.tabulator-empty-title {
+		+ .tabulator-col-resize-handle {
+			display: none;
+			pointer-events: none;
+		}
+
+		.tabulator-col-content,
+		.tabulator-col-resize-handle {
+			border: none;
+			display: none;
+			user-select: none;
+			pointer-events: none;
+		}
+	}
+}
+
+:host {
+	@include tools.shadowIcons();
+	position: relative;
+	display: block;
+	height: 100%;
+	width: 100%;
+
+	--ui-v2-scroll-container-padding-top: 0px;
+	--ui-v2-scroll-container-padding-bottom: 0px;
+	--ui-v2-scroll-container-padding-right: 0px;
+	--ui-v2-scroll-container-padding-left: 0px;
+
+	.skeleton {
+		display: none;
+		height: 100%;
+		width: 100%;
+	}
+
+	// Remove when change to our own checkbox
+	input[type='checkbox'] {
+		position: relative;
+		cursor: pointer;
+		appearance: none;
+		margin: 0;
+		&:before {
+			content: '';
+			display: block;
+			width: tools.rem(20);
+			height: tools.rem(20);
+			border: tools.rem(1) solid tools.color(secondary, ultra-dark);
+			border-radius: tools.rem(4);
+			background-color: white;
+		}
+		&:checked:after {
+			content: '';
+			display: block;
+			width: tools.rem(3);
+			height: tools.rem(7);
+			border: tools.rem(3) solid tools.color(primary, medium);
+			border-width: tools.rem(0 1 1 0);
+			-webkit-transform: rotate(45deg);
+			-ms-transform: rotate(45deg);
+			transform: rotate(45deg);
+			position: absolute;
+			top: tools.rem(6);
+			left: tools.rem(9);
+		}
+		&:checked:before {
+			width: tools.rem(18);
+			height: tools.rem(18);
+			border: tools.rem(2) solid tools.color(primary, medium);
+		}
+
+		&:indeterminate:after {
+			content: '';
+			display: block;
+			width: tools.rem(9);
+			height: tools.rem(6);
+			border: tools.rem(2) solid tools.color(primary, medium);
+			border-width: tools.rem(0 0 1 0);
+			position: absolute;
+			top: tools.rem(5);
+			left: tools.rem(7);
+		}
+
+		&:indeterminate:before {
+			width: tools.rem(18);
+			height: tools.rem(18);
+			border: tools.rem(2) solid tools.color(primary, medium);
+		}
+	}
+
+	input[type='radio'] {
+		box-sizing: border-box;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		background-color: transparent;
+		border: tools.rem(1px) solid #cedee7;
+		width: tools.rem(22px);
+		height: tools.rem(22px);
+		border-radius: tools.rem(22px);
+		position: relative;
+		top: tools.rem(-5px);
+		transition: all 0.25s;
+		cursor: pointer;
+
+		&:checked {
+			border: tools.rem(2px) solid tools.color(primary, medium);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			&:before {
+				content: '';
+				width: tools.rem(10px);
+				height: tools.rem(10px);
+				border-radius: tools.rem(10px);
+				background-color: tools.color(primary, medium);
+				display: inline-block;
+			}
+		}
+	}
+
+	.data-table {
+		position: relative;
+		display: block;
+		height: 100%;
+		width: 100%;
+
+		/* total width */
+		::-webkit-scrollbar {
+			background-color: #fff;
+			width: tools.rem(16px);
+
+			&-track {
+				background-color: #fff;
+			}
+
+			&-track:hover {
+				background-color: #f4f4f4;
+			}
+
+			&-thumb {
+				background-color: #babac0;
+				border-radius: tools.rem(16px);
+				border: tools.rem(5px) solid #fff;
+			}
+
+			&-thumb:hover {
+				background-color: #a0a0a5;
+				border: tools.rem(4px) solid #f4f4f4;
+			}
+
+			&-button {
+				display: none;
+			}
+		}
+
+		.table-container {
+			position: absolute;
+			display: grid;
+			width: 100%;
+			left: 0;
+			top: 0;
+		}
+
+		.tabulator {
+			box-sizing: border-box;
+			border: tools.rem(1px) solid #cedee7;
+			border-radius: tools.rem(4px 4px 0 0);
+			background-color: #ffffff;
+			box-shadow: 0 3px 6px 0 rgb(155 195 211 / 32%);
+
+			.tabulator-tableholder {
+				overflow: auto hidden !important;
+				width: calc(100% + 1px);
+				&--initial {
+					height: auto !important;
+				}
+			}
+
+			.tabulator-header {
+				border-bottom: tools.rem(1px) solid #cedee7;
+
+				.tabulator-col {
+					@include emptyTitleCol();
+
+					&.tabulator-checkbox-cell {
+						+ .tabulator-col-resize-handle {
+							pointer-events: none;
+						}
+
+						.tabulator-col-title {
+							padding: 0;
+							width: 100%;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+						}
+					}
+
+					.tabulator-col-sorter {
+						.icon {
+							font-size: tools.rem(12px);
+							display: none;
+							height: tools.rem(20px);
+							width: auto;
+						}
+					}
+
+					&[aria-sort='none'] {
+						.tabulator-col-sorter {
+							--icon-content: var(--theme-scib-icon-arrow-table);
+							.icon {
+								display: flex;
+								color: var(--theme-colors-grey-thirty);
+							}
+						}
+					}
+
+					&[aria-sort='asc'] {
+						.tabulator-col-sorter {
+							--icon-content: var(--theme-scib-icon-arrow-up-table);
+							.icon {
+								font-size: tools.rem(16px);
+								display: flex;
+								color: var(--theme-colors-santander-base);
+
+								&::before {
+									padding-top: tools.rem(3px);
+								}
+							}
+						}
+					}
+
+					&[aria-sort='desc'] {
+						.tabulator-col-sorter {
+							--icon-content: var(--theme-scib-icon-arrow-down-table);
+							.icon {
+								font-size: tools.rem(16px);
+								display: flex;
+								color: var(--theme-colors-santander-base);
+
+								&::before {
+									padding-top: tools.rem(2px);
+								}
+							}
+						}
+					}
+
+					.tabulator-col-content {
+						box-sizing: border-box;
+						position: relative;
+						margin: tools.rem(9px 0 8px 0);
+						padding: tools.rem(0 12px 0 12px);
+						display: flex;
+						flex-direction: row;
+						border-right: tools.rem(1px) solid #cedee7;
+
+						.tabulator-col-title-holder {
+							width: 100%;
+							display: flex;
+							flex-direction: row;
+							min-height: tools.rem(22px);
+							align-items: center;
+
+							.tabulator-col-sorter {
+								right: 0;
+								position: relative;
+
+								.icon {
+									margin-top: tools.rem(2px);
+								}
+							}
+						}
+					}
+
+					.tabulator-col-title {
+						font-size: tools.rem(14px);
+						line-height: tools.rem(22px);
+						padding-right: tools.rem(7px);
+						text-transform: uppercase;
+						color: #767676;
+						font-family: settings.$font-bold-txt;
+						width: initial;
+					}
+
+					&:last-child {
+						.tabulator-col-content {
+							border-right: none;
+						}
+					}
+
+					&:not([aria-sort='none']) {
+						.tabulator-col-title {
+							color: #000000;
+						}
+					}
+				}
+			}
+
+			.tabulator-table {
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+
+				.tabulator-row {
+					border-bottom: tools.rem(1px) #cedee7 solid;
+					position: relative;
+
+					&.tabulator-selectable {
+						.tabulator-cell {
+							&.tabulator-checkbox-cell {
+								padding: 0;
+								display: inline-flex;
+								justify-content: center;
+								align-items: center;
+							}
+						}
+					}
+
+					&.tabulator-unselectable {
+						.tabulator-cell {
+							&.tabulator-checkbox-cell {
+								pointer-events: none;
+								padding: 0;
+								display: inline-flex;
+								justify-content: center;
+								align-items: center;
+
+								& input[type='checkbox'] {
+									&:before {
+										background-color: tools.color(secondary, light);
+										border-color: tools.color(secondary, medium);
+									}
+									&::after {
+										content: '';
+										display: block;
+										width: 0.5625rem;
+										height: 0.375rem;
+										border: 0.125rem solid tools.color(secondary, medium);
+										border-width: 0rem 0rem 0.0625rem 0rem;
+										position: absolute;
+										top: 0.3125rem;
+										left: 0.4375rem;
+									}
+								}
+							}
+						}
+					}
+
+					.tabulator-cell {
+						height: tools.rem(48px);
+						min-height: tools.rem(48px);
+						font-size: tools.rem(14px);
+						color: #444444;
+						font-family: settings.$font-regular-txt;
+						text-overflow: ellipsis;
+						overflow: hidden;
+						white-space: nowrap;
+						background-color: var(--theme-colors-white);
+						cursor: auto;
+						@include emptyTitleCol();
+
+						+ .tabulator-col-resize-handle {
+							pointer-events: none;
+						}
+
+						.raw-value_cell {
+							white-space: pre;
+						}
+
+						.bold_cell {
+							font-family: settings.$font-bold-txt;
+						}
+
+						.status_cell {
+							text-overflow: ellipsis;
+							overflow-x: clip;
+							overflow-y: visible;
+							white-space: nowrap;
+
+							&::before {
+								content: '';
+								top: 0;
+								left: 0;
+								width: 4px;
+								height: 100%;
+								position: absolute;
+								background: var(--border-color);
+							}
+						}
+
+						.statusdot_cell {
+							height: tools.rem(5px);
+							width: tools.rem(5px);
+							margin: 2%;
+							border-radius: 50%;
+							display: inline-block;
+						}
+
+						.traffic_lights_cell {
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+							gap: tools.rem(8px);
+							height: 100%;
+
+							.icon {
+								font-size: tools.rem(18px);
+								color: var(--icon-color);
+							}
+						}
+					}
+
+					.detail-view {
+						display: none;
+						width: 100%;
+						padding: 0;
+						border-top: tools.rem(1px) #cedee7 solid;
+						overflow: visible;
+						&.open {
+							display: inherit;
+						}
+					}
+
+					&:hover {
+						background-color: #deedf2;
+						.tabulator-cell {
+							background-color: #deedf2;
+						}
+					}
+
+					&:last-child {
+						border-bottom: none;
+					}
+				}
+				.tabulator-row.tabulator-selected {
+					background-color: var(--organisms-data-table-selected-row-background-color);
+				}
+			}
+
+			&-action-link {
+				color: var(--_organisms-data-table-action-link-color);
+				cursor: pointer;
+				&-box {
+					display: flex;
+					gap: 0.5rem;
+					align-items: center;
+					&--full-text {
+						flex: 1 1 0%;
+						overflow: hidden;
+						justify-content: left;
+
+						& > span {
+							text-overflow: ellipsis;
+							overflow: hidden;
+							white-space: nowrap;
+						}
+					}
+					&--reverse {
+						flex-direction: row-reverse;
+					}
+					&--center {
+						justify-content: center;
+						gap: 0;
+					}
+				}
+				&-text {
+					display: inline-block;
+					&-action {
+						color: var(--_organisms-data-table-action-link-color);
+						text-decoration: underline;
+						cursor: pointer;
+					}
+				}
+			}
+
+			&-text-icon {
+				color: var(--_organisms-data-table-action-link-color);
+				&--reverse {
+					flex-direction: row-reverse;
+				}
+			}
+
+			&-action-menu {
+				position: absolute;
+				--ui-v2-menu-panel-right: 0;
+			}
+
+			&-tooltip {
+				position: relative;
+
+				& > span {
+					text-overflow: ellipsis;
+					overflow: hidden;
+					white-space: nowrap;
+					display: block;
+				}
+
+				&:hover {
+					.tabulator-tooltip__box {
+						display: block;
+					}
+				}
+
+				&--down .tabulator-tooltip__box {
+					bottom: initial;
+					top: calc(100% + 10px);
+
+					&:before {
+						bottom: initial;
+						top: tools.rem(-4px);
+					}
+				}
+
+				&__box {
+					display: block;
+					opacity: 0;
+					position: absolute;
+					background: black;
+					padding: tools.rem(16px);
+					transform: translateY(0px);
+					transform-origin: left top;
+					border-radius: tools.rem(4px);
+					z-index: -1;
+					max-width: tools.rem(400px);
+					min-width: tools.rem(22px);
+					width: max-content;
+
+					&--right {
+						--offset: 0;
+						&:before {
+							right: calc(16px - var(--offset, 0));
+						}
+					}
+
+					&--left {
+						--offset: 0;
+						&:before {
+							left: calc(16px - var(--offset, 0));
+						}
+					}
+
+					&--center {
+						--offset: 0;
+						&::before {
+							right: calc(50% - calc(7px + var(--offset, 0)));
+						}
+					}
+
+					&:before {
+						content: '';
+						display: block;
+						position: absolute;
+						width: tools.rem(14px);
+						height: tools.rem(14px);
+						border-radius: tools.rem(2px);
+						transform: rotate(45deg);
+						top: tools.rem(-6px);
+						background: black;
+					}
+				}
+
+				&__text {
+					display: inline-block;
+					color: white;
+					font-family: settings.$font-regular-txt;
+					font-size: tools.rem(14px);
+					line-height: tools.rem(20px);
+					width: 100%;
+					white-space: initial;
+					word-break: break-all;
+
+					&--prefix {
+						display: inline-flex;
+						gap: tools.rem(4px);
+					}
+				}
+			}
+
+			&-image {
+				display: inline-flex;
+				align-items: center;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+
+				&__img {
+					margin-right: 20px;
+					box-sizing: border-box;
+					height: auto;
+				}
+			}
+		}
+
+		.paginator {
+			border-top: tools.rem(1px) #cedee7 solid;
+		}
+	}
+
+	.inline-status {
+		font-weight: bold;
+		padding: tools.rem(2px) tools.rem(16px);
+		border-radius: tools.rem(2px);
+		display: inline-block;
+		height: tools.rem(24px);
+		line-height: tools.rem(24px);
+		width: 100%;
+		text-align: center;
+		max-width: tools.rem(120px);
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		&__container {
+			position: absolute;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			padding: tools.rem(8px);
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+		&--true {
+			background-color: rgb(71, 117, 255);
+			color: white;
+		}
+		&--false {
+			color: rgb(122, 122, 122);
+			background-color: rgb(236, 236, 236);
+		}
+	}
+}

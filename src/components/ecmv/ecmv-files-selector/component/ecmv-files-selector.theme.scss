@@ -1,0 +1,4 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_ecmv-files-selector-bg-color: var(--ecmv-files-selector-bg-color, white);
+}

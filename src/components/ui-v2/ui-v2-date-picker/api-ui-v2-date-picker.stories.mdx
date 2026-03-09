@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Design System v-2/Atoms/Date Picker/Api" parameters={{ status: 'stable' }}/>
+
+# API
+
+---
+
+We are using Luxon to manage all dates inside new v2 components, but in this component only we need to know 2 things to configure it.
+
+1. We have a prop called "format" where we can pass a custom token to modify the format that we will see inside the input box. 
+
+    [Table of tokens](https://moment.github.io/luxon/#/formatting?id=table-of-tokens)
+    
+
+2. The component accept custom values to init with the value that you want. The only requirement is that the value must be in ISO format.
+
+    [ISO 8601](https://moment.github.io/luxon/#/parsing?id=iso-8601)
+
+
+## _Disable Dates_
+
+To disable dates we must include the object **_disableDates_**. 
+It receives the key weekends which disabled weekends if the value is true. 
+Also we can disable dates with dates field, we will add an array with dates in ISO format and includeOffset with value false. Example: DateTime.now().toISO({ includeOffset: false }) 
+
+```
+disableDates:{
+		weekends:true,
+		dates:["2022-04-13", "2022-04-14" ,"2022-04-15" ,"2022-04-23"]
+}
+```
+
+## Format property
+
+This property allowed a format string to return date selected in format introduced, if the property is empty date will be returned in ISO format by default
+
+
+## Timepicker
+
+To be able to use the timepicker you should included timepicker key with value true, if you do not want to show day calendar you should include also onlyTimepicker in true
+
+
+```css
+config: {
+    timepicker : boolean,
+    onlyTimepicker:boolean
+}
+```
+
+## Configs
+These are some configs allowed:
+
+| Atributo | Acción | Valor por defecto |
+| ------ | ------ | ------ |
+| autoClose |  **True**: Oculta el calendario al seleccionar fecha | True |
+| timepicker |  **True** Shows Timepicker at the bottom of day calendar and shows date + time in the input | False |
+| onlyTimepicker |  **True**: Only shows timepicker, and input only shows time | False |
+
+
+
+## Range property
+
+The range property allowed to select a range of dates, the value admitted and returned will have the following interface:
+
+```
+{
+	dateFrom: string;
+	dateTo: string;
+}
+```
+
+## Input mask
+
+Mask is working when readonly is not true. By default readOnly property is settle with true value. Currently, mask is not enable when we include timepicker or range.

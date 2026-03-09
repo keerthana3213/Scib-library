@@ -1,0 +1,119 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public props to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+@mixin inputStyles {
+	width: tools.rem(32px);
+	height: tools.rem(48px);
+	background-color: var(--color-background-default);
+	border-color: var(--color-border-default);
+	border-radius: var(--size-border-radius-03);
+	border-width: var(--size-border-width-01);
+	border-style: solid;
+	color: var(--color-text-default);
+	text-align: center;
+	font-family: var(--typescale-body-xlarge-default-font);
+	font-weight: var(--typescale-body-xlarge-default-weight);
+	line-height: var(--typescale-body-xlarge-default-line-height);
+	font-size: var(--typescale-body-xlarge-default-size);
+}
+
+@mixin textLarge {
+	font-family: var(--typescale-body-large-default-font);
+	font-size: var(--typescale-body-large-default-size);
+	font-weight: var(--typescale-body-large-default-weight);
+	line-height: var(--typescale-body-large-default-line-height);
+}
+
+@mixin textMedium {
+	font-family: var(--typescale-body-medium-default-font);
+	font-weight: var(--typescale-body-medium-default-weight);
+	line-height: var(--typescale-body-medium-default-line-height);
+	font-size: var(--typescale-body-medium-default-size);
+}
+
+:host {
+	@include tools.shadowIcons();
+
+	.otp {
+		&__container {
+			display: flex;
+			gap: var(--size-spacing-02);
+			margin-top: var(--size-spacing-01);
+		}
+
+		&__wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: var(--size-spacing-04);
+		}
+
+		&__input {
+			@include inputStyles;
+			border-color: var(--color-border-default);
+
+			&:focus {
+				outline-color: var(--color-action-alternative-selected);
+			}
+
+			&--invalid {
+				@include inputStyles;
+				border-color: var(--color-text-error);
+			}
+
+			&--disabled {
+				@include inputStyles;
+				background-color: var(--color-surface-disabled);
+				border-color: var(--color-surface-disabled);
+			}
+		}
+
+		&__helper {
+			display: flex;
+			flex-direction: row;
+			gap: var(--size-spacing-01);
+			max-width: tools.rem(332px);
+
+			&__text {
+				@include textMedium;
+				color: var(--color-text-default);
+				text-align: left;
+
+				&--invalid {
+					@include textMedium;
+					color: var(--color-text-error);
+					text-align: left;
+				}
+			}
+
+			&__icons {
+				width: tools.rem(20px);
+				height: tools.rem(20px);
+			}
+
+			&__loading {
+				width: tools.rem(20px);
+				height: tools.rem(20px);
+			}
+		}
+
+		&__label {
+			@include textLarge;
+			color: var(--color-text-default);
+
+			&--disabled {
+				@include textLarge;
+				color: var(--color-text-disabled);
+			}
+		}
+	}
+}

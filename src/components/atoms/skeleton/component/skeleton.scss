@@ -1,0 +1,60 @@
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_atoms-skeleton-gradient-color: rgba(var(--color-surface-gradient), 1);
+}
+
+:host {
+	display: block;
+
+	.skeleton {
+		transform: translate3d(0, 0, 0);
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: flex-start;
+		align-content: flex-start;
+		position: relative;
+		overflow: hidden;
+
+		&__image {
+			object-fit: contain;
+			display: block;
+			width: 100%;
+		}
+
+		&__animation-box {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+			align-content: center;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			z-index: 2;
+
+			&__gradient {
+				width: 500px;
+				height: 100%;
+				opacity: 0.6;
+				background: linear-gradient(
+					to right,
+					rgba(var(--color-surface-gradient), 0),
+					var(--_atoms-skeleton-gradient-color),
+					rgba(var(--color-surface-gradient), 0)
+				);
+			}
+		}
+	}
+}

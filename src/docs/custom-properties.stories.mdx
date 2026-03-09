@@ -1,0 +1,150 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Get Started/Custom properties" />
+
+# Custom properties
+ 
+Las custom properties nos permiten crear variables CSS en el contexto de un nodo HTML para poder disponer de esos valores en sus hijos. Las custom properties traspasan el shadow DOM, así que siempre y cuando estén consumidas por una propiedad de un selector, podemos modificar su valor desde un punto superior al shadow dom
+
+## Propuesta de arquitectura de custom properties
+
+La estructura debe dividirse en tres tipos de custom properties: 
+
+- tipo 1 theme: aquellas ligadas a los design tokens contemplados en el design system 
+- tipo 2 API de componente: aquellas ligadas a los componentes y expuestas de forma pública
+- tipo 3 variable interna de componente: quellas ligadas a los componentes y expuestas de forma privada
+
+
+
+### 1. Theme
+
+Van declaradas dentro del `:root` en el contexto de todo el document, de forma global. 
+
+- Nunca deben ser consumidas directamente en un componente, sino deben ser asignadas como valor a una custom property de tipo API de componente. Para los globales (utilidades asociadas al design system) si pueden ser consumidas.
+
+Estas contemplan los token de diseño más habituales: colores, tamaños de fuente, espaciados, redondeados, sombras.
+
+Deberán nomenclarse con el prefijo `--scib--`:
+
+```scss
+:root {
+// Fonts
+--scib--font-family-main: 'Santander', sans-serif;
+...
+
+// Rounds
+--scib--border-radius-s: 4px; 
+--scib--border-radius-m: 6px; 
+--scib--border-radius-l: 8px; 
+...
+
+// Colors
+--scib--color-primary-base: red;
+--scib--color-primary-dark: darkred;
+--scib--color-secondary-base: blue;
+--scib--color-secondary-dark: darkblue;
+--scib--color-tint-white: white;
+--scib--color-tint-light: #F2F2F2;
+--scib--color-tint-darkes: #333;
+...
+}
+```
+
+
+
+### 2. API de componente pública
+
+Van declaradas dentro del `:root` en el contexto de todo el document, de forma global. 
+- Nunca deben ser consumidas directamente en un componente, sino deben ser asignadas como valor a una custom property de tipo API privada dentro del css del componente.
+- No deben llevar valores "a fuego", sino que su valor debe ser una custom property de tipo theme.
+
+Estas contemplan los elementos del componente susceptibles de ser modificados.
+
+Deberán nomenclarse con el prefijo `--[componentName]--` donde `[componentName]` es nombre del componente:
+
+```scss
+// scib-ui-button API
+:root {
+  
+// Common
+--scib-ui-button--font-family: var(--scib--font-family-main);
+
+// Primary variant
+--scib-ui-button--primary-bg-color: var(--scib--color-primary-base);
+--scib-ui-button--primary-text-color: var(--scib--color-tint-white);
+
+// Secondary variant
+--scib-ui-button--primary-bg-color: var(--scib--color-secondary-base);
+--scib-ui-button--primary-text-color: var(--scib--color-tint-white);
+...
+}
+```
+
+
+
+### 3. Variables internas de componente
+
+Van declaradas en el `:host` de un custom element cuyo shadow DOM esté activado. Su disponibilidad sólo se encuentra en el contexto del custom element y puede ser leída directamente por los elementos de dicho custom element.
+
+Deberán nomenclarse con el prefijo `--_` y ser únicas dentro del contexto del custom element.
+
+```scss
+// scib-ui-button.theme.scss
+:host {
+  --_font-family: var(--scib-ui-button--font-family);
+  
+  &[primary] {
+    --_bg-color: var(--scib-ui-button--primary-bg-color)
+    --_txt-color: var(--scib-ui-button--primary-text-color)
+  } 
+
+  &[secondary] {
+    --_bg-color: var(--scib-ui-button--secondary-bg-color)
+    --_txt-color: var(--scib-ui-button--secondary-text-color)
+  }
+
+}
+```
+
+```scss
+// scib-ui-button.component.scss
+button {
+  font-family: var(--_font-family);
+  background: var(--_bg-color);
+  color: var(--_txt-color);
+}
+```
+
+### Themización "soft" y "hard"
+
+Establecida esta arquitectura, tendríamos dos formas de modificar el theme a partir de hacer override sobre los valores base de las custom properties. Este override podría hacerse cargando este nuevo `:root` sobre el anterior con javascript en runtime:
+
+- Themización "soft": Modificando los valores de los design tokens a través del theme global. Esta forma nos permitiría modificar los valores de los design tokens cuando haya un cambio en la marca que debamos replicar a las aplicaciones:
+
+```scss
+:root {
+--scib--font-family-main: 'Santander', sans-serif;
+}
+
+// Nuevo theme
+:root {
+--scib--font-family-main: 'Santander-New-Font', sans-serif;
+}
+```
+
+- Themización "hard": Modificando la asignación de nuestros design tokens en cada uno de los componentes para darles un theme concreto:
+
+```scss
+// scib-ui-button API 
+
+// Por defecto
+:root {
+--scib-ui-card--bg-color: var(--scib--color-tint-white);
+}
+
+// Cambiando al un theme "dark", inyectamos este nuevo `:root` con javascript,
+// donde la variable `--bg-color` del <scib-ui-card> tiene asignada ahora un design token diferente.
+:root {
+--scib-ui-card--bg-color: var(--scib--color-tint-darker);
+}
+```

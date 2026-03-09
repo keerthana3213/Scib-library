@@ -1,0 +1,31 @@
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	/** Common props for all variants */
+	--_atoms-tooltip-card-bg-color: var(--atoms-tooltip-card-bg-color, magenta);
+}
+
+:host([variant='white']) {
+	/** Specific propr for white variant */
+	--_atoms-tooltip-card-bg-color: var(--atoms-tooltip-card-bg-color, white);
+}
+
+:host([variant='blue']) {
+	/** Specific propr for blue variant */
+	--_atoms-tooltip-card-bg-color: var(--atoms-tooltip-card-bg-color, blue);
+}
+
+:host {
+	@include tools.shadowIcons();
+	display: block;
+}

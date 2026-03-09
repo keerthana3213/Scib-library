@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="57px" height="57px" viewBox="0 0 57 57" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>06E991D8-89B3-4142-89BB-6F03BCFF27B3</title>
+    <defs>
+        <path d="M13.1047993,4 L25.8952007,4 C29.819073,4 33,7.18092699 33,11.1047993 L33,23.8952007 C33,27.819073 29.819073,31 25.8952007,31 L13.1047993,31 C9.18092699,31 6,27.819073 6,23.8952007 L6,11.1047993 C6,7.18092699 9.18092699,4 13.1047993,4 Z" id="path-1"></path>
+        <filter x="-53.6%" y="-49.9%" width="207.2%" height="207.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.470799973" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.243935752 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Gloval-Overview" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ISM-Global-Overview" transform="translate(-975.000000, -723.000000)">
+            <g id="card" transform="translate(968.000000, 727.000000)">
+                <g id="Group-6" transform="translate(16.000000, 6.000000)">
+                    <g id="Rectangle" transform="translate(19.500000, 17.500000) rotate(15.000000) translate(-19.500000, -17.500000) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use stroke="#EFEFEF" stroke-width="0.941599946" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M7.36794001,6 L20.63206,6 C24.7012609,6 28,9.2987391 28,13.36794 L28,26.63206 C28,30.7012609 24.7012609,34 20.63206,34 L7.36794001,34 C3.2987391,34 -3.89845034e-16,30.7012609 0,26.63206 L0,13.36794 C-1.38651181e-15,9.2987391 3.2987391,6 7.36794001,6 Z" id="Rectangle-Copy" stroke="#CC0000" stroke-width="1.18518519" fill="#EC0000"></path>
+                    <g id="b.-icons/-01.-banking-/-BAN005---|-bank-branch" transform="translate(5.000000, 11.000000)" fill="#FFFFFF">
+                        <g id="Atoms/ico/normal-size/laptop-24" transform="translate(0.000000, 3.000000)">
+                            <path d="M14.1162502,0 C14.9557028,0 15.6493821,0.671011862 15.7107095,1.53109164 L15.7151163,1.65519432 L15.7151163,8.27503448 L16.6744186,8.27586207 C16.9393226,8.27586207 17.1624292,8.46884278 17.2294397,8.73154783 L17.2447456,8.81232781 L17.25,8.89655172 L17.25,10.2576348 C17.25,11.1857413 16.5357733,11.9324886 15.641722,11.9956687 L15.5187415,12 L2.48125855,12 C1.57186692,12 0.818193988,11.2936726 0.754376288,10.3830323 L0.75,10.2576348 L0.75,8.89655172 C0.75,8.58232075 0.9665367,8.32262817 1.24737989,8.28152827 L1.32545349,8.27586211 L2.28488372,8.27503448 L2.28488372,1.65519432 C2.28488372,0.820029401 2.87954311,0.135416963 3.64831532,0.0178441635 L3.76488443,0.00451310176 L3.88374982,0 L14.1162502,0 Z M7.36534884,9.51558621 L1.90116279,9.51641379 L1.90116279,10.2576348 C1.90116279,10.4990692 2.10962279,10.7155699 2.39385005,10.7529383 L2.48125855,10.7586207 L15.5187415,10.7586207 C15.8167065,10.7586207 16.0523349,10.5639991 16.0927139,10.329144 L16.0988372,10.2576348 L16.0988372,9.51641379 L10.6338837,9.51641379 L10.6139594,9.57917551 C10.5362901,9.7771976 10.3660343,9.92270771 10.161713,9.95259857 L10.0836101,9.95826474 L7.91638994,9.95826474 C7.67797632,9.95826474 7.4734186,9.80195036 7.3860406,9.57923538 L7.36534884,9.51558621 Z M14.1162502,1.24137931 L3.88374982,1.24137931 C3.65674148,1.24137931 3.47570847,1.39699385 3.44177195,1.58973481 L3.43604651,1.65519432 L3.43604651,8.27503448 L14.5639535,8.27503448 L14.5639535,1.65519432 C14.5639535,1.45558998 14.4056961,1.28008329 14.1901006,1.246978 L14.1162502,1.24137931 Z" id="🌈-Color"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

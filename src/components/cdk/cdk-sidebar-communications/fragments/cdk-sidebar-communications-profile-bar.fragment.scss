@@ -1,0 +1,78 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-sidebar-communications.scss, justo
+ * después de la importación del tema -> @forward 'cdk-sidebar-communications.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'utilities';
+@use 'settings';
+@use 'tools';
+
+$c-profile_height: 2.5rem;
+
+.c-profile {
+	display: flex;
+	align-items: center;
+	color: white;
+	height: $c-profile_height;
+
+	&--empty {
+		background: black;
+	}
+}
+
+.c-profile-avatar {
+	padding: 0;
+	margin: 0;
+	margin-left: 1.25rem;
+	width: 1.75rem;
+	height: 1.75rem;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 50%;
+	border: 1px solid tools.color(secondary, light);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.15rem;
+	background-color: tools.color(secondary, light);
+	color: tools.color(secondary, dark);
+
+	& > figcaption {
+		@include utilities.accessibility;
+	}
+}
+
+.c-profile-name {
+	color: white;
+	font-size: tools.rem(16);
+	font-family: settings.$font-bold-txt;
+	margin: 0 0.5rem;
+}
+
+.c-profile-close {
+	@include utilities.force-reset(button);
+	cursor: pointer;
+	margin-left: auto;
+	height: $c-profile_height;
+	width: $c-profile_height;
+	color: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: background-color 0.15s linear;
+	position: absolute;
+	right: 0;
+	background: black;
+}
+
+@include tools.only-mobile {
+	.c-profile-mobile {
+		.icon-close {
+			transform: scale(0.8);
+		}
+	}
+}

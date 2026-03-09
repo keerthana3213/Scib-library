@@ -1,0 +1,95 @@
+@use '@material/menu-surface/mdc-menu-surface';
+@use '@material/list/mdc-list';
+@use '@material/menu/mdc-menu';
+
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_ui-v2-menu-panel-font-family: #{settings.$font-regular-txt};
+	--_ui-v2-menu-panel-font-size: #{tools.rem(16px)};
+	--_ui-v2-menu-panel-line-height: #{tools.rem(23px)};
+	--_ui-v2-menu-panel-color-text: var(--theme-colors-black);
+	--_ui-v2-menu-panel-border-radius: #{tools.rem(4px)};
+	--_ui-v2-menu-panel-background-hover: var(--ui-v2-menu-panel-background-hover);
+	--_ui-v2-menu-panel-background: var(--theme-colors-white);
+	--_ui-v2-menu-panel-border: #{tools.rem(1px)} solid var(--theme-colors-sky-medium);
+	--_ui-v2-menu-panel-icon-color: var(--color-decorative-turquoise);
+}
+
+/** 
+ * Component
+ */
+:host {
+	color: var(--theme-colors-black);
+	@include tools.shadowIcons();
+	display: block;
+
+	.mdc-menu.mdc-menu-surface {
+		box-sizing: border-box;
+		min-width: tools.rem(210px);
+		border: var(--_ui-v2-menu-panel-border);
+		border-radius: var(--_ui-v2-menu-panel-border-radius);
+		background-color: var(--_ui-v2-menu-panel-background);
+		box-shadow: var(--theme-elevation-4);
+		left: initial !important;
+		right: var(--ui-v2-menu-panel-right, unset);
+		transition: transform 0s !important;
+
+		.mdc-list {
+			padding: tools.rem(8px);
+
+			.mdc-list-item {
+				&.item-list--disabled {
+					.mdc-list-item__icon,
+					.mdc-list-item__text {
+						color: var(--color-text-disabled);
+					}
+					cursor: auto;
+					&:hover,
+					&:focus {
+						background: none;
+					}
+				}
+				padding: tools.rem(8px);
+				border-radius: var(--_ui-v2-menu-panel-border-radius);
+				align-items: center;
+
+				&:hover,
+				&:focus {
+					background: var(--_ui-v2-menu-panel-background-hover);
+				}
+
+				&__text {
+					font-family: var(--_ui-v2-menu-panel-font-family);
+					font-size: var(--_ui-v2-menu-panel-font-size);
+					line-height: var(--_ui-v2-menu-panel-line-height);
+					color: var(--_ui-v2-menu-panel-color-text);
+				}
+
+				&__item-container {
+					width: tools.rem(20px);
+					height: tools.rem(20px);
+					margin-right: tools.rem(10px);
+				}
+
+				&__icon {
+					color: var(--_ui-v2-menu-panel-icon-color);
+					width: tools.rem(20px);
+					height: tools.rem(20px);
+					font-size: tools.rem(20px);
+				}
+			}
+		}
+	}
+}

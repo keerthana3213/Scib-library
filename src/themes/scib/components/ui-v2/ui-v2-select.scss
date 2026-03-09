@@ -1,0 +1,23 @@
+/**
+ * Public custom properties for accordion component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--ui-v2-select-color-primary: var(--theme-colors-primary, #257fa4);
+	--ui-v2-select-color-primary-bg: var(--theme-colors-sky-light);
+	--ui-v2-select-icon-color: var(--theme-colors-turquoise-dark);
+	--ui-v2-select-menu-position: relative;
+	--ui-v2-mdc-menu-position: absolute;
+	--ui-v2-select-alternative-value-font-size: var(--typescale-body-medium-default-size);
+	--ui-v2-select-alternative-value-font-family: var(--typescale-body-medium-default-font);
+	--ui-v2-select-alternative-label-font-size: var(--typescale-body-medium-default-size);
+	--ui-v2-select-alternative-label-weight: var(--typescale-body-medium-strong-weight);
+	--ui-v2-select-label-color: var(--color-text-default);
+	--ui-v2-select-value-text-color: var(--color-text-default);
+	--ui-v2-select-tertiary-hover-value: var(--color-surface-state-hover);
+	--ui-v2-text-field-fixed-icon-color: var(--color-action-alternative-default);
+	--ui-v2-select-option-text-color: var(--color-text-default);
+	--ui-v2-select-option-hover-bg-color: var(--color-surface-state-hover);
+}

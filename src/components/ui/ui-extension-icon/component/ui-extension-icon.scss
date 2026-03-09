@@ -1,0 +1,29 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-extension-icon.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+
+.ui-ei-extension {
+	position: absolute;
+	background: white;
+	font-family: settings.$font-bold-txt;
+	font-size: 8px;
+	color: tools.color(secondary, ultra-dark);
+	border: 1px solid tools.color(secondary, ultra-dark);
+	border-radius: 3px;
+	width: 20px;
+	text-align: center;
+	line-height: 1;
+	text-transform: uppercase;
+	top: 0.6rem;
+	left: 0;
+	transform: translateX(5%);
+}
+
+.ui-ei-container {
+	position: relative;
+}

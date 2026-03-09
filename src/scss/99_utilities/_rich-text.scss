@@ -1,0 +1,91 @@
+@use '../01_settings/settings';
+@use '../02_tools/tools';
+
+/**
+   *@description: this file contains the base properties of the rich text extend.
+**/
+
+.u-rich-text {
+	font-family: settings.$font-regular-txt;
+	font-size: 1rem;
+
+	strong {
+		font-family: settings.$font-bold-txt;
+	}
+
+	p {
+		margin-bottom: 0.5rem;
+		word-break: var(--ui-rich-editor-word-break);
+	}
+
+	em {
+		font-family: settings.$font-italic-txt;
+	}
+
+	strong em,
+	em strong {
+		font-family: settings.$font-bold-txt;
+	}
+
+	blockquote {
+		border-left: tools.rem(4) solid tools.color(secondary, medium);
+		margin-bottom: 0.25rem;
+		margin-top: 0.25rem;
+		padding-left: 1rem;
+	}
+
+	ol,
+	ul {
+		padding-left: 1.5em;
+	}
+
+	ol li {
+		counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+		counter-increment: list-0;
+		list-style-type: none;
+		padding-left: 1.5em;
+		&:before {
+			content: counter(list-0, decimal) '. ';
+			display: inline-block;
+			white-space: nowrap;
+			width: 1.2em;
+			margin-left: -1.5em;
+			margin-right: 0.3em;
+			text-align: right;
+		}
+	}
+
+	ul li {
+		padding-left: 1.5em;
+		&:before {
+			content: '\2022';
+			margin-left: -1.5em;
+			margin-right: 0.3em;
+			text-align: right;
+			display: inline-block;
+			white-space: nowrap;
+			width: 1.2em;
+			text-align: center;
+			padding-left: 3px;
+			box-sizing: border-box;
+		}
+	}
+
+	.ql-align-center {
+		text-align: center;
+	}
+
+	.ql-align-right {
+		text-align: right;
+	}
+
+	.ql-size-small {
+		font-size: 0.75em;
+	}
+	.ql-size-large {
+		font-size: 1.5em;
+	}
+	.ql-size-huge {
+		font-size: 2.5em;
+	}
+}

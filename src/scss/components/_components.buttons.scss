@@ -1,0 +1,275 @@
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+/**
+   *@description: this file stylizes the generic component button and his differents variants
+**/
+
+.wc-btn {
+	@extend %button;
+	@include tools.btn-schema(basic);
+	display: inline-block;
+	margin: 0 0 tools.rem(20) tools.rem(20);
+	&:first-child {
+		margin-left: 0;
+	}
+	&:hover {
+		opacity: 0.7;
+	}
+
+	&--icon {
+		width: tools.rem(30);
+		height: tools.rem(30);
+		min-width: tools.rem(30);
+		margin: 0;
+		padding: 0;
+		vertical-align: middle;
+		border: 0;
+		font-size: 0;
+		background-color: transparent;
+	}
+	&--brd {
+		@include tools.btn-schema(brd);
+	}
+
+	&--one {
+		max-width: tools.rem(110);
+		margin: 0 0 0 tools.rem(20);
+	}
+
+	&--large {
+		max-width: tools.rem(205);
+		margin: 0;
+	}
+
+	&--close {
+		margin-left: tools.rem(10);
+		vertical-align: top;
+		background: url('#{settings.$icons_path}/close.svg') no-repeat center center;
+		background-size: 55%;
+	}
+
+	&--edit {
+		background: url('#{settings.$icons_path}/edit.svg') no-repeat center center;
+	}
+
+	&--view {
+		background: url('#{settings.$icons_path}/view.svg') no-repeat center center;
+	}
+
+	&--unactive {
+		background: url('#{settings.$icons_path}/unactive.svg') no-repeat center center;
+	}
+
+	&--history {
+		background: url('#{settings.$icons_path}/history.svg') no-repeat center center;
+	}
+
+	&--thin {
+		display: block;
+		margin: 0 0 tools.rem(20);
+		text-transform: uppercase;
+		padding: tools.rem(8) tools.rem(20);
+		min-width: auto;
+	}
+
+	&--delete {
+		width: tools.rem(40);
+		height: tools.rem(40);
+		margin: 0 0 tools.rem(20) tools.rem(20);
+		border-radius: tools.rem(20);
+		border: tools.rem(1) solid;
+		background: url('#{settings.$icons_path}/delete.svg') no-repeat center;
+		background-color: white;
+	}
+
+	&--deletec {
+		width: tools.rem(40);
+		height: tools.rem(40);
+		background: url('#{settings.$icons_path}/delete.svg') no-repeat center;
+	}
+
+	&--calendar {
+		background: url('#{settings.$icons_path}/calendar.svg') no-repeat center center;
+	}
+
+	&--arrowdown {
+		background: url('#{settings.$icons_path}/arrow--red.svg') no-repeat center center;
+	}
+
+	&.open {
+		background: url('#{settings.$icons_path}/arrow--red.svg') no-repeat center center;
+		transform: rotate(180deg);
+	}
+
+	&--disabled {
+		background: tools.color(secondary, thirty);
+		color: white;
+		cursor: not-allowed;
+	}
+
+	&--alignright {
+		text-align: right;
+		.wc-btn__span {
+			display: inline-block;
+			width: calc(100% - 130px);
+			text-align: left;
+			font-size: tools.rem(10);
+		}
+	}
+
+	&--aligncenter {
+		text-align: center;
+	}
+
+	&--alignleft {
+		text-align: left;
+	}
+
+	&--pills {
+		display: inline-block;
+		width: auto;
+		margin: 0 0 tools.rem(10) tools.rem(15);
+		padding: tools.rem(8) tools.rem(20);
+		border-radius: tools.rem(20);
+		border: tools.rem(1) solid tools.color(secondary, light);
+		font-size: tools.rem(16);
+		line-height: tools.rem(18);
+		background: white;
+		color: black;
+		cursor: pointer;
+		&.wc-btn--active {
+			background: tools.color(primary, base);
+			border-color: tools.color(primary, base);
+			color: white;
+		}
+	}
+
+	&--update {
+		box-sizing: border-box;
+		display: inline-block;
+		width: tools.rem(200);
+		border-radius: tools.rem(20);
+		padding: tools.rem(10) tools.rem(20);
+		text-align: center;
+		text-transform: uppercase;
+		background: tools.color(primary, base);
+		color: white;
+		vertical-align: top;
+		&:hover {
+			cursor: pointer;
+		}
+		.wc-btn__span {
+			display: block;
+			font-size: tools.rem(12);
+			line-height: tools.rem(20);
+			text-align: center;
+			color: white;
+		}
+	}
+
+	&--selected {
+		@extend %ellipsis;
+		width: calc(100% - 72%);
+		padding: tools.rem(10) tools.rem(20);
+		border: tools.rem(1) solid tools.color(primary, base);
+		background: white;
+		.wc-btn__span {
+			@extend %ellipsis;
+			line-height: tools.rem(20);
+			color: black;
+		}
+	}
+
+	&--deletecv {
+		margin: 0;
+	}
+
+	&--reset {
+		padding: tools.rem(5) tools.rem(10) tools.rem(5) tools.rem(15);
+		border: tools.rem(1) solid tools.color(primary, base);
+		background: white;
+		cursor: pointer;
+		.wc-btn__span {
+			display: inline-block;
+			position: relative;
+			line-height: tools.rem(30);
+			vertical-align: middle;
+			color: black;
+			&::after {
+				content: '';
+				position: relative;
+				display: inline-block;
+				top: 0;
+				right: 0;
+				width: tools.rem(30);
+				height: tools.rem(30);
+				margin-left: tools.rem(5);
+				background: url('#{settings.$icons_path}/delete.svg') no-repeat center;
+				vertical-align: middle;
+			}
+		}
+	}
+
+	&--lock {
+		opacity: 0.3;
+		&:hover {
+			opacity: 0.3;
+		}
+	}
+}
+
+@include tools.media-query('sm') {
+	.wc-btn {
+		padding: tools.rem(10);
+		&--one {
+			max-width: tools.rem(110);
+		}
+
+		&--thin {
+			padding: tools.rem(8) tools.rem(20);
+		}
+
+		&--selected {
+			width: calc(100% - 72%);
+		}
+	}
+}
+
+@include tools.media-query('xs') {
+	.wc-btn {
+		padding: tools.rem(10);
+
+		&--one {
+			width: 100%;
+			max-width: 100%;
+			margin: 0;
+			text-align: center;
+		}
+
+		&--delete {
+			min-width: inherit;
+		}
+
+		&--alignleft {
+			text-align: center;
+		}
+
+		&--update {
+			width: 100%;
+		}
+
+		&--large {
+			max-width: 100%;
+		}
+
+		&--thin {
+			padding: tools.rem(8) tools.rem(20);
+		}
+
+		&--selected {
+			width: calc(100% - 40px);
+		}
+	}
+}

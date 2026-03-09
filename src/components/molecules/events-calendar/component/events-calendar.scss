@@ -1,0 +1,51 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_molecules-events-calendar-header-margin: var(--molecules-events-calendar-header-margin);
+	--_molecules-events-calendar-time-font-family: var(--molecules-events-calendar-time-font-family);
+	--_molecules-events-calendar-time-font-size: var(--molecules-events-calendar-time-font-size);
+}
+
+/** 
+ * Component
+ */
+
+:host {
+	display: flex;
+	flex-direction: column;
+
+	nav,
+	header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: tools.rem(0 16);
+	}
+
+	header {
+		margin: var(--_molecules-events-calendar-header-margin);
+	}
+
+	nav {
+		flex: 1 0 auto;
+		justify-content: flex-end;
+		gap: tools.rem(0 8);
+	}
+
+	time {
+		text-transform: capitalize;
+		font-family: var(--_molecules-events-calendar-time-font-family);
+		font-size: var(--_molecules-events-calendar-time-font-size);
+	}
+}

@@ -1,0 +1,13 @@
+/**
+ * Public custom properties for carousel component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-carousel-bg-color: var(--theme-colors-white, magenta);
+	--atoms-carousel-navigation-color: var(--color-icon-default);
+	--atoms-carousel-top-btn: 25%;
+	--atoms-carousel-position-prev-btn: -1%;
+	--atoms-carousel-position-next-btn: 0%;
+}

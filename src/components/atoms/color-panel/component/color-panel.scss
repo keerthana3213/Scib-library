@@ -1,0 +1,98 @@
+@use 'settings';
+@use 'tools';
+@use 'objects';
+
+:host {
+	--_ui-v2-color-panel-card-sucess-bg-color: var(--color-background-success);
+	--_ui-v2-color-panel-card-info-bg-color: var(--color-background-info);
+	--_ui-v2-color-panel-card-warning-bg-color: var(--color-background-warning);
+	--_ui-v2-color-panel-card-error-bg-color: var(--color-background-error);
+
+	@include tools.shadowIcons();
+	display: block;
+
+	.color-panel {
+		display: flex;
+		flex-flow: column wrap;
+		gap: tools.rem(9);
+
+		&__title,
+		&__description,
+		&__action {
+			margin: 0;
+			text-align: left;
+			opacity: 100%;
+		}
+
+		&__title {
+			font: var(--headline-small);
+			font-family: var(--typescale-headline-small-font);
+			font-size: var(--typescale-headline-small-size);
+			line-height: var(--typescale-headline-small-line-height);
+			color: var(--color-text-default);
+			font-style: var(--typescale-headline-small-style);
+			font-weight: var(--typescale-headline-small-weight);
+
+			&:first-letter {
+				text-transform: uppercase;
+			}
+		}
+
+		&__description {
+			font: var(--body-medium-default);
+			font-family: var(--typescale-body-medium-default-font);
+			font-size: var(--typescale-body-medium-default-size);
+			line-height: var(--typescale-body-medium-default-line-height);
+			color: var(--color-text-default);
+			font-style: var(--typescale-body-medium-default-style);
+			font-weight: var(--typescale-body-medium-defaultl-weight);
+		}
+
+		&__content {
+			margin: 0 var(--size-spacing-02);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 100%;
+		}
+
+		&__separation {
+			margin-bottom: var(--size-spacing-02);
+		}
+
+		&__card {
+			display: flex;
+			box-sizing: border-box;
+			box-shadow: var(--elevation-flat);
+			padding: var(--size-spacing-06);
+			border-radius: var(--size-border-radius-03);
+			background-color: var(--_ui-v2-color-panel-card-bg-color);
+		}
+
+		&__action {
+			cursor: pointer;
+			font: var(--action-link);
+			font-family: var(--typescale-action-link-font);
+			font-size: var(--typescale-action-link-size);
+			line-height: var(--typescale-action-link-line-height);
+			color: var(--color-action-alternative-default);
+			font-style: var(--typescale-action-link-style);
+			font-weight: var(--typescale-action-link-weight);
+
+			&:hover {
+				color: var(--color-action-alternative-hover);
+			}
+		}
+
+		&__delete {
+			--icon-content: var(--theme-scib-icon-close);
+			color: var(--color-icon-default);
+			cursor: pointer;
+		}
+	}
+
+	.icons {
+		width: tools.rem(24);
+		height: tools.rem(24);
+	}
+}

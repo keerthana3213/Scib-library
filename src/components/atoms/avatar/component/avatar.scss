@@ -1,0 +1,156 @@
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host {
+	/** Common props for all variants */
+	--_atoms-avatar-size: var(--atoms-avatar-size, 28px);
+	--_atoms-avatar-font-size: var(--atoms-avatar-font-size);
+	--_atoms-avatar-border-width: var(--atoms-avatar-border-width, 2px);
+	--_atoms-avatar-border-style: var(--atoms-avatar-border-style, solid);
+	--_atoms-avatar-border-radius: var(--atoms-avatar-border-radius, 50%);
+	--_atoms-avatar-color-font: var(--atoms-avatar-color-font);
+	--_atoms-avatar-bg-color: var(--atoms-avatar-bg-color);
+}
+
+:host([variant='white']) {
+	/** Specific prop for white variant */
+	--_atoms-avatar-color-font: var(--atoms-avatar-color-font);
+	--_atoms-avatar-bg-color: var(--atoms-avatar-bg-color);
+}
+
+:host([variant='green'], [variant='white']) {
+	/** Specific prop for green variant */
+	--_atoms-avatar-color-font: var(--atoms-avatar-color-font, --color-avatar-on-green);
+	--_atoms-avatar-bg-color: var(--atoms-avatar-bg-color, --color-avatar-green);
+}
+
+:host([variant='yellow'], [variant='white']) {
+	/** Specific prop for yellow variant */
+	--_atoms-avatar-color-font: var(--color-avatar-on-yellow);
+	--_atoms-avatar-bg-color: var(--color-avatar-yellow);
+}
+
+:host([variant='red'], [variant='white']) {
+	/** Specific prop for red variant */
+	--_atoms-avatar-color-font: var(--color-avatar-on-red);
+	--_atoms-avatar-bg-color: var(--color-avatar-red);
+}
+
+:host([variant='purple'], [variant='white']) {
+	/** Specific prop for purple variant */
+	--_atoms-avatar-color-font: var(--color-avatar-on-purple);
+	--_atoms-avatar-bg-color: var(--color-avatar-purple);
+}
+
+:host([variant='brown'], [variant='white']) {
+	/** Specific prop for brown variant */
+	--_atoms-avatar-color-font: var(--color-avatar-on-brown);
+	--_atoms-avatar-bg-color: var(--color-avatar-brown);
+}
+
+:host([variant='grey'], [variant='white']) {
+	/** Specific prop for grey variant */
+	--_atoms-avatar-color-font: var(--color-avatar-on-grey);
+	--_atoms-avatar-bg-color: var(--color-avatar-grey);
+}
+
+/**Deprecated variants**/
+
+:host([variant='red']) {
+	/** Specific propr for red variant */
+	--_atoms-avatar-border-color: var(--theme-colors-santander-base, #ec0000);
+	--_atoms-avatar-color-font: var(--atoms-avatar-color-font, #444444);
+	--_atoms-avatar-bg-color: var(--atoms-avatar-bg-color, $colors.tertiary.light);
+}
+
+:host([variant='none']) {
+	/** Specific propr for red variant */
+	--_atoms-avatar-border-color: var(--theme-colors-grey-light, #f2f2f2);
+	--_atoms-avatar-color-font: var(--atoms-avatar-color-font, #444444);
+	--_atoms-avatar-bg-color: var(--atoms-avatar-bg-color, $colors.tertiary.light);
+}
+
+:host([variant='blue']) {
+	/** Specific propr for blue variant */
+	--_atoms-avatar-border-radius: 30%;
+	--_atoms-avatar-color-font: limeGreen;
+	--_atoms-avatar-border-color: cyan;
+	--_atoms-avatar-bg-color: var(--atoms-avatar-bg-color, $colors.tertiary.light);
+}
+/** 
+ * 
+ */
+:host([type='md']) {
+	--_atoms-avatar-size: 32px;
+}
+
+/** 
+ * Component
+ */
+:host {
+	@include tools.shadowIcons();
+	display: block;
+
+	.avatar {
+		/* Center the content */
+		position: relative;
+		display: flex;
+		align-items: center;
+		align-content: flex-start;
+		justify-content: space-between;
+
+		/* Used to position the content */
+		position: relative;
+
+		/* Colors */
+		box-sizing: border-box;
+
+		/* Size Avatar */
+		height: var(--_atoms-avatar-size);
+		width: var(--_atoms-avatar-size);
+
+		&__border {
+			border: (var(--_atoms-avatar-border-width) var(--_atoms-avatar-border-style) var(--_atoms-avatar-border-color));
+			border-radius: var(--_atoms-avatar-border-radius);
+			background-color: var(--_atoms-avatar-bg-color);
+		}
+
+		&__letters {
+			color: var(--_atoms-avatar-color-font);
+			font-family: var(--typescale-body-large-strong-font);
+			font-size: var(--_atoms-avatar-font-size);
+			line-height: var(--typescale-body-large-strong-line-height);
+			font-weight: var(--typescale-body-large-strong-weight);
+			position: relative;
+			display: flex;
+			align-content: space-around;
+			justify-content: flex-start;
+			align-items: baseline;
+			text-align: center;
+			margin: 0 auto;
+		}
+
+		&__img {
+			/* Rounded border */
+			box-sizing: border-box;
+			height: calc(var(--_atoms-avatar-size) - var(--_atoms-avatar-border-width));
+			width: calc(var(--_atoms-avatar-size) - var(--_atoms-avatar-border-width));
+		}
+	}
+
+	.badge {
+		position: absolute;
+		top: -6px;
+		left: 18px;
+	}
+}

@@ -1,0 +1,156 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-send-email-modal.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_cdk-send-email-modal-bg-color);
+}
+
+.cdk-sendEmail::-webkit-scrollbar {
+	display: none;
+}
+.cdk-sendEmail {
+	font-family: settings.$font-regular-txt;
+	padding: 0;
+	max-width: tools.rem(297);
+	max-height: 80vh;
+	overflow-y: auto;
+
+	&__title {
+		margin-top: 3%;
+		display: block;
+		margin: 0;
+		font-size: tools.rem(20);
+		line-height: tools.rem(28);
+		color: black;
+
+		strong {
+			font-family: settings.$font-bold-txt;
+		}
+	}
+
+	&__member-container {
+		position: relative;
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+
+	&__footer {
+		.sc-scib-ui-button-h {
+			width: 100%;
+			margin: tools.rem(0 10);
+		}
+		&__client {
+			justify-content: flex-end;
+		}
+		&__employee {
+			justify-content: space-around;
+		}
+	}
+
+	&__notice {
+		font-size: tools.rem(13);
+		line-height: tools.rem(19);
+		color: black;
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		align-items: flex-end;
+		width: 100%;
+		/* Following three lines are for ux problems with long names */
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+
+		& .ui-checkbox__input.sc-scib-ui-checkbox:not(:checked) + .ui-checkbox__label.sc-scib-ui-checkbox:before,
+		.ui-checkbox__input.sc-scib-ui-checkbox:checked + .ui-checkbox__label.sc-scib-ui-checkbox:before {
+			top: calc(50% - 15px);
+		}
+		@include tools.tablet {
+			display: inline-flex;
+			width: calc((100% - 140px) / 2);
+		}
+	}
+}
+
+.members-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.toggle-select-all,
+.toggle-select-all:hover {
+	color: #ec0000;
+	cursor: pointer;
+}
+
+.cdk-sendEmail__list {
+	margin-top: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+	.cdk-sendEmail {
+		margin-bottom: tools.rem(30);
+		padding: tools.rem(26 26 26);
+		min-width: tools.rem(650);
+
+		&__title {
+			font-size: tools.rem(28);
+			line-height: tools.rem(34);
+		}
+
+		&__footer {
+			display: flex;
+			justify-content: space-between;
+			padding-top: tools.rem(16);
+			align-items: center;
+
+			.sc-scib-ui-button-h {
+				margin-right: auto;
+				margin-left: tools.rem(24);
+				max-width: tools.rem(200);
+			}
+
+			&__client {
+				justify-content: flex-end;
+			}
+			&__employee {
+				justify-content: space-around;
+			}
+		}
+
+		&__buttons {
+			display: flex;
+		}
+
+		&__list {
+			flex-direction: row;
+			justify-content: space-between;
+			max-width: tools.rem(650);
+		}
+	}
+
+	scib-ui-checkbox {
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.cdk-sendEmail {
+		min-width: tools.rem(722);
+
+		&__list {
+			max-width: tools.rem(720);
+		}
+	}
+}

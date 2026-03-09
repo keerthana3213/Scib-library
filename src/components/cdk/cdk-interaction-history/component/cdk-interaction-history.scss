@@ -1,0 +1,16 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-interaction-history.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_cdk-interaction-history-bg-color);
+}
+
+.cdk-interaction-history {
+	&__title {
+		font-weight: bolder;
+		margin: tools.rem(20 0);
+	}
+}

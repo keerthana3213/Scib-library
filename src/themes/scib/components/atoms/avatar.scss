@@ -1,0 +1,15 @@
+/**
+ * Public custom properties for avatar component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-avatar-bg-color: var(--color-avatar-default);
+	--atoms-avatar-border-width: 2px;
+	--atoms-avatar-border-radius: 50%;
+	--atoms-avatar-border-style: solid;
+	--atoms-avatar-size: 28px;
+	--atoms-avatar-font-size: var(--typescale-body-large-strong-size);
+	--atoms-avatar-color-font: var(--color-avatar-on-default);
+}

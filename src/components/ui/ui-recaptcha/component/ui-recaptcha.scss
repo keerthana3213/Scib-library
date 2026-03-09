@@ -1,0 +1,8 @@
+@use 'settings';
+
+@forward 'ui-recaptcha.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_ui-recaptcha-bg-color);
+}

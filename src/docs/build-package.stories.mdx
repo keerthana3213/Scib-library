@@ -1,0 +1,24 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Documentation/Paquete para producción" />
+
+## Paquete para producción
+
+Pasos para generar el paquete para producción:
+
+1. Instalar modulos
+
+```bash
+npm install
+```
+
+2. Generar paquete
+
+```bash
+npm run pack
+```
+
+El paquete se generará en la carpeta raiz con el nombre scib-ui-jit.vXXXXXXXX_XXXX.tgz en el que las 'X' corresponden a la fecha y hora en formato aaaaMMdd_hhmm.
+
+Este fichero también se generará automáticamente en cuanto se haga un merge a la rama de develop y se tendrá acceso a él en la dirección:
+[Last version of packages (dev.corp)](https://digitalplatform.scib.dev.corp/storybook/assets/index.html)

@@ -1,0 +1,66 @@
+@use 'utilities';
+@use 'objects';
+@use 'tools';
+
+/**
+   *@description: this file stylizes the generic component radio-tab
+**/
+
+.wc-radiotab {
+	margin-bottom: tools.rem(15);
+	border-radius: tools.rem(20);
+	background: tools.color(secondary, light);
+
+	.wc-radiotab__input {
+		&:checked + .wc-radiotab__label {
+			background: tools.color(primary, base);
+			color: white;
+			box-shadow: 0 tools.rem(4) tools.rem(4) 0 rgba(0, 0, 0, 0.15);
+		}
+
+		&:checked {
+			&:focus + .wc-radiotab__label {
+				outline: -webkit-focus-ring-color auto tools.rem(5);
+			}
+		}
+	}
+
+	&__fieldset {
+		@extend %resetfontspace;
+	}
+
+	&__label {
+		display: inline-block;
+		width: calc(50% - 20px);
+		margin: 0;
+		padding: tools.rem(10);
+		border-radius: tools.rem(20);
+		font-size: tools.rem(11);
+		line-height: tools.rem(15);
+		font-weight: bold;
+		text-align: center;
+		word-break: normal;
+		overflow-wrap: break-word;
+		color: black;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__input {
+		@include utilities.accessibility;
+		display: inline-block;
+	}
+
+	&--form {
+		display: inline-block;
+		width: auto;
+		margin: tools.rem(10) 0 0;
+	}
+}
+
+@include tools.media-query('xs') {
+	.wc-radiotab {
+		margin-bottom: tools.rem(20);
+	}
+}

@@ -1,0 +1,35 @@
+@use 'tools';
+
+/**
+   *@description: this file stylizes the generic component spinner
+**/
+.wc-spinner[data-type='fullscreen'] {
+	display: none;
+	.wc-spinner__figure {
+		width: tools.rem(50);
+		height: tools.rem(50);
+		margin: 20% auto;
+	}
+
+	&.active {
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.7);
+		position: absolute;
+		top: 0;
+		left: 0;
+		text-align: center;
+		z-index: tools.z-index(overlay);
+		margin: 0;
+		overflow: hidden;
+	}
+}
+
+@include tools.media-query('xs') {
+	.wc-spinner[data-type='fullscreen'] {
+		.wc-spinner__figure {
+			margin: 50% auto;
+		}
+	}
+}

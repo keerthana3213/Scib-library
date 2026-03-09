@@ -1,0 +1,6 @@
+@forward '../../../../themes/scib/components/ui/ui-list.scss';
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_ui-list-bg-color: var(--ui-list-bg-color, white);
+	--_ui-list-width-select: #{var(--ui-list-width-select, 200%)};
+}

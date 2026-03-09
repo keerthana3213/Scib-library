@@ -1,0 +1,134 @@
+@use 'settings';
+@use 'tools';
+@use 'utilities';
+
+@forward 'ui-tapbar.theme.scss';
+
+.ui-tapbar {
+	width: 100%;
+	display: flex;
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		background: tools.color(secondary, medium);
+		flex: 1 1 100%;
+		position: relative;
+		border-left: tools.rem(1) solid white;
+
+		&:hover:not(:disabled) {
+			background: tools.color(secondary, light);
+		}
+
+		&:first-of-type {
+			border-right: tools.rem(1) solid white;
+			border-left: none;
+		}
+
+		&--active {
+			background: tools.color(secondary, light);
+			.ui-tapbar__icon {
+				color: tools.color(primary, base);
+			}
+			.ui-tapbar__text {
+				color: black;
+			}
+			.ui-tapbar__bubble {
+				background: tools.color(primary, base);
+			}
+			.ui-tapbar__action {
+				.c-button.--only-one-icon.sc-scib-ui-button {
+					&:hover {
+						color: tools.color(primary, base);
+					}
+				}
+			}
+		}
+	}
+
+	&__item {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		@include utilities.force-reset(button);
+		outline: none;
+		color: tools.color(secondary, dark);
+		padding: tools.rem(8 16 9);
+
+		&:not(:disabled) {
+			cursor: pointer;
+		}
+	}
+
+	&__icon.u-icon {
+		display: none;
+		font-size: tools.rem(24);
+		margin-right: tools.rem(8);
+
+		@include tools.desktop {
+			display: flex;
+		}
+	}
+
+	&__text {
+		font-family: settings.$font-bold-txt;
+		font-size: tools.rem(14);
+		line-height: tools.rem(20);
+		color: tools.color(secondary, dark);
+		margin-right: tools.rem(4);
+
+		@include tools.desktop {
+			font-size: tools.rem(16);
+			line-height: tools.rem(23);
+			margin-right: tools.rem(8);
+		}
+	}
+
+	&__bubble {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-width: tools.rem(10);
+		height: tools.rem(18);
+		background: tools.color(secondary, dark);
+		border-radius: 50%;
+		padding: tools.rem(0 4);
+		margin-top: tools.rem(1);
+		box-sizing: content-box;
+
+		&--more {
+			border-radius: tools.rem(10);
+		}
+	}
+
+	&__notification {
+		display: inline-block;
+		font-family: settings.$font-regular-txt;
+		font-size: tools.rem(12);
+		color: white;
+	}
+
+	&__action {
+		.c-button.--only-one-icon.sc-scib-ui-button {
+			color: tools.color(secondary, ultra-dark);
+		}
+
+		&--active {
+			.c-button.--only-one-icon.sc-scib-ui-button {
+				color: tools.color(primary, base);
+			}
+		}
+	}
+
+	&__option-menu {
+		display: none;
+		position: absolute;
+		top: 100%;
+		right: 0;
+
+		&--open {
+			display: block;
+		}
+	}
+}

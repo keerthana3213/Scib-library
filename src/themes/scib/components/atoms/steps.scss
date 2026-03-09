@@ -1,0 +1,13 @@
+/**
+ * Public custom properties for steps component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-steps-bg-color: var(--theme-colors-sky-base, #deedf2);
+	--atoms-steps-color: var(--theme-colors-grey-dark, #767676);
+	--atoms-steps-active-color: var(--theme-colors-black, #000000);
+	--atoms-steps-margin-bottom: 24px;
+	--atoms-steps-font-weight: bold;
+}

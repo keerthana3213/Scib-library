@@ -1,0 +1,126 @@
+@use 'settings';
+@use 'tools';
+@forward 'ui-toast.theme.scss';
+
+:host {
+	background-color: var(--_ui-toast-bg-color);
+}
+
+.ui-toast {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	box-sizing: border-box;
+	position: fixed;
+	padding: tools.rem(16);
+	border-radius: tools.rem(4);
+	// box-shadow: 0 0 10px #999;
+	color: tools.color(secondary, ultra-dark);
+	font-size: tools.rem(16);
+	font-family: settings.$font-bold-txt;
+	transition: 0.3s ease-in-out;
+	opacity: 0.9;
+
+	@media (min-width: 768px) {
+		top: tools.rem(8);
+		right: tools.rem(32);
+		width: tools.rem(768);
+	}
+
+	@media (max-width: 768px) and (min-width: 320px) {
+		top: tools.rem(0);
+		right: tools.rem(0);
+		left: tools.rem(0);
+		width: 100%;
+		min-width: tools.rem(320);
+	}
+
+	&__text {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__icon {
+		margin-top: tools.rem(2);
+		font-size: tools.rem(20);
+	}
+
+	p {
+		margin-right: auto;
+		margin-left: tools.rem(12);
+		align-self: center;
+		line-height: tools.rem(24);
+	}
+
+	button {
+		outline: none;
+		border: transparent;
+		background-color: transparent;
+		margin-left: auto;
+		font-size: tools.rem(20);
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		@include tools.tablet {
+			font-size: tools.rem(24);
+		}
+	}
+
+	.icon-circle-warning:before {
+		color: tools.color(quintenary, dark);
+	}
+
+	.icon-circle-error:before {
+		color: tools.color(primary, base);
+	}
+
+	.icon-circle-info {
+		color: #257fa4;
+	}
+
+	.icon-circle-success:before {
+		color: #3a8340;
+	}
+}
+.--success {
+	background-color: #f9fcfd; //ultra-light
+	border: solid tools.rem(2) #3a8340; //base-dark
+	.icon-close {
+		color: #3a8340;
+	}
+}
+
+.--warning {
+	background-color: #fffaeb; //ultra-light
+	border: solid tools.rem(2) tools.color(quintenary, dark);
+	.icon-close {
+		color: tools.color(quintenary, dark);
+	}
+}
+
+.--error {
+	background-color: tools.color(primary, ultra-light);
+	border: solid tools.rem(2) tools.color(primary, base);
+	.icon-close {
+		color: tools.color(primary, base);
+	}
+}
+
+.--info {
+	background-color: #f9fcfd; //super-light
+	border: solid tools.rem(2) #257fa4; //dark-medium
+	.icon-close {
+		color: #257fa4;
+	}
+}
+
+@keyframes animation {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}

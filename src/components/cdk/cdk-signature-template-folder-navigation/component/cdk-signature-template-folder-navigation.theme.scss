@@ -1,0 +1,11 @@
+@use 'tools';
+
+:host([variant='white']) {
+	/** Specific propr for white variant */
+	--_cdk-signature-template-folder-navigation-bg-color: var(--cdk-signature-template-folder-navigation-bg-color, white);
+}
+
+:host([variant='blue']) {
+	/** Specific propr for blue variant */
+	--_cdk-signature-template-folder-navigation-bg-color: var(--cdk-signature-template-folder-navigation-bg-color, blue);
+}

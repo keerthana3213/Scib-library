@@ -1,0 +1,138 @@
+@use 'tools';
+
+@forward 'ecmv-modal-status.theme.scss';
+
+:host {
+	display: block;
+}
+
+.modal {
+	display: block; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 5;
+	padding-top: 15%; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-hide {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 15%; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+	box-sizing: border-box;
+	margin: auto;
+	padding: tools.rem(70 12 30);
+	border: 1px solid tools.color(secondary, medium);
+	width: tools.rem(500);
+	border-radius: tools.rem(8);
+	background: white;
+}
+
+/* The Close Button */
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.checkItem {
+	background: #63ba68;
+	border-radius: 165px;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	top: -126px;
+	margin: auto;
+}
+
+.checkItemAttention {
+	background: #ffcc33;
+	border-radius: 165px;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	top: -126px;
+	margin: auto;
+}
+
+.image-position {
+	width: 100px;
+	margin: 26px;
+}
+
+.image-position-alert {
+	width: 100px;
+	margin: 28px;
+	position: relative;
+	top: -30%;
+}
+
+.text-modal {
+	margin-top: -115px;
+	text-align: center;
+}
+
+.color-text {
+	color: #767676;
+	font-weight: 300;
+	margin: 5px;
+}
+
+// .button-style{
+//   width:50%;
+//   margin:auto;
+// }
+
+.button-group {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin-top: tools.rem(25);
+
+	button {
+		margin: 0;
+	}
+}
+
+.button-style {
+	display: inline-block;
+	margin-right: 20px;
+	margin-left: 20px;
+
+	button {
+		margin-right: 24px;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+
+h1 {
+	font-weight: 400;
+}

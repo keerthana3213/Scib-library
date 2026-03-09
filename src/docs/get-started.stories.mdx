@@ -1,0 +1,270 @@
+import { Meta } from '@storybook/blocks';
+import Code from '../assets/docs/code-brackets.svg';
+import Plugin from '../assets/docs/plugin.svg';
+import StackAlt from '../assets/docs/stackalt.svg';
+import Repo from '../assets/docs/repo.svg';
+import Comments from '../assets/docs/comments.svg';
+
+<Meta title="Get Started/Get Started" />
+
+<style>
+  {`
+    .link-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 10px;
+      margin-bottom: 24px;
+    }
+    @media (min-width: 620px) {
+      .link-list {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px;
+      }
+    }
+    .link-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 16px 20px;
+      border: 1px solid #0001;
+      border-radius: 6px;
+      background: #fff;
+      transition: box-shadow 0.2s, border 0.2s;
+      color: #222;
+      margin-bottom: 0;
+      gap: 16px;
+    }
+    .link-item img {
+      height: 32px;
+      width: 32px;
+      min-width: 32px;
+      min-height: 32px;
+      object-fit: contain;
+      margin-right: 12px;
+      border-radius: 4px;
+      background: #f8f8f8;
+      box-shadow: 0 1px 2px #0001;
+    }
+    .link-item strong {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .link-item span {
+      font-size: 15px;
+      line-height: 20px;
+    }
+  `}
+</style>
+
+<div style={{display:'flex', justifyContent:'flex-end', marginBottom:'24px'}}>
+  <select id="lang-selector" style={{padding:'6px 12px', borderRadius:'6px', border:'1px solid #ccc', fontSize:'14px'}} onChange={(e) => {
+    const lang = e.target.value;
+    document.documentElement.setAttribute('lang', lang);
+    document.body.setAttribute('lang', lang);
+    Array.from(document.querySelectorAll('.lang-block')).forEach(block => {
+      block.style.display = block.getAttribute('data-lang') === lang ? 'block' : 'none';
+    });
+  }} defaultValue="es">
+    <option value="es">🇪🇸 Español</option>
+    <option value="en">🇬🇧 English</option>
+  </select>
+</div>
+
+<div className="lang-block" data-lang="es" style={{display:'block'}}>
+> **ℹ️ Importante:** La integración de Angular solo es compatible a partir de Angular v14+. Si usas una versión anterior, deberás actualizar Angular o utilizar el modelo anterior de integración importando los ficheros ts en tu tsconfig.json`.
+
+# 🚀 ¡Bienvenido a @scib/ui-kit!
+
+La librería de componentes UI para tus proyectos Angular, React y más. Todo lo que necesitas para empezar, en un solo lugar.
+
+---
+
+## 1️⃣ Instalación rápida
+
+```bash
+npm install -D @scib/ui-kit@^3.0.0
+```
+
+---
+
+## 2️⃣ Ejemplo básico
+
+<div style={{display:'flex', flexDirection:'column', gap:'24px', width:'100%'}}>
+  <div style={{border:'1px solid #e0e0e0', borderRadius:'8px', padding:'20px', background:'#fafbfc', width:'100%'}}>
+    <strong style={{color:'#1EA7FD', fontSize:'16px'}}>React</strong>
+    <pre style={{background:'#f8f8f8', borderRadius:'6px', padding:'12px', margin:'12px 0', fontSize:'14px', overflow:'auto'}}>
+{`import { ScibAtomsButton } from '@scib/ui-kit/react';
+
+export function Demo() {
+  return <ScibAtomsButton color="primary">¡Hola UI Kit!</ScibAtomsButton>;
+}`}
+    </pre>
+    <div style={{marginTop:'8px', fontSize:'13px', color:'#b71c1c', background:'#fff3e0', border:'1px solid #ffe0b2', borderRadius:'4px', padding:'8px 12px'}}>
+      <strong>Nota:</strong> Para que los componentes funcionen correctamente en React, es necesario añadir <code>"importHelpers": true</code> en el <code>tsconfig.json</code> del proyecto donde uses la librería.
+    </div>
+  </div>
+  <div style={{border:'1px solid #e0e0e0', borderRadius:'8px', padding:'20px', background:'#fafbfc', width:'100%'}}>
+    <strong style={{color:'#1EA7FD', fontSize:'16px'}}>Angular</strong>
+    <pre style={{background:'#f8f8f8', borderRadius:'6px', padding:'12px', margin:'12px 0', fontSize:'14px', overflow:'auto'}}>
+{`// app.module.ts
+import { ScibAtomsButtonModule } from '@scib/ui-kit/angular';
+
+@NgModule({
+  imports: [
+    ScibAtomsButtonModule,
+    // ...otros módulos
+  ],
+  // ...
+})
+export class AppModule {}`}
+    </pre>
+    <pre style={{background:'#f8f8f8', borderRadius:'6px', padding:'12px', margin:'12px 0', fontSize:'14px', overflow:'auto'}}>
+{`<!-- En tu template HTML -->
+<scib-button color="primary">¡Hola UI Kit!</scib-button>`}
+    </pre>
+  </div>
+</div>
+
+---
+
+## 3️⃣ Uso de los assets JS y CSS de los Web Components
+
+<div style={{display:'flex', flexDirection:'column', gap:'24px', width:'100%'}}>
+  <div style={{border:'1px solid #e0e0e0', borderRadius:'8px', padding:'20px', background:'#fafbfc', width:'100%', marginBottom:'0'}}>
+    <div style={{display:'flex', alignItems:'center', gap:'12px', marginBottom:'8px'}}>
+      <img src={StackAlt} alt="local" style={{height:'32px', width:'32px'}} />
+      <strong style={{fontSize:'16px'}}>🔧 Uso local en desarrollo</strong>
+    </div>
+    <span style={{fontWeight:600, color:'#1EA7FD'}}>1. Añade estos bloques en tu <code>index.html</code>:</span>
+    <pre style={{background:'#f8f8f8', borderRadius:'6px', padding:'12px', margin:'12px 0', fontSize:'14px', width:'100%', overflow:'auto'}}>
+{`<script type="module" src="https://cdn.clients.santandercib.com/scib-ui-kit.esm.js"></script>
+<script noModule src="https://cdn.clients.santandercib.com/scib-ui-kit.js"></script>					
+<link href="https://cdn.clients.santandercib.com/scib-ui-kit.css" rel="stylesheet"></link>`}
+    </pre>
+    <span style={{fontWeight:600, color:'#1EA7FD'}}>2. ¡Listo! Ya puedes usar los Web Components en tu proyecto local.</span>
+  </div>
+  <div style={{border:'1px solid #e0e0e0', borderRadius:'8px', padding:'20px', background:'#fafbfc', width:'100%', marginBottom:'0'}}>
+    <div style={{display:'flex', alignItems:'center', gap:'12px', marginBottom:'8px'}}>
+      <img src={Plugin} alt="cdn" style={{height:'32px', width:'32px'}} />
+      <strong style={{fontSize:'16px'}}>🌐 Uso en entorno Digital Platform</strong>
+    </div>
+    <span style={{fontWeight:600, color:'#1EA7FD'}}>No necesitas hacer nada</span>.<br />
+    Los assets JS y CSS se cargan automáticamente desde la CDN corporativa.
+  </div>
+</div>
+
+---
+
+## 4️⃣ Recursos útiles
+
+<div className="link-list">
+  <a className="link-item" href="https://scib.github.io/ui-kit/" target="_blank">
+    <img src={Repo} alt="docs" />
+    <span>
+      <strong>Documentación oficial</strong>
+      Guía completa, ejemplos y playground interactivo.
+    </span>
+  </a>
+  <a className="link-item" href="https://github.com/scib/ui-kit" target="_blank">
+    <img src={Code} alt="github" />
+    <span>
+      <strong>Repositorio GitHub</strong>
+      Código fuente, issues y contribuciones.
+    </span>
+  </a>
+  <a className="link-item" href="https://discord.gg/storybook" target="_blank">
+    <img src={Comments} alt="soporte" />
+    <span>
+      <strong>Soporte y comunidad</strong>
+      Únete al chat y resuelve tus dudas.
+    </span>
+  </a>
+</div>
+
+
+---
+
+> 💡 ¿Dudas? Consulta la documentación o abre una issue. ¡Empieza a construir interfaces increíbles con @scib/ui-kit!
+</div>
+
+<div className="lang-block" data-lang="en" style={{display:'none'}}>
+> **ℹ️ Important:** The Angular integration is only supported from Angular v14+. If you are using an older version, you must either upgrade Angular or use the previous integration model by importing the ts files in your tsconfig.json.
+
+<h1>🚀 Welcome to @scib/ui-kit!</h1>
+<p>The UI component library for your Angular, React and more projects. Everything you need to get started, in one place.</p>
+<hr />
+<h2>1️⃣ Quick installation</h2>
+```bash
+npm install -D @scib/ui-kit@^3.0.0
+```
+<hr />
+<h2>2️⃣ Basic example</h2>
+<div style={{display:'flex', flexDirection:'column', gap:'24px', width:'100%'}}>
+  <div style={{border:'1px solid #e0e0e0', borderRadius:'8px', padding:'20px', background:'#fafbfc', width:'100%'}}>
+    <strong style={{color:'#1EA7FD', fontSize:'16px'}}>React</strong>
+    <pre style={{background:'#f8f8f8', borderRadius:'6px', padding:'12px', margin:'12px 0', fontSize:'14px', overflow:'auto'}}>{`import { ScibAtomsButton } from '@scib/ui-kit/react';\n\nexport function Demo() {\n  return <ScibAtomsButton color=\"primary\">Hello UI Kit!</ScibAtomsButton>;\n}`}</pre>
+    <div style={{marginTop:'8px', fontSize:'13px', color:'#b71c1c', background:'#fff3e0', border:'1px solid #ffe0b2', borderRadius:'4px', padding:'8px 12px'}}>
+      <strong>Note:</strong> To make the components work correctly in React, you need to add <code>"importHelpers": true</code> in the <code>tsconfig.json</code> of the project where you use the library.
+    </div>
+  </div>
+  <div style={{border:'1px solid #e0e0e0', borderRadius:'8px', padding:'20px', background:'#fafbfc', width:'100%'}}>
+    <strong style={{color:'#1EA7FD', fontSize:'16px'}}>Angular</strong>
+    <pre style={{background:'#f8f8f8', borderRadius:'6px', padding:'12px', margin:'12px 0', fontSize:'14px', overflow:'auto'}}>{`// app.module.ts\nimport { ScibAtomsButtonModule } from '@scib/ui-kit/angular';\n\n@NgModule({\n  imports: [\n    ScibAtomsButtonModule,\n    // ...other modules\n  ],\n  // ...\n})\nexport class AppModule {}`}</pre>
+    <pre style={{background:'#f8f8f8', borderRadius:'6px', padding:'12px', margin:'12px 0', fontSize:'14px', overflow:'auto'}}>{`<!-- In your HTML template -->\n<scib-button color=\"primary\">Hello UI Kit!</scib-button>`}</pre>
+  </div>
+</div>
+<hr />
+<h2>3️⃣ Using JS and CSS assets for Web Components</h2>
+<div style={{display:'flex', flexDirection:'column', gap:'24px', width:'100%'}}>
+  <div style={{border:'1px solid #e0e0e0', borderRadius:'8px', padding:'20px', background:'#fafbfc', width:'100%', marginBottom:'0'}}>
+    <div style={{display:'flex', alignItems:'center', gap:'12px', marginBottom:'8px'}}>
+      <img src={StackAlt} alt="local" style={{height:'32px', width:'32px'}} />
+      <strong style={{fontSize:'16px'}}>🔧 Local development</strong>
+    </div>
+    <span style={{fontWeight:600, color:'#1EA7FD'}}>1. Add these blocks to your <code>index.html</code>:</span>
+    <pre style={{background:'#f8f8f8', borderRadius:'6px', padding:'12px', margin:'12px 0', fontSize:'14px', width:'100%', overflow:'auto'}}>
+{`<script type="module" src="https://cdn.clients.santandercib.com/scib-ui-kit.esm.js"></script>
+<script noModule src="https://cdn.clients.santandercib.com/scib-ui-kit.js"></script>					
+<link href="https://cdn.clients.santandercib.com/scib-ui-kit.css" rel="stylesheet"></link>`}
+</pre>
+    <span style={{fontWeight:600, color:'#1EA7FD'}}>2. Done! You can now use Web Components locally.</span>
+  </div>
+  <div style={{border:'1px solid #e0e0e0', borderRadius:'8px', padding:'20px', background:'#fafbfc', width:'100%', marginBottom:'0'}}>
+    <div style={{display:'flex', alignItems:'center', gap:'12px', marginBottom:'8px'}}>
+      <img src={Plugin} alt="cdn" style={{height:'32px', width:'32px'}} />
+      <strong style={{fontSize:'16px'}}>🌐 Digital Platform environment</strong>
+    </div>
+    <span style={{fontWeight:600, color:'#1EA7FD'}}>No action needed</span>.<br />
+    JS and CSS assets are loaded automatically from the corporate CDN.
+  </div>
+</div>
+<hr />
+
+<hr />
+<h2>4️⃣ Useful resources</h2>
+<div className="link-list">
+  <a className="link-item" href="https://scib.github.io/ui-kit/" target="_blank">
+    <img src={Repo} alt="docs" />
+    <span>
+      <strong>Official documentation</strong>
+      Complete guide, examples and interactive playground.
+    </span>
+  </a>
+  <a className="link-item" href="https://github.com/scib/ui-kit" target="_blank">
+    <img src={Code} alt="github" />
+    <span>
+      <strong>GitHub repository</strong>
+      Source code, issues and contributions.
+    </span>
+  </a>
+  <a className="link-item" href="https://discord.gg/storybook" target="_blank">
+    <img src={Comments} alt="soporte" />
+    <span>
+      <strong>Support & Community</strong>
+      Join the chat and solve your questions.
+    </span>
+  </a>
+</div>
+<hr />
+<blockquote>💡 Questions? Check the docs or open an issue. Start building amazing interfaces with @scib/ui-kit!</blockquote>
+</div>

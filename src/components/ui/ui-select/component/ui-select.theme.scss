@@ -1,0 +1,6 @@
+@forward '../../../../themes/scib/components/ui/ui-select.scss';
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_ui-select-bg-color: var(--ui-select-bg-color, white);
+	--_ui-select-width-dropdown: #{var(--ui-select-width-dropdown)};
+}

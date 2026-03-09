@@ -1,0 +1,10 @@
+/**
+ * Public custom properties for list component. You can define here what ever
+ * you need and then use inside the component theme. Whith this you will able to modift
+ * this public props througth the css code without extra Stencil props.
+ */
+
+:root {
+	--atoms-list-border-bottom-color: var(--color-border-alternative, magenta);
+	--atoms-list-column-gap: 0 32px;
+}

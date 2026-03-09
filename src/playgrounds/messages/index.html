@@ -1,0 +1,2640 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Messages Playground</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Scripts del loader de la librería -->
+		<script type="module" src="/stencil-server/scib-ui-kit.esm.js" id="component-js-module"></script>
+		<script nomodule="" src="/stencil-server/scib-ui-kit.js" id="component-js"></script>
+
+		<!-- Stilos de la libreraía -->
+		<link rel="stylesheet" href="/stencil-server/scib-ui-kit.css" id="components-css" />
+	</head>
+
+	<body>
+		<scib-cdk-sidebar-communications
+			fixed
+			open="${knobs.open}"
+			profile='{
+				"name": "Jesús Cárdenas Vizcaíno",
+				"email": "test-test@test.com",
+				"avatar": {
+					"src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+					"alt": "Jesús Cárdenas"
+				}
+				}'
+			active-tab="MSG"
+			tabs='[
+      {
+        "id": "BUL",
+        "label": "Bulletines"
+      },
+      {
+        "id": "MSG",
+        "label": "Messages",
+        "notifications": "3"
+      },
+      {
+        "id": "ALE",
+        "label": "Alerts and notices"
+      }
+    ]'
+			@tabChange="handleTabChange($event)"
+			@panelToggle="handlePanelChange($event)"
+		>
+			<div slot="tab-MSG" class="u-height-100">
+				<scib-cdk-messages
+					loading-send-message="false"
+					unread-msg="+99"
+					detail-panel-active="new"
+					mobile-panel-active="detail"
+					profile='{
+						"name": "Jesús Cárdenas Vizcaíno",
+						"avatar": {
+						  "src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+						  "alt": "Jesús Cárdenas"
+						}
+					  }'
+					active-tab="MSG"
+					tabs='[
+            {
+                "id": "MSG",
+                "label": "Messages"
+            },
+            {
+                "id": "FIL",
+                "label": "Files"
+            },
+            {
+                "id": "USER",
+                "label": "Users"
+            }
+        ]'
+					tabs-conversation='[
+                        {
+                            "id": "incoming",
+                            "label": "Incoming"
+                        },
+                        {
+                            "id": "archive",
+                            "label": "Archive"
+                        }
+                    ]'
+					literals='{
+          "titleTxt": "Messages",
+          "subtitleTxt": "All messages",
+          "filterPlaceholderTxt": "Search...",
+          "tab1Label": "All messages",
+          "tab2Label": "Santander CIB",
+          "closedTagTxt": "Closed",
+          "tab3Label": "Applications",
+          "repliesTxt": "Replies",
+          "unreadFlagTxt": "new unreaded",
+          "sendButtonTxt": "Send", 
+          "discardButtonTxt": "Discard",
+          "replyButtonTxt": "Reply",
+          "deleteButtonTxt": "Delete",
+          "toLabelTxT": "To:",
+          "newMessageTxt": "New message",
+          "subjectLabelTxt": "Subject:",
+          "disableRepliesLabelTxt": "Disable replies",
+          "markImportantRepliesLabelTxt": "Mark as important",
+          "newMessagePlaceholderTxt": "Write your message...",
+          "contactsLabelTxt": "Contacts",
+          "attachDocumentsTxt": "Attached documents",
+		  "attachFileTxt": "Attach file",
+          "maxLimitMsgTxt": "Upload failed: The file is over 35 MB",
+          "theFileTxt": "The file",
+          "didntUploadTxt": "didn’t upload",
+		  "chatLabel":"Chat",
+		  "memberLabel":"Members",
+		  "myInbox":"Other",
+		  "appInbox":"My Apps",
+		  "tooltipLiterals":{
+			"unreadTxt": "Unread",
+			"titleTxt": "Messages read by",
+			"membersTxt": "members"
+
+		  },
+		  "fromEmailTxt": "Replied from email",
+		  "emptyConversationText":"There is no conversation selected at the moment",
+		  "conversationNoSelectedText":"There is no conversation selected at the moment",
+		  "conversationNoSelectedSubText":"Select a conversation to read"
+        }'
+					mail-boxes='[
+			{
+				"id": "apps",
+				"icon": "icon-apps",
+				"name": "My Apps",
+				"notifications": "",
+				"actionMenu": [
+					{ "id": 1, "text": "Mark all as read", "separator": false, "icon": "icon-share-24", "eventId": "markAsRead" },
+					{ "id": 2, "text": "Move all to archive", "separator": false, "icon": "icon-flag", "eventId": "moveArchive" }
+				]
+			},
+            {
+                "id": "all",
+                "icon": "icon-inbox",
+                "name": "Other",
+                "notifications": "3",
+                "actionMenu": [
+                    { "id": 1, "text": "Mark all as read", "separator": false, "icon": "icon-share-24", "eventId": "markAsRead" },
+                    { "id": 2, "text": "Move all to archive", "separator": false, "icon": "icon-flag", "eventId": "moveArchive" }
+                ]
+            }
+        ]'
+					conversations='[
+					{
+						"id": "13230",
+						"group": null,
+						"closed": true,
+						"unread": true,
+						"notifications": 32,
+						"date": "18/4/20",
+						"important": true,
+						"avatar": [
+							{
+								"alt": "Juan Ramiro"
+							},
+							{
+								"alt": "Juan Ramiro"
+							},
+							{
+								"alt": "Juan Ramiro"
+							},
+							{
+								"alt": "Juan Ramiro"
+							},
+							{
+								"alt": "Juan Ramiro"
+							},
+							{
+								"alt": "Juan Ramiro"
+							},
+							{
+								"alt": "Juan Ramiro"
+							}
+						],
+						"subject": "1111111Refinamiento Backlog 12133",
+						"subtitle": "Ángeles, Jesús, +2",
+						"preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1230",
+						  "group": null,
+						  "unread": true,
+						  "notifications": 32,
+						  "date": "18/4/20",
+						  "important": true,
+						  "avatar": [
+							{
+							},
+							{
+							}
+						  ],
+						  "subject": "222222222Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1231",
+						  "group": null,
+						  "unread": true,
+						  "notifications": 32,
+						  "date": "18/4/20",
+						  "subject": "33333333Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1232",
+						  "group": null,
+						  "unread": false,
+						  "repliesNotAllowed": true,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Anabel Dominguez Santos"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Naoko Yoshimitsu Martínez"
+							}
+						  ],
+						  "subject": "4444444Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1233",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Anabel Dominguez Santos"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Naoko Yoshimitsu Martínez"
+							}
+						  ],
+						  "subject": "5555555Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1234",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Anabel Dominguez Santos"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Naoko Yoshimitsu Martínez"
+							}
+						  ],
+						  "subject": "666666666Refinamiento Backlog",
+						  "important": true,
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1235",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+							  "alt": "Jesús Cárdenas"
+							}
+						  ],
+						  "subject": "777777777Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "Ángeles: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1236",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://www.nutritelia.com/wp-content/uploads/2016/09/alimentos-ricos-acido-hilauronico1-1.jpg",
+							  "alt": "Jesús Cárdenas"
+							}
+						  ],
+						  "subject": "88888888888Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "Ángeles: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1237",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "alt": "Walt Disney"
+							},
+							{
+							  "alt": "María"
+							},
+							{
+							  "alt": "Pepe"
+							},
+							{
+							  "alt": "Otro"
+							}
+						  ],
+						  "subject": "99999999Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "Ángeles: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1238",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "alt": "Walt Disney"
+							}
+						  ],
+						  "subject": "10Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "Ángeles: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "13230",
+						  "group": null,
+						  "unread": true,
+						  "notifications": 32,
+						  "date": "18/4/20",
+						  "important": true,
+						  "avatar": [
+							  {
+							  },
+							  {
+							  }
+						  ],
+						  "subject": "11Refinamiento Backlog 12133",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						  },
+						{
+						  "id": "1230",
+						  "group": null,
+						  "unread": true,
+						  "notifications": 32,
+						  "date": "18/4/20",
+						  "important": true,
+						  "avatar": [
+							{
+							},
+							{
+							}
+						  ],
+						  "subject": "12Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1231",
+						  "group": null,
+						  "unread": true,
+						  "notifications": 32,
+						  "date": "18/4/20",
+						  "subject": "13Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1232",
+						  "group": null,
+						  "unread": false,
+						  "repliesNotAllowed": true,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Anabel Dominguez Santos"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Naoko Yoshimitsu Martínez"
+							}
+						  ],
+						  "subject": "14Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1233",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Anabel Dominguez Santos"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Naoko Yoshimitsu Martínez"
+							}
+						  ],
+						  "subject": "15Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1234",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Anabel Dominguez Santos"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Naoko Yoshimitsu Martínez"
+							}
+						  ],
+						  "subject": "16 Refinamiento Backlog",
+						  "important": true,
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1235",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+							  "alt": "Jesús Cárdenas"
+							}
+						  ],
+						  "subject": "17 Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "Ángeles: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1236",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://www.nutritelia.com/wp-content/uploads/2016/09/alimentos-ricos-acido-hilauronico1-1.jpg",
+							  "alt": "Jesús Cárdenas"
+							}
+						  ],
+						  "subject": "18 Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "Ángeles: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1237",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "alt": "Walt Disney"
+							},
+							{
+							  "alt": "María"
+							},
+							{
+							  "alt": "Pepe"
+							},
+							{
+							  "alt": "Otro"
+							}
+						  ],
+						  "subject": "19 Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "Ángeles: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1238",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "alt": "Walt Disney"
+							}
+						  ],
+						  "subject": "20 Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "Ángeles: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "13230",
+						  "group": null,
+						  "unread": true,
+						  "notifications": 32,
+						  "date": "18/4/20",
+						  "important": true,
+						  "avatar": [
+							  {
+							  },
+							  {
+							  }
+						  ],
+						  "subject": "21 Refinamiento Backlog 12133",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						  },
+						{
+						  "id": "1230",
+						  "group": null,
+						  "unread": true,
+						  "notifications": 32,
+						  "date": "18/4/20",
+						  "important": true,
+						  "avatar": [
+							{
+							},
+							{
+							}
+						  ],
+						  "subject": "22 Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1231",
+						  "group": null,
+						  "unread": true,
+						  "notifications": 32,
+						  "date": "18/4/20",
+						  "subject": "23 Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1232",
+						  "group": null,
+						  "unread": false,
+						  "repliesNotAllowed": true,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Anabel Dominguez Santos"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Naoko Yoshimitsu Martínez"
+							}
+						  ],
+						  "subject": "24 Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1233",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Anabel Dominguez Santos"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Naoko Yoshimitsu Martínez"
+							}
+						  ],
+						  "subject": "25 Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1234",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Anabel Dominguez Santos"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Naoko Yoshimitsu Martínez"
+							}
+						  ],
+						  "subject": "26 Refinamiento Backlog",
+						  "important": true,
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1235",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+							  "alt": "Jesús Cárdenas"
+							}
+						  ],
+						  "subject": "27 Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "Ángeles: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1236",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "src": "https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+							  "alt": "Jesús Cárdenas"
+							},
+							{
+							  "src": "https://www.nutritelia.com/wp-content/uploads/2016/09/alimentos-ricos-acido-hilauronico1-1.jpg",
+							  "alt": "Jesús Cárdenas"
+							}
+						  ],
+						  "subject": "28 Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "Ángeles: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1237",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "alt": "Walt Disney"
+							},
+							{
+							  "alt": "María"
+							},
+							{
+							  "alt": "Pepe"
+							},
+							{
+							  "alt": "Otro"
+							}
+						  ],
+						  "subject": "29 Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "Ángeles: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						},
+						{
+						  "id": "1238",
+						  "group": null,
+						  "unread": false,
+						  "date": "18/4/20",
+						  "avatar": [
+							{
+							  "alt": "Walt Disney"
+							}
+						  ],
+						  "subject": "30 Refinamiento Backlog",
+						  "subtitle": "Ángeles, Jesús, +2",
+						  "preview": "Ángeles: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!"
+						}
+        ]'
+					to-user-list='[
+          {
+            "id": "1234",
+            "email": "jcardenas@santander.es",
+            "name": "Jesús Cárdenas Vizcaíno",
+            "avatar": {
+              "src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+              "alt": "Jesús Cárdenas Vizcaíno"
+            },
+            "isEmployee": true,
+			"ldap_uid":"2"
+          },
+          {
+            "id": "1235",
+            "email": "jmartinez@santander.es",
+            "name": "Jeremías Martínez",
+            "avatar": {
+              "src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+              "alt": "Jesús Cárdenas Vizcaíno"
+            },
+            "isEmployee": true,
+			"ldap_uid":"1"
+          },
+          {
+            "id": "1236",
+            "email": "jperez@santander.es",
+            "name": "Jerónimo Pérez",
+            "avatar": {
+              "src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+              "alt": "Jesús Cárdenas Vizcaíno"
+            },
+			"ldap_uid":"3"
+          },
+          {
+            "id": "1237",
+            "email": "asanchez@santander.es",
+            "name": "Alba Sanchez",
+            "avatar": {
+              "src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+              "alt": "Jesús Cárdenas Vizcaíno"
+            },
+			"ldap_uid":"4"
+          },
+          {
+            "id": "1238",
+            "email": "jmiguel@santander.es",
+            "name": "José Miguel Martínez",
+            "avatar": {
+              "src": "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+              "alt": "Jesús Cárdenas Vizcaíno"
+            },
+			"ldap_uid":"5"
+          }
+        ]'
+					messages="null"
+					files='{
+            "tableId": "chat-files",
+            "isDownloadable": true,
+            "isSelectable": true,
+            "paginationPageSize": 10,
+            "hasRenderedIcons": true,
+			"activateHorizontalScroll" : -1,
+			"hideCustomPagination": true,
+            "literals": {
+                "download": "Download",
+                "downloadSelection": "Download Selection",
+                "total": "Total",
+                "selected": "Selected"
+            },
+            "topButtons": [{
+				"text": "Download selection",
+				"icon": "icon-download",
+				"eventId": "downloadMessageFiles",
+				"showIfAnySelectedOnly": false,
+				"disableIfNoneSelected": true
+			}],
+            "columns": [
+                { "headerName": "Name", "field": "name", "sort": "desc" },
+                { "headerName": "Owner", "field": "owner" },
+                { "headerName": "Last modification", "field": "modification" },
+                { "headerName": "Size", "field": "size" }
+            ],
+            "data": [
+                {
+                    "hiddenId": "001",
+				    "extensionType": "pdf",
+                    "name": "Signed - 019972346234726346.pdf",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                },
+                {
+                    "hiddenId": "002",
+				    "extensionType": "pdf",
+                    "name": "Signed - 019972346234726346.xls",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                },
+                {
+                    "hiddenId": "003",
+				    "extensionType": "doc",
+                    "name": "Signed - 019972346234726346.ppt",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                },
+                {
+                    "hiddenId": "004",
+				    "extensionType": "ppt",
+                    "name": "Signed - 019972346234726346.doc",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                },
+                {
+                    "hiddenId": "002",
+				    "extensionType": "pdf",
+                    "name": "Signed - 019972346234726346.xls",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                },
+                {
+                    "hiddenId": "003",
+				    "extensionType": "doc",
+                    "name": "Signed - 019972346234726346.ppt",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                },
+                {
+                    "hiddenId": "004",
+				    "extensionType": "ppt",
+                    "name": "Signed - 019972346234726346.doc",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                },
+                {
+                    "hiddenId": "002",
+				    "extensionType": "pdf",
+                    "name": "Signed - 019972346234726346.xls",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                },
+                {
+                    "hiddenId": "003",
+				    "extensionType": "doc",
+                    "name": "Signed - 019972346234726346.ppt",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                },
+                {
+                    "hiddenId": "004",
+				    "extensionType": "ppt",
+                    "name": "Signed - 019972346234726346.doc",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                },
+                {
+                    "hiddenId": "002",
+				    "extensionType": "pdf",
+                    "name": "Signed - 019972346234726346.xls",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                },
+                {
+                    "hiddenId": "003",
+				    "extensionType": "doc",
+                    "name": "Signed - 019972346234726346.ppt",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                },
+                {
+                    "hiddenId": "004",
+				    "extensionType": "ppt",
+                    "name": "Signed - 019972346234726346.doc",
+                    "owner": "Juan López García",
+                    "modification": "18 aug. 2020 - Juan López García",
+                    "size": "125 Kb"
+                }
+            ]
+        }'
+					active-conversation-members='{
+            "tableId": "chat-members",
+            "paginationPageSize": 10,
+			"activateHorizontalScroll": -1,
+			"hideCustomPagination": true,
+            "literals": {
+                "download": "Download",
+                "downloadSelection": "Download Selection",
+                "total": "Total",
+                "selected": "Selected"
+            },
+            "topButtons": [],
+            "columns": [
+                { "headerName": "Name", "field": "name", "sort": "desc" },
+                { "headerName": "Company", "field": "company" },
+                { "headerName": "E-mail", "field": "mail" }
+            ],
+            "data": [
+                {
+                    "hiddenId": "001",
+                    "name": "Juan López García",
+                    "company": "Santander",
+                    "mail": "juan.lopez@santander.es"
+                },
+                {
+                    "hiddenId": "002",
+                    "name": "Pablo Ramírez Cruz",
+                    "company": "Santander",
+                    "mail": "pablo.ramirez@santander.es"
+                },
+                {
+                    "hiddenId": "003",
+                    "name": "Jose Antonio Ledezma Ferreras",
+                    "company": "Repsol",
+                    "mail": "joanlefe@repsol.es"
+                },
+                {
+                    "hiddenId": "004",
+                    "name": "Marc Puig Manzano",
+                    "company": "Repsol",
+                    "mail": "mapuman@repsol.es"
+                },
+                {
+                    "hiddenId": "001",
+                    "name": "Juan López García",
+                    "company": "Santander",
+                    "mail": "juan.lopez@santander.es"
+                },
+                {
+                    "hiddenId": "002",
+                    "name": "Pablo Ramírez Cruz",
+                    "company": "Santander",
+                    "mail": "pablo.ramirez@santander.es"
+                },
+                {
+                    "hiddenId": "003",
+                    "name": "Jose Antonio Ledezma Ferreras",
+                    "company": "Repsol",
+                    "mail": "joanlefe@repsol.es"
+                },
+                {
+                    "hiddenId": "004",
+                    "name": "Marc Puig Manzano",
+                    "company": "Repsol",
+                    "mail": "mapuman@repsol.es"
+                },
+                {
+                    "hiddenId": "001",
+                    "name": "Juan López García",
+                    "company": "Santander",
+                    "mail": "juan.lopez@santander.es"
+                },
+                {
+                    "hiddenId": "002",
+                    "name": "Pablo Ramírez Cruz",
+                    "company": "Santander",
+                    "mail": "pablo.ramirez@santander.es"
+                },
+                {
+                    "hiddenId": "003",
+                    "name": "Jose Antonio Ledezma Ferreras",
+                    "company": "Repsol",
+                    "mail": "joanlefe@repsol.es"
+                },
+                {
+                    "hiddenId": "004",
+                    "name": "Marc Puig Manzano",
+                    "company": "Repsol",
+                    "mail": "mapuman@repsol.es"
+                }
+            ],
+            "avatars": [
+                {
+                    "isEmployee" : true,
+                    "imgSrc" : "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+                    "memberId": "001"
+                },
+                {
+                    "isEmployee" : false,
+                    "imgSrc" : "",
+                    "memberId": "002"
+                },
+                {
+                    "isEmployee" : false,
+                    "imgSrc" : "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+                    "memberId": "003"
+                },
+                {
+                    "isEmployee" : true,
+                    "imgSrc" : "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+                    "memberId": "004"
+                },
+                {
+                    "isEmployee" : true,
+                    "imgSrc" : "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+                    "memberId": "001"
+                },
+                {
+                    "isEmployee" : false,
+                    "imgSrc" : "",
+                    "memberId": "002"
+                },
+                {
+                    "isEmployee" : false,
+                    "imgSrc" : "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+                    "memberId": "003"
+                },
+                {
+                    "isEmployee" : true,
+                    "imgSrc" : "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+                    "memberId": "004"
+                },
+                {
+                    "isEmployee" : true,
+                    "imgSrc" : "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+                    "memberId": "001"
+                },
+                {
+                    "isEmployee" : false,
+                    "imgSrc" : "",
+                    "memberId": "002"
+                },
+                {
+                    "isEmployee" : false,
+                    "imgSrc" : "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+                    "memberId": "003"
+                },
+                {
+                    "isEmployee" : true,
+                    "imgSrc" : "https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png",
+                    "memberId": "004"
+                }
+            ]
+        }'
+					hasSubheader="true"
+					subheader='{
+			"idElem": "67",
+			"link": {
+				"href": "https://www.google.com/",
+				"label": "Go to detail"
+			},
+			"items": [
+				{
+					"title": "P3+",
+					"value": "Operational incident",
+					"state": "#456733"
+				},
+				{
+					"title": "Impact: ",
+					"value": "Financial"
+				},	
+				{
+					"title": "",
+					"value": "In progress-action plans pending",
+					"state": "#456733"
+				}
+			]
+		}'
+				>
+				</scib-cdk-messages>
+			</div>
+			<div slot="tab-BUL" class="u-height-100"></div>
+			<div slot="tab-ALE" class="u-height-100"></div>
+		</scib-cdk-sidebar-communications>
+		<script>
+			var messagesMockList = [
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						},
+						isEmployee: true
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					unread: false,
+					message:
+						'<p>Buenos días,</p></br><p>Este es un ejemplo del primer mensaje. Stencil lo reconoce como tal al ser el primero pasado en el Array</br></br></p><p>Gracias!</p><p>Saludos, Ángeles</p>',
+					attachedFiles: [
+						{
+							id: 'catalogo_-_listado_alfabetico.pdf',
+							name: 'catalogo_-_listado_alfabetico.pdf',
+							path: 'https://santander.es/sites/default/files/catalogo_-_listado_alfabetico.pdf',
+							extension: 'pdf',
+							size: '1.4Mb',
+							error: null,
+							uploading: false
+						},
+						{
+							id: 'catalogo_-_listado_alfabetico.pdf',
+							name: 'catalogo_-_listado_alfabetico.pdf',
+							path: 'https://santander.es/sites/default/files/catalogo_-_listado_alfabetico.pdf',
+							extension: 'pdf',
+							size: '1.4Mb',
+							error: null,
+							uploading: false
+						},
+						{
+							id: 'catalogo_-_listado_alfabetico.pdf',
+							name: 'catalogo_-_listado_alfabetico.pdf',
+							path: 'https://santander.es/sites/default/files/catalogo_-_listado_alfabetico.pdf',
+							extension: 'pdf',
+							size: '1.4Mb',
+							error: null,
+							uploading: false
+						}
+					]
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 12'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 11'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 10'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 9'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 8'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 7'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 6',
+					isLastMessage: true,
+
+					readByMembers: [
+						{
+							isEmployees: true,
+							imgSrc: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							imgAlt: 'Hermione Granger',
+							name: 'Hermione Granger',
+							readDate: '12 abril 2021, 09:00'
+						},
+						{
+							isEmployees: true,
+							imgSrc: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							imgAlt: 'Dr. Jones',
+							name: 'Dr. Jones',
+							readDate: '13 abril 2021, 17:36'
+						},
+						{
+							isEmployees: true,
+							imgSrc: '',
+							imgAlt: 'Aragorn, hijo de Arathorn',
+							name: 'Aragorn, hijo de Arathorn'
+						},
+						{
+							isEmployees: false,
+							imgSrc: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							imgAlt: 'Obi-Wan Kenobi',
+							name: 'Obi-Wan Kenobi'
+						},
+						{
+							isEmployees: false,
+							imgSrc: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							imgAlt: 'Marion Ravenwood',
+							name: 'Marion Ravenwood'
+						},
+						{
+							isEmployees: false,
+							imgSrc: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							imgAlt: 'Bilbo Bolsón',
+							name: 'Bilbo Bolsón'
+						},
+						{
+							isEmployees: false,
+							imgSrc: '',
+							imgAlt: 'Kyle Katarn',
+							name: 'Kyle Katarn'
+						},
+						{
+							isEmployees: false,
+							imgSrc: '',
+							imgAlt: 'Malcolm Reynolds',
+							name: 'Malcolm Reynolds'
+						},
+						{
+							isEmployees: false,
+							imgSrc: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							imgAlt: 'Haruno Sakura',
+							name: 'Haruno Sakura'
+						}
+					]
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 5'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 4'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 3',
+					isFromEmail: true
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 2'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 1'
+				}
+			];
+			var messagesMockListTop = [
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						},
+						isEmployee: true
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					unread: false,
+					message:
+						'<p>Buenos días,</p></br><p>Este es un ejemplo del primer mensaje. Stencil lo reconoce como tal al ser el primero pasado en el Array</br></br></p><p>Gracias!</p><p>Saludos, Ángeles</p>',
+					attachedFiles: [
+						{
+							id: 'catalogo_-_listado_alfabetico.pdf',
+							name: 'catalogo_-_listado_alfabetico.pdf',
+							path: 'https://santander.es/sites/default/files/catalogo_-_listado_alfabetico.pdf',
+							extension: 'pdf',
+							size: '1.4Mb',
+							error: null,
+							uploading: false
+						},
+						{
+							id: 'catalogo_-_listado_alfabetico.pdf',
+							name: 'catalogo_-_listado_alfabetico.pdf',
+							path: 'https://santander.es/sites/default/files/catalogo_-_listado_alfabetico.pdf',
+							extension: 'pdf',
+							size: '1.4Mb',
+							error: null,
+							uploading: false
+						},
+						{
+							id: 'catalogo_-_listado_alfabetico.pdf',
+							name: 'catalogo_-_listado_alfabetico.pdf',
+							path: 'https://santander.es/sites/default/files/catalogo_-_listado_alfabetico.pdf',
+							extension: 'pdf',
+							size: '1.4Mb',
+							error: null,
+							uploading: false
+						}
+					]
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 18'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 17'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 16'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 15'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 14'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 13'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 12'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 11'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 10'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 9'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 8'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 7'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 6'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 5'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 4'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 3'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 2'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 1'
+				}
+			];
+			var messagesMockListTop2 = [
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						},
+						isEmployee: true
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					unread: false,
+					message:
+						'<p>Buenos días,</p></br><p>Este es un ejemplo del primer mensaje. Stencil lo reconoce como tal al ser el primero pasado en el Array</br></br></p><p>Gracias!</p><p>Saludos, Ángeles</p>',
+					attachedFiles: [
+						{
+							id: 'catalogo_-_listado_alfabetico.pdf',
+							name: 'catalogo_-_listado_alfabetico.pdf',
+							path: 'https://santander.es/sites/default/files/catalogo_-_listado_alfabetico.pdf',
+							extension: 'pdf',
+							size: '1.4Mb',
+							error: null,
+							uploading: false
+						},
+						{
+							id: 'catalogo_-_listado_alfabetico.pdf',
+							name: 'catalogo_-_listado_alfabetico.pdf',
+							path: 'https://santander.es/sites/default/files/catalogo_-_listado_alfabetico.pdf',
+							extension: 'pdf',
+							size: '1.4Mb',
+							error: null,
+							uploading: false
+						},
+						{
+							id: 'catalogo_-_listado_alfabetico.pdf',
+							name: 'catalogo_-_listado_alfabetico.pdf',
+							path: 'https://santander.es/sites/default/files/catalogo_-_listado_alfabetico.pdf',
+							extension: 'pdf',
+							size: '1.4Mb',
+							error: null,
+							uploading: false
+						}
+					]
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 24'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 23'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 22'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 21'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 20'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 19'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 18'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 17'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 16'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 15'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 14'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 13'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 12'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 11'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 10'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 9'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 8'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 7'
+				}
+			];
+			var messagesMockListTop3 = [
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						},
+						isEmployee: true
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					unread: false,
+					message:
+						'<p>Buenos días,</p></br><p>Este es un ejemplo del primer mensaje. Stencil lo reconoce como tal al ser el primero pasado en el Array</br></br></p><p>Gracias!</p><p>Saludos, Ángeles</p>',
+					attachedFiles: [
+						{
+							id: 'catalogo_-_listado_alfabetico.pdf',
+							name: 'catalogo_-_listado_alfabetico.pdf',
+							path: 'https://santander.es/sites/default/files/catalogo_-_listado_alfabetico.pdf',
+							extension: 'pdf',
+							size: '1.4Mb',
+							error: null,
+							uploading: false
+						},
+						{
+							id: 'catalogo_-_listado_alfabetico.pdf',
+							name: 'catalogo_-_listado_alfabetico.pdf',
+							path: 'https://santander.es/sites/default/files/catalogo_-_listado_alfabetico.pdf',
+							extension: 'pdf',
+							size: '1.4Mb',
+							error: null,
+							uploading: false
+						},
+						{
+							id: 'catalogo_-_listado_alfabetico.pdf',
+							name: 'catalogo_-_listado_alfabetico.pdf',
+							path: 'https://santander.es/sites/default/files/catalogo_-_listado_alfabetico.pdf',
+							extension: 'pdf',
+							size: '1.4Mb',
+							error: null,
+							uploading: false
+						}
+					]
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 30'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 29'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 28'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 27'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 26'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 25'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 24'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 23'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 22'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 21'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 20'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 19'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 18'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 17'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 16'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 15'
+				},
+				{
+					author: {
+						name: 'Naoko Yoshimitsu Martínez',
+						avatar: {
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: false,
+					message: 'Mensaje 14'
+				},
+				{
+					author: {
+						name: 'Jesús Cárdenas Vizcaíno',
+						avatar: {
+							src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+							alt: 'Jesús Cárdenas Vizcaíno'
+						}
+					},
+					date: 'lunes, 20 de abril de 2020, 12:35',
+					sender: true,
+					message: 'Mensaje 13'
+				}
+			];
+			var iframe = (document.querySelector('#storybook-preview-iframe') || {}).contentWindow;
+			var $messages = iframe ? iframe.document.querySelector('scib-cdk-messages') : document.querySelector('scib-cdk-messages');
+			var oldUsers = JSON.parse($messages.getAttribute('to-user-list'));
+			var allConversations = JSON.parse($messages.getAttribute('conversations'));
+			var newMsg = (message) => ({
+				author: {
+					name: 'Jesús Cárdenas Vizcaíno',
+					avatar: {
+						src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+						alt: 'Jesús Cárdenas Vizcaíno'
+					}
+				},
+				date: 'lunes, 20 de abril de 2020, 12:35',
+				sender: true,
+				message: message
+			});
+
+			var newConversation = (payload) => ({
+				id: 'id' + 12345,
+				group: null,
+				unread: false,
+				important: payload.markAsImportant,
+				repliesNotAllowed: payload.disableReplies,
+				date: '18/4/20',
+				avatar: [
+					{
+						alt: payload.to
+					}
+				],
+				subject: payload.subject,
+				subtitle: payload.to,
+				preview: payload.body
+			});
+
+			var loadTop = 0;
+
+			$messages.addEventListener('eventLoadMoreTop', function (e) {
+				// console.log('eventLoadMoreTop', e.detail);
+				setTimeout(() => {
+					if (loadTop === 0) {
+						$messages.setAttribute('more-top-messages', true);
+						$messages.setAttribute('more-bottom-messages', true);
+						const update = JSON.stringify(messagesMockListTop);
+						$messages.setAttribute('messages', update);
+						loadTop++;
+					} else if (loadTop === 1) {
+						$messages.setAttribute('more-top-messages', true);
+						$messages.setAttribute('more-bottom-messages', true);
+						const update = JSON.stringify(messagesMockListTop2);
+						$messages.setAttribute('messages', update);
+						loadTop++;
+					} else {
+						$messages.setAttribute('more-top-messages', false);
+						$messages.setAttribute('more-bottom-messages', true);
+						const update = JSON.stringify(messagesMockListTop3);
+						$messages.setAttribute('messages', update);
+						loadTop = 0;
+					}
+				}, 1000);
+			});
+
+			var loadbot = 0;
+			$messages.addEventListener('eventLoadMoreBottom', function (e) {
+				// console.log('eventLoadMoreBottom', e.detail);
+				setTimeout(() => {
+					if (loadbot === 0) {
+						$messages.setAttribute('more-top-messages', true);
+						$messages.setAttribute('more-bottom-messages', true);
+						const update = JSON.stringify(messagesMockListTop2);
+						$messages.setAttribute('messages', update);
+						loadbot++;
+					} else if (loadbot === 1) {
+						$messages.setAttribute('more-top-messages', true);
+						$messages.setAttribute('more-bottom-messages', false);
+						const update = JSON.stringify(messagesMockListTop);
+						$messages.setAttribute('messages', update);
+						loadbot = 0;
+					}
+				}, 1000);
+			});
+
+			$messages.addEventListener('userAction', function (e) {
+				// console.log(e.detail.type, e.detail.payload);
+
+				if (e.detail.type === 'replyConversation') {
+					setTimeout(() => {
+						const oldMsg = JSON.parse($messages.getAttribute('messages'));
+						const updateMsg = [...oldMsg, newMsg(e.detail.payload.body)];
+						const update = JSON.stringify(updateMsg);
+						$messages.setAttribute('messages', update);
+					}, 1000);
+				}
+
+				if (e.detail.type === 'openConversation') {
+					$messages.setAttribute('messages', null);
+					setTimeout(() => {
+						const update = JSON.stringify(messagesMockList);
+						$messages.setAttribute('messages', update);
+					}, 1000);
+				}
+
+				if (e.detail.type === 'newConversation') {
+					//	$messages.setAttribute('loading-send-message',true);
+					setTimeout(() => {
+						//	$messages.setAttribute('reset-form',true);
+
+						const dataConv = [newConversation(e.detail.payload), ...allConversations];
+
+						const dataMessage = {
+							author: {
+								name: 'Jesús Cárdenas Vizcaíno',
+								avatar: {
+									src: 'https://outpostrecruitment.com/wp-content/uploads/2019/05/Ruairi-Spillane.png',
+									alt: 'Jesús Cárdenas Vizcaíno'
+								}
+							},
+							date: 'lunes, 20 de abril de 2020, 12:35',
+							sender: true,
+							message: e.detail.payload.body
+						};
+
+						const updateMsg = JSON.stringify([dataMessage]);
+						const updateConv = JSON.stringify(dataConv);
+
+						$messages.setAttribute('conversations', updateConv);
+						// $messages.setAttribute('messages', updateMsg);
+					}, 10000);
+				}
+
+				if (e.detail.type === 'searchByUsers') {
+					setTimeout(() => {
+						const newUsers = oldUsers.filter((user) => user.name.toUpperCase().includes(e.detail.payload.toUpperCase()));
+						const update = JSON.stringify(newUsers);
+						$messages.setAttribute('to-user-list', update);
+					}, 250);
+				}
+
+				if (e.detail.type === 'searchByMessages') {
+					setTimeout(() => {
+						const oldConversations = JSON.parse($messages.getAttribute('conversations'));
+						const dataConv = oldConversations.filter((conv) => {
+							return conv.subject.toUpperCase().includes(e.detail.payload.toUpperCase());
+						});
+						const update = JSON.stringify(dataConv);
+						if (e.detail.payload) {
+							$messages.setAttribute('conversations', update);
+						} else {
+							$messages.setAttribute('conversations', JSON.stringify(allConversations));
+						}
+					}, 1000);
+				}
+
+				if (e.detail.type === 'cancelFile') {
+					const oldAttached = JSON.parse($messages.getAttribute('attached-files-send-list'));
+					const conversationFiles = oldAttached[e.detail.payload.conversationId];
+					if (conversationFiles) {
+						const updateAttached = conversationFiles.filter((attached) => attached.name !== e.detail.payload.name);
+						// console.log(updateAttached);
+						$messages.setAttribute(
+							'attached-files-send-list',
+							JSON.stringify({
+								...updateAttached,
+								[e.detail.payload.conversationId]: updateAttached
+							})
+						);
+					}
+				}
+
+				if (e.detail.type === 'retryFile') {
+					const oldAttached = JSON.parse($messages.getAttribute('attached-files-send-list'));
+					const conversationFiles = oldAttached[e.detail.payload.conversationId];
+
+					$messages.setAttribute(
+						'attached-files-send-list',
+						JSON.stringify({
+							...oldAttached,
+							[e.detail.payload.conversationId]: conversationFiles.map((file) =>
+								file.name === e.detail.payload.name ? { ...file, uploading: true } : file
+							)
+						})
+					);
+					if (conversationFiles) {
+						setTimeout(() => {
+							$messages.setAttribute(
+								'attached-files-send-list',
+								JSON.stringify({
+									...oldAttached,
+									[e.detail.payload.conversationId]: conversationFiles.map((file) =>
+										file.name === e.detail.payload.name ? { ...file, uploading: false, error: null } : file
+									)
+								})
+							);
+						}, 1000);
+					}
+				}
+
+				if (e.detail.type === 'mailBoxCHange') {
+					$messages.detailPanelActive = 'apps';
+				}
+
+				if (e.detail.type === 'attachFile') {
+					const oldAttached = JSON.parse($messages.getAttribute('attached-files-send-list'));
+					const conversationFiles = (oldAttached || {})[e.detail.payload.conversationId] || [];
+
+					if (conversationFiles) {
+						let isError = Math.round(0.4) === 1;
+						isError = true;
+
+						const updateAttached = [
+							...conversationFiles,
+							{
+								name: e.detail.payload.file.name,
+								extension: 'pdf',
+								size: '3 MB',
+								error: isError ? 'Uploaded failed - Try again' : null,
+								uploading: !isError
+							}
+						];
+
+						$messages.setAttribute(
+							'attached-files-send-list',
+							JSON.stringify({
+								...oldAttached,
+								[e.detail.payload.conversationId]: updateAttached
+							})
+						);
+
+						// setTimeout(() => {
+						//   $messages.setAttribute('attached-files-send-list', JSON.stringify({
+						//     ...oldAttached,
+						//     [e.detail.payload.conversationId]: updateAttached.map(file =>
+						//       file.name === e.detail.payload.file.name
+						//         ? {...file, uploading: false}
+						//         : file
+						//     )
+						//   }));
+						// }, 1000)
+					}
+				}
+			});
+
+			var conversationsScroll = [
+				{
+					id: '1230',
+					group: null,
+					unread: true,
+					closed: true,
+					notifications: 32,
+					date: '18/4/20',
+					important: true,
+					avatar: [{}, {}],
+					subject: '1111111 Nuevos mensajes del scroll',
+					subtitle: 'Ángeles, Jesús, +2',
+					preview:
+						'<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!'
+				},
+				{
+					id: '1232',
+					group: null,
+					unread: false,
+					repliesNotAllowed: true,
+					date: '18/4/20',
+					avatar: [
+						{
+							src: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							alt: 'Anabel Dominguez Santos'
+						},
+						{
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						},
+						{
+							src: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							alt: 'Anabel Dominguez Santos'
+						},
+						{
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						},
+						{
+							src: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							alt: 'Anabel Dominguez Santos'
+						},
+						{
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					],
+					subject: '2222 Refinamiento Backlog',
+					subtitle: 'Ángeles, Jesús, +8',
+					preview:
+						'<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!'
+				},
+				{
+					id: '1233',
+					group: null,
+					unread: false,
+					date: '18/4/20',
+					avatar: [
+						{
+							src: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							alt: 'Anabel Dominguez Santos'
+						},
+						{
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					],
+					subject: '3333 Refinamiento Backlog',
+					subtitle: 'Ángeles, Jesús, +2',
+					preview:
+						'<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!'
+				},
+				{
+					id: '1234',
+					group: null,
+					unread: false,
+					date: '18/4/20',
+					avatar: [
+						{
+							src: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							alt: 'Anabel Dominguez Santos'
+						},
+						{
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					],
+					subject: '4444 Refinamiento Backlog',
+					important: true,
+					subtitle: 'Ángeles, Jesús, +2',
+					preview:
+						'<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!'
+				},
+				{
+					id: '1234',
+					group: null,
+					unread: false,
+					date: '18/4/20',
+					avatar: [
+						{
+							src: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							alt: 'Anabel Dominguez Santos'
+						},
+						{
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					],
+					subject: '6666666 Nuevos mensajes del scroll',
+					important: true,
+					subtitle: 'Ángeles, Jesús, +2',
+					preview:
+						'<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!'
+				},
+				{
+					id: '1234',
+					group: null,
+					unread: false,
+					date: '18/4/20',
+					avatar: [
+						{
+							src: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							alt: 'Anabel Dominguez Santos'
+						},
+						{
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					],
+					subject: '55555 Refinamiento Backlog',
+					important: true,
+					subtitle: 'Ángeles, Jesús, +2',
+					preview:
+						'<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!'
+				},
+				{
+					id: '1234',
+					group: null,
+					unread: false,
+					date: '18/4/20',
+					avatar: [
+						{
+							src: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							alt: 'Anabel Dominguez Santos'
+						},
+						{
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					],
+					subject: '66666 Refinamiento Backlog',
+					important: true,
+					subtitle: 'Ángeles, Jesús, +2',
+					preview:
+						'<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!'
+				},
+				{
+					id: '1234',
+					group: null,
+					unread: false,
+					date: '18/4/20',
+					avatar: [
+						{
+							src: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							alt: 'Anabel Dominguez Santos'
+						},
+						{
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					],
+					subject: '77777  Refinamiento Backlog',
+					important: true,
+					subtitle: 'Ángeles, Jesús, +2',
+					preview:
+						'<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!'
+				},
+				{
+					id: '1234',
+					group: null,
+					unread: false,
+					date: '18/4/20',
+					avatar: [
+						{
+							src: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							alt: 'Anabel Dominguez Santos'
+						},
+						{
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					],
+					subject: '888888 Refinamiento Backlog',
+					important: true,
+					subtitle: 'Ángeles, Jesús, +2',
+					preview:
+						'<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!'
+				},
+				{
+					id: '1234',
+					group: null,
+					unread: false,
+					date: '18/4/20',
+					avatar: [
+						{
+							src: 'https://pymdigital.com/wp-content/uploads/2017/11/profile.jpg',
+							alt: 'Anabel Dominguez Santos'
+						},
+						{
+							src: 'https://kprofiles.com/wp-content/uploads/2018/12/nak6-900x600.jpeg',
+							alt: 'Naoko Yoshimitsu Martínez'
+						}
+					],
+					subject: 'ULTIMO Refinamiento Backlog',
+					important: true,
+					subtitle: 'Ángeles, Jesús, +2',
+					preview:
+						'<strong>Ángeles</strong>: Buenas tardes, Esta convocatoria lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam pariatur, quidem nostrum inventore sunt, illo maxime optio dolorum vero ducimus recusandae, aliquam similique odio repudiandae nihil provident alias! Dignissimos, omnis!'
+				}
+			];
+			$messages.setAttribute('more-bottom-conversations', true);
+			$messages.setAttribute('max-conversation-rendered', 30);
+
+			$messages.addEventListener('eventLoadConversation', function (e) {
+				switch (e.detail.type) {
+					case 'top':
+						$messages.setAttribute('more-top-conversations', true);
+						var oldConversations = JSON.parse($messages.getAttribute('conversations'));
+						setTimeout(() => {
+							oldConversations.splice(20, 10);
+							conversationsScroll.forEach((el) => oldConversations.unshift(el));
+							$messages.setAttribute('conversations', JSON.stringify(oldConversations));
+						}, 2000);
+						break;
+					case 'bottom':
+						$messages.setAttribute('more-bottom-conversations', true);
+						var oldConversations = JSON.parse($messages.getAttribute('conversations'));
+						setTimeout(() => {
+							oldConversations.splice(0, 10);
+							conversationsScroll.forEach((el) => oldConversations.push(el));
+							$messages.setAttribute('conversations', JSON.stringify(oldConversations));
+						}, 2000);
+						break;
+
+					default:
+						break;
+				}
+			});
+		</script>
+	</body>
+</html>

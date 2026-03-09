@@ -1,0 +1,8 @@
+@forward 'ui-column.theme.scss';
+
+.ui-column {
+	height: 100%;
+	padding-left: 8px;
+	padding-right: 8px;
+	width: calc(100% - 16px);
+}

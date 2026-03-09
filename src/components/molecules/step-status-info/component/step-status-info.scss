@@ -1,0 +1,83 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_step-status-info-cards-width: var(--step-status-info-cards-width);
+	--_step-status-info-min-width: var(--step-status-info-min-width);
+}
+
+/** 
+ * Component
+ */
+
+:host {
+	.step-status-info {
+		--_ui-v2-color-panel-card-width: var(--_step-status-info-cards-width);
+		font-family: settings.$font-regular-txt;
+		min-width: var(--_step-status-info-min-width);
+
+		&__row {
+			display: grid;
+			grid-template-columns: 1fr 9fr;
+			grid-auto-rows: auto;
+			&:last-child {
+				.step-status-info {
+					&__step-container {
+						&:before {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+
+		&__step-container {
+			display: flex;
+			position: relative;
+			flex-direction: column;
+
+			&:before {
+				content: '';
+				display: block;
+				width: tools.rem(1);
+				height: calc(100% - 45px - 5px - 8px);
+				background: tools.color(secondary, thirty);
+				position: absolute;
+				top: tools.rem(76px);
+				left: 50%;
+			}
+		}
+
+		&__number {
+			height: tools.rem(45);
+			width: tools.rem(45);
+			text-align: center;
+			justify-self: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: auto;
+			margin-top: tools.rem(25);
+			font-size: tools.rem(18);
+			border-radius: 50%;
+			border: 1px solid #333;
+		}
+
+		&__panels-container {
+			display: flex;
+			position: relative;
+			flex-direction: column;
+			padding: tools.rem(10px 5px);
+		}
+	}
+}

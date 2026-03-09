@@ -1,0 +1,77 @@
+@use 'settings';
+@use 'tools';
+
+/**
+   *@description: this file stylizes the generic component paginator
+**/
+
+.wc-paginator {
+	margin-bottom: tools.rem(20);
+	font-size: tools.rem(14);
+	line-height: tools.rem(20);
+	text-align: center;
+
+	&__item {
+		display: inline-block;
+		width: tools.rem(25);
+		height: tools.rem(25);
+		text-align: center;
+	}
+
+	&__btn {
+		display: inline-block;
+		width: tools.rem(25);
+		height: tools.rem(25);
+		position: relative;
+		margin: 0 0 0 tools.rem(3);
+		padding: 0;
+		border: 0;
+		vertical-align: middle;
+		background-color: transparent;
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+
+	&__num {
+		display: block;
+		line-height: tools.rem(24);
+		font-weight: bold;
+		color: tools.color(secondary, dark);
+
+		&--active {
+			border-radius: 50%;
+			background: tools.color(primary, base);
+			color: white;
+		}
+	}
+
+	&--start,
+	&--previous,
+	&--next,
+	&--last {
+		font-size: 0;
+		color: tools.color(primary, base);
+	}
+
+	&--start {
+		background-size: 50%;
+		background: url('#{settings.$icons_path}/arrow-double-paginator.svg') no-repeat center center;
+	}
+
+	&--previous {
+		background: url('#{settings.$icons_path}/arrow--red.svg') no-repeat center center;
+		transform: rotate(90deg);
+	}
+
+	&--next {
+		background: url('#{settings.$icons_path}/arrow--red.svg') no-repeat center center;
+		transform: rotate(-90deg);
+	}
+
+	&--last {
+		background-size: 60%;
+		background: url('#{settings.$icons_path}/arrow-double-paginator.svg') no-repeat center center;
+		transform: rotate(-180deg);
+	}
+}

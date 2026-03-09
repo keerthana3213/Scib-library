@@ -1,0 +1,55 @@
+/**
+   *@description: color-map
+**/
+
+$colors: (
+	primary: (
+		ultra-light: #fee5e5,
+		light: #f24c4c,
+		base: #ec0000,
+		medium: #cc0000,
+		dark: #990000
+	),
+	secondary: (
+		light: #f0f0f0,
+		medium: #dcdcdc,
+		medium-dark: #cccccc,
+		thirty: #b5b5b5,
+		dark: #727272,
+		ultra-dark: #444444,
+		super-dark: #222222,
+		strong-dark: #000000
+	),
+	tertiary: (
+		ultra-light: #f5f9fb,
+		light: #deedf2,
+		sky: #c3dee7,
+		accesible-sky: #257fa4,
+		focus: #9bc3d3,
+		base: #1bb3bc,
+		base-dark: #137e84,
+		dark-light: #9ab4ff,
+		dark: #3366ff,
+		ultra-dark: #0032e6
+	),
+	quaternary: (
+		light: #a2d6a5,
+		base: #63ba68,
+		medium: #008437
+	),
+	quintenary: (
+		light: #ffe699,
+		base: #ffcc33,
+		dark: #946f00
+	),
+	sixtieth: (
+		base: #9e3667,
+		dark: #732645
+	),
+	seventh: (
+		ultra-light: #f1cd9e,
+		medium-light: #f2ab4e,
+		light: #ff9411,
+		base: #ff5a00
+	)
+);

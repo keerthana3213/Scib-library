@@ -1,0 +1,111 @@
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+:host([direction='bottom']) {
+	--_atoms-accordion-column-direction: column-reverse;
+}
+
+/**
+ * Component styles
+ */
+
+:host {
+	@include tools.shadowIcons();
+	display: block;
+
+	/* Custom properties with fallback values */
+	--_atoms-accordion-border-bottom-width: var(--atoms-accordion-border-bottom-width, 0px);
+	--_atoms-accordion-border-bottom-color: var(--atoms-accordion-border-bottom-color, var(--color-border-alternative));
+	--_atoms-accordion-border-top-width: var(--atoms-accordion-border-top-width, 1px);
+
+	.accordion {
+		display: flex;
+		flex-direction: var(--_atoms-accordion-column-direction, column);
+		background-color: var(--color-surface-state-default);
+		color: var(--color-text-default);
+		padding: var(--atoms-accordion-padding, 16px 0);
+
+		&__divider {
+			width: 100%;
+			border: solid var(--_atoms-accordion-border-bottom-width) var(--_atoms-accordion-border-bottom-color);
+			margin: 0;
+			border-top-width: var(--_atoms-accordion-border-top-width);
+		}
+
+		&__header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 8px;
+			padding-left: 8px;
+		}
+		&__text {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			font: var(--headline-small);
+			font-family: var(--typescale-headline-small-font);
+			font-size: var(--typescale-headline-small-size);
+			line-height: var(--typescale-headline-small-line-height);
+			font-weight: var(--typescale-headline-small-weight);
+			font-style: var(--typescale-headline-small-style);
+		}
+		&__btn {
+			background: transparent;
+			border: none;
+			cursor: pointer;
+			margin-left: 8px;
+			outline: none !important;
+
+			&:not([disabled]) {
+				color: tools.color(primary, base);
+			}
+
+			&--open {
+				transform: rotate(180deg);
+			}
+			.icon {
+				--icon-content: var(--theme-scib-icon-chevron-down);
+				color: var(--color-icon-default);
+				width: 100%;
+			}
+		}
+		&__content {
+			display: flex;
+			flex-direction: column;
+			margin-bottom: var(--atoms-accordion-margin-content, 24px);
+			font: var(--body-medium-default);
+			font-family: var(--typescale-body-medium-default-font);
+			font-size: var(--typescale-body-medium-default-size);
+			line-height: var(--typescale-body-medium-default-line-height);
+			font-weight: var(--typescale-body-medium-default-weight);
+			font-style: var(--typescale-body-medium-default-style);
+			padding-left: 8px;
+			padding-top: var(--atoms-accordion-padding-top);
+			&--hidden {
+				display: none;
+			}
+		}
+		&__cursor {
+			cursor: pointer;
+		}
+
+		&:hover {
+			background-color: var(--atoms-accordion-hover-background-color, --color-surface-state-hover);
+		}
+
+		&__focused {
+			box-shadow: var(--atoms-accordion-box-shadow, --elevation-flat-focus-inner);
+		}
+	}
+}

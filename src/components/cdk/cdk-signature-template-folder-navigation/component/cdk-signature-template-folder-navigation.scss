@@ -1,0 +1,14 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-signature-template-folder-navigation.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_cdk-signature-template-folder-navigation-bg-color);
+	@include tools.shadowIcons();
+}
+
+.cdk-signature-folder-navigation {
+	font-size: 1rem;
+}

@@ -1,0 +1,78 @@
+<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet" />
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+<style>
+	:root {
+		--mdc-theme-primary: #ec0000;
+	}
+
+	.sb-show-main {
+		background: transparent !important;
+	}
+
+	.version-container {
+		display: flex;
+		flex-direction: row;
+		flex: 1 1 100%;
+		justify-content: flex-start;
+		align-items: center;
+		margin-left: 15px;
+	}
+
+	.version-text {
+		padding-left: 15px;
+		border-left: 1px solid rgba(0, 0, 0, 0.1);
+		font-size: 13px;
+		line-height: 24px;
+		font-weight: bold;
+		color: #2e3438;
+	}
+
+	.version-text:hover {
+		color: rgba(0, 0, 0, 0.5);
+	}
+
+	html.dark .version-text {
+		color: #c9cdcf;
+	}
+</style>
+
+<script>
+	window.addEventListener('load', function () {
+		setTimeout(() => {
+			const version = window.__STORYBOOK_STENCIL_DOC_VERSION__;
+			console.log('Story-book version: ', version);
+			const versionContainer = document.querySelector('div[role="main"] > div > div > div > div > div');
+			const versionElement = document.createElement('div');
+			const link = document.createElement('a');
+			link.classList.add('version-text');
+			link.href = `https://nexusmaster.alm.europe.cloudcenter.corp/#browse/browse:cib-npm-snapshots:%40scib%2Fui-kit%2Fui-kit-${version}.tgz`;
+			link.innerText = `Version ${version}`;
+			link.target = '_blank';
+			versionElement.classList.add('version-container');
+			versionElement.appendChild(link);
+			versionContainer.appendChild(versionElement);
+		}, 2000);
+
+		const _htmlTag = document.documentElement;
+		const observer = new MutationObserver((mutationList, observer) => {
+			mutationList.forEach(function (mutation) {
+				if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+					const { target } = mutation;
+					const light = !!target.classList.contains('light');
+					const iframe = document.getElementById('storybook-preview-iframe');
+					const iframe_doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
+					if (light) {
+						iframe_doc.documentElement.setAttribute('mode', 'light');
+					} else {
+						iframe_doc.documentElement.setAttribute('mode', 'dark');
+					}
+				}
+			});
+		});
+		observer.observe(_htmlTag, {
+			attributes: true
+		});
+	});
+</script>

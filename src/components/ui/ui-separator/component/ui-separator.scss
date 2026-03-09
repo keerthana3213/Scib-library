@@ -1,0 +1,16 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'ui-separator.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+}
+.ui-separator {
+	border: 0;
+	width: 100%;
+	margin: 0;
+	height: 1px;
+	background: tools.color(secondary, medium);
+	margin-bottom: 8px;
+}

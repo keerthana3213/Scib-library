@@ -1,0 +1,43 @@
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_atoms-lottie-player-background-color: var(--color-background-default);
+}
+
+:host {
+	background: var(--_atoms-lottie-player-background-color);
+	position: relative;
+	overflow: hidden;
+	display: block;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+
+	.lottie-container {
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		display: flex;
+		height: 100%;
+		width: 100%;
+		padding: 0;
+		margin: 0;
+
+		#container {
+			display: block;
+			height: 100%;
+			width: 100%;
+			padding: 0;
+			margin: 0;
+		}
+	}
+}

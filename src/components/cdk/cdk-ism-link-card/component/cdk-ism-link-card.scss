@@ -1,0 +1,146 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-ism-link-card.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_cdk-ism-link-card-bg-color);
+	font-size: tools.rem(14);
+}
+
+.cdk-ism {
+	&__skeleton {
+		width: 100%;
+		max-width: tools.rem(432);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		overflow: hidden;
+	}
+
+	&__skeleton-container {
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+		height: auto;
+		border-radius: tools.rem(8);
+	}
+
+	&__skeleton-shine {
+		animation: mask 1200ms ease infinite;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+
+		@keyframes mask {
+			from {
+				transform: translateX(0%);
+			}
+			to {
+				transform: translateX(100%);
+			}
+		}
+
+		&:before {
+			content: '';
+			display: block;
+			height: 100%;
+			width: 30%;
+			background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.6) 100%);
+		}
+	}
+}
+.cdk-ism-link-card {
+	article {
+		min-height: tools.rem(168);
+	}
+	scib-ui-separator {
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: tools.rem(48);
+	}
+	&__head {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		position: relative;
+		top: tools.rem(-8);
+
+		h2 {
+			font-size: tools.rem(16);
+			font-family: settings.$font-bold-headline;
+		}
+		figure {
+			width: tools.rem(48);
+		}
+	}
+	&__content {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		position: relative;
+		top: tools.rem(20);
+		padding-left: tools.rem(8);
+		.cdk-ism-link-card__steps {
+			margin-left: tools.rem(8);
+			flex: 50%;
+			.cdk-steps {
+				display: flex;
+				align-items: center;
+
+				&__point {
+					min-width: tools.rem(26);
+					max-width: tools.rem(26);
+					width: tools.rem(26);
+					height: tools.rem(26);
+					border-radius: tools.rem(24);
+					box-shadow: 0 9px 8px rgb(0 0 0 / 17%);
+					background-color: tools.color(tertiary, focus);
+					display: flex;
+					justify-content: center;
+					text-align: center;
+					align-items: center;
+					margin-right: tools.rem(12);
+					span {
+						color: white;
+						font-size: tools.rem(14);
+						font-family: settings.$font-bold-txt;
+						position: absolute;
+						padding-bottom: tools.rem(2);
+					}
+				}
+			}
+			p {
+				display: flex;
+				flex-direction: column;
+				font-size: tools.rem(16);
+				font-family: settings.$font-bold-txt;
+				color: tools.color(tertiary, focus);
+				margin-bottom: tools.rem(6);
+				margin-top: tools.rem(1);
+				margin-left: tools.rem(11);
+				span {
+					margin-top: tools.rem(-6);
+					margin-bottom: tools.rem(-7);
+				}
+				span:last-child {
+					margin-bottom: tools.rem(-4);
+				}
+			}
+			.icon-options:before {
+				color: tools.color(tertiary, dark-light);
+			}
+		}
+		figure {
+			position: relative;
+			top: tools.rem(-12);
+			margin-left: tools.rem(48);
+		}
+	}
+}

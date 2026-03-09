@@ -1,0 +1,121 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-status-context.theme.scss';
+
+.cdk-context {
+	.ui-column {
+		position: relative;
+	}
+
+	scib-ui-color-panel {
+		padding-bottom: 8px;
+		width: 100%;
+	}
+
+	.ui-row {
+		align-items: stretch;
+	}
+
+	&__row {
+		list-style-type: none;
+	}
+
+	&__data {
+		padding: tools.rem(20);
+		width: 100%;
+	}
+
+	&__title {
+		font-family: settings.$font-bold-txt;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.cdk-context {
+		&__list {
+			position: relative;
+			left: tools.rem(-20);
+		}
+
+		scib-ui-column:first-child > .ui-column:before {
+			content: '';
+			display: block;
+			width: tools.rem(1);
+			height: calc(100% - 45px - 8px - 8px);
+			background: tools.color(secondary, thirty);
+			position: absolute;
+			top: tools.rem(53);
+			left: 50%;
+		}
+
+		li:last-child scib-ui-column:first-child > .ui-column:before {
+			display: none;
+		}
+
+		&__number {
+			text-align: center;
+			justify-self: center;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: auto;
+			margin-top: tools.rem(25);
+			font-size: tools.rem(18);
+
+			height: tools.rem(45);
+			width: tools.rem(45);
+
+			border-radius: 50%;
+
+			&--pending {
+				border: 1px solid tools.color(seventh, medium-light);
+			}
+
+			&--noaccepted {
+				border: 1px solid tools.color(primary, base);
+			}
+
+			&--requested {
+				border: 1px solid tools.color(tertiary, dark);
+			}
+
+			&--progress {
+				border: 1px solid tools.color(sixtieth, base);
+			}
+
+			&--creating {
+				border: 1px solid tools.color(quintenary, base);
+			}
+
+			&--onboarding {
+				border: 1px solid tools.color(quaternary, medium);
+			}
+
+			&--stand {
+				border: 1px solid tools.color(seventh, light);
+			}
+
+			&--done {
+				border: 1px solid tools.color(quaternary, base);
+			}
+
+			&--closed {
+				border: 1px solid tools.color(secondary, dark);
+			}
+
+			&--rejected {
+				border: 1px solid tools.color(secondary, thirty);
+			}
+
+			&--canceled {
+				border: 1px solid tools.color(secondary, ultra-dark);
+			}
+
+			&--disabled {
+				border: 1px solid tools.color(seventh, ultra-light);
+			}
+		}
+	}
+}

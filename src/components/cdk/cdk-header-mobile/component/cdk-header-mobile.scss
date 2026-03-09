@@ -1,0 +1,46 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-header-mobile.theme.scss';
+
+:host {
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_cdk-header-mobile-bg-color);
+
+	@include tools.desktop {
+		display: none;
+	}
+}
+
+#header-black {
+	display: flex !important;
+	justify-content: space-between !important;
+	align-items: center !important;
+	width: 100%;
+	height: tools.rem(40) !important;
+	color: white !important;
+	background-color: black !important;
+
+	.left-content {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+
+		.c-panel-goback {
+			z-index: tools.z-index(overlay-layer-1);
+			color: white;
+			transform: rotate(180deg) scale(0.5);
+		}
+	}
+
+	.right-content {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		.c-panel-close {
+			z-index: tools.z-index(overlay-layer-1);
+			color: white;
+			transform: scale(0.8);
+		}
+	}
+}

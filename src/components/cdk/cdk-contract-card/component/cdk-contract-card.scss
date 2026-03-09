@@ -1,0 +1,117 @@
+@use 'utilities';
+@use 'settings';
+@use 'objects';
+@use 'tools';
+
+@forward 'cdk-contract-card.theme.scss';
+
+.cdk-contract-card {
+	&__title {
+		@extend %ellipsis;
+		display: inline-block;
+		width: calc(100% - 50px);
+		margin-bottom: tools.rem(10);
+		font-size: tools.rem(20);
+		line-height: tools.rem(24);
+		font-family: settings.$font-bold-txt;
+		color: black;
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: tools.rem(24);
+		p,
+		span {
+			@extend %ellipsis;
+			position: relative;
+			padding: tools.rem(4 6);
+			font-size: tools.rem(16);
+			line-height: tools.rem(23);
+			color: black;
+
+			&:first-child {
+				margin-left: 0;
+				padding-left: 0;
+			}
+
+			&:not(:last-of-type) {
+				border-right: tools.rem(1) solid tools.color(secondary, medium);
+			}
+		}
+
+		p,
+		span {
+			@extend %ellipsis;
+			position: relative;
+			padding: tools.rem(0 6);
+			font-size: tools.rem(16);
+			line-height: tools.rem(24);
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:not(:last-of-type) {
+				border-right: tools.rem(1) solid tools.color(secondary, medium);
+			}
+		}
+	}
+
+	&__footer {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		.ui-data-container.--without-childs {
+			min-width: 0;
+			width: 100%;
+		}
+
+		.c-legend-text {
+			font-family: settings.$font-regular-txt;
+			display: block;
+			font-size: 1.25rem;
+			letter-spacing: 0;
+			line-height: 1.8125rem;
+			color: tools.color(secondary, darkest);
+			padding: tools.rem(4 22);
+		}
+
+		.c-legend {
+			max-width: tools.rem(76);
+			box-sizing: border-box;
+			padding-right: tools.rem(16);
+		}
+	}
+
+	&--loading {
+		@include utilities.animationSkeleton();
+		position: relative;
+		width: 100%;
+		max-width: tools.rem(415);
+		height: 100%;
+		max-height: tools.rem(191);
+	}
+
+	.c-button.--only-one-icon.sc-scib-ui-button {
+		display: inline-block;
+		width: tools.rem(40);
+		position: absolute;
+		top: tools.rem(22);
+		right: tools.rem(5);
+		vertical-align: top;
+		color: tools.color(primary, base) !important;
+		background: transparent;
+		padding: 0 !important;
+		min-width: 0 !important;
+		min-height: 0 !important;
+		margin: 0;
+
+		.u-icon {
+			font-size: tools.rem(16);
+		}
+
+		&:hover {
+			background: transparent;
+		}
+	}
+}

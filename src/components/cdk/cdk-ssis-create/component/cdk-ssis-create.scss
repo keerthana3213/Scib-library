@@ -1,0 +1,267 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-ssis-create.theme.scss';
+
+.cdk-cssis {
+	font-family: settings.$font-regular-txt;
+	padding: 0;
+
+	&__title {
+		display: block;
+		margin-bottom: tools.rem(24);
+		font-size: tools.rem(20);
+		line-height: tools.rem(28);
+		color: black;
+
+		strong {
+			font-family: settings.$font-bold-txt;
+		}
+	}
+
+	&__legend {
+		width: 100%;
+		position: relative;
+		margin-bottom: tools.rem(8);
+		font-family: settings.$font-bold-txt;
+		font-size: tools.rem(18);
+		line-height: tools.rem(26);
+		color: black;
+		&::after {
+			content: var(--theme-scib-icon-chevron-down);
+			font-family: 'scib-icons';
+			display: inline-block;
+			position: absolute;
+			right: tools.rem(10);
+			bottom: tools.rem(-3);
+			font-size: tools.rem(24);
+			color: tools.color(primary, base);
+		}
+		&:hover {
+			cursor: pointer;
+		}
+		&--open {
+			&::after {
+				transform: rotate(180deg);
+			}
+		}
+		&--deactivate {
+			&::after {
+				content: none;
+			}
+			&:hover {
+				cursor: default;
+			}
+		}
+	}
+
+	&__fieldset {
+		margin: tools.rem(16 0 20);
+		border-bottom: tools.rem(1) solid tools.color(secondary, medium);
+	}
+
+	&__group {
+		display: flex;
+		flex-direction: column;
+		.sc-scib-ui-select-h,
+		.sc-scib-ui-dropdown-h,
+		scib-ui-date-picker {
+			margin: 0;
+			height: 100%;
+		}
+	}
+
+	&__notice {
+		display: block;
+		margin-bottom: tools.rem(16);
+		font-size: tools.rem(13);
+		line-height: tools.rem(19);
+		color: black;
+	}
+
+	&__footer {
+		.sc-scib-ui-button-h {
+			width: 100%;
+			margin: tools.rem(0 10);
+		}
+	}
+
+	&__buttons {
+		display: flex;
+	}
+
+	&__radio {
+		width: 100%;
+		margin-bottom: tools.rem(24);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	&__radio-label {
+		display: block;
+		margin-bottom: tools.rem(10);
+		font-size: tools.rem(12);
+		line-height: tools.rem(18);
+		text-transform: uppercase;
+		color: black;
+	}
+
+	&__radio-elements {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+
+	&__radio-container {
+		display: block;
+		position: relative;
+		padding-left: tools.rem(40);
+		margin: tools.rem(0 0 10);
+		cursor: pointer;
+		font-size: tools.rem(16);
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__radio-checkmark {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: tools.rem(24);
+		width: tools.rem(24);
+		background: white;
+		border: 1px solid tools.color(secondary, dark);
+		border-radius: 50%;
+
+		&:after {
+			content: '';
+			position: absolute;
+			display: none;
+			top: tools.rem(7);
+			left: tools.rem(7);
+			width: tools.rem(10);
+			height: tools.rem(10);
+			border-radius: 50%;
+			background: tools.color(primary, base);
+		}
+	}
+
+	&__radio-input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+
+		&:checked ~ .cdk-cssis__radio-checkmark {
+			border: 2px solid tools.color(primary, base);
+			&:after {
+				display: block;
+				top: tools.rem(5);
+				left: tools.rem(5);
+			}
+		}
+	}
+
+	&__add-instruction {
+		max-width: tools.rem(220);
+		margin-bottom: tools.rem(30);
+	}
+
+	&__remove-instruction {
+		max-width: tools.rem(220);
+		margin-bottom: tools.rem(10);
+	}
+	.sc-scib-ui-checkbox-h {
+		margin-bottom: tools.rem(24);
+	}
+
+	scib-ui-date-picker {
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.cdk-cssis {
+		margin-bottom: tools.rem(30);
+		padding: tools.rem(26 26 26);
+		min-width: tools.rem(650);
+
+		&__title {
+			font-size: tools.rem(28);
+			line-height: tools.rem(34);
+		}
+
+		&__group {
+			flex-direction: row;
+			align-items: flex-start;
+			.sc-scib-ui-dropdown-h,
+			.sc-scib-ui-checkbox-h,
+			.ui-datepicker,
+			.cdk-cssis__radio {
+				margin: 0;
+				height: 100%;
+				width: 100%;
+			}
+			.sc-scib-ui-select-h:not(:first-of-type),
+			.sc-scib-ui-input-h:not(:first-of-type),
+			.sc-scib-ui-dropdown-h:not(:first-of-type),
+			.cdk-cssis__radio {
+				margin-left: tools.rem(16);
+			}
+
+			&--check {
+				margin: tools.rem(0 0 30);
+				justify-content: flex-start;
+			}
+		}
+
+		&__footer {
+			display: flex;
+			justify-content: space-between;
+			padding-top: tools.rem(16);
+			align-items: center;
+			.sc-scib-ui-button-h {
+				margin-right: auto;
+				margin-left: tools.rem(24);
+				max-width: tools.rem(200);
+			}
+		}
+
+		&__notice {
+			display: inline-block;
+			margin-bottom: 0;
+		}
+
+		&__radio-elements {
+			flex-direction: row;
+			justify-content: flex-end;
+		}
+
+		&__radio-container {
+			&:last-child {
+				margin-left: tools.rem(25);
+			}
+		}
+
+		.sc-scib-ui-checkbox-h {
+			margin: tools.rem(35 0 0 16);
+		}
+
+		scib-ui-date-picker {
+			width: 100%;
+			max-width: tools.rem(230);
+		}
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.cdk-cssis {
+		min-width: tools.rem(720);
+	}
+}

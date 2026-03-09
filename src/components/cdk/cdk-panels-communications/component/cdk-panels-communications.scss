@@ -1,0 +1,140 @@
+@use 'settings';
+@use 'tools';
+
+@forward 'cdk-panels-communications.theme.scss';
+
+$commpanels__widthDesktop: tools.rem(400);
+$commpanels__easing: cubic-bezier(0.65, 0.05, 0.05, 1);
+
+:host {
+	display: flex;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.c-panel-main,
+.c-panel-detail {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+
+	@include tools.desktop {
+		position: static;
+	}
+}
+
+.c-panel-goback {
+	position: absolute;
+	z-index: tools.z-index(overlay-layer-1);
+	color: white;
+	transform: rotate(180deg) scale(0.8) translateY(-2px);
+	top: 0;
+	left: 0;
+	@include tools.desktop {
+		display: none;
+	}
+}
+
+.c-panel-main {
+	background: white;
+	position: absolute;
+	transition: filter 0.3s linear;
+	filter: brightness(0.5);
+
+	&.--active {
+		filter: none;
+		transform: scale(1);
+	}
+
+	@include tools.desktop {
+		filter: none;
+		position: static;
+		// width: $commpanels__widthDesktop;
+		min-width: $commpanels__widthDesktop;
+		max-width: $commpanels__widthDesktop;
+		border-right: 1px solid tools.color(secondary, medium);
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 2.5rem;
+			background: black;
+			box-shadow: 0px -1px 0px 1px black;
+		}
+	}
+}
+
+.c-panel-detail {
+	width: 100%;
+	background: tools.color(tertiary, ultraLight);
+	position: absolute;
+	transform: translateX(100%);
+	pointer-events: none;
+	transition: transform 0.5s $commpanels__easing, box-shadow 0.3s linear;
+
+	&.--active {
+		pointer-events: all;
+		transform: translate(0);
+		box-shadow: 0px 0px 12px 0px transparentize($color: black, $amount: 0.85);
+		@include tools.desktop {
+			transform: none;
+			box-shadow: none;
+		}
+	}
+
+	@include tools.desktop {
+		width: calc(100% - 22rem);
+		pointer-events: all;
+		transform: none;
+		position: static;
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: tools.rem(56);
+			background: tools.color(tertiary, focus);
+		}
+	}
+}
+
+.c-panel-detail-main-conversations {
+	width: 100%;
+	position: absolute;
+	transform: translateX(100%);
+	pointer-events: none;
+	transition: transform 0.5s $commpanels__easing, box-shadow 0.3s linear;
+	background: tools.color(tertiary, ultra-light);
+
+	&.--active {
+		pointer-events: all;
+		transform: translate(0);
+		box-shadow: 0px 0px 12px 0px transparentize($color: black, $amount: 0.85);
+		@include tools.desktop {
+			transform: none;
+			box-shadow: none;
+		}
+	}
+
+	@include tools.desktop {
+		width: calc(100% - 22rem);
+		pointer-events: all;
+		transform: none;
+		position: static;
+		&::before {
+			display: none;
+		}
+	}
+}
+
+.c-panel-slot {
+	height: 100%;
+	@include tools.desktop {
+		height: calc(100% - 3.5rem);
+	}
+}

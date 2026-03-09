@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Get Started/Añadir nuevos iconos" />
+
+## Añadir nuevos iconos
+
+Para añadir nuevos iconos:
+
+Para compilar el paquete para producción:
+
+1. Añadir el .svg exportado por diseño en la ruta: "src/assets/icons". Ver "consideraciones sobre ficheros SVG"
+2. Correr el script de generación de la fuente:
+
+```bash
+npm run generator:fonts
+```
+
+El icono se habrá añadido con éxito en el "icons.stories.mdx"
+
+### Troubleshooting
+
+Si todos los iconos salen como caracteres no reconocidos:
+
+- Forzar el borrado de caché del navegador
+- El @font-face no apunta correctamente a la ruta donde se encuentra el asset de la fuente
+- El font stack no es correcto para el navegador donde se está probando
+
+Si algunos iconos salen como caracteres no reconocidos y/u otros salen intercambiados:
+
+- Forzar el borrado de caché del navegador
+- Al integrarse una nueva versión de stencil, no se han actualizado las fuentes y se está usando un fichero correspondiente a una versión antigua.
+
+### Consideraciones sobre ficheros SVG
+
+- Las formas agrupadas deben combinarse en un único "path"
+- Los bordes deben estar combinados. ("Convert to Outlines" en Sketch)
+- Debe ser monocromo. Los path (formas) con colores alternativos no pueden ser
+- Las partes "huecas" del icono no deben ser formas de color blanco, sino huecos reales en la forma
+- No debe llevar máscaras de ningún tipo: Un problema recurrente es en los SVG exportados a partir de símbolos de la librería de Sketch, llevan máscaras para permitir el cambio de color a través de los overrides de Sketch. Esto crea problemas en desarrollo
+- Los tamaños deben ser uniformes (Ej: todos a 24px)
+- Los aires deben estar contemplados en el SVG y deben estar ajustados para el tamaño estándar (24px)

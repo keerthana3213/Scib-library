@@ -1,0 +1,48 @@
+/**
+ * Este fichero scss debe importarse con @forward en el fichero cdk-pitch-card.scss, justo
+ * después de la importación del tema -> @forward 'cdk-pitch-card.theme'
+ *
+ * Los estilos tendrán el scope del padre, y no del fragment:
+ * cualquier estilo aquí puede colisionar con los estilos de otros fragments importados en el mismo padre.
+ */
+
+@use 'tools';
+
+.c-menu-box {
+	&__container {
+		width: tools.rem(190);
+		position: absolute;
+		top: tools.rem(156);
+		left: tools.rem(184);
+		z-index: 2;
+		padding: tools.rem(16 0);
+		border: tools.rem(1) solid tools.color(secondary, light);
+		border-radius: tools.rem(4);
+		box-shadow: tools.rem(0 8 16 0) rgba(0, 0, 0, 0.16);
+		background-color: white;
+	}
+
+	&__button {
+		position: relative;
+		display: flex;
+		width: 100%;
+		min-height: 2rem;
+		min-width: 2rem;
+		padding: 0 0.3125rem;
+		margin: 0;
+		color: black;
+		// background: unset;
+		font-family: 'scib-txt-regular';
+		font-size: 1rem;
+		line-height: 1.5rem;
+		justify-content: space-between;
+		align-items: center;
+		box-sizing: border-box;
+		cursor: pointer;
+
+		:hover {
+			color: tools.color(primary, base);
+			background-color: tools.color(primary, ultra-light); //#FEE5E5;
+		}
+	}
+}

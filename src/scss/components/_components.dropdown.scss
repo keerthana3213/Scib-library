@@ -1,0 +1,104 @@
+@use 'objects';
+@use 'settings';
+@use 'tools';
+
+/**
+   *@description: this file stylizes the generic component dropdown
+**/
+
+.wc-dropdown {
+	width: tools.rem(150);
+	position: relative;
+	margin: 0 0 tools.rem(20) auto;
+	z-index: tools.z-index(dropdown);
+	&::after {
+		content: '';
+		width: tools.rem(10);
+		height: tools.rem(7);
+		position: absolute;
+		top: tools.rem(15);
+		right: tools.rem(20);
+		margin-left: tools.rem(10);
+		z-index: tools.z-index(dropdown-icons);
+		background: url('#{settings.$icons_path}/arrow_select.svg') no-repeat center center;
+	}
+
+	&__select {
+		@extend %button;
+		width: tools.rem(170);
+		position: absolute;
+		top: 0;
+		right: 0;
+		border: tools.rem(1) solid tools.color(primary, base);
+		text-align: left;
+		background: white;
+	}
+
+	&__title {
+		font-weight: normal;
+		vertical-align: middle;
+	}
+	&__city {
+		@extend %ellipsis;
+		display: inline-block;
+		max-width: tools.rem(80);
+		position: relative;
+		margin-left: tools.rem(5);
+		vertical-align: middle;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.wc-dropdown {
+		&__list {
+			max-height: tools.rem(165);
+			margin: tools.rem(10) 0;
+			overflow: auto;
+		}
+
+		&__item {
+			padding: tools.rem(5);
+			text-transform: uppercase;
+			font-size: tools.rem(12);
+			line-height: tools.rem(18);
+			font-weight: bold;
+			word-break: normal;
+			overflow-wrap: break-word;
+			&:hover,
+			&.active {
+				color: tools.color(primary, base);
+			}
+		}
+	}
+}
+
+@include tools.media-query('sm') {
+	.wc-dropdown {
+		width: tools.rem(140);
+	}
+}
+
+@include tools.media-query('xs') {
+	.wc-dropdown {
+		width: tools.rem(75);
+		height: tools.rem(42);
+		&::before {
+			content: '';
+			width: tools.rem(20);
+			height: tools.rem(20);
+			position: absolute;
+			top: tools.rem(10);
+			left: tools.rem(15);
+			background: url('#{settings.$icons_path}/place.svg') no-repeat center center;
+			z-index: tools.z-index(dropdown-icons);
+		}
+
+		&__select {
+			width: tools.rem(75);
+			min-width: tools.rem(35);
+			height: tools.rem(40);
+			margin: 0;
+			padding: 0;
+		}
+	}
+}

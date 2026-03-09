@@ -1,0 +1,82 @@
+@use 'settings';
+@use 'tools';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+
+@mixin textStrip {
+	font: var(--action-link);
+	font-family: var(--typescale-action-link-font);
+	font-size: var(--typescale-action-link-size);
+	font-weight: var(--typescale-action-link-weight);
+	line-height: 2.5rem;
+	font-style: var(--typescale-action-link-style);
+	text-align: center;
+	color: var(--_atoms-strip-txt-color);
+}
+
+:host {
+	/** Common props for all variants */
+	--_atoms-strip-bg-color: var(--color-action-main-default);
+	--_atoms-strip-padding: 0px var(--size-spacing-08);
+	--_atoms-strip-height: fit-content;
+	--_atoms-strip-txt-color: var(--color-action-on-main-default);
+	--_atoms-strip-z-index: var(--atoms-strip-z-index, 400);
+}
+
+:host {
+	@include tools.shadowIcons();
+	display: block;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: var(--_atoms-strip-z-index);
+	.strip {
+		@include textStrip;
+		display: inline-flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		box-sizing: border-box;
+		align-items: center;
+		width: 100%;
+		height: var(--_atoms-strip-height);
+		padding: var(--_atoms-strip-padding);
+		background-color: var(--_atoms-strip-bg-color);
+
+		&__container {
+			padding: 30px 6px 30px 0px;
+			::slotted([slot='content']) {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		&__close {
+			&--btn {
+				@include textStrip;
+				background: transparent;
+				border: none;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				gap: var(--size-spacing-02);
+				padding: 28px 0px;
+				.icon {
+					--icon-content: var(--theme-scib-icon-close-thin);
+					&::before {
+						color: var(--_atoms-strip-txt-color);
+						width: 24px;
+					}
+				}
+			}
+		}
+	}
+}

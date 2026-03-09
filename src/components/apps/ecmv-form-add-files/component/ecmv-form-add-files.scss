@@ -1,0 +1,234 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	/** Common props for all variants */
+	--_apps-ecmv-form-add-files-bg-color: var(--apps-ecmv-form-add-files-bg-color, magenta);
+}
+
+:host([variant='white']) {
+	/** Specific propr for white variant */
+	--_apps-ecmv-form-add-files-bg-color: var(--apps-ecmv-form-add-files-bg-color, white);
+}
+
+:host([variant='blue']) {
+	/** Specific propr for blue variant */
+	--_apps-ecmv-form-add-files-bg-color: var(--apps-ecmv-form-add-files-bg-color, blue);
+}
+
+/** 
+ * Component
+ */
+:host {
+	display: block;
+	font-family: settings.$font-regular-txt;
+}
+
+.modal-select-files {
+	position: fixed;
+	z-index: 100;
+	padding-top: 3rem;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background: rgba(0, 0, 0, 0.4);
+	&--show {
+		display: block;
+	}
+	&--hide {
+		display: none;
+	}
+}
+
+.close {
+	color: tools.color(secondary, ultra-dark);
+	float: right;
+	font-size: tools.rem(28);
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.modal-margin-select-files {
+	box-sizing: border-box;
+	background: white;
+	margin: auto;
+	float: right;
+	min-height: 100%;
+	padding: tools.rem(35 35 40);
+	width: tools.rem(800);
+}
+
+.files-selector-style {
+	margin: tools.rem(8 0 40) 0;
+	display: flex;
+	align-items: flex-start;
+}
+
+.metadatos-style {
+	margin: tools.rem(24) 0 0 0;
+}
+
+.form-style {
+	margin: tools.rem(19 0 26) 0;
+}
+
+.style-title {
+	height: tools.rem(41);
+	width: tools.rem(103);
+	color: black;
+	font-size: tools.rem(28);
+	letter-spacing: tools.rem(0.2);
+	line-height: tools.rem(41);
+}
+
+.select-group-style {
+	display: inline-block;
+	margin: 0 0 0 tools.rem(16);
+	min-width: tools.rem(230);
+	max-width: tools.rem(230);
+
+	&:nth-child(3n + 1) {
+		margin-left: 0;
+	}
+	.c-input.--disable-edit {
+		background: tools.color(secondary, medium);
+		cursor: auto;
+	}
+	.c-field.sc-scib-ui-input:hover {
+		border-color: tools.color(secondary, medium-dark);
+	}
+	.c-input.sc-scib-ui-input:hover {
+		cursor: auto;
+	}
+}
+
+.footer-style {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: tools.rem(32);
+}
+
+.button-style {
+	display: inline-block;
+	height: tools.rem(48);
+	margin-right: tools.rem(24);
+	justify-content: space-between;
+	& button.c-button {
+		width: tools.rem(180);
+		min-width: 0;
+	}
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+.separator {
+	border-top: tools.rem(1) solid tools.color(secondary, medium);
+}
+
+.required-inputs {
+	height: tools.rem(19);
+	min-width: tools.rem(96);
+	color: black;
+	font-size: tools.rem(13);
+	line-height: tools.rem(19);
+}
+
+.not-visible {
+	display: none;
+}
+
+.c-reply {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: stretch;
+	padding: tools.rem(13 17);
+	border-radius: tools.rem(8);
+	border: 1px solid tools.color(secondary, medium);
+	background-color: white;
+	animation: c-reply__fade-in 0.3s ease-in-out forwards;
+	transform: scale(1);
+	will-change: 1;
+	transform-origin: bottom left;
+	margin: tools.rem(16 16 16 0);
+	&__files {
+		margin-left: 24px;
+		// margin-top: 1rem;
+		margin-bottom: -1rem;
+		&--multiple {
+			width: 70%;
+		}
+		&--simple {
+			width: 60%;
+		}
+	}
+}
+
+.ecmv-fselector {
+	&--big {
+		width: 100%;
+	}
+	&--multiple {
+		width: 30%;
+	}
+	&--simple {
+		width: 40%;
+	}
+}
+
+.modal-status-style #myModal {
+	z-index: 101;
+}
+
+// .attached-bar-style.c-attachedbar-body{
+//   height: 400px;
+// }
+.div-toaster-info-actions {
+	padding: tools.rem(24 0 0 0);
+}
+.toaster-info-actions {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	text-align: left;
+	align-items: center;
+	width: 100%;
+	scib-ui-v2-checkbox {
+		padding: tools.rem(0 0 0 24);
+		--ui-v2-checkbox-primary: var(--theme-colors-yellow-dark);
+		font-family: settings.$font-micro-text;
+	}
+	a {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		min-width: fit-content;
+		padding: tools.rem(0 24 0 0);
+		color: var(--theme-colors-yellow-dark);
+		font-size: tools.rem(16);
+		font-weight: bold;
+		line-height: tools.rem(24);
+		.icon-open-link {
+			padding: tools.rem(0 0 0 9);
+		}
+	}
+	a:hover,
+	a:visited,
+	a:link,
+	a:active {
+		text-decoration: none;
+	}
+}

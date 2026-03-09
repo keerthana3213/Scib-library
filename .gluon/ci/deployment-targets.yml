@@ -1,0 +1,13 @@
+integration:
+  - branch: "release-v100.100.X"
+    environments:
+      - DEV
+  - branch: "release-v200.200.X"
+    environments:
+      - CERT-PRE
+  - branch: "release-v300.300.X"
+    environments:
+      - PRE
+  - branch: "*"
+release:
+  - branch: "*"

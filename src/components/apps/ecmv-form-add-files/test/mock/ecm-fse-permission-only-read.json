@@ -1,0 +1,47 @@
+[
+	{
+		"id": "5117",
+		"what": "READ",
+		"how": [
+			{ "key": "HOWAREA", "value": "ACCDERIVADOS", "descrip": "AccountingDerivados" },
+			{ "key": "HOWBUSPROCESS", "value": "ACCOUNTING", "descrip": "Accounting" },
+			{ "key": "HOWCONFIDENTIAL", "value": "CONFIDENTIAL", "descrip": "Confidential" },
+			{ "key": "HOWDOCUMENT", "value": "07AS", "descrip": "Others Accounting Notes" },
+			{ "key": "HOWGDPR", "value": "NO", "descrip": "No" },
+			{ "key": "HOWGEOGRAPHY", "value": "SCIBBOADILLA", "descrip": "SCIBBoadilla" }
+		]
+	},
+	{
+		"id": "5120",
+		"what": "READ",
+		"how": [
+			{ "key": "HOWAREA", "value": "ACCDERIVADOS", "descrip": "AccountingDerivados" },
+			{ "key": "HOWBUSPROCESS", "value": "COLLATSETUPMAINT", "descrip": "Collateral set up and maintenance" },
+			{ "key": "HOWCONFIDENTIAL", "value": "INTERNAL", "descrip": "Internal" },
+			{ "key": "HOWDOCUMENT", "value": "01PR", "descrip": "Operations Procedures and Guides" },
+			{ "key": "HOWGDPR", "value": "NO", "descrip": "No" },
+			{ "key": "HOWGEOGRAPHY", "value": "SCIBBOADILLA", "descrip": "SCIBBoadilla" }
+		]
+	},
+	{
+		"id": "5866",
+		"what": "READ",
+		"how": [
+			{ "key": "HOWAREA", "value": "ACCDERIVADOS", "descrip": "AccountingDerivados" },
+			{ "key": "HOWBUSPROCESS", "value": "RECONCEXECTANALYSIS", "descrip": "Reconcilationexecutionanalysis" },
+			{ "key": "HOWCONFIDENTIAL", "value": "RESTCONFIDENTIAL", "descrip": "RestrictedConfidential" },
+			{ "key": "HOWDOCUMENT", "value": "04AD", "descrip": "BO-BO Internal Reconciliations" },
+			{ "key": "HOWGDPR", "value": "NO", "descrip": "No" },
+			{ "key": "HOWGEOGRAPHY", "value": "SCIBBOADILLA", "descrip": "SCIBBoadilla" },
+			{ "key": "HOWDOCUMENT", "value": "07AD", "descrip": "Balance Reconciliation" },
+			{ "key": "HOWDOCUMENT", "value": "09AD", "descrip": "CCPs" },
+			{ "key": "HOWDOCUMENT", "value": "10AD", "descrip": "Cash Equity Management Information" },
+			{ "key": "HOWDOCUMENT", "value": "08AD", "descrip": "Cash Equity Reconciliation" },
+			{ "key": "HOWDOCUMENT", "value": "02AD", "descrip": "Change Position Reconciliation" },
+			{ "key": "HOWDOCUMENT", "value": "03AD", "descrip": "FO-FO Internal Reconciliations" },
+			{ "key": "HOWDOCUMENT", "value": "06AD", "descrip": "IDOM Reconciliation" },
+			{ "key": "HOWDOCUMENT", "value": "01AD", "descrip": "Results Reconciliations" },
+			{ "key": "HOWDOCUMENT", "value": "05AD", "descrip": "TRIM Reconciliations" }
+		]
+	}
+]

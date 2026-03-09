@@ -1,0 +1,194 @@
+@use 'utilities';
+@use 'tools';
+
+/**
+   *@description: this file styles the specific tags of the vaadin components that are outside the shadowroot
+**/
+
+vaadin-checkbox {
+	width: calc(100% - 135px);
+}
+
+vaadin-details.vaadin-details--filter {
+	padding: 0 tools.rem(30);
+	border-radius: tools.rem(20);
+	background: tools.color(tertiary, light);
+	.wc-form__summary {
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+
+vaadin-details.vaadin-details--candidates {
+	box-sizing: border-box;
+	display: inline-block;
+	width: calc(100% - 155px);
+	vertical-align: top;
+}
+
+vaadin-details.wc-vaadin--border {
+	margin-bottom: tools.rem(15);
+	.wc-vaadin__title {
+		font-size: tools.rem(16);
+		line-height: tools.rem(22);
+
+		&--only {
+			padding: tools.rem(9) 0;
+		}
+	}
+
+	.wc-vaadin__subititle {
+		display: inline-block;
+		width: calc(100% - 270px);
+		margin-left: tools.rem(25);
+		font-weight: normal;
+		word-break: normal;
+		overflow-wrap: break-word;
+	}
+}
+
+vaadin-details.wc-vaadin--link {
+	.wc-vaadin__title {
+		margin-bottom: tools.rem(15);
+		font-size: tools.rem(14);
+		line-height: tools.rem(20);
+		font-weight: normal;
+		word-break: normal;
+		overflow-wrap: break-word;
+		color: tools.color(secondary, ultra-dark);
+		cursor: pointer;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+
+vaadin-details.wc-vaadin--icon {
+	display: inline-block;
+	width: calc(100% - 30px);
+}
+
+vaadin-text-field.wc-filter--field,
+vaadin-combo-box.wc-filter--combo,
+vaadin-date-picker.wc-filter--date {
+	width: calc(100% - 8px);
+	margin: 0 tools.rem(5) tools.rem(10);
+	padding: 0;
+}
+
+vaadin-text-field.wc-candidates--field {
+	width: 100%;
+	padding: 0 0 tools.rem(4);
+}
+
+vaadin-combo-box.wc-combo--inline,
+vaadin-text-area.wc-textarea,
+vaadin-text-area.wc-textarea--profile,
+vaadin-date-picker.wc-date {
+	width: 100%;
+	padding: 0 0 tools.rem(4);
+}
+
+vaadin-combo-box.wc-combo {
+	width: calc(100% - 5px);
+	margin: tools.rem(20) 0 0 tools.rem(5);
+}
+
+vaadin-combo-box.wc-candidates-search {
+	width: calc(100% - 275px);
+	margin: 0 tools.rem(120) 0 0;
+	padding: 0;
+}
+
+vaadin-grid-cell-content {
+	padding: 0 tools.rem(8);
+	font-weight: normal;
+	color: black;
+}
+
+vaadin-grid-cell-content {
+	[direction='asc'],
+	[direction='desc'] {
+		font-weight: bold;
+	}
+
+	.wc-vaadin__state {
+		padding: tools.rem(5) 0;
+		border-bottom: tools.rem(1) solid tools.color(primary, base);
+		background-color: transparent;
+
+		&--avaiable {
+			background-color: tools.color(quaternary, light);
+		}
+
+		&--inprocess {
+			background-color: tools.color(quintenary, light);
+		}
+	}
+
+	&.wc-vaadin--highlighted {
+		color: tools.color(primary, base);
+	}
+}
+
+vaadin-combo-box-overlay {
+	z-index: 350;
+}
+
+@include tools.media-query('xs') {
+	vaadin-checkbox {
+		width: 100%;
+	}
+
+	vaadin-details.vaadin-details--filter {
+		padding: 0 tools.rem(15);
+		margin-bottom: tools.rem(20);
+		.wc-btn {
+			width: auto;
+		}
+
+		.wc-btn--delete {
+			width: tools.rem(40);
+			margin: 0 0 tools.rem(20) tools.rem(20);
+		}
+	}
+
+	vaadin-details.vaadin-details--candidates {
+		display: block;
+		width: 100%;
+	}
+
+	vaadin-details.wc-vaadin--border {
+		.wc-vaadin__title {
+			.wc-btn--large {
+				margin: 0;
+			}
+		}
+
+		.wc-vaadin__subititle {
+			display: block;
+			width: 100%;
+			margin: 0 0 tools.rem(20);
+		}
+	}
+
+	vaadin-combo-box.wc-candidates-search {
+		width: 100%;
+		margin: 0 0 tools.rem(30);
+	}
+
+	vaadin-combo-box.wc-combo--skills {
+		display: inline-block;
+		width: calc(100% / 2);
+	}
+
+	vaadin-text-area.wc-textarea--profile {
+		padding: 0;
+	}
+
+	vaadin-combo-box.wc-combo {
+		width: 100%;
+		margin: tools.rem(20) 0 0;
+	}
+}

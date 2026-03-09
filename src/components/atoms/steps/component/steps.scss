@@ -1,0 +1,89 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	--_atoms-steps-bg-color: var(--atoms-steps-bg-color, #deedf2);
+	--_atoms-steps-color: var(--atoms-steps-color, #767676);
+	--_atoms-steps-active-color: var(--atoms-steps-active-color, #000000);
+	--_atoms-steps-margin-bottom: var(--atoms-steps-margin-bottom, 24px);
+	--_atoms-steps-font-weight: var(--atoms-steps-font-weight, bold);
+}
+
+:host([variant='white']) {
+	--_atoms-steps-bg-color: var(--atoms-steps-bg-color, white);
+}
+
+:host([variant='blue']) {
+	--_atoms-steps-bg-color: var(--atoms-steps-bg-color, blue);
+}
+
+:host {
+	font-family: settings.$font-regular-txt;
+	display: block;
+
+	.steps {
+		display: flex;
+		margin-bottom: var(--_atoms-steps-margin-bottom);
+		height: auto;
+		overflow: hidden;
+		&__item {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			line-height: tools.rem(23);
+			padding: tools.rem(8 16);
+			position: relative;
+			font-weight: var(--_atoms-steps-font-weight);
+			color: var(--_atoms-steps-color);
+			max-height: tools.rem(39);
+
+			&:first-child {
+				border-radius: 8px 0 0 8px;
+			}
+
+			&:last-child {
+				border-radius: 0 8px 8px 0;
+
+				&::after {
+					content: none;
+				}
+			}
+
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: tools.rem(-20);
+				width: tools.rem(39);
+				height: tools.rem(39);
+				transform: scale(0.7) rotate(45deg);
+				z-index: 1;
+				border-radius: 0 8px 0 50px;
+			}
+
+			&--active {
+				background-color: var(--_atoms-steps-bg-color);
+
+				&::after {
+					background-color: var(--_atoms-steps-bg-color);
+				}
+			}
+
+			&--current {
+				color: var(--_atoms-steps-active-color);
+				overflow: unset;
+				margin-right: tools.rem(16);
+			}
+		}
+	}
+}

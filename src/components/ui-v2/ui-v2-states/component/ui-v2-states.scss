@@ -1,0 +1,70 @@
+@use 'settings';
+@use 'tools';
+
+/** 
+ * This props are only visibles from our component scope so we need to referer a public 
+ * custom property. Theese definitios are available in the Theme folder ordering by 
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component 
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it 
+ * with the public props.
+ */
+
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_ui-v2-states-bg-color: var(--ui-v2-states-bg-color, white);
+	--_ui-v2-states-icon-font-size: var(--ui-v2-states-font-size, 15px);
+	--_ui-v2-states-margin: var(--ui-v2-states-margin, (0 0 20px 0));
+	--_ui-v2-states-border-radius: var(--ui-v2-states-border-radius, 50%);
+	--_ui-v2-states-figure-margin: var(--ui-v2-states-figure-margin, 0);
+	--_ui-v2-states-figure-width: var(--ui-v2-states-figure-width, 26px);
+	--_ui-v2-states-figure-height: var(--ui-v2-states-figure-height, 26px);
+	--_ui-v2-states-font-size: 12px;
+	--_ui-v2-states-padding: 7px 0 0 0;
+	--_ui-v2-states-min-width: 65px;
+}
+
+/** 
+ * Component
+ */
+:host {
+	@include tools.shadowIcons();
+	font-family: settings.$font-regular-txt;
+	background-color: var(--_ui-v2-states-bg-color);
+	display: block;
+	.state {
+		display: flex;
+		align-items: center;
+		margin: var(--_ui-v2-states-margin);
+		&__group {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			min-width: var(--_ui-v2-states-min-width);
+		}
+		&__meta {
+			text-transform: uppercase;
+			font-size: var(--_ui-v2-states-font-size);
+			padding: var(--_ui-v2-states-padding);
+			font-family: settings.$font-regular-txt;
+		}
+		.figure {
+			width: var(--_ui-v2-states-figure-width);
+			height: var(--_ui-v2-states-figure-height);
+			border-radius: var(--_ui-v2-states-border-radius);
+			margin: var(--_ui-v2-states-figure-margin);
+			&.state__figure {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100%;
+			}
+		}
+		.icon {
+			&.state__icon {
+				font-size: var(--_ui-v2-states-icon-font-size);
+			}
+		}
+	}
+}

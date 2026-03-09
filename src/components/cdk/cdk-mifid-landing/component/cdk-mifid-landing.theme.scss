@@ -1,0 +1,4 @@
+:host {
+	/** Las variables deberán ser mapeadas a una con el mismo nombre pero privada (_) */
+	--_cdk-mifid-landing-bg-color: var(--cdk-mifid-landing-bg-color, white);
+}

@@ -1,0 +1,159 @@
+@use 'settings';
+@use 'tools';
+
+$higth-size: tools.rem(32);
+$medium-size: tools.rem(24);
+
+:host([variant='vertical']) {
+	--_atoms-step-progress-bg-color: var(--atoms-step-progress-bg-color, white);
+}
+
+:host {
+	--_atoms-step-progress-font-family: var(--typescale-button-large-font);
+	font-family: var(--typescale-body-large-default-font);
+
+	@include tools.shadowIcons();
+	display: block;
+
+	ol {
+		padding: 0;
+	}
+
+	.step-progress {
+		margin: 0 auto;
+		counter-reset: step;
+
+		&__list {
+			display: flex;
+
+			&--flow .step-progress {
+				&__item {
+					cursor: pointer;
+				}
+			}
+		}
+
+		&__list-item {
+			display: flex;
+			align-items: center;
+			list-style-type: none;
+			width: 100%;
+
+			&:first-of-type {
+				flex: 0;
+			}
+
+			.step-progress {
+				&__line {
+					width: 100%;
+					height: tools.rem(2);
+					background: var(--color-border-alternative);
+
+					&--complete {
+						background: var(--color-action-alternative-default);
+					}
+				}
+
+				&__item {
+					position: relative;
+					padding: tools.rem(0 var(--size-spacing-01));
+
+					&--active .step-progress {
+						&__step {
+							border-color: var(--color-action-main-selected);
+							background-color: var(--color-action-main-selected);
+
+							&::before {
+								color: var(--color-action-on-main-selected);
+							}
+						}
+
+						&__step-txt {
+							color: var(--color-text-default);
+							font-family: var(--typescale-body-large-strong-font);
+							font-size: var(--typescale-body-large-strong-size);
+							line-height: var(--typescale-body-large-strong-line-height);
+							font-weight: var(--typescale-body-large-strong-weight);
+							font-style: var(--typescale-body-large-strong-style);
+						}
+					}
+
+					&--complete .step-progress {
+						&__icon {
+							position: absolute;
+							--icon-content: var(--theme-scib-icon-check);
+							top: 50%;
+							transform: translateY(-50%);
+							z-index: 2;
+
+							&.icon {
+								font-size: tools.rem(14);
+								color: var(--theme-colors-white);
+								text-align: center;
+								font-weight: var(typescale-button-large-weight);
+								width: $medium-size;
+							}
+						}
+
+						&__step {
+							border-color: var(--color-action-alternative-default);
+							background: var(--color-action-alternative-default);
+							width: $medium-size;
+							height: $medium-size;
+
+							&::before {
+								content: '';
+								width: $higth-size;
+								height: $higth-size;
+							}
+						}
+
+						&__step-txt {
+							top: tools.rem(38);
+						}
+					}
+
+					&--not-allowed {
+						cursor: default !important;
+					}
+				}
+
+				&__step {
+					display: flex;
+					align-items: center;
+					width: $higth-size;
+					box-sizing: border-box;
+					height: $higth-size;
+					justify-content: center;
+					border: var(--size-border-width-02) solid var(--color-border-alternative);
+					border-radius: var(--size-border-radius-05);
+					box-shadow: var(--elevation-flat);
+
+					&::before {
+						content: counter(step) ' ';
+						counter-increment: step;
+						color: var(--color-text-default);
+						font-size: var(--typescale-button-large-size);
+						line-height: var(--typescale-button-large-line-height);
+						font-weight: var(--typescale-button-large-weight);
+						font-style: var(--font-style-button-large);
+						text-align: center;
+					}
+				}
+
+				&__step-txt {
+					position: absolute;
+					left: 50%;
+					transform: translateX(-50%);
+					color: var(--color-text-default);
+					font-size: var(--typescale-body-large-default-size);
+					line-height: var(--typescale-body-xlarge-default-line-height);
+					font-weight: var(--typescale-body-large-default-weight);
+					font-style: var(--typescale-body-large-default-style);
+					top: tools.rem(42);
+					white-space: nowrap;
+				}
+			}
+		}
+	}
+}

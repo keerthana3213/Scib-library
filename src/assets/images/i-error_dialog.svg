@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="134px" height="134px" viewBox="0 0 134 134" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>3D1DF493-5C1B-4052-9FBF-08B113C968CD</title>
+    <g id="Styles" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Modal" transform="translate(-762.000000, -2928.000000)">
+            <g id="Group-8" transform="translate(579.000000, 2929.000000)">
+                <g id="error" transform="translate(184.000000, 0.000000)">
+                    <circle id="Oval" stroke="#EC0000" fill="#CC0000" cx="66" cy="66" r="66"></circle>
+                    <g id="atoms/ico/20/cross-20" transform="translate(10.000000, 8.000000)" fill="#FFFFFF">
+                        <path d="M56.2928932,17.5 C59.8827441,17.5 62.7928932,20.4101491 62.7928932,24 L62.792,50.292 L90.5,50.2928932 C94.0898509,50.2928932 97,53.2030423 97,56.7928932 C97,60.3827441 94.0898509,63.2928932 90.5,63.2928932 L62.792,63.292 L62.7928932,91 C62.7928932,94.5898509 59.8827441,97.5 56.2928932,97.5 C52.7030423,97.5 49.7928932,94.5898509 49.7928932,91 L49.792,63.292 L23.5,63.2928932 C19.9101491,63.2928932 17,60.3827441 17,56.7928932 C17,53.2030423 19.9101491,50.2928932 23.5,50.2928932 L49.792,50.292 L49.7928932,24 C49.7928932,20.4101491 52.7030423,17.5 56.2928932,17.5 Z" id="Combined-Shape" transform="translate(57.000000, 57.500000) rotate(-315.000000) translate(-57.000000, -57.500000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,66 @@
+@use 'tools';
+@use '@material/card';
+
+/**
+ * This props are only visibles from our component scope so we need to referer a public
+ * custom property. Theese definitios are available in the Theme folder ordering by
+ * component type with an specific file. You can add what ever you need and then use here.
+ * With this architecture you will able to modify this public porpos to modify the component
+ * aspect without extra Props in the component.
+ * As you can see the private props are named with a n underscore to difference it
+ * with the public props.
+ */
+:host {
+	--_ui-v2-card-bg-color: var(--color-surface-flat);
+	--_ui-v2-card-padding: var(--ui-v2-card-container-padding);
+	--_ui-v2-card-border-radius: var(--size-border-radius-03);
+	--_ui-v2-card-box-shadow: none;
+	--_ui-v2-card-border-color: none;
+	--_ui-v2-card-border-width: 0;
+}
+
+:host([type='alternative']) {
+	--_ui-v2-card-bg-color: var(--color-background-alternative);
+}
+:host([type='elevated']) {
+	--_ui-v2-card-box-shadow: var(--elevation-raised);
+}
+:host([type='outlined']) {
+	--_ui-v2-card-border-width: 1px;
+	--_ui-v2-card-border-color: var(--color-border-soft);
+}
+:host([type='link']) {
+	--_ui-v2-card-border-width: 1px;
+	--_ui-v2-card-border-color: var(--color-border-soft);
+	--_ui-v2-card-border-style: solid;
+}
+
+/**
+ * Component
+ */
+:host {
+	@include card.core-styles;
+	display: block;
+	.mdc-card {
+		@include card.fill-color(var(--_ui-v2-card-bg-color));
+		border-radius: var(--_ui-v2-card-border-radius);
+		box-shadow: var(--_ui-v2-card-box-shadow);
+		border-width: tools.rem(var(--_ui-v2-card-border-width));
+		border-color: var(--_ui-v2-card-border-color);
+
+		&--link {
+			&:hover,
+			&:focus,
+			&:active {
+				transform: translateY(-4px);
+				transition: all 0.2s eases;
+				--_ui-v2-card-box-shadow: var(--elevation-raised);
+				cursor: pointer;
+			}
+		}
+
+		&__container {
+			padding: var(--_ui-v2-card-padding);
+		}
+	}
+}
